@@ -107,7 +107,7 @@ const BLOCK_TYPES = Object.freeze({
 const BLOCK_TYPE_VALUES = Object.freeze(Object.values(BLOCK_TYPES));
 
 /** Recognised page type strings. */
-const PAGE_TYPES = Object.freeze(['ranking', 'comparison', 'editorial']);
+const PAGE_TYPES = Object.freeze(['ranking', 'comparison', 'editorial', 'hotel_detail']);
 
 /** Card variant identifiers. */
 const CARD_VARIANTS = Object.freeze({

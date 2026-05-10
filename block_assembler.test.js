@@ -64,6 +64,13 @@ const PAGE_CTX_EDITORIAL = {
   slug:      'best-spa-retreats-mauritius',
 };
 
+const PAGE_CTX_HOTEL_DETAIL = {
+  page_type: 'hotel_detail',
+  persona:   'luxury',
+  title:     'Royal Palm Beachcomber Luxury — Mauritius Review',
+  slug:      'hotels/royal-palm-beachcomber',
+};
+
 function _makeHotel(rank, id, opts) {
   return {
     hotel_id:    id,
@@ -152,10 +159,11 @@ test('BLOCK_TYPES has all 10 block type strings', () => {
   }
 });
 
-test('PAGE_TYPES contains ranking, comparison, editorial', () => {
+test('PAGE_TYPES contains ranking, comparison, editorial, hotel_detail', () => {
   assert.ok(assembler.PAGE_TYPES.includes('ranking'));
   assert.ok(assembler.PAGE_TYPES.includes('comparison'));
   assert.ok(assembler.PAGE_TYPES.includes('editorial'));
+  assert.ok(assembler.PAGE_TYPES.includes('hotel_detail'));
 });
 
 test('CARD_VARIANTS has expanded, standard, compact', () => {
@@ -1097,8 +1105,26 @@ test('page_type: editorial → valid assembly', () => {
   assert.doesNotThrow(() => assembler.assemble([H1], [], PAGE_CTX_EDITORIAL, null));
 });
 
-test('page payload reflects page_type correctly for each type', () => {
-  for (const ctx of [PAGE_CTX, PAGE_CTX_COMPARISON, PAGE_CTX_EDITORIAL]) {
+test('page_type: hotel_detail → valid assembly', () => {
+  assert.doesNotThrow(() => assembler.assemble([H1], [], PAGE_CTX_HOTEL_DETAIL, null));
+});
+
+test('hotel_detail is not rejected by _validateInputs', () => {
+  assert.doesNotThrow(
+    () => assembler._validateInputs([H1], [], PAGE_CTX_HOTEL_DETAIL, null),
+    'hotel_detail must pass page_type validation',
+  );
+});
+
+test('hotel_detail page_type produces correct hero payload', () => {
+  const result = assembler.assemble([H1], [], PAGE_CTX_HOTEL_DETAIL, null);
+  const hero   = result.blocks[0];
+  assert.strictEqual(hero.payload.page_type, 'hotel_detail');
+  assert.strictEqual(hero.payload.persona,   'luxury');
+});
+
+test('page payload reflects page_type correctly for all four types', () => {
+  for (const ctx of [PAGE_CTX, PAGE_CTX_COMPARISON, PAGE_CTX_EDITORIAL, PAGE_CTX_HOTEL_DETAIL]) {
     const result = assembler.assemble([H1], [], ctx, null);
     const hero   = result.blocks[0];
     assert.strictEqual(hero.payload.page_type, ctx.page_type);
