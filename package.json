@@ -1,0 +1,43 @@
+{
+  "name": "mauritius-resort-finder",
+  "version": "1.0.0",
+  "description": "AI-powered hotel and resort affiliate platform for Mauritius — static site generator with scoring, explanation, and Airtable CMS integration.",
+  "main": "site_builder.js",
+  "scripts": {
+    "test": "node run_tests.js",
+    "test:scoring":    "node scoring_engine.test.js",
+    "test:phrases":    "echo 'phrase_library has no standalone test suite'",
+    "test:hallucination": "node hallucination_guard.test.js",
+    "test:confidence": "node confidence_enforcer.test.js",
+    "test:explanation": "node explanation_engine.test.js",
+    "test:assembler":  "node block_assembler.test.js",
+    "test:renderer":   "node static_page_renderer.test.js",
+    "test:sync":       "node airtable_sync.test.js",
+    "test:builder":    "node site_builder.test.js",
+    "build": "node site_builder.js",
+    "sync": "node airtable_sync.js --out ./data",
+    "start": "node site_builder.js --verbose"
+  },
+  "keywords": [
+    "mauritius",
+    "hotels",
+    "resorts",
+    "affiliate",
+    "static-site-generator",
+    "airtable",
+    "cloudflare-pages",
+    "seo"
+  ],
+  "author": "Mauritius Resort Finder",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_GITHUB_USERNAME/mauritius-resort-finder.git"
+  },
+  "homepage": "https://mauritiusresortfinder.com",
+  "dependencies": {},
+  "devDependencies": {}
+}

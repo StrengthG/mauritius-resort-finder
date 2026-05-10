@@ -1,0 +1,139 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB 1: Full test suite
+  # ─────────────────────────────────────────────────────────────────────────────
+  test:
+    name: Test Suite (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: ["18", "20", "22"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Verify Node version
+        run: node --version
+
+      - name: Run scoring engine tests
+        run: node scoring_engine.test.js
+
+      - name: Run hallucination guard tests
+        run: node hallucination_guard.test.js
+
+      - name: Run confidence enforcer tests
+        run: node confidence_enforcer.test.js
+
+      - name: Run explanation engine tests
+        run: node explanation_engine.test.js
+
+      - name: Run block assembler tests
+        run: node block_assembler.test.js
+
+      - name: Run static page renderer tests
+        run: node static_page_renderer.test.js
+
+      - name: Run Airtable sync tests
+        run: node airtable_sync.test.js
+
+      - name: Run site builder tests
+        run: node site_builder.test.js
+
+      - name: Full combined suite
+        run: node run_tests.js
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB 2: Dry-run build (no Airtable credentials needed)
+  # ─────────────────────────────────────────────────────────────────────────────
+  build-dry-run:
+    name: Build Dry Run
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Dry-run site build (no Airtable required)
+        run: |
+          node site_builder.js \
+            --dry-run \
+            --base https://mauritiusresortfinder.com \
+            --verbose
+        continue-on-error: true
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB 3: Full site build + deploy (main branch only, secrets required)
+  # ─────────────────────────────────────────────────────────────────────────────
+  deploy:
+    name: Build & Deploy to Cloudflare Pages
+    runs-on: ubuntu-latest
+    needs: [test, build-dry-run]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    environment:
+      name: production
+      url: https://mauritiusresortfinder.com
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Sync data from Airtable
+        run: node airtable_sync.js --out ./data
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+
+      - name: Build static site
+        run: |
+          node site_builder.js \
+            --out ./dist \
+            --base https://mauritiusresortfinder.com \
+            --verbose \
+            --fail-on-error
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+
+      - name: Verify build output
+        run: |
+          echo "Build contents:"
+          ls -lh dist/
+          echo "Page count: $(find dist -name 'index.html' | wc -l)"
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name mauritius-resort-finder --branch main
