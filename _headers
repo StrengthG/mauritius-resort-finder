@@ -1,0 +1,12 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
+  Content-Security-Policy: default-src 'self'; script-src 'self'
+
+/sitemap.xml
+  Content-Type: text/xml; charset=utf-8
+
+/feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
