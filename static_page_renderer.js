@@ -1055,6 +1055,7 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     meta.keyword
       ? `  <meta name="keywords" content="${esc(meta.keyword)}">` : '',
     `  <link rel="canonical" href="${esc(canonUrl)}">`,
+    `  <meta name="google-site-verification" content="4Xa_6yknHuo9NgLnSQB7Sv3XnWpBhCk3e5McOFstAjo">`,
     ``,
     `  <!-- Open Graph -->`,
     `  <meta property="og:title"       content="${esc(meta.title)}">`,
