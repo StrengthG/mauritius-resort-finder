@@ -1018,10 +1018,13 @@ function _parseCLIArgs(argv) {
 async function main() {
   const cli = _parseCLIArgs();
 
-  // Auto-detect Airtable credentials from environment.
-  // When present, pull live hotel data before building.
-  // When absent, fall back to the test dataset in integration_harness.js.
+  // Data source priority:
+  //   1. AIRTABLE_* env vars present → live sync from Airtable API
+  //   2. data/hotels.json exists     → pre-synced snapshot (committed to repo)
+  //   3. Fallback                    → test dataset in integration_harness.js
   let syncFn = null;
+  const snapshotPath = path.join(__dirname, 'data', 'hotels.json');
+
   if (process.env.AIRTABLE_API_KEY && process.env.AIRTABLE_BASE_ID) {
     process.stdout.write('[site_builder] AIRTABLE credentials detected — syncing live data\n');
     const airtableSync = require('./airtable_sync.js');
@@ -1029,8 +1032,14 @@ async function main() {
       apiKey: process.env.AIRTABLE_API_KEY,
       baseId: process.env.AIRTABLE_BASE_ID,
     });
+  } else if (fs.existsSync(snapshotPath)) {
+    process.stdout.write('[site_builder] Loading hotel data from data/hotels.json\n');
+    syncFn = () => {
+      const hotelObjects = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
+      return Promise.resolve({ hotelObjects });
+    };
   } else {
-    process.stdout.write('[site_builder] No AIRTABLE credentials — using test dataset\n');
+    process.stdout.write('[site_builder] No AIRTABLE credentials or snapshot — using test dataset\n');
   }
 
   try {

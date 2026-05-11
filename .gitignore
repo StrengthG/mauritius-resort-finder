@@ -17,11 +17,13 @@ out/
 build/
 
 # ─── Airtable Sync Snapshots ──────────────────────────────────────────────────
-data/
+# data/hotels.json is committed to repo so Cloudflare builds use real data
+data/raw_tables.json
+data/normalized_dataset.json
+data/sync_report.json
 artifacts/
 raw_tables.json
 normalized_dataset.json
-hotels.json
 sync_report.json
 build_report.json
 
