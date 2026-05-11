@@ -1035,7 +1035,8 @@ async function main() {
   } else if (fs.existsSync(snapshotPath)) {
     process.stdout.write('[site_builder] Loading hotel data from data/hotels.json\n');
     syncFn = () => {
-      const hotelObjects = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
+      const hotelObjects = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'))
+        .filter(h => h._status !== 'inactive');
       return Promise.resolve({ hotelObjects });
     };
   } else {
