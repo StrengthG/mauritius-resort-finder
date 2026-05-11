@@ -1017,6 +1017,22 @@ function _parseCLIArgs(argv) {
 
 async function main() {
   const cli = _parseCLIArgs();
+
+  // Auto-detect Airtable credentials from environment.
+  // When present, pull live hotel data before building.
+  // When absent, fall back to the test dataset in integration_harness.js.
+  let syncFn = null;
+  if (process.env.AIRTABLE_API_KEY && process.env.AIRTABLE_BASE_ID) {
+    process.stdout.write('[site_builder] AIRTABLE credentials detected — syncing live data\n');
+    const airtableSync = require('./airtable_sync.js');
+    syncFn = () => airtableSync.sync({
+      apiKey: process.env.AIRTABLE_API_KEY,
+      baseId: process.env.AIRTABLE_BASE_ID,
+    });
+  } else {
+    process.stdout.write('[site_builder] No AIRTABLE credentials — using test dataset\n');
+  }
+
   try {
     const report = await buildSite({
       baseUrl:         cli.baseUrl,
@@ -1026,6 +1042,7 @@ async function main() {
       failOnPageError: cli.failOnPageError,
       maxConcurrency:  cli.concurrency,
       comparisonTopN:  cli.comparisonTopN,
+      syncFn,
     });
     if (report.errors_count > 0) process.exit(1);
   } catch (err) {
