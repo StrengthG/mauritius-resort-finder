@@ -2,6 +2,7 @@ name = "mauritius-resort-finder"
 type = "javascript"
 main = "index.js"
 compatibility_date = "2025-01-01"
+pages_build_output_dir = "dist"
 
 # Cloudflare Pages configuration
 [env.production]
@@ -15,3 +16,4 @@ watch_paths = []
 [env.production.triggers.crons]
 # Rebuild hourly for content updates
 crons = ["0 * * * *"]
+
