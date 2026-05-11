@@ -16,7 +16,7 @@
     "_status": "active",
     "_brand_name": "Beachcomber Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": [],
+    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/cCjqxSX", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
     "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true }
   },
   {
@@ -36,7 +36,7 @@
     "_status": "active",
     "_brand_name": "Four Seasons",
     "_brand_tier": 10,
-    "_affiliate_links": [],
+    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/9ButvzS", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
     "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true, "golf": true }
   },
   {
@@ -56,7 +56,7 @@
     "_status": "active",
     "_brand_name": "One&Only",
     "_brand_tier": 10,
-    "_affiliate_links": [],
+    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/cVVoNiu", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
     "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true }
   },
   {
@@ -76,7 +76,7 @@
     "_status": "active",
     "_brand_name": "Constance Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": [],
+    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/EsfP6ME", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
     "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "golf": true, "kids_club": true }
   },
   {
