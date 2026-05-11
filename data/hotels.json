@@ -16,7 +16,8 @@
     "_status": "active",
     "_brand_name": "Beachcomber Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true }
   },
   {
     "hotel_id": "MQ002",
@@ -35,7 +36,8 @@
     "_status": "active",
     "_brand_name": "Four Seasons",
     "_brand_tier": 10,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true, "golf": true }
   },
   {
     "hotel_id": "MQ003",
@@ -54,7 +56,8 @@
     "_status": "active",
     "_brand_name": "One&Only",
     "_brand_tier": 10,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true }
   },
   {
     "hotel_id": "MQ004",
@@ -73,7 +76,8 @@
     "_status": "active",
     "_brand_name": "Constance Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "golf": true, "kids_club": true }
   },
   {
     "hotel_id": "MQ005",
@@ -92,7 +96,8 @@
     "_status": "active",
     "_brand_name": "Shangri-La",
     "_brand_tier": 9,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "golf": true, "kids_club": true }
   },
   {
     "hotel_id": "MQ006",
@@ -111,7 +116,8 @@
     "_status": "active",
     "_brand_name": "LUX* Resorts & Hotels",
     "_brand_tier": 8,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true }
   },
   {
     "hotel_id": "MQ007",
@@ -130,7 +136,8 @@
     "_status": "active",
     "_brand_name": "Constance Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true }
   },
   {
     "hotel_id": "MQ008",
@@ -149,7 +156,8 @@
     "_status": "active",
     "_brand_name": "Westin",
     "_brand_tier": 8,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "fitness_center": true }
   },
   {
     "hotel_id": "MQ009",
@@ -168,7 +176,8 @@
     "_status": "active",
     "_brand_name": "Beachcomber Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "golf": true }
   },
   {
     "hotel_id": "MQ010",
@@ -187,7 +196,8 @@
     "_status": "active",
     "_brand_name": "Beachcomber Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "golf": true }
   },
   {
     "hotel_id": "MQ011",
@@ -206,7 +216,8 @@
     "_status": "active",
     "_brand_name": "Sofitel",
     "_brand_tier": 8,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true }
   },
   {
     "hotel_id": "MQ012",
@@ -225,7 +236,8 @@
     "_status": "active",
     "_brand_name": "Beachcomber Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "golf": true }
   },
   {
     "hotel_id": "MQ013",
@@ -244,7 +256,8 @@
     "_status": "active",
     "_brand_name": "Heritage Resorts",
     "_brand_tier": 8,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "golf": true }
   },
   {
     "hotel_id": "MQ014",
@@ -263,7 +276,8 @@
     "_status": "active",
     "_brand_name": "LUX* Resorts & Hotels",
     "_brand_tier": 8,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true }
   },
   {
     "hotel_id": "MQ015",
@@ -282,7 +296,8 @@
     "_status": "active",
     "_brand_name": "Oberoi",
     "_brand_tier": 9,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true }
   },
   {
     "hotel_id": "MQ016",
@@ -301,7 +316,8 @@
     "_status": "active",
     "_brand_name": "Attitude Hotels",
     "_brand_tier": 7,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "pool": true }
   },
   {
     "hotel_id": "MQ017",
@@ -317,7 +333,7 @@
     "star_rating": 4,
     "property_type": "hotel",
     "region": "Grand Baie",
-    "_status": "active",
+    "_status": "inactive",
     "_brand_name": "Attitude Hotels",
     "_brand_tier": 7,
     "_affiliate_links": []
@@ -339,7 +355,8 @@
     "_status": "active",
     "_brand_name": "Beachcomber Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true }
   },
   {
     "hotel_id": "MQ019",
@@ -358,7 +375,8 @@
     "_status": "active",
     "_brand_name": "Beachcomber Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": []
+    "_affiliate_links": [],
+    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true }
   },
   {
     "hotel_id": "MQ020",
@@ -374,7 +392,7 @@
     "star_rating": 4,
     "property_type": "hotel",
     "region": "Cap Malheureux",
-    "_status": "active",
+    "_status": "inactive",
     "_brand_name": "Attitude Hotels",
     "_brand_tier": 7,
     "_affiliate_links": []
