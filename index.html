@@ -8,10 +8,18 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://mauritiusresortfinder.com/" />
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="/assets/css/global.css" />
+
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mauritiusresortfinder.com/" />
-  <meta property="og:title" content="Mauritius Resort Finder — Independent Luxury Hotel Reviews" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://mauritiusresortfinder.com/" />
+  <meta property="og:title"       content="Mauritius Resort Finder — Independent Luxury Hotel Reviews" />
   <meta property="og:description" content="18 luxury resorts scored across location, amenities, brand credibility and value. Real guest reviews. No paid placements." />
 
   <!-- JSON-LD -->
@@ -30,397 +38,113 @@
   }
   </script>
 
+  <!-- Page-level styles (hero geometry, section bg overrides) -->
   <style>
-    /* ── Reset & Base ─────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    body { padding-top: 72px; }
 
-    body {
-      background: #0d1117;
-      color: #e6edf3;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── Tokens ───────────────────────────────────── */
-    :root {
-      --gold:      #c9a84c;
-      --gold-dim:  #9b7d35;
-      --gold-glow: rgba(201,168,76,0.12);
-      --bg:        #0d1117;
-      --bg-card:   #161b22;
-      --bg-raised: #1c2128;
-      --border:    rgba(255,255,255,0.08);
-      --border-gold: rgba(201,168,76,0.3);
-      --text:      #e6edf3;
-      --muted:     #8b949e;
-      --radius:    12px;
-      --radius-sm: 8px;
-    }
-
-    /* ── Typography ───────────────────────────────── */
-    h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
-    h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
-    h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
-    h3 { font-size: 1.15rem; }
-    p { color: var(--muted); }
-    a { color: inherit; text-decoration: none; }
-    strong { color: var(--text); font-weight: 600; }
-
-    /* ── Layout ───────────────────────────────────── */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 80px 0; }
-    .section--tight { padding: 52px 0; }
-
-    /* ── Nav ──────────────────────────────────────── */
-    .nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(13,17,23,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav__inner {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px; max-width: 1200px; margin: 0 auto; padding: 0 24px;
-    }
-    .nav__logo {
-      display: flex; align-items: center; gap: 10px;
-      font-weight: 700; font-size: 1rem; color: var(--text);
-    }
-    .nav__logo-mark {
-      width: 28px; height: 28px; border-radius: 6px;
-      background: var(--gold); display: grid; place-items: center;
-      font-size: 0.85rem; color: #0d1117; font-weight: 800;
-    }
-    .nav__links {
-      display: flex; align-items: center; gap: 28px; list-style: none;
-    }
-    .nav__links a { font-size: 0.88rem; color: var(--muted); transition: color 0.15s; }
-    .nav__links a:hover { color: var(--text); }
-    .nav__cta {
-      font-size: 0.82rem; font-weight: 600;
-      background: var(--gold); color: #0d1117;
-      padding: 7px 16px; border-radius: 6px; transition: opacity 0.15s;
-    }
-    .nav__cta:hover { opacity: 0.88; }
-
-    /* ── Hero ─────────────────────────────────────── */
+    /* Hero */
     .hero {
-      padding: 96px 0 80px;
       position: relative; overflow: hidden;
+      padding: 128px 0 108px;
+      background: var(--deep-navy);
     }
     .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 70%);
-      pointer-events: none;
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% -5%, rgba(201,168,76,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 65% at 95% 55%, rgba(201,168,76,0.04) 0%, transparent 55%);
+    }
+    .hero__bg {
+      position: absolute; inset: -25% -10%; pointer-events: none; will-change: transform;
+      background: radial-gradient(ellipse 55% 40% at 68% 42%, rgba(8,40,80,0.55) 0%, transparent 60%);
     }
     .hero__eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--gold); background: var(--gold-glow);
-      border: 1px solid var(--border-gold); border-radius: 100px;
-      padding: 5px 14px; margin-bottom: 28px;
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); background: var(--gold-glow); border: 1px solid var(--border-gold);
+      border-radius: var(--radius-pill); padding: 6px 16px; margin-bottom: 32px;
     }
-    .hero__eyebrow::before { content: '●'; font-size: 0.5rem; }
-    .hero__title { margin-bottom: 20px; }
-    .hero__title span { color: var(--gold); }
+    .hero__eyebrow::before { content: '●'; font-size: 0.42rem; opacity: 0.7; }
+    .hero__title { margin-bottom: 24px; max-width: 860px; }
+    .hero__title em { color: var(--gold); font-style: italic; }
     .hero__subtitle {
-      font-size: 1.15rem; color: var(--muted); max-width: 600px;
-      margin-bottom: 40px; line-height: 1.7;
+      font-size: 1.1rem; color: var(--muted); max-width: 560px;
+      margin-bottom: 48px; line-height: 1.82;
     }
-    .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.9rem; font-weight: 600; border-radius: var(--radius-sm);
-      padding: 12px 24px; transition: all 0.15s; cursor: pointer; border: none;
-    }
-    .btn--primary { background: var(--gold); color: #0d1117; }
-    .btn--primary:hover { background: #d9b860; }
-    .btn--ghost {
-      background: transparent; color: var(--muted);
-      border: 1px solid var(--border);
-    }
-    .btn--ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+    .hero__actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 
-    /* ── Trust bar ────────────────────────────────── */
-    .trust-bar {
-      background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    }
-    .trust-bar__inner {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      max-width: 1200px; margin: 0 auto; padding: 0 24px;
-    }
-    .trust-stat {
-      padding: 28px 20px; text-align: center;
-      border-right: 1px solid var(--border);
-    }
-    .trust-stat:last-child { border-right: none; }
-    .trust-stat__value {
-      font-size: 2rem; font-weight: 800; color: var(--gold);
-      display: block; line-height: 1;
-    }
-    .trust-stat__label { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+    /* Section backgrounds */
+    #regions  { background: var(--midnight); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    #about    { background: var(--midnight); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
-    /* ── Section headers ──────────────────────────── */
-    .section-header { margin-bottom: 48px; }
+    /* Section label badge */
     .section-header__label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 12px; display: block;
-    }
-    .section-header h2 { margin-bottom: 12px; }
-    .section-header p { max-width: 560px; }
-
-    /* ── Hotel ranking cards ──────────────────────── */
-    .rankings { display: flex; flex-direction: column; gap: 16px; }
-    .hotel-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 24px 28px;
-      display: grid; grid-template-columns: 40px 1fr auto;
-      align-items: center; gap: 20px;
-      transition: border-color 0.15s, background 0.15s;
-      position: relative; overflow: hidden;
-    }
-    .hotel-card::before {
-      content: '';
-      position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-      background: transparent; transition: background 0.15s;
-    }
-    .hotel-card:hover { background: var(--bg-raised); border-color: rgba(255,255,255,0.14); }
-    .hotel-card:hover::before { background: var(--gold); }
-    .hotel-card--top::before { background: var(--gold); }
-    .hotel-card--top { border-color: var(--border-gold); }
-
-    .hotel-card__rank {
-      font-size: 1.5rem; font-weight: 800;
-      color: var(--gold); text-align: center; line-height: 1;
-    }
-    .hotel-card__rank span { font-size: 0.7rem; color: var(--muted); display: block; font-weight: 400; }
-
-    .hotel-card__body h3 { font-size: 1.05rem; margin-bottom: 4px; }
-    .hotel-card__meta {
-      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
-      margin-top: 8px;
-    }
-    .hotel-card__region {
-      font-size: 0.78rem; color: var(--muted);
-      display: flex; align-items: center; gap: 5px;
-    }
-    .hotel-card__region::before { content: '📍'; font-size: 0.7rem; }
-    .badge {
-      display: inline-flex; align-items: center;
-      font-size: 0.7rem; font-weight: 600;
-      padding: 2px 9px; border-radius: 100px;
-    }
-    .badge--stars {
-      background: rgba(201,168,76,0.12); color: var(--gold);
-      border: 1px solid var(--border-gold);
-    }
-    .badge--review {
-      background: rgba(255,255,255,0.05); color: var(--muted);
-      border: 1px solid var(--border);
-    }
-    .score-bar {
-      display: flex; align-items: center; gap: 8px; margin-top: 10px;
-    }
-    .score-bar__track {
-      height: 4px; background: var(--bg-raised); border-radius: 2px;
-      flex: 1; max-width: 140px; overflow: hidden;
-    }
-    .score-bar__fill {
-      height: 100%; border-radius: 2px; background: var(--gold);
-      transition: width 0.6s ease;
-    }
-    .score-bar__value { font-size: 0.78rem; color: var(--gold); font-weight: 700; }
-
-    .hotel-card__actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-    .btn--cta {
-      background: var(--gold); color: #0d1117;
-      font-size: 0.82rem; font-weight: 700;
-      padding: 9px 18px; border-radius: var(--radius-sm);
-      white-space: nowrap; transition: opacity 0.15s;
       display: inline-block;
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold); background: var(--gold-glow); border: 1px solid var(--border-gold);
+      border-radius: var(--radius-pill); padding: 5px 14px; margin-bottom: 16px;
     }
-    .btn--cta:hover { opacity: 0.88; }
-    .btn--review {
-      font-size: 0.78rem; color: var(--muted);
-      border: 1px solid var(--border); padding: 7px 14px;
-      border-radius: var(--radius-sm); transition: all 0.15s; text-align: center;
-    }
-    .btn--review:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
 
-    /* ── Scoring pillars ──────────────────────────── */
-    .score-pillars {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
-      margin-top: 10px;
-    }
-    .pillar {
-      background: var(--bg-raised); border-radius: 6px; padding: 8px 10px;
-      text-align: center;
-    }
-    .pillar__label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-    .pillar__val { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+    /* Rankings list */
+    .rankings { display: flex; flex-direction: column; gap: 14px; }
 
-    /* ── Region grid ──────────────────────────────── */
-    .regions-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    /* Skip link */
+    .skip-link {
+      position: absolute; left: -9999px; top: 8px;
+      background: var(--gold); color: var(--deep-navy);
+      padding: 8px 16px; border-radius: 6px; font-weight: 700; z-index: 999; font-size: 0.85rem;
     }
-    .region-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 24px;
-      transition: border-color 0.15s, background 0.15s;
-      display: flex; flex-direction: column; gap: 12px;
-    }
-    .region-card:hover { background: var(--bg-raised); border-color: rgba(255,255,255,0.14); }
-    .region-card__header { display: flex; justify-content: space-between; align-items: flex-start; }
-    .region-card__name { font-size: 1rem; font-weight: 700; }
-    .region-card__best {
-      font-size: 0.72rem; color: var(--gold); background: var(--gold-glow);
-      border: 1px solid var(--border-gold); border-radius: 4px; padding: 2px 8px; font-weight: 600;
-    }
-    .region-card__desc { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
-    .region-card__link {
-      font-size: 0.82rem; color: var(--gold); font-weight: 600;
-      margin-top: auto; display: flex; align-items: center; gap: 5px;
-      transition: gap 0.15s;
-    }
-    .region-card:hover .region-card__link { gap: 8px; }
-    .region-card__count { font-size: 0.75rem; color: var(--muted); }
+    .skip-link:focus { left: 8px; }
 
-    /* ── Methodology ──────────────────────────────── */
-    .method {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-    }
-    .method__header {
-      padding: 32px 36px; border-bottom: 1px solid var(--border);
-    }
-    .method__header h2 { margin-bottom: 10px; }
-    .method__body { display: grid; grid-template-columns: repeat(2, 1fr); }
-    .method__col { padding: 32px 36px; }
-    .method__col:first-child { border-right: 1px solid var(--border); }
-    .method__criteria { display: flex; flex-direction: column; gap: 20px; }
-    .criterion { display: flex; gap: 16px; align-items: flex-start; }
-    .criterion__icon {
-      width: 38px; height: 38px; border-radius: 8px;
-      background: var(--gold-glow); border: 1px solid var(--border-gold);
-      display: grid; place-items: center; font-size: 1rem; flex-shrink: 0;
-    }
-    .criterion__text h4 { font-size: 0.9rem; margin-bottom: 3px; }
-    .criterion__text p { font-size: 0.82rem; line-height: 1.5; }
-    .method__dont { display: flex; flex-direction: column; gap: 14px; }
-    .dont-item {
-      display: flex; gap: 12px; align-items: flex-start;
-      padding: 14px 16px; border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-    }
-    .dont-item__icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; color: var(--muted); }
-    .dont-item__text { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
-    .dont-item__text strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 0.85rem; }
-
-    /* ── About ────────────────────────────────────── */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .about-body p { font-size: 0.95rem; line-height: 1.75; margin-bottom: 16px; }
-    .about-body p:last-child { margin-bottom: 0; }
-    .about-quotes { display: flex; flex-direction: column; gap: 16px; }
-    .quote-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px 24px; position: relative;
-    }
-    .quote-card::before {
-      content: '"';
-      position: absolute; top: -2px; left: 16px;
-      font-size: 3rem; color: var(--gold); line-height: 1; opacity: 0.5;
-    }
-    .quote-card__text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-top: 12px; font-style: italic; }
-    .quote-card__attr { font-size: 0.75rem; color: var(--muted); margin-top: 10px; display: flex; justify-content: space-between; }
-    .quote-card__attr span:last-child { color: var(--gold); }
-
-    /* ── CTA Strip ────────────────────────────────── */
-    .cta-strip {
-      background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 64px 0; text-align: center;
-    }
-    .cta-strip h2 { margin-bottom: 12px; }
-    .cta-strip p { margin-bottom: 28px; }
-    .cta-strip__actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-
-    /* ── Footer ───────────────────────────────────── */
-    .footer {
-      padding: 48px 0 32px;
-      border-top: 1px solid var(--border);
-    }
-    .footer__inner {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
-      max-width: 1200px; margin: 0 auto; padding: 0 24px 40px;
-      border-bottom: 1px solid var(--border);
-    }
-    .footer__brand p { font-size: 0.83rem; color: var(--muted); margin-top: 12px; max-width: 280px; line-height: 1.6; }
-    .footer__col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-    .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer__col ul li a { font-size: 0.83rem; color: var(--muted); transition: color 0.15s; }
-    .footer__col ul li a:hover { color: var(--text); }
-    .footer__bottom {
-      display: flex; justify-content: space-between; align-items: center;
-      max-width: 1200px; margin: 0 auto; padding: 20px 24px 0;
-    }
-    .footer__bottom p { font-size: 0.75rem; }
-    .footer__disclaimer { font-size: 0.72rem; color: var(--muted); max-width: 560px; text-align: right; line-height: 1.5; }
-
-    /* ── Responsive ───────────────────────────────── */
-    @media (max-width: 900px) {
-      .trust-bar__inner { grid-template-columns: repeat(2, 1fr); }
-      .trust-stat:nth-child(2) { border-right: none; }
-      .trust-stat:nth-child(3) { border-right: 1px solid var(--border); }
-      .regions-grid { grid-template-columns: repeat(2, 1fr); }
-      .method__body { grid-template-columns: 1fr; }
-      .method__col:first-child { border-right: none; border-bottom: 1px solid var(--border); }
-      .about-grid { grid-template-columns: 1fr; }
-      .footer__inner { grid-template-columns: 1fr 1fr; }
-      .hotel-card { grid-template-columns: 36px 1fr; }
-      .hotel-card__actions { grid-column: 2; flex-direction: row; align-items: center; }
-    }
     @media (max-width: 640px) {
-      .trust-bar__inner { grid-template-columns: repeat(2, 1fr); }
-      .regions-grid { grid-template-columns: 1fr; }
-      .nav__links { display: none; }
-      .score-pillars { grid-template-columns: repeat(2, 1fr); }
-      .footer__inner { grid-template-columns: 1fr; }
-      .footer__bottom { flex-direction: column; gap: 10px; text-align: center; }
-      .footer__disclaimer { text-align: center; max-width: 100%; }
+      .hero { padding: 80px 0 64px; }
+      .hero__subtitle { font-size: 0.98rem; margin-bottom: 36px; }
     }
   </style>
 </head>
 
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- ═══ NAV ═══════════════════════════════════════════════════════════ -->
-<nav class="nav">
+<!-- NAV ═══════════════════════════════════════════════════════════════════ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="nav__inner">
-    <a href="/" class="nav__logo">
-      <div class="nav__logo-mark">M</div>
+    <a href="/" class="nav__logo" aria-label="Mauritius Resort Finder — home">
+      <div class="nav__logo-mark" aria-hidden="true">M</div>
       Mauritius Resort Finder
     </a>
-    <ul class="nav__links">
+    <ul class="nav__links" role="list">
       <li><a href="#rankings">Rankings</a></li>
       <li><a href="#regions">By Region</a></li>
       <li><a href="#methodology">Methodology</a></li>
       <li><a href="#about">About</a></li>
     </ul>
-    <a href="#rankings" class="nav__cta">View Rankings</a>
+    <a href="#rankings" class="nav__cta" aria-label="View hotel rankings">View Rankings</a>
+    <button class="nav__hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
+<!-- Mobile Drawer ═════════════════════════════════════════════════════════ -->
+<nav class="nav__mobile-menu" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="#rankings">Rankings</a>
+  <a href="#regions">By Region</a>
+  <a href="#methodology">Methodology</a>
+  <a href="#about">About</a>
+  <a href="#rankings" class="btn btn--primary" style="margin-top:28px;justify-content:center;">View Rankings &rarr;</a>
+</nav>
 
-<!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
-<section class="hero">
+<main id="main-content">
+
+<!-- HERO ══════════════════════════════════════════════════════════════════ -->
+<section class="hero hero--parallax" aria-label="Site hero">
+  <div class="hero__bg" aria-hidden="true"></div>
   <div class="container">
     <div class="hero__eyebrow">Independent Reviews &middot; No Paid Placements</div>
     <h1 class="hero__title">
       Find the right resort in<br>
-      <span>Mauritius</span> &mdash; without the spin.
+      <em>Mauritius</em> &mdash; without the spin.
     </h1>
     <p class="hero__subtitle">
       We score every luxury hotel across location, amenities, brand credibility, and real guest experience.
@@ -433,9 +157,8 @@
   </div>
 </section>
 
-
-<!-- ═══ TRUST BAR ═════════════════════════════════════════════════════ -->
-<div class="trust-bar">
+<!-- TRUST BAR ═════════════════════════════════════════════════════════════ -->
+<div class="trust-bar reveal" aria-label="Key statistics">
   <div class="trust-bar__inner">
     <div class="trust-stat">
       <span class="trust-stat__value">18</span>
@@ -456,32 +179,29 @@
   </div>
 </div>
 
-
-<!-- ═══ RANKINGS ═════════════════════════════════════════════════════ -->
-<section class="section" id="rankings">
+<!-- RANKINGS ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="rankings" aria-labelledby="rankings-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-header__label">Hotel Rankings 2025</span>
-      <h2>Top-rated luxury resorts in Mauritius</h2>
+      <h2 id="rankings-heading">Top-rated luxury resorts in Mauritius</h2>
       <p>Ranked by composite score across four independently weighted criteria. Scores update as new guest data is collected.</p>
     </div>
 
-    <div class="rankings">
+    <div class="rankings stagger-children" role="list">
 
       <!-- #1 Royal Palm -->
-      <div class="hotel-card hotel-card--top">
-        <div class="hotel-card__rank">1 <span>of 18</span></div>
+      <article class="hotel-card hotel-card--featured" role="listitem">
+        <div class="hotel-card__rank" aria-label="Ranked 1 of 18">1 <span>of 18</span></div>
         <div class="hotel-card__body">
           <h3>Royal Palm Beachcomber Luxury</h3>
           <div class="hotel-card__meta">
             <span class="hotel-card__region">Grand Baie</span>
-            <span class="badge badge--stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="badge badge--stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             <span class="badge badge--review">1,340 reviews</span>
           </div>
-          <div class="score-bar">
-            <div class="score-bar__track">
-              <div class="score-bar__fill" style="width:92%"></div>
-            </div>
+          <div class="score-bar" aria-label="Overall score 9.2 out of 10">
+            <div class="score-bar__track"><div class="score-bar__fill" style="width:92%" aria-hidden="true"></div></div>
             <span class="score-bar__value">9.2 / 10</span>
           </div>
           <div class="score-pillars">
@@ -492,25 +212,24 @@
           </div>
         </div>
         <div class="hotel-card__actions">
-          <a href="https://expedia.com/affiliate/LLPswc1" rel="nofollow sponsored" class="btn--cta" aria-label="Check prices for Royal Palm Beachcomber Luxury on Expedia">Check prices &rarr;</a>
+          <a href="https://expedia.com/affiliate/LLPswc1" rel="nofollow sponsored" class="btn--cta"
+             aria-label="Check prices for Royal Palm Beachcomber Luxury on Expedia">Check prices &rarr;</a>
           <a href="/hotels/royal-palm-beachcomber-luxury/" class="btn--review">Full review</a>
         </div>
-      </div>
+      </article>
 
       <!-- #2 Four Seasons -->
-      <div class="hotel-card">
+      <article class="hotel-card" role="listitem">
         <div class="hotel-card__rank">2</div>
         <div class="hotel-card__body">
           <h3>Four Seasons Resort Mauritius at Anahita</h3>
           <div class="hotel-card__meta">
             <span class="hotel-card__region">Beau Champ</span>
-            <span class="badge badge--stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="badge badge--stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             <span class="badge badge--review">1,120 reviews</span>
           </div>
-          <div class="score-bar">
-            <div class="score-bar__track">
-              <div class="score-bar__fill" style="width:91%"></div>
-            </div>
+          <div class="score-bar" aria-label="Overall score 9.1 out of 10">
+            <div class="score-bar__track"><div class="score-bar__fill" style="width:91%" aria-hidden="true"></div></div>
             <span class="score-bar__value">9.1 / 10</span>
           </div>
           <div class="score-pillars">
@@ -521,25 +240,24 @@
           </div>
         </div>
         <div class="hotel-card__actions">
-          <a href="https://expedia.com/affiliate/s7PgDXw" rel="nofollow sponsored" class="btn--cta" aria-label="Check prices for Four Seasons Resort Mauritius on Expedia">Check prices &rarr;</a>
+          <a href="https://expedia.com/affiliate/s7PgDXw" rel="nofollow sponsored" class="btn--cta"
+             aria-label="Check prices for Four Seasons Resort Mauritius on Expedia">Check prices &rarr;</a>
           <a href="/hotels/four-seasons-resort-mauritius-at-anahita/" class="btn--review">Full review</a>
         </div>
-      </div>
+      </article>
 
       <!-- #3 Constance Prince Maurice -->
-      <div class="hotel-card">
+      <article class="hotel-card" role="listitem">
         <div class="hotel-card__rank">3</div>
         <div class="hotel-card__body">
           <h3>Constance Prince Maurice</h3>
           <div class="hotel-card__meta">
             <span class="hotel-card__region">Poste de Flacq</span>
-            <span class="badge badge--stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="badge badge--stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             <span class="badge badge--review">890 reviews</span>
           </div>
-          <div class="score-bar">
-            <div class="score-bar__track">
-              <div class="score-bar__fill" style="width:90%"></div>
-            </div>
+          <div class="score-bar" aria-label="Overall score 9.0 out of 10">
+            <div class="score-bar__track"><div class="score-bar__fill" style="width:90%" aria-hidden="true"></div></div>
             <span class="score-bar__value">9.0 / 10</span>
           </div>
           <div class="score-pillars">
@@ -550,25 +268,24 @@
           </div>
         </div>
         <div class="hotel-card__actions">
-          <a href="https://expedia.com/affiliate/WmRuuHu" rel="nofollow sponsored" class="btn--cta" aria-label="Check prices for Constance Prince Maurice on Expedia">Check prices &rarr;</a>
+          <a href="https://expedia.com/affiliate/WmRuuHu" rel="nofollow sponsored" class="btn--cta"
+             aria-label="Check prices for Constance Prince Maurice on Expedia">Check prices &rarr;</a>
           <a href="/hotels/constance-prince-maurice/" class="btn--review">Full review</a>
         </div>
-      </div>
+      </article>
 
       <!-- #4 One&Only Le Saint Géran -->
-      <div class="hotel-card">
+      <article class="hotel-card" role="listitem">
         <div class="hotel-card__rank">4</div>
         <div class="hotel-card__body">
           <h3>One&amp;Only Le Saint G&eacute;ran</h3>
           <div class="hotel-card__meta">
             <span class="hotel-card__region">Belle Mare</span>
-            <span class="badge badge--stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="badge badge--stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             <span class="badge badge--review">980 reviews</span>
           </div>
-          <div class="score-bar">
-            <div class="score-bar__track">
-              <div class="score-bar__fill" style="width:90%"></div>
-            </div>
+          <div class="score-bar" aria-label="Overall score 9.0 out of 10">
+            <div class="score-bar__track"><div class="score-bar__fill" style="width:90%" aria-hidden="true"></div></div>
             <span class="score-bar__value">9.0 / 10</span>
           </div>
           <div class="score-pillars">
@@ -579,25 +296,24 @@
           </div>
         </div>
         <div class="hotel-card__actions">
-          <a href="https://expedia.com/affiliate/jJhAhIn" rel="nofollow sponsored" class="btn--cta" aria-label="Check prices for One&amp;Only Le Saint Géran on Expedia">Check prices &rarr;</a>
+          <a href="https://expedia.com/affiliate/jJhAhIn" rel="nofollow sponsored" class="btn--cta"
+             aria-label="Check prices for One&amp;Only Le Saint Géran on Expedia">Check prices &rarr;</a>
           <a href="/hotels/oneandonly-le-saint-g-ran/" class="btn--review">Full review</a>
         </div>
-      </div>
+      </article>
 
       <!-- #5 Shangri-La Le Touessrok -->
-      <div class="hotel-card">
+      <article class="hotel-card" role="listitem">
         <div class="hotel-card__rank">5</div>
         <div class="hotel-card__body">
           <h3>Shangri-La Le Touessrok Resort &amp; Spa</h3>
           <div class="hotel-card__meta">
             <span class="hotel-card__region">Trou d&rsquo;Eau Douce</span>
-            <span class="badge badge--stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="badge badge--stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             <span class="badge badge--review">1,280 reviews</span>
           </div>
-          <div class="score-bar">
-            <div class="score-bar__track">
-              <div class="score-bar__fill" style="width:89%"></div>
-            </div>
+          <div class="score-bar" aria-label="Overall score 8.9 out of 10">
+            <div class="score-bar__track"><div class="score-bar__fill" style="width:89%" aria-hidden="true"></div></div>
             <span class="score-bar__value">8.9 / 10</span>
           </div>
           <div class="score-pillars">
@@ -608,135 +324,133 @@
           </div>
         </div>
         <div class="hotel-card__actions">
-          <a href="/hotels/shangri-la-le-touessrok-resort-and-spa/" class="btn--review" style="width:100%; text-align:center;">Full review</a>
+          <a href="/hotels/shangri-la-le-touessrok-resort-and-spa/" class="btn--review" style="width:100%;text-align:center;">Full review</a>
         </div>
-      </div>
+      </article>
 
     </div><!-- /rankings -->
 
-    <div style="margin-top: 28px; text-align: center;">
+    <div style="margin-top:40px;text-align:center;" class="reveal">
       <a href="/rankings/" class="btn btn--ghost">See all 18 hotels &rarr;</a>
     </div>
   </div>
 </section>
 
-
-<!-- ═══ REGIONS ════════════════════════════════════════════════════════ -->
-<section class="section section--tight" id="regions" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<!-- REGIONS ════════════════════════════════════════════════════════════════ -->
+<section class="section section--tight" id="regions" aria-labelledby="regions-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-header__label">Browse by Location</span>
-      <h2>9 regions, one island</h2>
+      <h2 id="regions-heading">9 regions, one island</h2>
       <p>Each corner of Mauritius has a distinct character. Find out which region suits your travel style.</p>
     </div>
+    <div class="regions-grid stagger-children">
 
-    <div class="regions-grid">
-
-      <a href="/grand-baie-luxury-hotels/" class="region-card" style="text-decoration:none; color:inherit;">
+      <a href="/grand-baie-luxury-hotels/" class="region-card">
         <div class="region-card__header">
           <span class="region-card__name">Grand Baie</span>
           <span class="region-card__best">Best: 9.2</span>
         </div>
         <p class="region-card__desc">The island&rsquo;s social hub. World-class watersports, boutique dining, and Mauritius&rsquo;s most iconic beach strip. Home to the Royal Palm.</p>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
           <span class="region-card__count">4 resorts</span>
-          <span class="region-card__link">Explore Grand Baie &rarr;</span>
+          <span class="region-card__link">Explore &rarr;</span>
         </div>
       </a>
 
-      <a href="/beau-champ-luxury-hotels/" class="region-card" style="text-decoration:none; color:inherit;">
+      <a href="/beau-champ-luxury-hotels/" class="region-card">
         <div class="region-card__header">
           <span class="region-card__name">Beau Champ</span>
           <span class="region-card__best">Best: 9.1</span>
         </div>
         <p class="region-card__desc">East-coast exclusivity. The Four Seasons&rsquo; lagoon-villa estate sits here &mdash; private, calm, with championship golf and turquoise shallows.</p>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
           <span class="region-card__count">1 resort</span>
-          <span class="region-card__link">Explore Beau Champ &rarr;</span>
+          <span class="region-card__link">Explore &rarr;</span>
         </div>
       </a>
 
-      <a href="/belle-mare-luxury-hotels/" class="region-card" style="text-decoration:none; color:inherit;">
+      <a href="/belle-mare-luxury-hotels/" class="region-card">
         <div class="region-card__header">
           <span class="region-card__name">Belle Mare</span>
           <span class="region-card__best">Best: 9.0</span>
         </div>
         <p class="region-card__desc">Miles of white sand backed by a shallow lagoon. One&amp;Only and LUX* call this beach home. Best for couples chasing seclusion.</p>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
           <span class="region-card__count">2 resorts</span>
-          <span class="region-card__link">Explore Belle Mare &rarr;</span>
+          <span class="region-card__link">Explore &rarr;</span>
         </div>
       </a>
 
-      <a href="/poste-de-flacq-luxury-hotels/" class="region-card" style="text-decoration:none; color:inherit;">
+      <a href="/poste-de-flacq-luxury-hotels/" class="region-card">
         <div class="region-card__header">
           <span class="region-card__name">Poste de Flacq</span>
           <span class="region-card__best">Best: 9.0</span>
         </div>
         <p class="region-card__desc">Remote east-coast headland where Constance Prince Maurice occupies a private peninsula surrounded by mangrove and reef.</p>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
           <span class="region-card__count">1 resort</span>
-          <span class="region-card__link">Explore Poste de Flacq &rarr;</span>
+          <span class="region-card__link">Explore &rarr;</span>
         </div>
       </a>
 
-      <a href="/cap-malheureux-luxury-hotels/" class="region-card" style="text-decoration:none; color:inherit;">
+      <a href="/cap-malheureux-luxury-hotels/" class="region-card">
         <div class="region-card__header">
           <span class="region-card__name">Cap Malheureux</span>
           <span class="region-card__best">Best: 9.0</span>
         </div>
         <p class="region-card__desc">Northern tip with views of Coin de Mire island. Adults-only retreats dominate here &mdash; quieter, less commercial, genuinely special.</p>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
           <span class="region-card__count">4 resorts</span>
-          <span class="region-card__link">Explore Cap Malheureux &rarr;</span>
+          <span class="region-card__link">Explore &rarr;</span>
         </div>
       </a>
 
-      <a href="/trou-d-eau-douce-luxury-hotels/" class="region-card" style="text-decoration:none; color:inherit;">
+      <a href="/trou-d-eau-douce-luxury-hotels/" class="region-card">
         <div class="region-card__header">
           <span class="region-card__name">Trou d&rsquo;Eau Douce</span>
           <span class="region-card__best">Best: 8.9</span>
         </div>
-        <p class="region-card__desc">Gateway to &Icirc;le aux Cerfs. Shangri-La Le Touessrok commands this bay with a private island and some of the best snorkelling on the east coast.</p>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <p class="region-card__desc">Gateway to &Icirc;le aux Cerfs. Shangri-La Le Touessrok commands this bay with a private island and the best snorkelling on the east coast.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
           <span class="region-card__count">1 resort</span>
-          <span class="region-card__link">Explore Trou d&rsquo;Eau Douce &rarr;</span>
+          <span class="region-card__link">Explore &rarr;</span>
         </div>
       </a>
 
-      <a href="/blue-bay-luxury-hotels/" class="region-card" style="text-decoration:none; color:inherit;">
+      <a href="/blue-bay-luxury-hotels/" class="region-card">
         <div class="region-card__header">
           <span class="region-card__name">Blue Bay</span>
           <span class="region-card__best">Best: 8.8</span>
         </div>
-        <p class="region-card__desc">Marine park lagoon on the southern coast. Protected reef means exceptional snorkelling and calmer waters. Constance Le Chaland Iko sits right on it.</p>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <p class="region-card__desc">Marine park lagoon on the southern coast. Protected reef means exceptional snorkelling. Constance Le Chaland Iko sits right on it.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
           <span class="region-card__count">3 resorts</span>
-          <span class="region-card__link">Explore Blue Bay &rarr;</span>
+          <span class="region-card__link">Explore &rarr;</span>
         </div>
       </a>
 
-      <a href="/grand-gaube-luxury-hotels/" class="region-card" style="text-decoration:none; color:inherit;">
+      <a href="/grand-gaube-luxury-hotels/" class="region-card">
         <div class="region-card__header">
           <span class="region-card__name">Grand Gaube</span>
           <span class="region-card__best">Best: 8.7</span>
         </div>
         <p class="region-card__desc">Unhurried fishing village turned boutique destination. LUX* Grand Gaube and Mythic Suites offer character without the crowds of the north.</p>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
           <span class="region-card__count">2 resorts</span>
-          <span class="region-card__link">Explore Grand Gaube &rarr;</span>
+          <span class="region-card__link">Explore &rarr;</span>
         </div>
       </a>
 
-      <a href="/port-louis-luxury-hotels/" class="region-card" style="text-decoration:none; color:inherit;">
+      <a href="/port-louis-luxury-hotels/" class="region-card">
         <div class="region-card__header">
           <span class="region-card__name">Port Louis</span>
           <span class="region-card__best">Best: 8.3</span>
         </div>
         <p class="region-card__desc">The capital. Ideal for business travel or as an arrival base. Less beach focus, more culture, markets, and direct airport access.</p>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
           <span class="region-card__count">1 hotel</span>
-          <span class="region-card__link">Explore Port Louis &rarr;</span>
+          <span class="region-card__link">Explore &rarr;</span>
         </div>
       </a>
 
@@ -744,20 +458,19 @@
   </div>
 </section>
 
-
-<!-- ═══ METHODOLOGY ═══════════════════════════════════════════════════ -->
-<section class="section" id="methodology">
+<!-- METHODOLOGY ════════════════════════════════════════════════════════════ -->
+<section class="section" id="methodology" aria-labelledby="methodology-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-header__label">Scoring Framework</span>
-      <h2>How we score hotels</h2>
+      <h2 id="methodology-heading">How we score hotels</h2>
       <p>Every score is reproducible. Here is exactly what goes into it.</p>
     </div>
 
-    <div class="method">
+    <div class="method reveal reveal--scale">
       <div class="method__header">
         <h2>The four pillars</h2>
-        <p style="max-width:580px; color:var(--muted); font-size:0.9rem; margin-top:8px;">
+        <p style="max-width:580px;color:var(--muted);font-size:0.9rem;margin-top:10px;line-height:1.75;">
           Each hotel is scored across four criteria, each weighted independently. No pillar is hidden.
           Final composite score is the mean of all four, rounded to one decimal place.
         </p>
@@ -766,28 +479,28 @@
         <div class="method__col">
           <div class="method__criteria">
             <div class="criterion">
-              <div class="criterion__icon">📍</div>
+              <div class="criterion__icon" aria-hidden="true">📍</div>
               <div class="criterion__text">
                 <h4>Location score</h4>
                 <p>Beach quality, reef access, proximity to attractions, transfer distance from Sir Seewoosagur Ramgoolam International Airport, and surrounding environment.</p>
               </div>
             </div>
             <div class="criterion">
-              <div class="criterion__icon">🏊</div>
+              <div class="criterion__icon" aria-hidden="true">🏊</div>
               <div class="criterion__text">
                 <h4>Amenity score</h4>
                 <p>Spa facilities, pool size and quality, dining options and cuisine standard, watersports availability, kids club, butler service, and fitness facilities.</p>
               </div>
             </div>
             <div class="criterion">
-              <div class="criterion__icon">🏷️</div>
+              <div class="criterion__icon" aria-hidden="true">🏷️</div>
               <div class="criterion__text">
                 <h4>Brand credibility</h4>
                 <p>Chain reputation, consistency across properties, staff training investment, and independent accreditation (Forbes Travel Guide, Leading Hotels of the World, etc.).</p>
               </div>
             </div>
             <div class="criterion">
-              <div class="criterion__icon">💰</div>
+              <div class="criterion__icon" aria-hidden="true">💰</div>
               <div class="criterion__text">
                 <h4>Value score</h4>
                 <p>What you actually get relative to the nightly rate. A 9.2 hotel charging four times the rate of an 8.4 hotel will score lower on value &mdash; and we show you that trade-off explicitly.</p>
@@ -796,40 +509,38 @@
           </div>
         </div>
         <div class="method__col">
-          <h3 style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">What we don&rsquo;t do</h3>
+          <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">What we don&rsquo;t do</p>
           <div class="method__dont">
             <div class="dont-item">
-              <div class="dont-item__icon">&#10005;</div>
+              <div class="dont-item__icon" aria-hidden="true">&#10005;</div>
               <div class="dont-item__text">
                 <strong>Accept sponsored placements</strong>
-                No hotel has paid to appear here. No hotel has paid to rank higher.
-                Rankings are purely score-driven.
+                No hotel has paid to appear here. No hotel has paid to rank higher. Rankings are purely score-driven.
               </div>
             </div>
             <div class="dont-item">
-              <div class="dont-item__icon">&#10005;</div>
+              <div class="dont-item__icon" aria-hidden="true">&#10005;</div>
               <div class="dont-item__text">
                 <strong>Use hotel-supplied press quotes</strong>
                 We don&rsquo;t repeat what a hotel&rsquo;s PR team writes. Guest review data and independently verified criteria drive every score.
               </div>
             </div>
             <div class="dont-item">
-              <div class="dont-item__icon">&#10005;</div>
+              <div class="dont-item__icon" aria-hidden="true">&#10005;</div>
               <div class="dont-item__text">
                 <strong>Inflate scores to protect affiliate revenue</strong>
                 Some hotels we link to score lower than ones we don&rsquo;t. The score is the score.
               </div>
             </div>
             <div class="dont-item">
-              <div class="dont-item__icon">&#10005;</div>
+              <div class="dont-item__icon" aria-hidden="true">&#10005;</div>
               <div class="dont-item__text">
                 <strong>Hide our affiliate relationships</strong>
-                &ldquo;Check prices &rarr;&rdquo; links are Expedia affiliate links.
-                We earn a commission if you book. It does not affect rankings.
+                &ldquo;Check prices &rarr;&rdquo; links are Expedia affiliate links. We earn a commission if you book. It does not affect rankings.
               </div>
             </div>
             <div class="dont-item">
-              <div class="dont-item__icon">&#10005;</div>
+              <div class="dont-item__icon" aria-hidden="true">&#10005;</div>
               <div class="dont-item__text">
                 <strong>Show stale prices</strong>
                 We don&rsquo;t display nightly rates on this site. Mauritius prices shift daily. &ldquo;Check prices&rdquo; links to live Expedia rates for your exact dates.
@@ -842,14 +553,14 @@
   </div>
 </section>
 
-
-<!-- ═══ ABOUT ══════════════════════════════════════════════════════════ -->
-<section class="section section--tight" id="about" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<!-- ABOUT ══════════════════════════════════════════════════════════════════ -->
+<section class="section section--tight" id="about" aria-labelledby="about-heading">
   <div class="container">
     <div class="about-grid">
-      <div class="about-body">
-        <span class="section-header__label" style="display:block; margin-bottom:14px;">About this site</span>
-        <h2 style="margin-bottom: 20px;">Built to cut through the noise</h2>
+      <div class="about-body reveal reveal--left">
+        <span class="section-header__label">About this site</span>
+        <h2 id="about-heading" style="margin:16px 0 20px;">Built to cut through the noise</h2>
+        <div class="divider-gold"></div>
         <p>
           Mauritius hotel search is broken. Every &ldquo;Best Hotels in Mauritius&rdquo; article you find was written
           by someone who&rsquo;s never been, or paid for by the hotels themselves.
@@ -860,55 +571,56 @@
           money on a Mauritius holiday, which resort will actually deliver?</strong>
         </p>
         <p>
-          Our scoring pulls from 15,500+ verified guest reviews across 18 properties,
-          combined with independently assessed criteria for location, amenities, brand quality, and value.
-          Every score is visible, every pillar is broken out, and every methodology decision is documented above.
+          Our scoring pulls from 15,500+ verified guest reviews across 18 properties, combined with independently
+          assessed criteria for location, amenities, brand quality, and value. Every score is visible, every pillar
+          is broken out, and every methodology decision is documented above.
         </p>
         <p>
           When you book through a link on this site, we earn an affiliate commission from Expedia.
           That&rsquo;s how this is funded. It doesn&rsquo;t change the scores.
         </p>
       </div>
-      <div class="about-quotes">
-        <div class="quote-card">
-          <div class="quote-card__text">
+
+      <div class="about-quotes stagger-children">
+        <blockquote class="quote-card">
+          <p class="quote-card__text">
             Stayed at Four Seasons Anahita for our honeymoon. Absolutely everything they say about it is true &mdash;
             the lagoon villas feel completely private, the staff remember your name from day one.
             Not cheap, but if you can stretch to it, worth every cent.
-          </div>
-          <div class="quote-card__attr">
+          </p>
+          <footer class="quote-card__attr">
             <span>Verified Expedia guest review</span>
             <span>Four Seasons Anahita &middot; 9.1</span>
-          </div>
-        </div>
-        <div class="quote-card">
-          <div class="quote-card__text">
+          </footer>
+        </blockquote>
+        <blockquote class="quote-card">
+          <p class="quote-card__text">
             Paradise Cove at Cap Malheureux is genuinely one of the best adults-only properties I&rsquo;ve ever stayed at.
-            Small enough that it feels personal, big enough to have real facilities. The beach is quieter than Grand Baie &mdash; which is the whole point.
-          </div>
-          <div class="quote-card__attr">
+            Small enough that it feels personal, big enough to have real facilities.
+            The beach is quieter than Grand Baie &mdash; which is the whole point.
+          </p>
+          <footer class="quote-card__attr">
             <span>Verified Expedia guest review</span>
             <span>Paradise Cove &middot; 9.0</span>
-          </div>
-        </div>
-        <div class="quote-card">
-          <div class="quote-card__text">
-            Royal Palm is the benchmark for Mauritius luxury. Butler service is actually attentive rather than performative,
-            the beach is the best in Grand Baie, and the restaurants hold up without leaving the property.
-          </div>
-          <div class="quote-card__attr">
+          </footer>
+        </blockquote>
+        <blockquote class="quote-card">
+          <p class="quote-card__text">
+            Royal Palm is the benchmark for Mauritius luxury. Butler service is actually attentive rather than
+            performative, the beach is the best in Grand Baie, and the restaurants hold up without leaving the property.
+          </p>
+          <footer class="quote-card__attr">
             <span>Verified Expedia guest review</span>
             <span>Royal Palm Beachcomber &middot; 9.2</span>
-          </div>
-        </div>
+          </footer>
+        </blockquote>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- ═══ CTA STRIP ═════════════════════════════════════════════════════ -->
-<div class="cta-strip">
+<!-- CTA STRIP ══════════════════════════════════════════════════════════════ -->
+<div class="cta-strip reveal reveal--scale">
   <div class="container">
     <h2>Not sure which region suits you?</h2>
     <p>Compare resorts side by side, or read our deep-dive region guides before you decide.</p>
@@ -919,13 +631,14 @@
   </div>
 </div>
 
+</main>
 
-<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
-<footer class="footer">
+<!-- FOOTER ═════════════════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
   <div class="footer__inner">
     <div class="footer__brand">
       <div class="nav__logo" style="margin-bottom:0;">
-        <div class="nav__logo-mark">M</div>
+        <div class="nav__logo-mark" aria-hidden="true">M</div>
         Mauritius Resort Finder
       </div>
       <p>Independent luxury hotel reviews for Mauritius. No paid placements. No inflated scores. 18 resorts, 9 regions, 15,500+ guest reviews analysed.</p>
@@ -962,11 +675,16 @@
   <div class="footer__bottom">
     <p style="color:var(--muted);">&copy; 2025 Mauritius Resort Finder. Independent reviews.</p>
     <p class="footer__disclaimer">
-      This site contains affiliate links. When you book via &ldquo;Check prices &rarr;&rdquo; links, we may earn a commission from Expedia at no extra cost to you.
+      This site contains affiliate links. When you book via &ldquo;Check prices &rarr;&rdquo; links,
+      we may earn a commission from Expedia at no extra cost to you.
       Affiliate relationships do not influence hotel rankings or scores.
     </p>
   </div>
 </footer>
+
+<!-- Scripts (defer = non-blocking) -->
+<script src="/assets/js/animations.js" defer></script>
+<script src="/assets/js/interactions.js" defer></script>
 
 </body>
 </html>
