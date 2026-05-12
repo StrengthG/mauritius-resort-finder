@@ -597,7 +597,7 @@ function generateFeed(pages, baseUrl, options = {}) {
   const base      = baseUrl.replace(/\/$/, '');
   const maxItems  = options.maxItems  || FEED_MAX_ITEMS;
   const feedTitle = options.feedTitle || 'Mauritius Resort Finder — Luxury Hotel Recommendations';
-  const feedDesc  = options.feedDesc  || 'AI-powered luxury hotel rankings for Mauritius and beyond.';
+  const feedDesc  = options.feedDesc  || 'Independent luxury hotel reviews and rankings for Mauritius. Real guest data. No paid placements.';
   const pubDate   = new Date().toUTCString();
   const feedUrl   = `${base}/feed.xml`;
 
@@ -931,7 +931,17 @@ async function buildSite(options = {}) {
     fs.writeFileSync(path.join(absOut, 'sitemap.xml'), sitemapContent, 'utf8');
     fs.writeFileSync(path.join(absOut, 'robots.txt'),  robotsContent,  'utf8');
     fs.writeFileSync(path.join(absOut, 'feed.xml'),    feedContent,    'utf8');
-    _log(`      ✓ sitemap.xml  robots.txt  feed.xml`);
+
+    // Copy homepage (index.html at project root) into dist/
+    const homepageSrc  = path.join(__dirname, 'index.html');
+    const homepageDest = path.join(absOut, 'index.html');
+    if (fs.existsSync(homepageSrc)) {
+      fs.copyFileSync(homepageSrc, homepageDest);
+      _log(`      ✓ sitemap.xml  robots.txt  feed.xml  index.html`);
+    } else {
+      _log(`      ✓ sitemap.xml  robots.txt  feed.xml`);
+      warnings.push('index.html not found at project root — homepage not copied to dist/');
+    }
   }
 
   // ── Validate ───────────────────────────────────────────────────────────────
