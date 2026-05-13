@@ -113,6 +113,7 @@
 </head>
 
 <body>
+<div class="progress-bar" id="progress-bar" role="progressbar" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- NAV ═══════════════════════════════════════════════════════════════════ -->
@@ -478,7 +479,7 @@
 
     <div class="method reveal reveal--scale">
       <div class="method__header">
-        <h2>The four pillars</h2>
+        <h3>The four pillars</h3>
         <p style="max-width:580px;color:var(--muted);font-size:0.9rem;margin-top:10px;line-height:1.75;">
           Each hotel is scored across four criteria, each weighted independently. No pillar is hidden.
           Final composite score is the mean of all four, rounded to one decimal place.
@@ -694,6 +695,8 @@
 <!-- Scripts (defer = non-blocking) -->
 <script src="/assets/js/animations.js" defer></script>
 <script src="/assets/js/interactions.js" defer></script>
+
+<button class="back-to-top" id="back-to-top" aria-label="Scroll back to top">&#8593;</button>
 
 </body>
 </html>

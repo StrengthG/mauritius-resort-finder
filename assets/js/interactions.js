@@ -149,6 +149,47 @@
     });
   }
 
+  /* ── Reading Progress Bar ──────────────────────────────────────────── */
+  function initProgressBar() {
+    const bar = document.getElementById('progress-bar');
+    if (!bar) return;
+
+    let ticking = false;
+
+    function update() {
+      const scrollTop  = window.scrollY;
+      const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+      const progress   = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width  = Math.min(progress, 100) + '%';
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+  }
+
+  /* ── Back to Top ───────────────────────────────────────────────────── */
+  function initBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+
+    let ticking = false;
+
+    function toggleVisibility() {
+      btn.classList.toggle('is-visible', window.scrollY > 600);
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(toggleVisibility); ticking = true; }
+    }, { passive: true });
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   /* ── Init ──────────────────────────────────────────────────────────── */
   const nav = document.querySelector('.nav');
 
@@ -158,6 +199,8 @@
     initActiveNavLinks();
     initSkipLink();
     initContactLinks();
+    initProgressBar();
+    initBackToTop();
   }
 
   if (document.readyState === 'loading') {

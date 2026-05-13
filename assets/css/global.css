@@ -488,7 +488,8 @@ img { max-width: 100%; height: auto; display: block; }
   border: 1px solid var(--border); padding: 8px 16px;
   border-radius: var(--radius-pill);
   transition: all var(--duration);
-  text-align: center; white-space: nowrap; display: inline-block;
+  white-space: nowrap; display: inline-flex; align-items: center;
+  justify-content: center; min-height: 44px;
 }
 .btn--review:hover { border-color: var(--border-gold); color: var(--gold); }
 
@@ -564,7 +565,7 @@ img { max-width: 100%; height: auto; display: block; }
   overflow: hidden;
 }
 .method__header { padding: 36px 40px; border-bottom: 1px solid var(--border); }
-.method__header h2 { margin-bottom: 12px; }
+.method__header h3 { font-size: clamp(1.5rem, 2.5vw, 2.1rem); margin-bottom: 12px; }
 .method__body { display: grid; grid-template-columns: repeat(2,1fr); }
 .method__col { padding: 36px 40px; }
 .method__col:first-child { border-right: 1px solid var(--border); }
@@ -703,4 +704,64 @@ img { max-width: 100%; height: auto; display: block; }
   .footer__disclaimer { text-align: center; max-width: 100%; }
   .method__header,
   .method__col { padding: 24px 22px; }
+}
+
+/* ── Focus Visible ─────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* ── Active Nav Link ───────────────────────────────────────────────────── */
+.nav__links a.is-active { color: var(--champagne); }
+.nav__links a.is-active::after { width: 100%; }
+
+/* ── Touch Optimization ────────────────────────────────────────────────── */
+.btn, .btn--cta, .btn--review, .nav__cta, .nav__hamburger,
+.region-card, .back-to-top { touch-action: manipulation; }
+
+/* ── Press / Active States ─────────────────────────────────────────────── */
+.btn:active, .btn--cta:active { transform: scale(0.97) !important; }
+.region-card:active { transform: scale(0.99) translateY(0) !important; }
+.back-to-top:active { transform: scale(0.92) !important; }
+
+/* ── Reading Progress Bar ──────────────────────────────────────────────── */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold-bright), var(--gold-dim));
+  z-index: 300;
+  pointer-events: none;
+  will-change: width;
+}
+
+/* ── Back to Top ───────────────────────────────────────────────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 32px; right: 32px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+  color: var(--deep-navy);
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; font-weight: 900; line-height: 1;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.2s;
+  z-index: 150;
+  box-shadow: 0 2px 16px rgba(201,168,76,0.3);
+}
+.back-to-top.is-visible { opacity: 1; transform: translateY(0); }
+.back-to-top:hover {
+  box-shadow: 0 6px 28px rgba(201,168,76,0.6);
+  transform: translateY(-3px);
+}
+@media (max-width: 640px) {
+  .back-to-top { bottom: 20px; right: 20px; }
 }
