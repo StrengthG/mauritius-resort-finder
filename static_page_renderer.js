@@ -1049,6 +1049,14 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
   const lines = [
     `  <meta charset="UTF-8">`,
     `  <meta name="viewport" content="width=device-width, initial-scale=1.0">`,
+    `  <!-- Google Analytics -->`,
+    `  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>`,
+    `  <script>`,
+    `    window.dataLayer = window.dataLayer || [];`,
+    `    function gtag(){dataLayer.push(arguments);}`,
+    `    gtag('js', new Date());`,
+    `    gtag('config', 'G-TN713HPVCQ');`,
+    `  </script>`,
     `  <title>${esc(meta.title)}</title>`,
     `  <meta name="description" content="${esc(meta.description)}">`,
     meta.keyword
