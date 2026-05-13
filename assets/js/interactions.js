@@ -135,6 +135,20 @@
     });
   }
 
+  /* ── Obfuscated Contact Links ──────────────────────────────────────── */
+  // Email is never stored in HTML — assembled at runtime to prevent scraping
+  function initContactLinks() {
+    const links = document.querySelectorAll('.js-contact');
+    if (!links.length) return;
+    // Parts joined at runtime — not a complete address in source
+    const parts = ['strengthygiven', 'ncube', '@', 'gmail', '.com'];
+    const addr  = parts.join('');
+    links.forEach(function (el) {
+      el.setAttribute('href', 'mailto:' + addr);
+      el.removeAttribute('aria-label');
+    });
+  }
+
   /* ── Init ──────────────────────────────────────────────────────────── */
   const nav = document.querySelector('.nav');
 
@@ -143,6 +157,7 @@
     initMobileMenu();
     initActiveNavLinks();
     initSkipLink();
+    initContactLinks();
   }
 
   if (document.readyState === 'loading') {
