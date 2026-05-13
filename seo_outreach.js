@@ -269,7 +269,7 @@ function _statusColour(status) {
 // ── Output sections ───────────────────────────────────────────────────────────
 
 function printHeader(title) {
-  const bar = '─'.repeat(72);
+  const bar = '-'.repeat(72);
   console.log(`\n${c.bold}${bar}${c.reset}`);
   console.log(`${c.bold}  ${title}${c.reset}`);
   console.log(`${c.bold}${bar}${c.reset}`);
@@ -315,7 +315,7 @@ function printTable(records) {
     _pad('Target page', 28),
   ].join('  ');
   console.log(`  ${c.bold}${header}${c.reset}`);
-  console.log('  ' + '─'.repeat(100));
+  console.log('  ' + '-'.repeat(100));
 
   for (const r of records) {
     const colour = _statusColour(r.status);
@@ -432,7 +432,13 @@ function main(argv) {
 // ── Module / CLI boundary ─────────────────────────────────────────────────────
 
 if (require.main === module) {
-  main(process.argv);
+  try {
+    main(process.argv);
+  } catch (err) {
+    console.error("Fatal error:", err.message);
+    console.error(err.stack);
+    process.exit(1);
+  }
 }
 
 module.exports = {
