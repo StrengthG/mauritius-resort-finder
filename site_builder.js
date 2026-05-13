@@ -701,6 +701,7 @@ async function _buildPage(spec, deps = {}, buildOptions = {}) {
     explanationEngine: ee,
     blockAssembler:   ba,
     renderFn,
+    dataset          = [],
     mkdirFn  = (p, opts) => fs.mkdirSync(p, opts),
     writeFn  = (p, d)    => fs.writeFileSync(p, d, 'utf8'),
   } = deps;
@@ -733,6 +734,13 @@ async function _buildPage(spec, deps = {}, buildOptions = {}) {
     // ── Explain ─────────────────────────────────────────────────────────────
     const explanations = ee.explainBatch(engineHotels, spec.persona);
 
+    // ── Editorial content (hotel_detail pages only) ─────────────────────────
+    let editorialContent = null;
+    if (spec.pageContext.page_type === 'hotel_detail' && spec.hotels.length > 0) {
+      const hce = require('./hotel_content_engine.js');
+      editorialContent = hce.generateContent(spec.hotels[0], dataset);
+    }
+
     // ── Assemble ────────────────────────────────────────────────────────────
     const assembly = ba.assemble(
       engineHotels,
@@ -740,6 +748,7 @@ async function _buildPage(spec, deps = {}, buildOptions = {}) {
       spec.pageContext,
       spec.affiliateLinks,
       null,
+      editorialContent,
     );
 
     // ── Render ──────────────────────────────────────────────────────────────
@@ -902,6 +911,7 @@ async function buildSite(options = {}) {
     explanationEngine: ee,
     blockAssembler:    ba,
     renderFn,
+    dataset:           hotelObjects,
     mkdirFn: dryRun ? () => {} : (p, opts) => fs.mkdirSync(p, opts),
     writeFn: dryRun ? () => {} : (p, d)    => fs.writeFileSync(p, d, 'utf8'),
   };
@@ -974,6 +984,13 @@ async function buildSite(options = {}) {
       }
       copyDirSync(assetsSrc, assetsDest);
       _log(`      ✓ assets/ copied to dist/assets/`);
+    }
+
+    // Copy _headers (Cloudflare Pages security + CSP) into dist/
+    const headersSrc = path.join(__dirname, '_headers');
+    if (fs.existsSync(headersSrc)) {
+      fs.copyFileSync(headersSrc, path.join(absOut, '_headers'));
+      _log(`      ✓ _headers copied to dist/`);
     }
   }
 

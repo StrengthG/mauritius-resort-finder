@@ -854,6 +854,165 @@ function renderInternalLinks(block) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// HOTEL EDITORIAL BLOCK RENDERER
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Renders the hotel_editorial block — rich editorial content for hotel detail pages.
+ * Produces 600+ words of data-derived content across 7 structured sections.
+ *
+ * @param  {Object} block
+ * @returns {string} HTML
+ */
+function renderHotelEditorial(block) {
+  if (!block || !block.payload) {
+    throw new RendererError('renderHotelEditorial: block.payload is required');
+  }
+  const p = block.payload;
+
+  const lines = [
+    `<section class="hotel-editorial" aria-label="Hotel editorial review">`,
+
+    // ── Editorial Introduction ────────────────────────────────────────────
+    `  <div class="hotel-editorial__intro">`,
+    `    <h2 class="hotel-editorial__heading">About This Resort</h2>`,
+  ];
+
+  if (p.editorial_intro) {
+    const paras = String(p.editorial_intro).split('\n\n');
+    paras.forEach(para => {
+      if (para.trim()) {
+        lines.push(`    <p class="hotel-editorial__para">${esc(para.trim())}</p>`);
+      }
+    });
+  }
+  lines.push(`  </div>`);
+
+  // ── Why Stay Here ─────────────────────────────────────────────────────
+  if (Array.isArray(p.why_stay_here) && p.why_stay_here.length > 0) {
+    lines.push(
+      `  <div class="hotel-editorial__section">`,
+      `    <h2 class="hotel-editorial__heading">Why Stay Here</h2>`,
+      `    <ul class="hotel-editorial__list">`,
+    );
+    p.why_stay_here.forEach(item => {
+      // Bold the **label** prefix if present
+      const text = esc(String(item)).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      lines.push(`      <li class="hotel-editorial__list-item">${text}</li>`);
+    });
+    lines.push(`    </ul>`, `  </div>`);
+  }
+
+  // ── Best For ─────────────────────────────────────────────────────────
+  if (Array.isArray(p.best_for) && p.best_for.length > 0) {
+    lines.push(
+      `  <div class="hotel-editorial__section">`,
+      `    <h2 class="hotel-editorial__heading">Best For</h2>`,
+      `    <ul class="hotel-editorial__persona-list">`,
+    );
+    p.best_for.forEach(fit => {
+      lines.push(
+        `      <li class="hotel-editorial__persona-item">`,
+        `        <span class="hotel-editorial__persona-label">${esc(String(fit.persona || fit))}</span>`,
+        fit.reason ? `        <span class="hotel-editorial__persona-reason"> — ${esc(String(fit.reason))}</span>` : '',
+        `      </li>`,
+      );
+    });
+    lines.push(`    </ul>`, `  </div>`);
+  }
+
+  // ── Pros & Considerations ─────────────────────────────────────────────
+  if (p.pros_considerations) {
+    const { pros, consideration } = p.pros_considerations;
+    lines.push(
+      `  <div class="hotel-editorial__section hotel-editorial__pros-cons">`,
+      `    <h2 class="hotel-editorial__heading">Scores at a Glance</h2>`,
+      `    <div class="hotel-editorial__pros-grid">`,
+    );
+    if (Array.isArray(pros)) {
+      pros.forEach(pro => {
+        lines.push(
+          `      <div class="hotel-editorial__pro">`,
+          `        <span class="hotel-editorial__pro-label">${esc(String(pro.label))}</span>`,
+          `        <span class="hotel-editorial__pro-score">${typeof pro.score === 'number' ? pro.score.toFixed(1) : esc(String(pro.score))}</span>`,
+          `        <span class="hotel-editorial__pro-note">${esc(String(pro.note || ''))}</span>`,
+          `      </div>`,
+        );
+      });
+    }
+    lines.push(`    </div>`);
+    if (consideration) {
+      lines.push(
+        `    <div class="hotel-editorial__consideration">`,
+        `      <span class="hotel-editorial__consideration-label">Note on ${esc(String(consideration.label || ''))}:</span>`,
+        `      <span class="hotel-editorial__consideration-note"> ${esc(String(consideration.note || ''))}</span>`,
+        `    </div>`,
+      );
+    }
+    lines.push(`  </div>`);
+  }
+
+  // ── Nearby Attractions ────────────────────────────────────────────────
+  if (Array.isArray(p.nearby_attractions) && p.nearby_attractions.length > 0) {
+    lines.push(
+      `  <div class="hotel-editorial__section">`,
+      `    <h2 class="hotel-editorial__heading">Nearby</h2>`,
+      `    <ul class="hotel-editorial__list">`,
+    );
+    p.nearby_attractions.forEach(item => {
+      lines.push(`      <li class="hotel-editorial__list-item">${esc(String(item))}</li>`);
+    });
+    lines.push(`    </ul>`, `  </div>`);
+  }
+
+  // ── Comparison Context ────────────────────────────────────────────────
+  if (p.comparison_context) {
+    lines.push(
+      `  <div class="hotel-editorial__section">`,
+      `    <h2 class="hotel-editorial__heading">How It Compares</h2>`,
+      `    <p class="hotel-editorial__para">${esc(String(p.comparison_context))}</p>`,
+      `  </div>`,
+    );
+  }
+
+  // ── Hotel FAQs ────────────────────────────────────────────────────────
+  if (Array.isArray(p.hotel_faqs) && p.hotel_faqs.length > 0) {
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type':    'FAQPage',
+      mainEntity: p.hotel_faqs.map(faq => ({
+        '@type': 'Question',
+        name:    faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      })),
+    };
+
+    lines.push(
+      `  <div class="hotel-editorial__section hotel-editorial__faqs"`,
+      `       itemscope itemtype="https://schema.org/FAQPage">`,
+      `    <h2 class="hotel-editorial__heading">Frequently Asked Questions</h2>`,
+    );
+    p.hotel_faqs.forEach(faq => {
+      lines.push(
+        `    <div class="hotel-editorial__faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">`,
+        `      <h3 class="hotel-editorial__faq-q" itemprop="name">${esc(String(faq.question))}</h3>`,
+        `      <div class="hotel-editorial__faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">`,
+        `        <p itemprop="text">${esc(String(faq.answer))}</p>`,
+        `      </div>`,
+        `    </div>`,
+      );
+    });
+    lines.push(
+      `  </div>`,
+      `  <script type="application/ld+json">${escJsonLd(JSON.stringify(faqSchema))}</script>`,
+    );
+  }
+
+  lines.push(`</section>`);
+  return lines.filter(l => l !== '').join('\n');
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // BLOCK RENDERER REGISTRY
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -872,6 +1031,7 @@ const _blockRenderers = {
   disclosure:       renderDisclosure,
   related_content:  renderRelatedContent,
   internal_links:   renderInternalLinks,
+  hotel_editorial:  renderHotelEditorial,
 };
 
 /**
@@ -1146,6 +1306,14 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `    .disclosure__text{font-size:.82rem;line-height:1.65;margin-bottom:10px}.disclosure__methodology-link{font-size:.82rem}.disclosure__link{color:var(--gold);font-weight:600}.disclosure__link:hover{text-decoration:underline}`,
     `    .related-content{margin:28px auto;max-width:1200px}.related-content__heading{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:16px}`,
     `    .related-content__list{list-style:none;display:flex;flex-wrap:wrap;gap:10px}.related-content__link{display:inline-block;background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-pill);padding:9px 18px;font-size:.8rem;color:var(--muted);transition:all .2s}.related-content__link:hover{border-color:var(--border-gold);color:var(--gold)}`,
+    `    .hotel-editorial{margin:28px auto;max-width:1200px;display:flex;flex-direction:column;gap:28px}`,
+    `    .hotel-editorial__intro{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:28px 32px}.hotel-editorial__intro-heading{font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:16px;color:var(--champagne)}.hotel-editorial__intro p{font-size:.88rem;line-height:1.8;color:var(--text-secondary);margin-bottom:12px}.hotel-editorial__intro p:last-child{margin-bottom:0}`,
+    `    .hotel-editorial__why{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:28px 32px}.hotel-editorial__why-heading{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:16px;color:var(--champagne)}.hotel-editorial__why-list{list-style:none;display:flex;flex-direction:column;gap:10px}.hotel-editorial__why-item{display:flex;align-items:flex-start;gap:10px;font-size:.87rem;line-height:1.65;color:var(--text-secondary)}.hotel-editorial__why-item::before{content:'✦';color:var(--gold);flex-shrink:0;margin-top:2px}`,
+    `    .hotel-editorial__best-for{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:28px 32px}.hotel-editorial__best-for-heading{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:16px;color:var(--champagne)}.hotel-editorial__best-for-grid{display:flex;flex-wrap:wrap;gap:10px}.hotel-editorial__persona{background:var(--navy-deep);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;flex:1 1 200px}.hotel-editorial__persona-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:6px}.hotel-editorial__persona-reason{font-size:.82rem;line-height:1.6;color:var(--text-secondary)}`,
+    `    .hotel-editorial__pros-cons{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:28px 32px}.hotel-editorial__pros-cons-heading{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:16px;color:var(--champagne)}.hotel-editorial__pros-cons-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}@media(max-width:640px){.hotel-editorial__pros-cons-grid{grid-template-columns:1fr}}.hotel-editorial__pros,.hotel-editorial__considerations{display:flex;flex-direction:column;gap:8px}.hotel-editorial__pros-label,.hotel-editorial__considerations-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}.hotel-editorial__pros-label{color:#6fcf97}.hotel-editorial__considerations-label{color:#f2994a}.hotel-editorial__pro-item{display:flex;align-items:flex-start;gap:8px;font-size:.85rem;line-height:1.6;color:var(--text-secondary)}.hotel-editorial__pro-item::before{content:'✓';color:#6fcf97;flex-shrink:0}.hotel-editorial__con-item{display:flex;align-items:flex-start;gap:8px;font-size:.85rem;line-height:1.6;color:var(--text-secondary)}.hotel-editorial__con-item::before{content:'△';color:#f2994a;flex-shrink:0}`,
+    `    .hotel-editorial__nearby{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:28px 32px}.hotel-editorial__nearby-heading{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:16px;color:var(--champagne)}.hotel-editorial__nearby-list{list-style:none;display:flex;flex-wrap:wrap;gap:8px}.hotel-editorial__nearby-item{background:var(--navy-deep);border:1px solid var(--border);border-radius:var(--radius-pill);padding:8px 16px;font-size:.82rem;color:var(--muted)}`,
+    `    .hotel-editorial__comparison{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:28px 32px}.hotel-editorial__comparison-heading{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:12px;color:var(--champagne)}.hotel-editorial__comparison-text{font-size:.87rem;line-height:1.75;color:var(--text-secondary)}`,
+    `    .hotel-editorial__faqs{margin-top:4px}.hotel-editorial__faqs-heading{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:16px;color:var(--champagne)}.hotel-editorial__faq-item{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 24px;margin-bottom:10px}.hotel-editorial__faq-question{font-size:.9rem;font-weight:700;color:var(--champagne);margin-bottom:8px}.hotel-editorial__faq-answer{font-size:.85rem;line-height:1.7;color:var(--text-secondary)}`,
     `    .internal-links{margin:28px auto;max-width:1200px}.internal-links__heading{font-size:.85rem;color:var(--muted);margin-bottom:12px}`,
     `    .internal-links__list{list-style:none;display:flex;flex-wrap:wrap;gap:8px}.internal-links__link{font-size:.8rem;color:var(--gold);transition:text-decoration .15s}.internal-links__link:hover{text-decoration:underline}`,
     `    .site-footer{border-top:1px solid var(--border);padding:40px 28px 28px;max-width:1200px;margin:56px auto 0;display:flex;flex-direction:column;gap:16px}`,
@@ -1404,6 +1572,7 @@ module.exports = {
   renderDisclosure,
   renderRelatedContent,
   renderInternalLinks,
+  renderHotelEditorial,
 
   // Helpers (exported for testing)
   esc,

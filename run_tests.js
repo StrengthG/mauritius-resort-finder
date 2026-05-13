@@ -24,6 +24,8 @@ const SUITES = [
   'static_page_renderer.test.js',
   'airtable_sync.test.js',
   'site_builder.test.js',
+  'hotel_content_engine.test.js',
+  'seo_outreach.test.js',
 ];
 
 const WIDTH = 64;

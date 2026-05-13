@@ -91,16 +91,17 @@ const CTA_MIN_TRUST_DEPTH = 6;
 
 /** All recognised block type strings. */
 const BLOCK_TYPES = Object.freeze({
-  HERO:            'hero',
-  RANKING_SUMMARY: 'ranking_summary',
-  METHODOLOGY:     'methodology',
-  HOTEL_CARD:      'hotel_card',
-  COMPARISON:      'comparison',
-  FAQ:             'faq',
-  AFFILIATE_CTA:   'affiliate_cta',
-  DISCLOSURE:      'disclosure',
-  RELATED_CONTENT: 'related_content',
-  INTERNAL_LINKS:  'internal_links',
+  HERO:             'hero',
+  RANKING_SUMMARY:  'ranking_summary',
+  METHODOLOGY:      'methodology',
+  HOTEL_CARD:       'hotel_card',
+  COMPARISON:       'comparison',
+  FAQ:              'faq',
+  AFFILIATE_CTA:    'affiliate_cta',
+  DISCLOSURE:       'disclosure',
+  RELATED_CONTENT:  'related_content',
+  INTERNAL_LINKS:   'internal_links',
+  HOTEL_EDITORIAL:  'hotel_editorial',
 });
 
 /** Ordered list of all valid block type strings. */
@@ -663,6 +664,27 @@ function _makeDisclosureBlock(position, trustScore) {
 }
 
 /**
+ * Creates the hotel_editorial block — rich editorial content for hotel detail pages.
+ * Only emitted when page_type === 'hotel_detail' and editorialContent is provided.
+ *
+ * @param  {Object} editorialContent  — output from hotel_content_engine.generateContent()
+ * @param  {number} [position=-1]
+ * @param  {number} [trustScore=-1]
+ * @returns {Object} Block
+ */
+function _makeHotelEditorialBlock(editorialContent, position, trustScore) {
+  return {
+    block_id:          'hotel_editorial_001',
+    block_type:        BLOCK_TYPES.HOTEL_EDITORIAL,
+    position:          position   !== undefined ? position   : -1,
+    trust_score:       trustScore !== undefined ? trustScore : -1,
+    payload:           editorialContent,
+    dependencies:      ['hotel_card_rank_1'],
+    validation_status: VALIDATION_STATUS.VALID,
+  };
+}
+
+/**
  * Creates the related content block.
  * Always appears last; depends on disclosure.
  *
@@ -704,12 +726,13 @@ function _makeRelatedContentBlock(pageContext, position, trustScore) {
  * @param  {Object}      pageContext        — { page_type, persona, title, slug, target_keyword }
  * @param  {Object|null} affiliateLinks     — { [hotel_id]: { booking_url, provider, commission_tier, excluded } }
  * @param  {Object|null} [comparisonData]   — optional comparison table data
+ * @param  {Object|null} [editorialContent] — optional HotelEditorialContent from hotel_content_engine
  * @returns {Object} frozen AssemblyResult
  * @throws {InvalidInputError}       on invalid hotel array or affiliate_links
  * @throws {InvalidPageContextError} on invalid page_context
  * @throws {BlockSequenceError}      if final validation fails (internal invariant violation)
  */
-function assemble(rankedHotels, explanationObjects, pageContext, affiliateLinks, comparisonData) {
+function assemble(rankedHotels, explanationObjects, pageContext, affiliateLinks, comparisonData, editorialContent) {
 
   // ── Stage 1: Input Validation ──────────────────────────────────────────────
   _validateInputs(rankedHotels, explanationObjects, pageContext, affiliateLinks || null);
@@ -811,6 +834,11 @@ function assemble(rankedHotels, explanationObjects, pageContext, affiliateLinks,
     commit(_makeComparisonBlock(comparisonData, sortedHotels));
   }
 
+  // ── Stage 9b: Hotel Editorial Block (hotel_detail pages only) ────────────
+  if (pageContext.page_type === 'hotel_detail' && editorialContent && typeof editorialContent === 'object') {
+    commit(_makeHotelEditorialBlock(editorialContent));
+  }
+
   // ── Stage 10: FAQ Block ───────────────────────────────────────────────────
   trust += TRUST_WEIGHTS.faq;
   commit(_makeFAQBlock(pageContext));
@@ -871,6 +899,7 @@ module.exports = {
   _makeFAQBlock,
   _makeDisclosureBlock,
   _makeRelatedContentBlock,
+  _makeHotelEditorialBlock,
 
   // ── Constants ─────────────────────────────────────────────────────────────
   ASSEMBLER_VERSION,
