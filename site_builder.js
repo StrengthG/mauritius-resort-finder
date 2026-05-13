@@ -213,6 +213,33 @@ function _roundTo(n, dp) {
  * @param  {Object} scoredHotel
  * @returns {Object}
  */
+function _adaptRejectedHotel(rejectedHotel) {
+  const raw = rejectedHotel.hotel;
+  return {
+    hotel_id:             raw.hotel_id,
+    hotel_name:           raw.hotel_name,
+    rank:                 1,
+    score_breakdown: {
+      overall_score:  _roundTo((raw.overall_rating || 0) * 10, 2),
+      location_score: _roundTo((raw.location_score  || 0) * 10, 2),
+      amenity_score:  _roundTo((raw.amenity_score   || 0) * 10, 2),
+      brand_score:    _roundTo((raw.brand_score      || 0) * 10, 2),
+      value_score:    _roundTo((raw.value_score      || 0) * 10, 2),
+    },
+    scores:               null,
+    tier:                 rejectedHotel.tier || null,
+    completeness_percent: rejectedHotel.completeness_percent || null,
+    commission_adjusted:  false,
+    review_count:         raw.review_count      || null,
+    avg_rating:           raw.avg_rating         || null,
+    avg_nightly_rate:     raw.avg_nightly_rate   || null,
+    amenities:            raw.amenities           || {},
+    star_rating:          raw.star_rating         || null,
+    region:               raw.region              || null,
+    property_type:        raw.property_type       || null,
+  };
+}
+
 function _adaptScoredHotel(scoredHotel) {
   const raw = scoredHotel.hotel;
   const ds  = scoredHotel.dimension_scores;
@@ -725,20 +752,23 @@ async function _buildPage(spec, deps = {}, buildOptions = {}) {
     // Hotel detail pages must always render their subject hotel even if it
     // falls below the persona threshold — the page is about that hotel, not
     // a curated ranking. Fall back to rejected_hotels in that case.
-    if ((!rankedHotels || rankedHotels.length === 0) &&
-        spec.pageContext.page_type === 'hotel_detail' &&
-        rankingResult.rejected_hotels?.length > 0) {
-      rankedHotels = rankingResult.rejected_hotels;
-    }
+    const isDetailFallback =
+      (!rankedHotels || rankedHotels.length === 0) &&
+      spec.pageContext.page_type === 'hotel_detail' &&
+      rankingResult.rejected_hotels?.length > 0;
 
     if (!rankedHotels || rankedHotels.length === 0) {
-      throw new Error(
-        `No hotels qualified for persona "${spec.persona}" on page "${spec.slug}"`
-      );
+      if (!isDetailFallback) {
+        throw new Error(
+          `No hotels qualified for persona "${spec.persona}" on page "${spec.slug}"`
+        );
+      }
     }
 
     // ── Adapt ───────────────────────────────────────────────────────────────
-    const engineHotels = rankedHotels.map(_adaptScoredHotel);
+    const engineHotels = isDetailFallback
+      ? rankingResult.rejected_hotels.map(_adaptRejectedHotel)
+      : rankedHotels.map(_adaptScoredHotel);
 
     // ── Explain ─────────────────────────────────────────────────────────────
     const explanations = ee.explainBatch(engineHotels, spec.persona);
