@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Luxury Hotel Rankings — Mauritius Resort Finder</title>
+  <meta name="description" content="Every luxury hotel in Mauritius ranked by independent score. 18 resorts rated across location, amenities, brand, and value. No paid placements." />
+  <link rel="canonical" href="https://mauritiusresortfinder.com/rankings/" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TN713HPVCQ');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    body { padding-top: 72px; }
+    .page-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+    .page-hero__eyebrow { display:inline-block; font-size:0.66rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); background:var(--gold-glow); border:1px solid var(--border-gold); border-radius:var(--radius-pill); padding:5px 14px; margin-bottom:18px; }
+    .rank-table { width:100%; border-collapse:collapse; margin-top:32px; }
+    .rank-table th { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); padding:10px 16px; text-align:left; border-bottom:1px solid var(--border); }
+    .rank-table td { padding:16px; border-bottom:1px solid var(--border); vertical-align:middle; }
+    .rank-table tr:hover td { background:var(--midnight); }
+    .rank-num { font-size:1.1rem; font-weight:800; color:var(--gold); width:48px; }
+    .rank-name a { font-size:0.95rem; font-weight:600; color:var(--text); transition:color .15s; }
+    .rank-name a:hover { color:var(--gold); }
+    .rank-region { font-size:0.78rem; color:var(--muted); margin-top:3px; }
+    .rank-score { font-size:1rem; font-weight:800; color:var(--gold); text-align:right; white-space:nowrap; }
+    .rank-bar-wrap { width:100px; }
+    .rank-bar { height:5px; background:var(--surface); border-radius:3px; overflow:hidden; margin-top:6px; }
+    .rank-bar__fill { height:100%; border-radius:3px; background:var(--gold); }
+    .rank-stars { font-size:0.72rem; color:var(--gold); }
+    .rank-cta a { font-size:0.78rem; font-weight:700; background:var(--gold); color:var(--deep-navy); padding:7px 14px; border-radius:6px; white-space:nowrap; transition:opacity .15s; display:inline-block; }
+    .rank-cta a:hover { opacity:.85; }
+    .rank-cta--no { font-size:0.78rem; color:var(--muted); }
+    .rank-amenities { display:flex; flex-wrap:wrap; gap:5px; margin-top:6px; }
+    .rank-amenity { font-size:0.62rem; background:var(--surface); border:1px solid var(--border); border-radius:100px; padding:2px 8px; color:var(--muted); }
+    @media(max-width:768px){
+      .rank-bar-wrap,.rank-stars,.rank-amenities{display:none;}
+      .rank-table td{padding:12px 10px;}
+    }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Mauritius Resort Finder — home">
+      <div class="nav__logo-mark" aria-hidden="true">M</div>
+      Mauritius Resort Finder
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="/rankings/" aria-current="page">Rankings</a></li>
+      <li><a href="/#regions">By Region</a></li>
+      <li><a href="/methodology/">Methodology</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+    <a href="/best-resort-mauritius/" class="nav__cta">Find My Resort</a>
+    <button class="nav__hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<nav class="nav__mobile-menu" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="/rankings/">Rankings</a>
+  <a href="/#regions">By Region</a>
+  <a href="/methodology/">Methodology</a>
+  <a href="/#about">About</a>
+  <a href="/best-resort-mauritius/" class="btn btn--primary" style="margin-top:28px;justify-content:center;">Find My Resort &rarr;</a>
+</nav>
+
+<main id="main-content">
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-hero__eyebrow">All 18 Resorts · Independently Scored</div>
+      <h1>Mauritius Luxury Hotel Rankings</h1>
+      <p style="color:var(--muted);max-width:560px;margin-top:14px;font-size:1rem;line-height:1.75;">
+        Every luxury hotel ranked by composite score across location, amenities, brand credibility, and value.
+        Scores are data-driven. No hotel has paid for placement.
+      </p>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top:48px;padding-bottom:80px;">
+    <div style="overflow-x:auto;">
+      <table class="rank-table" aria-label="Hotel rankings">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Hotel</th>
+            <th>Score</th>
+            <th>Track</th>
+            <th>Stars</th>
+            <th>Reviews</th>
+            <th>Book</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td class="rank-num">1</td>
+            <td class="rank-name">
+              <a href="/hotels/royal-palm-beachcomber-luxury/">Royal Palm Beachcomber Luxury</a>
+              <div class="rank-region">📍 Grand Baie</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span><span class="rank-amenity">Fine Dining</span></div>
+            </td>
+            <td class="rank-score">9.2</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:92%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>1,340</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/LLPswc1" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">2</td>
+            <td class="rank-name">
+              <a href="/hotels/four-seasons-resort-mauritius-at-anahita/">Four Seasons Resort Mauritius at Anahita</a>
+              <div class="rank-region">📍 Beau Champ</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Golf</span><span class="rank-amenity">Butler</span></div>
+            </td>
+            <td class="rank-score">9.1</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:91%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>1,120</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/s7PgDXw" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">3</td>
+            <td class="rank-name">
+              <a href="/hotels/constance-prince-maurice/">Constance Prince Maurice</a>
+              <div class="rank-region">📍 Poste de Flacq</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span><span class="rank-amenity">Fine Dining</span></div>
+            </td>
+            <td class="rank-score">9.0</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:90%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>890</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/WmRuuHu" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">4</td>
+            <td class="rank-name">
+              <a href="/hotels/oneandonly-le-saint-g-ran/">One&amp;Only Le Saint Géran</a>
+              <div class="rank-region">📍 Belle Mare</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span><span class="rank-amenity">Fine Dining</span></div>
+            </td>
+            <td class="rank-score">9.0</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:90%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>980</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/jJhAhIn" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">5</td>
+            <td class="rank-name">
+              <a href="/hotels/paradise-cove-boutique-hotel-adults-only/">Paradise Cove Boutique Hotel – Adults Only</a>
+              <div class="rank-region">📍 Cap Malheureux</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Adults Only</span></div>
+            </td>
+            <td class="rank-score">9.0</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:90%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>194</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/muB8P70" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">6</td>
+            <td class="rank-name">
+              <a href="/hotels/shangri-la-le-touessrok-resort-and-spa/">Shangri-La Le Touessrok Resort &amp; Spa</a>
+              <div class="rank-region">📍 Trou d'Eau Douce</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Golf</span><span class="rank-amenity">Kids Club</span></div>
+            </td>
+            <td class="rank-score">8.9</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:89%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>1,280</td>
+            <td class="rank-cta rank-cta--no">Link coming soon</td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">7</td>
+            <td class="rank-name">
+              <a href="/hotels/constance-le-chaland-iko-mauritius/">Constance Le Chaland Iko Mauritius</a>
+              <div class="rank-region">📍 Blue Bay</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Golf</span><span class="rank-amenity">Kids Club</span></div>
+            </td>
+            <td class="rank-score">8.8</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:88%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>1,560</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/a1VWvT2" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">8</td>
+            <td class="rank-name">
+              <a href="/hotels/oberoi-beach-resort-mauritius/">Oberoi Beach Resort Mauritius</a>
+              <div class="rank-region">📍 Grand Baie</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span></div>
+            </td>
+            <td class="rank-score">8.8</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:88%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>760</td>
+            <td class="rank-cta rank-cta--no">Link coming soon</td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">9</td>
+            <td class="rank-name">
+              <a href="/hotels/lagoon-attitude-adults-only/">Lagoon Attitude – Adults Only</a>
+              <div class="rank-region">📍 Cap Malheureux</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Adults Only</span></div>
+            </td>
+            <td class="rank-score">8.7</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:87%"></div></div></td>
+            <td class="rank-stars">★★★★</td>
+            <td>81</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/4toq7Ie" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">10</td>
+            <td class="rank-name">
+              <a href="/hotels/lux-grand-gaube-resort-and-villas/">Lux* Grand Gaube Resort &amp; Villas</a>
+              <div class="rank-region">📍 Grand Gaube</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
+            </td>
+            <td class="rank-score">8.7</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:87%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>1,430</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/usEpyj6" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">11</td>
+            <td class="rank-name">
+              <a href="/hotels/lux-belle-mare/">LUX* Belle Mare</a>
+              <div class="rank-region">📍 Belle Mare</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
+            </td>
+            <td class="rank-score">8.6</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:86%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>1,050</td>
+            <td class="rank-cta rank-cta--no">Link coming soon</td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">12</td>
+            <td class="rank-name">
+              <a href="/hotels/sea-diamond-boutique-hotel-and-spa-by-sea-resorts/">Sea Diamond Boutique Hotel &amp; Spa</a>
+              <div class="rank-region">📍 Cap Malheureux</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span></div>
+            </td>
+            <td class="rank-score">8.5</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:85%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>—</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/FA2X6xD" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">13</td>
+            <td class="rank-name">
+              <a href="/hotels/heritage-awali-golf-and-spa-resort/">Heritage Awali Golf &amp; Spa Resort</a>
+              <div class="rank-region">📍 Blue Bay</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Golf</span></div>
+            </td>
+            <td class="rank-score">8.4</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:84%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>890</td>
+            <td class="rank-cta rank-cta--no">Link coming soon</td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">14</td>
+            <td class="rank-name">
+              <a href="/hotels/mythic-suites-and-villas-by-mj-holidays/">Mythic Suites &amp; Villas by MJ Holidays</a>
+              <div class="rank-region">📍 Grand Gaube</div>
+              <div class="rank-amenities"><span class="rank-amenity">Pool</span><span class="rank-amenity">Fine Dining</span></div>
+            </td>
+            <td class="rank-score">8.4</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:84%"></div></div></td>
+            <td class="rank-stars">★★★★</td>
+            <td>8</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/c9Mfa5v" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">15</td>
+            <td class="rank-name">
+              <a href="/hotels/victoria-beachcomber-resort-and-spa/">Victoria Beachcomber Resort &amp; Spa</a>
+              <div class="rank-region">📍 Grand Baie</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
+            </td>
+            <td class="rank-score">8.3</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:83%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>1,580</td>
+            <td class="rank-cta rank-cta--no">Link coming soon</td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">16</td>
+            <td class="rank-name">
+              <a href="/hotels/villa-aliz-e/">Villa Alizée</a>
+              <div class="rank-region">📍 Port Louis</div>
+              <div class="rank-amenities"><span class="rank-amenity">Pool</span><span class="rank-amenity">Fine Dining</span></div>
+            </td>
+            <td class="rank-score">8.3</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:83%"></div></div></td>
+            <td class="rank-stars">★★★★</td>
+            <td>12</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/FyoIgaK" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">17</td>
+            <td class="rank-name">
+              <a href="/hotels/shandrani-beachcomber-resort-and-spa/">Shandrani Beachcomber Resort &amp; Spa</a>
+              <div class="rank-region">📍 Blue Bay</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
+            </td>
+            <td class="rank-score">8.2</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:82%"></div></div></td>
+            <td class="rank-stars">★★★★★</td>
+            <td>1,040</td>
+            <td class="rank-cta rank-cta--no">Link coming soon</td>
+          </tr>
+
+          <tr>
+            <td class="rank-num">18</td>
+            <td class="rank-name">
+              <a href="/hotels/zilwa-attitude/">Zilwa Attitude</a>
+              <div class="rank-region">📍 Cap Malheureux</div>
+              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Pool</span></div>
+            </td>
+            <td class="rank-score">8.2</td>
+            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:82%"></div></div></td>
+            <td class="rank-stars">★★★★</td>
+            <td>1,320</td>
+            <td class="rank-cta"><a href="https://expedia.com/affiliate/yLn0geY" rel="nofollow sponsored">Check prices →</a></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:28px;font-size:0.75rem;color:var(--muted);line-height:1.6;">
+      Scores are composite ratings across four independently weighted criteria: Location, Amenities, Brand Credibility, and Value.
+      "Check prices →" links are Expedia affiliate links — we may earn a commission at no extra cost to you. Rankings are not influenced by commercial arrangements.
+      <a href="/methodology/" style="color:var(--gold);">Read our full methodology →</a>
+    </p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="nav__logo" style="margin-bottom:0;">
+        <div class="nav__logo-mark" aria-hidden="true">M</div>
+        Mauritius Resort Finder
+      </div>
+      <p>Independent luxury hotel reviews for Mauritius. No paid placements. No inflated scores.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Rankings</h4>
+      <ul>
+        <li><a href="/rankings/">All hotels</a></li>
+        <li><a href="/best-resort-mauritius/">Best overall</a></li>
+        <li><a href="/adults-only-resorts-mauritius/">Adults only</a></li>
+        <li><a href="/best-value-resorts-mauritius/">Best value</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Regions</h4>
+      <ul>
+        <li><a href="/grand-baie-luxury-hotels/">Grand Baie</a></li>
+        <li><a href="/belle-mare-luxury-hotels/">Belle Mare</a></li>
+        <li><a href="/cap-malheureux-luxury-hotels/">Cap Malheureux</a></li>
+        <li><a href="/blue-bay-luxury-hotels/">Blue Bay</a></li>
+        <li><a href="/trou-d-eau-douce-luxury-hotels/">Trou d'Eau Douce</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="/methodology/">Methodology</a></li>
+        <li><a href="/#about">About this site</a></li>
+        <li><a href="/privacy/">Privacy policy</a></li>
+        <li><a href="/affiliate-disclosure/">Affiliate disclosure</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p style="color:var(--muted);">&copy; 2025 Mauritius Resort Finder. Independent reviews.</p>
+    <p class="footer__disclaimer">Affiliate links present. Commissions earned via Expedia do not influence rankings.</p>
+  </div>
+</footer>
+<script src="/assets/js/animations.js" defer></script>
+<script src="/assets/js/interactions.js" defer></script>
+</body>
+</html>

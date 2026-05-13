@@ -943,6 +943,19 @@ async function buildSite(options = {}) {
       warnings.push('index.html not found at project root — homepage not copied to dist/');
     }
 
+    // Copy static pages from pages/ → dist/{pagename}/index.html
+    const pagesSrc = path.join(__dirname, 'pages');
+    if (fs.existsSync(pagesSrc)) {
+      const pageFiles = fs.readdirSync(pagesSrc).filter(f => f.endsWith('.html'));
+      for (const file of pageFiles) {
+        const pageName = file.replace(/\.html$/, '');
+        const destDir  = path.join(absOut, pageName);
+        fs.mkdirSync(destDir, { recursive: true });
+        fs.copyFileSync(path.join(pagesSrc, file), path.join(destDir, 'index.html'));
+      }
+      _log(`      ✓ pages/ (${pageFiles.length} static pages) copied to dist/`);
+    }
+
     // Copy assets/ (CSS, JS, images) into dist/assets/
     const assetsSrc  = path.join(__dirname, 'assets');
     const assetsDest = path.join(absOut, 'assets');

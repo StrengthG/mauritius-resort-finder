@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Scoring Methodology — Mauritius Resort Finder</title>
+  <meta name="description" content="How Mauritius Resort Finder scores luxury hotels: four independent criteria, real guest data, no paid placements. Full methodology explained." />
+  <link rel="canonical" href="https://mauritiusresortfinder.com/methodology/" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TN713HPVCQ');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    body { padding-top: 72px; }
+    .page-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+    .page-hero__eyebrow { display:inline-block; font-size:0.66rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); background:var(--gold-glow); border:1px solid var(--border-gold); border-radius:var(--radius-pill); padding:5px 14px; margin-bottom:18px; }
+    .prose { max-width:700px; margin:0 auto; padding:56px 0; }
+    .prose h2 { font-family:var(--font-display); font-size:1.6rem; margin:40px 0 16px; color:var(--text); }
+    .prose h3 { font-size:1rem; font-weight:700; color:var(--text); margin:28px 0 10px; }
+    .prose p { font-size:0.9rem; line-height:1.85; color:var(--muted); margin-bottom:16px; }
+    .criteria-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:28px 0; }
+    .criterion { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-card); padding:22px; }
+    .criterion__name { font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+    .criterion__title { font-family:var(--font-display); font-size:1.1rem; font-weight:700; color:var(--text); margin-bottom:10px; }
+    .criterion__desc { font-size:0.82rem; line-height:1.7; color:var(--muted); }
+    .do-dont { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:24px 0; }
+    .do-box, .dont-box { border-radius:var(--radius-card); padding:20px; }
+    .do-box { background:rgba(40,167,69,0.06); border:1px solid rgba(40,167,69,0.2); }
+    .dont-box { background:rgba(220,53,69,0.06); border:1px solid rgba(220,53,69,0.2); }
+    .do-box h4 { color:#5cb85c; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px; }
+    .dont-box h4 { color:#e45c6a; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px; }
+    .do-box li, .dont-box li { font-size:0.82rem; color:var(--muted); padding:4px 0; list-style:none; }
+    .do-box li::before { content:"✓ "; color:#5cb85c; }
+    .dont-box li::before { content:"✗ "; color:#e45c6a; }
+    .score-formula { background:var(--bg-card); border:1px solid var(--border-gold); border-radius:var(--radius-card); padding:24px; margin:28px 0; text-align:center; }
+    .score-formula__eq { font-family:var(--font-display); font-size:1.1rem; color:var(--text); }
+    .score-formula__desc { font-size:0.78rem; color:var(--muted); margin-top:10px; }
+    .rule-list { list-style:none; padding:0; margin:16px 0; }
+    .rule-list li { font-size:0.87rem; color:var(--muted); padding:10px 0; border-bottom:1px solid var(--border); display:flex; gap:12px; line-height:1.6; }
+    .rule-list li:last-child { border-bottom:none; }
+    .rule-list li::before { content:"→"; color:var(--gold); flex-shrink:0; }
+    @media(max-width:640px){
+      .criteria-grid, .do-dont { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Mauritius Resort Finder — home">
+      <div class="nav__logo-mark" aria-hidden="true">M</div>
+      Mauritius Resort Finder
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="/rankings/">Rankings</a></li>
+      <li><a href="/#regions">By Region</a></li>
+      <li><a href="/methodology/" aria-current="page">Methodology</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+    <a href="/best-resort-mauritius/" class="nav__cta">Find My Resort</a>
+    <button class="nav__hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<nav class="nav__mobile-menu" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="/rankings/">Rankings</a>
+  <a href="/#regions">By Region</a>
+  <a href="/methodology/">Methodology</a>
+  <a href="/#about">About</a>
+  <a href="/best-resort-mauritius/" class="btn btn--primary" style="margin-top:28px;justify-content:center;">Find My Resort &rarr;</a>
+</nav>
+
+<main id="main-content">
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-hero__eyebrow">Transparency · Independent Process · No Paid Placements</div>
+      <h1>How We Score Resorts</h1>
+      <p style="color:var(--muted);max-width:580px;margin-top:14px;font-size:1rem;line-height:1.75;">
+        Every score on this site comes from a defined, repeatable process. This page explains what goes into each number —
+        what we measure, what we refuse to measure, and where the data comes from.
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="prose">
+
+      <h2>The Four Criteria</h2>
+      <p>
+        Each hotel is scored across four independent dimensions. The composite <strong>Overall Score</strong> is the
+        arithmetic mean of all four. No criterion is weighted above another — a resort with a perfect beach but no spa
+        cannot score as highly as one that performs consistently across all four.
+      </p>
+
+      <div class="criteria-grid">
+        <div class="criterion">
+          <div class="criterion__name">Criterion 01</div>
+          <div class="criterion__title">Location</div>
+          <div class="criterion__desc">
+            Beach quality, lagoon depth and clarity, reef access, proximity to the airport,
+            coastal direction (sunrise vs. sunset, prevailing wind exposure), and the quality of
+            the immediate surroundings. We do not reward location based on a resort's marketing
+            description of it — we use verifiable geographic and guest-reported data.
+          </div>
+        </div>
+        <div class="criterion">
+          <div class="criterion__name">Criterion 02</div>
+          <div class="criterion__title">Amenities</div>
+          <div class="criterion__desc">
+            Spa presence and quality, pool facilities, fine dining (number of restaurants, cuisine range,
+            quality data), watersports, kids club, butler service, and private beach exclusivity.
+            We score presence and quality — not just the existence of a spa, but whether the spa
+            has a genuine programme and qualified practitioners.
+          </div>
+        </div>
+        <div class="criterion">
+          <div class="criterion__name">Criterion 03</div>
+          <div class="criterion__title">Brand Credibility</div>
+          <div class="criterion__desc">
+            Chain reputation and consistency, accreditation standards, staff training infrastructure,
+            and the historical reliability of the brand's service delivery. An independent boutique
+            that consistently over-delivers scores higher here than a brand that coasts on its name.
+            Brand score is never purchased — we assess the brand, not the marketing budget.
+          </div>
+        </div>
+        <div class="criterion">
+          <div class="criterion__name">Criterion 04</div>
+          <div class="criterion__title">Value</div>
+          <div class="criterion__desc">
+            Quality delivered relative to the average nightly rate. We benchmark each resort
+            against its price bracket. A resort at $400/night needs to deliver differently than
+            one at $1,200/night. Both can score highly on value if they deliver what the price implies —
+            or score poorly if they don't. Price alone is not the measure.
+          </div>
+        </div>
+      </div>
+
+      <div class="score-formula">
+        <div class="score-formula__eq">Overall Score = (Location + Amenities + Brand + Value) ÷ 4</div>
+        <div class="score-formula__desc">All scores are on a 0–10 scale. The composite is the unweighted mean of the four criteria scores.</div>
+      </div>
+
+      <h2>Data Sources</h2>
+      <p>
+        Scores are based on aggregated guest review data, objective amenity inventories, and geographic verification.
+        We do not use hotel PR materials, press releases, or any information provided by the hotels themselves
+        as primary source data. If a hotel tells us it has an award-winning spa, we look at what guests
+        who stayed there in the last 12 months actually said about it.
+      </p>
+
+      <h3>What counts as a source</h3>
+      <ul class="rule-list">
+        <li>Verified guest reviews with named stay dates (Expedia, TripAdvisor, Google Reviews, Booking.com)</li>
+        <li>Review volume — we weight confidence based on the number of reviews, not just the average score</li>
+        <li>Geographic data for location scoring (coast, reef proximity, airport distance)</li>
+        <li>Objective amenity presence (a kids club either exists or it doesn't)</li>
+        <li>Brand accreditation and historical performance data</li>
+      </ul>
+
+      <h3>What does not count as a source</h3>
+      <ul class="rule-list">
+        <li>Any information provided directly by the hotel or its PR agency</li>
+        <li>Award claims that are self-nominated or commercially determined</li>
+        <li>Marketing copy from the hotel's own website</li>
+        <li>Paid review placements (we flag these when we find them in source data and discard them)</li>
+      </ul>
+
+      <h2>What We Don't Do</h2>
+
+      <div class="do-dont">
+        <div class="do-box">
+          <h4>We do</h4>
+          <ul>
+            <li>Score every hotel by the same process</li>
+            <li>Disclose all affiliate relationships</li>
+            <li>Publish scores even when they're unflattering</li>
+            <li>Show all 18 hotels regardless of affiliate status</li>
+            <li>Use <code>rel="nofollow sponsored"</code> on all affiliate links</li>
+            <li>Update scores when new data warrants it</li>
+          </ul>
+        </div>
+        <div class="dont-box">
+          <h4>We don't</h4>
+          <ul>
+            <li>Accept paid placements or sponsored rankings</li>
+            <li>Use hotel PR copy in descriptions</li>
+            <li>Inflate scores to protect affiliate revenue</li>
+            <li>Hide affiliate relationships</li>
+            <li>Display stale prices (we link to live rates)</li>
+            <li>Remove hotels from rankings for commercial reasons</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Affiliate Links and Independence</h2>
+      <p>
+        This site earns revenue through Expedia affiliate links. When you click "Check prices →" and complete a booking,
+        we may receive a commission from Expedia at no extra cost to you.
+      </p>
+      <p>
+        Six of the 18 hotels in our dataset currently have no affiliate link. They appear in rankings at their correct
+        score position anyway. No hotel's ranking has ever been adjusted based on whether or not we have an affiliate
+        relationship with it. The rankings are determined by the scoring process above, and the affiliate links are applied
+        after scores are finalised.
+      </p>
+      <p>
+        Full disclosure detail is available on our <a href="/affiliate-disclosure/" style="color:var(--gold);">affiliate disclosure page</a>.
+      </p>
+
+      <h2>Score Updates</h2>
+      <p>
+        Scores are reviewed when significant new guest data is available — typically when a hotel accumulates enough
+        new reviews to materially shift its satisfaction average, or when a property changes ownership, management,
+        or undergoes major renovation. We do not update scores on a fixed schedule; we update them when the data warrants it.
+        The last full scoring review was completed in May 2026.
+      </p>
+
+      <h2>Questions</h2>
+      <p>
+        If you believe a score is incorrect or you have information that would materially affect a hotel's rating,
+        contact us at <a href="mailto:strengthygivenncube@gmail.com" style="color:var(--gold);">strengthygivenncube@gmail.com</a>.
+        We don't promise to change scores based on complaints — but we do read every submission and investigate
+        claims that come with verifiable evidence.
+      </p>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="nav__logo" style="margin-bottom:0;">
+        <div class="nav__logo-mark" aria-hidden="true">M</div>
+        Mauritius Resort Finder
+      </div>
+      <p>Independent luxury hotel reviews for Mauritius. No paid placements. No inflated scores.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Rankings</h4>
+      <ul>
+        <li><a href="/rankings/">All hotels</a></li>
+        <li><a href="/best-resort-mauritius/">Best overall</a></li>
+        <li><a href="/adults-only-resorts-mauritius/">Adults only</a></li>
+        <li><a href="/best-value-resorts-mauritius/">Best value</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Regions</h4>
+      <ul>
+        <li><a href="/grand-baie-luxury-hotels/">Grand Baie</a></li>
+        <li><a href="/belle-mare-luxury-hotels/">Belle Mare</a></li>
+        <li><a href="/cap-malheureux-luxury-hotels/">Cap Malheureux</a></li>
+        <li><a href="/blue-bay-luxury-hotels/">Blue Bay</a></li>
+        <li><a href="/trou-d-eau-douce-luxury-hotels/">Trou d'Eau Douce</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="/methodology/">Methodology</a></li>
+        <li><a href="/#about">About this site</a></li>
+        <li><a href="/privacy/">Privacy policy</a></li>
+        <li><a href="/affiliate-disclosure/">Affiliate disclosure</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p style="color:var(--muted);">&copy; 2025 Mauritius Resort Finder. Independent reviews.</p>
+    <p class="footer__disclaimer">Affiliate links present. Commissions earned via Expedia do not influence rankings.</p>
+  </div>
+</footer>
+<script src="/assets/js/animations.js" defer></script>
+<script src="/assets/js/interactions.js" defer></script>
+</body>
+</html>
