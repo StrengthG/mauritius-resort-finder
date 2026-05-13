@@ -260,8 +260,9 @@ const PERSONA_CONFIGS = Object.freeze({
       naturopath:           0.8,
     },
     exclusion_rules: [
-      // Hotel without spa cannot qualify as a wellness destination
-      (hotel) => !hotel.amenities?.spa,
+      // Exclude if no explicit spa AND amenity_score is too low to imply one.
+      // Fallback to amenity_score when the amenities table is not populated.
+      (hotel) => !hotel.amenities?.spa && (hotel.amenity_score ?? 0) < 7.5,
     ],
     min_scores: {
       amenity_score: 6.5,

@@ -720,7 +720,16 @@ async function _buildPage(spec, deps = {}, buildOptions = {}) {
 
     // ── Score ───────────────────────────────────────────────────────────────
     const rankingResult = se.rankHotels(spec.hotels, spec.persona, { includeExcluded: true });
-    const rankedHotels  = rankingResult.ranked_hotels;
+    let rankedHotels    = rankingResult.ranked_hotels;
+
+    // Hotel detail pages must always render their subject hotel even if it
+    // falls below the persona threshold — the page is about that hotel, not
+    // a curated ranking. Fall back to rejected_hotels in that case.
+    if ((!rankedHotels || rankedHotels.length === 0) &&
+        spec.pageContext.page_type === 'hotel_detail' &&
+        rankingResult.rejected_hotels?.length > 0) {
+      rankedHotels = rankingResult.rejected_hotels;
+    }
 
     if (!rankedHotels || rankedHotels.length === 0) {
       throw new Error(
