@@ -122,6 +122,16 @@ class InvalidPageInputError extends RendererError {
  * @param  {*}      value
  * @returns {string}
  */
+function _slugify(text) {
+  if (!text || typeof text !== 'string') return '';
+  return text
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
 function esc(value) {
   if (value === null || value === undefined) return '';
   return String(value)
@@ -628,6 +638,31 @@ function renderHotelCard(block) {
     // price intentionally removed — see affiliate CTA for live Expedia rates
   ].filter(Boolean).join(' &middot; ');
 
+  // ── Card footer: inline CTA + review link ───────────────────────────────
+  const hotelSlug    = _slugify(hotelName);
+  const bookingUrl   = block.payload.booking_url || null;
+  const ctaEligible  = block.payload.cta_eligible && bookingUrl;
+
+  const footerHtml = [
+    `  <footer class="hotel-card__footer">`,
+    ctaEligible
+      ? [
+          `    <a href="${esc(_safeUrl(bookingUrl))}"`,
+          `       rel="nofollow sponsored"`,
+          `       class="hotel-card__cta-btn"`,
+          `       aria-label="Check prices for ${esc(hotelName)} on Expedia">`,
+          `      Check prices &#8594;`,
+          `    </a>`,
+        ].join('\n')
+      : '',
+    `    <a href="/hotels/${esc(hotelSlug)}/"`,
+    `       class="hotel-card__review-btn"`,
+    `       aria-label="Read full review of ${esc(hotelName)}">`,
+    `      Full review &#8594;`,
+    `    </a>`,
+    `  </footer>`,
+  ].filter(Boolean).join('\n');
+
   return [
     `<article class="hotel-card hotel-card--${esc(variant)}" id="hotel-${esc(hotel_id)}"`,
     `         aria-label="Ranked ${rankOrdinal}: ${esc(hotelName)}">`,
@@ -652,6 +687,7 @@ function renderHotelCard(block) {
       explanationHtml,
       `  </div>`,
     ].join('\n') : '',
+    footerHtml,
     `</article>`,
   ].filter(line => line.trim() !== '').join('\n');
 }
@@ -1286,6 +1322,11 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `    .hotel-card__score-value{font-size:.78rem;font-weight:700;color:var(--gold);width:56px;text-align:right;flex-shrink:0;font-family:'Cormorant Garamond',serif}`,
     `    .hotel-card__amenities{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}.hotel-card__amenity{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--radius-pill);padding:3px 12px;font-size:.73rem;color:var(--muted)}`,
     `    .hotel-card__explanation{padding-top:18px;border-top:1px solid var(--border)}.hotel-card__summary{font-size:.9rem;line-height:1.75;margin-bottom:14px}`,
+    `    .hotel-card__footer{display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:18px;border-top:1px solid var(--border);flex-wrap:wrap}`,
+    `    .hotel-card__cta-btn{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-bright) 50%,var(--gold-dim) 100%);background-size:200% auto;color:var(--deep-navy);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:10px 22px;border-radius:var(--radius-pill);white-space:nowrap;transition:background-position .4s,box-shadow .2s,transform .2s;display:inline-block;position:relative;overflow:hidden}`,
+    `    .hotel-card__cta-btn:hover{background-position:right center;box-shadow:0 6px 24px rgba(201,168,76,.5);transform:translateY(-1px)}`,
+    `    .hotel-card__review-btn{font-family:'DM Sans',sans-serif;font-size:.74rem;color:var(--muted);letter-spacing:.04em;border:1px solid var(--border);padding:9px 18px;border-radius:var(--radius-pill);white-space:nowrap;display:inline-flex;align-items:center;min-height:40px;transition:all .2s}`,
+    `    .hotel-card__review-btn:hover{border-color:var(--border-gold);color:var(--gold)}`,
     `    .hotel-card__strengths-heading,.hotel-card__weakness-heading,.hotel-card__fit-heading{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;font-family:'DM Sans',sans-serif}`,
     `    .hotel-card__strengths-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:14px}.hotel-card__strength{font-size:.87rem;padding-left:16px;position:relative;color:var(--muted)}.hotel-card__strength::before{content:'✓';position:absolute;left:0;color:var(--gold);font-weight:700}`,
     `    .hotel-card__weakness-text{font-size:.85rem;color:var(--muted);padding-left:16px;position:relative}.hotel-card__weakness-text::before{content:'→';position:absolute;left:0;color:var(--muted)}`,
@@ -1346,9 +1387,9 @@ function generateSiteHeader(siteName, baseUrl) {
     `    </a>`,
     `    <ul class="site-nav__list">`,
     `      <li><a href="${esc(baseUrl)}/#rankings">Rankings</a></li>`,
+    `      <li><a href="${esc(baseUrl)}/#travel-styles">By Style</a></li>`,
     `      <li><a href="${esc(baseUrl)}/#regions">By Region</a></li>`,
     `      <li><a href="${esc(baseUrl)}/#methodology">Methodology</a></li>`,
-    `      <li><a href="${esc(baseUrl)}/#about">About</a></li>`,
     `    </ul>`,
     `  </nav>`,
     `</header>`,

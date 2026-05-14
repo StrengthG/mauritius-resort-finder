@@ -532,6 +532,11 @@ function _makeMethodologyBlock(pageContext, position, trustScore) {
  * @returns {Object} Block
  */
 function _makeHotelCardBlock(hotel, explanation, variant, affiliateLinks, position, trustScore) {
+  const eligible   = _isCTAEligible(hotel, affiliateLinks);
+  const hotelId    = _getHotelId(hotel);
+  const bookingUrl = (eligible && affiliateLinks && affiliateLinks[hotelId])
+    ? affiliateLinks[hotelId].booking_url
+    : null;
   return {
     block_id:          `hotel_card_rank_${hotel.rank}`,
     block_type:        BLOCK_TYPES.HOTEL_CARD,
@@ -539,11 +544,12 @@ function _makeHotelCardBlock(hotel, explanation, variant, affiliateLinks, positi
     trust_score:       trustScore !== undefined ? trustScore : -1,
     payload: {
       rank:         hotel.rank,
-      hotel_id:     _getHotelId(hotel),
+      hotel_id:     hotelId,
       hotel_data:   hotel,
       explanation:  explanation || null,
       card_variant: variant,
-      cta_eligible: _isCTAEligible(hotel, affiliateLinks),
+      cta_eligible: eligible,
+      booking_url:  bookingUrl,
     },
     dependencies:      ['methodology_001'],
     validation_status: VALIDATION_STATUS.VALID,
