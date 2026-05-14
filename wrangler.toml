@@ -2,9 +2,6 @@ name = "mauritius-resort-finder"
 compatibility_date = "2025-01-01"
 pages_build_output_dir = "dist"
 
-[build]
-command = "node site_builder.js"
-
 # Big Dodo — uses Cloudflare Workers AI (free tier, no API key needed)
 # Enable via Cloudflare dashboard: Pages → Settings → Functions → AI Bindings
 # Add binding: Variable name = AI
