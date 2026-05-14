@@ -3,7 +3,7 @@
    Luxury Editorial Travel  ·  v2.0
    ═══════════════════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 /* ── Design Tokens ─────────────────────────────────────────────────────── */
 :root {
@@ -55,7 +55,7 @@ html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%;
 body {
   background: var(--deep-navy);
   color: var(--text);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -63,7 +63,7 @@ body {
 
 /* ── Typography ────────────────────────────────────────────────────────── */
 h1, h2, h3, h4 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -74,7 +74,7 @@ h2 { font-size: clamp(1.8rem, 3.2vw, 2.8rem); }
 h3 { font-size: clamp(1.1rem, 1.8vw, 1.35rem); }
 h4 {
   font-size: 0.95rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   letter-spacing: 0;
 }
@@ -159,7 +159,7 @@ img { max-width: 100%; height: auto; display: block; }
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--champagne);
@@ -173,7 +173,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 0.95rem;
   color: var(--deep-navy);
   font-weight: 900;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   box-shadow: 0 2px 12px rgba(201,168,76,0.35);
   flex-shrink: 0;
 }
@@ -272,7 +272,7 @@ img { max-width: 100%; height: auto; display: block; }
   to   { opacity: 1; transform: translateY(0); }
 }
 .nav__mobile-menu a {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.9rem;
   font-weight: 700;
   color: var(--text-dim);
@@ -288,7 +288,7 @@ img { max-width: 100%; height: auto; display: block; }
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.07em;
@@ -390,16 +390,16 @@ img { max-width: 100%; height: auto; display: block; }
 
 .hotel-card__rank {
   display: flex; flex-direction: column; align-items: center; gap: 2px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.9rem; font-weight: 800;
   color: var(--gold); line-height: 1; padding-top: 3px;
 }
 .hotel-card__rank span {
   font-size: 0.62rem; color: var(--muted);
-  font-family: 'Inter', sans-serif; font-weight: 400; margin-top: 2px;
+  font-family: 'DM Sans', sans-serif; font-weight: 400; margin-top: 2px;
 }
 .hotel-card__body h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.15rem; margin-bottom: 6px; color: var(--champagne);
 }
 .hotel-card__meta {
@@ -435,7 +435,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .score-bar__value {
   font-size: 0.82rem; color: var(--gold); font-weight: 700;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 /* Score pillars */
@@ -450,7 +450,7 @@ img { max-width: 100%; height: auto; display: block; }
 .pillar__label { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
 .pillar__val {
   font-size: 0.9rem; font-weight: 700; color: var(--text);
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .hotel-card__actions {
@@ -462,7 +462,7 @@ img { max-width: 100%; height: auto; display: block; }
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold-dim) 100%);
   background-size: 200% auto;
   color: var(--deep-navy);
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.76rem; font-weight: 800; letter-spacing: 0.07em;
   text-transform: uppercase;
   padding: 10px 20px; border-radius: var(--radius-pill);
@@ -483,7 +483,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .btn--cta:hover::before { left: 100%; }
 .btn--review {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.72rem; color: var(--muted); letter-spacing: 0.04em;
   border: 1px solid var(--border); padding: 8px 16px;
   border-radius: var(--radius-pill);
@@ -511,7 +511,7 @@ img { max-width: 100%; height: auto; display: block; }
 .trust-stat:last-child { border-right: none; }
 .trust-stat:hover { background: rgba(201,168,76,0.04); }
 .trust-stat__value {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 2.2rem; font-weight: 800; color: var(--gold);
   display: block; line-height: 1;
 }
@@ -540,7 +540,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .region-card__header { display: flex; justify-content: space-between; align-items: flex-start; }
 .region-card__name {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.05rem; font-weight: 700; color: var(--champagne);
 }
 .region-card__best {
@@ -604,7 +604,7 @@ img { max-width: 100%; height: auto; display: block; }
 .quote-card::before {
   content: '\201C';
   position: absolute; top: -4px; left: 18px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 3.5rem; color: var(--gold); line-height: 1; opacity: 0.4;
 }
 .quote-card__text {
@@ -650,7 +650,7 @@ img { max-width: 100%; height: auto; display: block; }
 .footer__col h4 {
   font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em;
   text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
 }
 .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
 .footer__col ul li a { font-size: 0.82rem; color: var(--muted); transition: color var(--duration); }
