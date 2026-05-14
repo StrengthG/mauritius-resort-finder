@@ -1442,6 +1442,36 @@ function generateSiteFooter(siteName, baseUrl) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// BIG DODO WIDGET INJECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Generates the Big Dodo chatbot widget injection block.
+ * Emits a config <script>, a <link> for the widget CSS, and a deferred <script>
+ * for the widget JS. Both asset files live in /assets/{css,js}/ and are copied
+ * to dist/ by site_builder.js automatically.
+ *
+ * @param   {Object} meta  — from extractPageMeta()
+ * @returns {string} HTML snippet (safe to append before </body>)
+ */
+function _bigDodoWidget(meta) {
+  const pageType = meta && meta.pageType ? String(meta.pageType) : 'ranking';
+  const slug     = meta && meta.slug     ? String(meta.slug)     : '';
+
+  const config = JSON.stringify({
+    apiUrl:      '/api/chat',
+    pageContext: { pageType, slug },
+  });
+
+  return [
+    `<!-- Big Dodo widget -->`,
+    `<link rel="stylesheet" href="/assets/css/big_dodo_widget.css">`,
+    `<script>window.BigDodoConfig = ${config};</script>`,
+    `<script src="/assets/js/big_dodo_widget.js" defer></script>`,
+  ].join('\n');
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // PUBLIC API
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -1538,6 +1568,7 @@ function renderPage(pageObject, options = {}) {
     `</main>`,
     siteFooter,
     inlineScript,
+    _bigDodoWidget(meta),
     `</body>`,
     `</html>`,
   ].join('\n');

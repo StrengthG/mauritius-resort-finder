@@ -1,3 +1,10 @@
 name = "mauritius-resort-finder"
 compatibility_date = "2025-01-01"
 pages_build_output_dir = "dist"
+
+# Big Dodo — AI concierge API
+# Deploy secret via Cloudflare dashboard → Pages → Settings → Environment variables:
+#   ANTHROPIC_API_KEY = <your key>  (Production + Preview, encrypted)
+
+[vars]
+# No public vars needed — API key is a secret only
