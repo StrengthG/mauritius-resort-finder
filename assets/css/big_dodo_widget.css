@@ -515,12 +515,37 @@
   border-radius: var(--bd-radius-sm);
 }
 
-/* ── Mobile: widget hidden ── */
-/* The chat widget is desktop-only. Mobile browsers have too many
-   viewport/keyboard constraints to host a fixed overlay reliably. */
+/* ── Mobile: bottom-sheet layout ── */
 @media (max-width: 768px) {
-  .bd-widget {
-    display: none !important;
+  .bd-trigger {
+    bottom: 16px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .bd-panel {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 85vh;
+    max-height: 85vh;
+    border-radius: 20px 20px 0 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    opacity: 1;
+    transform: translateY(100%);
+  }
+
+  .bd-panel--open {
+    transform: translateY(0);
+  }
+
+  .bd-messages {
+    overscroll-behavior: contain;
   }
 }
 
