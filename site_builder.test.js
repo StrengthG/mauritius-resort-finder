@@ -720,9 +720,9 @@ it('starts with XML declaration', () => {
 it('contains urlset element', () => {
   assertIncludes(generateSitemap(SAMPLE_PAGES, DEFAULT_BASE_URL), '<urlset');
 });
-it('contains one <loc> per page', () => {
+it('contains one <loc> per page plus homepage', () => {
   const count = (generateSitemap(SAMPLE_PAGES, DEFAULT_BASE_URL).match(/<loc>/g) || []).length;
-  assertEqual(count, SAMPLE_PAGES.length);
+  assertEqual(count, SAMPLE_PAGES.length + 1);
 });
 it('loc includes baseUrl', () => {
   assertIncludes(generateSitemap(SAMPLE_PAGES, 'https://mauritiusresortfinder.com'), 'mauritiusresortfinder.com');
@@ -759,10 +759,10 @@ it('contains today\'s date in YYYY-MM-DD format', () => {
   const today = new Date().toISOString().slice(0, 10);
   assertIncludes(generateSitemap(SAMPLE_PAGES, DEFAULT_BASE_URL), today);
 });
-it('empty pages array returns XML with empty urlset', () => {
+it('empty pages array returns XML with homepage only', () => {
   const s = generateSitemap([], DEFAULT_BASE_URL);
   assertIncludes(s, '<urlset');
-  assertEqual((s.match(/<loc>/g) || []).length, 0);
+  assertEqual((s.match(/<loc>/g) || []).length, 1);
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1200,11 +1200,11 @@ it('--top-n sets comparisonTopN', () => {
 
 section('Validation: sitemap URLs match generated pages');
 
-it('sitemap <loc> count equals pages array length', () => {
+it('sitemap <loc> count equals pages array length plus homepage', () => {
   const pages   = SAMPLE_PAGES;
   const sitemap = generateSitemap(pages, DEFAULT_BASE_URL);
   const count   = (sitemap.match(/<loc>/g) || []).length;
-  assertEqual(count, pages.length);
+  assertEqual(count, pages.length + 1);
 });
 it('every page slug appears in sitemap', () => {
   const pages   = SAMPLE_PAGES;
@@ -1283,12 +1283,12 @@ it('_slugify handles consecutive special chars', () => {
 it('_slugify handles numeric-only input', () => {
   assertEqual(_slugify('123'), '123');
 });
-it('generateSitemap with 1 page returns 1 <loc>', () => {
+it('generateSitemap with 1 page returns 2 <loc> (homepage + page)', () => {
   const count = (generateSitemap(
     [{ slug: 'only-page', page_type: 'pillar', priority: '1.0', changefreq: 'weekly' }],
     DEFAULT_BASE_URL
   ).match(/<loc>/g) || []).length;
-  assertEqual(count, 1);
+  assertEqual(count, 2);
 });
 it('generateFeed with empty pages returns channel with no items', () => {
   const feed = generateFeed([], DEFAULT_BASE_URL);

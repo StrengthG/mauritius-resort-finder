@@ -392,7 +392,7 @@ function getRelatedGuides(persona) {
     { label: 'Best Hotels for Remote Work in Mauritius', slug: 'best-remote-work-hotels-mauritius', persona: 'remote_work' },
     { label: 'Best Value Luxury Hotels in Mauritius', slug: 'best-value-luxury-hotels-mauritius', persona: 'value_luxury' },
   ];
-  return all.filter(g => g.persona !== persona);
+  return persona ? all.filter(g => g.persona !== persona) : all;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -862,20 +862,41 @@ function renderDisclosure(block) {
  */
 function renderRelatedContent(block) {
   requirePayloadFields('related_content', block.payload, ['persona', 'page_type']);
-  const { persona } = block.payload;
+  const { persona, page_type, hotel_a_name, hotel_a_slug, hotel_b_name, hotel_b_slug } = block.payload;
 
-  const guides  = getRelatedGuides(persona);
-  const linkItems = guides.map(g =>
-    `    <li class="related-content__item">` +
-    `<a href="/${esc(g.slug)}" class="related-content__link">${esc(g.label)}</a>` +
-    `</li>`
-  ).join('\n');
+  const items = [];
+
+  // Compare pages: link directly to each hotel's detail page first
+  if (page_type === 'comparison' && hotel_a_slug && hotel_b_slug) {
+    items.push(
+      `    <li class="related-content__item related-content__item--hotel">` +
+      `<a href="/${esc(hotel_a_slug)}/" class="related-content__link">${esc(hotel_a_name || hotel_a_slug)} — Full Review</a>` +
+      `</li>`,
+      `    <li class="related-content__item related-content__item--hotel">` +
+      `<a href="/${esc(hotel_b_slug)}/" class="related-content__link">${esc(hotel_b_name || hotel_b_slug)} — Full Review</a>` +
+      `</li>`
+    );
+  }
+
+  // For hotel_detail pages include all persona guides (hotel is not itself a persona page,
+  // so nothing should be excluded). For all other pages exclude the current persona.
+  const guides = page_type === 'hotel_detail'
+    ? getRelatedGuides(null)
+    : getRelatedGuides(persona);
+
+  guides.forEach(g => {
+    items.push(
+      `    <li class="related-content__item">` +
+      `<a href="/${esc(g.slug)}/" class="related-content__link">${esc(g.label)}</a>` +
+      `</li>`
+    );
+  });
 
   return [
     `<nav class="related-content" aria-label="Related travel guides">`,
     `  <h2 class="related-content__heading">Related Guides</h2>`,
     `  <ul class="related-content__list">`,
-    linkItems,
+    items.join('\n'),
     `  </ul>`,
     `</nav>`,
   ].join('\n');

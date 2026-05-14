@@ -479,6 +479,10 @@ function _generateComparisonContexts(dataset, options = {}) {
           target_keyword:  `${firstSlug.replace(/-/g, ' ')} vs ${secondSlug.replace(/-/g, ' ')}`,
           slug:            compSlug,
           hotels_compared: [first.hotel_id, second.hotel_id],
+          hotel_a_name:    first.hotel_name,
+          hotel_a_slug:    `hotels/${firstSlug}`,
+          hotel_b_name:    second.hotel_name,
+          hotel_b_slug:    `hotels/${secondSlug}`,
         },
         priority:    SITEMAP_PRIORITY.comparison,
         changefreq:  SITEMAP_CHANGEFREQ.comparison,
@@ -568,6 +572,15 @@ function generateSitemap(pages, baseUrl) {
     return pDiff !== 0 ? pDiff : (a.slug < b.slug ? -1 : 1);
   });
 
+  const homepage = [
+    '  <url>',
+    `    <loc>${_xmlEsc(base + '/')}</loc>`,
+    `    <lastmod>${today}</lastmod>`,
+    `    <changefreq>daily</changefreq>`,
+    `    <priority>1.0</priority>`,
+    '  </url>',
+  ].join('\n');
+
   const urls = sorted.map(page => {
     const loc        = `${base}/${page.slug}/`;
     const priority   = page.priority   || SITEMAP_PRIORITY[page.page_type]   || '0.5';
@@ -585,6 +598,7 @@ function generateSitemap(pages, baseUrl) {
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    homepage,
     urls,
     '</urlset>',
     '',
@@ -1052,9 +1066,9 @@ async function buildSite(options = {}) {
   // ── Validate ───────────────────────────────────────────────────────────────
   const warnings = [];
   const sitemapUrlCount = (sitemapContent.match(/<loc>/g) || []).length;
-  if (sitemapUrlCount !== specs.length) {
+  if (sitemapUrlCount !== specs.length + 1) { // +1 for homepage
     warnings.push(
-      `Sitemap URL count (${sitemapUrlCount}) != page spec count (${specs.length})`
+      `Sitemap URL count (${sitemapUrlCount}) != page spec count (${specs.length + 1})`
     );
   }
   if (!robotsContent.includes('sitemap.xml')) {
