@@ -216,8 +216,8 @@ it('SITE_BUILDER_VERSION is a non-empty string', () => {
 it('PAGE_TYPES is frozen', () => {
   assert(Object.isFrozen(PAGE_TYPES));
 });
-it('PAGE_TYPES has exactly 6 entries', () => {
-  assertEqual(Object.keys(PAGE_TYPES).length, 6);
+it('PAGE_TYPES has exactly 7 entries', () => {
+  assertEqual(Object.keys(PAGE_TYPES).length, 7);
 });
 it('PAGE_TYPES contains all expected values', () => {
   ['pillar', 'persona', 'region', 'hotel', 'comparison', 'seasonal'].forEach(v => {

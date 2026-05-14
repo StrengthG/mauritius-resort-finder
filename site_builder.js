@@ -45,12 +45,13 @@ const SITE_BUILDER_VERSION = '1.0.0';
 // ─────────────────────────────────────────────────────────────────────────────
 
 const PAGE_TYPES = Object.freeze({
-  PILLAR:     'pillar',
-  PERSONA:    'persona',
-  REGION:     'region',
-  HOTEL:      'hotel',
-  COMPARISON: 'comparison',
-  SEASONAL:   'seasonal',
+  PILLAR:        'pillar',
+  PERSONA:       'persona',
+  REGION:        'region',
+  HOTEL:         'hotel',
+  COMPARISON:    'comparison',
+  SEASONAL:      'seasonal',
+  INFORMATIONAL: 'informational',
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -58,21 +59,23 @@ const PAGE_TYPES = Object.freeze({
 // ─────────────────────────────────────────────────────────────────────────────
 
 const SITEMAP_PRIORITY = Object.freeze({
-  pillar:     '1.0',
-  persona:    '0.9',
-  region:     '0.8',
-  hotel:      '0.7',
-  comparison: '0.6',
-  seasonal:   '0.5',
+  pillar:        '1.0',
+  persona:       '0.9',
+  region:        '0.8',
+  informational: '0.8',
+  hotel:         '0.7',
+  comparison:    '0.6',
+  seasonal:      '0.5',
 });
 
 const SITEMAP_CHANGEFREQ = Object.freeze({
-  pillar:     'weekly',
-  persona:    'weekly',
-  region:     'weekly',
-  hotel:      'monthly',
-  comparison: 'monthly',
-  seasonal:   'monthly',
+  pillar:        'weekly',
+  persona:       'weekly',
+  region:        'weekly',
+  informational: 'monthly',
+  hotel:         'monthly',
+  comparison:    'monthly',
+  seasonal:      'monthly',
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -164,6 +167,7 @@ function _slugify(text) {
   if (!text || typeof text !== 'string') return '';
   return text
     .toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')  // strip accents: é→e, ü→u
     .replace(/&/g, 'and')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/-+/g, '-')
@@ -501,6 +505,17 @@ function _generateComparisonContexts(dataset, options = {}) {
  * @param  {Object}   options
  * @returns {{ specs: Object[], duplicates: string[] }}
  */
+// Static/informational pages served from pages/ — included in sitemap only
+// (content is authored HTML; they are copied to dist/ separately by the build).
+const STATIC_PAGE_SPECS = Object.freeze([
+  { slug: 'best-resort-mauritius',          page_type: 'pillar',        priority: '0.9', changefreq: 'weekly'  },
+  { slug: 'best-value-resorts-mauritius',   page_type: 'informational', priority: '0.8', changefreq: 'weekly'  },
+  { slug: 'adults-only-resorts-mauritius',  page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'best-time-to-visit-mauritius',   page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'rankings',                       page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
+  { slug: 'methodology',                    page_type: 'informational', priority: '0.5', changefreq: 'monthly' },
+]);
+
 function generatePageContexts(dataset, options = {}) {
   if (!Array.isArray(dataset)) {
     throw new TypeError('generatePageContexts: dataset must be an array');
@@ -1002,7 +1017,10 @@ async function buildSite(options = {}) {
 
   // ── [4/5] Generate site assets ─────────────────────────────────────────────
   _log('\n[4/5] Generating site assets');
-  const sitemapContent = generateSitemap(specs, baseUrl);
+  // Merge static page specs for sitemap only — they are HTML files copied from pages/
+  // and must NOT go through the dynamic build pipeline.
+  const sitemapSpecs   = [...specs, ...STATIC_PAGE_SPECS];
+  const sitemapContent = generateSitemap(sitemapSpecs, baseUrl);
   const robotsContent  = generateRobots(baseUrl);
   const feedContent    = generateFeed(specs, baseUrl);
 
@@ -1066,9 +1084,9 @@ async function buildSite(options = {}) {
   // ── Validate ───────────────────────────────────────────────────────────────
   const warnings = [];
   const sitemapUrlCount = (sitemapContent.match(/<loc>/g) || []).length;
-  if (sitemapUrlCount !== specs.length + 1) { // +1 for homepage
+  if (sitemapUrlCount !== sitemapSpecs.length + 1) { // +1 for homepage
     warnings.push(
-      `Sitemap URL count (${sitemapUrlCount}) != page spec count (${specs.length + 1})`
+      `Sitemap URL count (${sitemapUrlCount}) != page spec count (${sitemapSpecs.length + 1})`
     );
   }
   if (!robotsContent.includes('sitemap.xml')) {
