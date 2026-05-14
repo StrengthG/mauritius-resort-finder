@@ -215,6 +215,19 @@
 
   BigDodo.prototype._open = function () {
     this.isOpen = true;
+
+    // iOS scroll-lock: freeze the page behind the panel so it doesn't
+    // shift when the keyboard appears or the fixed panel renders.
+    var isMobile = window.innerWidth <= 480;
+    if (isMobile) {
+      this._scrollY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.position = 'fixed';
+      document.body.style.top      = '-' + this._scrollY + 'px';
+      document.body.style.left     = '0';
+      document.body.style.right    = '0';
+      document.body.style.overflow = 'hidden';
+    }
+
     this.panel.classList.add('bd-panel--open');
     this.panel.setAttribute('aria-hidden', 'false');
     this.btn.setAttribute('aria-expanded', 'true');
@@ -233,7 +246,9 @@
 
     var self = this;
     requestAnimationFrame(function () {
-      self._input.focus();
+      // Don't auto-focus on mobile — triggering the keyboard immediately
+      // causes an additional viewport resize that can push the panel off-screen.
+      if (!isMobile) self._input.focus();
       self._scrollBottom();
     });
 
@@ -245,6 +260,18 @@
     this.panel.classList.remove('bd-panel--open');
     this.panel.setAttribute('aria-hidden', 'true');
     this.btn.setAttribute('aria-expanded', 'false');
+
+    // Restore page scroll position
+    if (document.body.style.position === 'fixed') {
+      var scrollY = this._scrollY || 0;
+      document.body.style.position = '';
+      document.body.style.top      = '';
+      document.body.style.left     = '';
+      document.body.style.right    = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, scrollY);
+    }
+
     this.btn.focus();
   };
 
