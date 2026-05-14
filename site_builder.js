@@ -875,7 +875,7 @@ async function buildSite(options = {}) {
     failOnPageError = false,
     dryRun          = false,
     verbose         = false,
-    affiliateLinks  = {},
+    affiliateLinks: optionAffiliateLinks = {},
     comparisonTopN  = DEFAULT_COMPARISON_TOP_N,
     regionMinHotels = DEFAULT_REGION_MIN_HOTELS,
     // injectable module overrides (for testing)
@@ -884,6 +884,9 @@ async function buildSite(options = {}) {
     _blockAssembler    = null,
     _renderer          = null,
   } = options;
+
+  // affiliateLinks may be overridden by syncFn result (e.g. extracted from hotels.json)
+  let affiliateLinks = optionAffiliateLinks;
 
   const t0     = Date.now();
   const _log   = verbose ? (m) => process.stdout.write(m + '\n') : () => {};
@@ -906,6 +909,10 @@ async function buildSite(options = {}) {
   if (syncFn) {
     const syncResult = await syncFn();
     hotelObjects = syncResult.hotelObjects;
+    if (syncResult.affiliateLinks && typeof syncResult.affiliateLinks === 'object' &&
+        !Array.isArray(syncResult.affiliateLinks)) {
+      affiliateLinks = syncResult.affiliateLinks;
+    }
   } else {
     const harness = require('./integration_harness.js');
     hotelObjects  = harness.HOTEL_DATASET;
@@ -1136,7 +1143,20 @@ async function main() {
     syncFn = () => {
       const hotelObjects = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'))
         .filter(h => h._status !== 'inactive');
-      return Promise.resolve({ hotelObjects });
+      const affiliateLinks = {};
+      for (const h of hotelObjects) {
+        if (Array.isArray(h._affiliate_links) && h._affiliate_links.length > 0) {
+          const link = h._affiliate_links[0];
+          if (link.booking_url) {
+            affiliateLinks[h.hotel_id] = {
+              booking_url:     link.booking_url,
+              provider:        link.provider        || null,
+              commission_tier: link.commission_tier || null,
+            };
+          }
+        }
+      }
+      return Promise.resolve({ hotelObjects, affiliateLinks });
     };
   } else {
     process.stdout.write('[site_builder] No AIRTABLE credentials or snapshot — using test dataset\n');
