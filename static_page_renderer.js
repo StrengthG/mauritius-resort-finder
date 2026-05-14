@@ -407,15 +407,31 @@ function getRelatedGuides(persona) {
  */
 function renderHero(block) {
   requirePayloadFields('hero', block.payload, ['title', 'persona']);
-  const { title, persona, target_keyword, page_type } = block.payload;
+  const { title, persona, target_keyword, page_type, booking_url, hotel_name } = block.payload;
+
+  const isHotelDetail = page_type === 'hotel_detail';
+  const ctaTarget     = hotel_name || title;
+
+  const ctaHtml = (isHotelDetail && booking_url) ? [
+    `  <div class="hero__actions">`,
+    `    <a href="${esc(_safeUrl(booking_url))}"`,
+    `       rel="nofollow sponsored"`,
+    `       class="hero__cta-btn"`,
+    `       aria-label="Check prices for ${esc(ctaTarget)} on Expedia">`,
+    `      Check prices on Expedia &#8594;`,
+    `    </a>`,
+    `    <p class="hero__cta-note">Affiliate link &middot; no extra cost to you</p>`,
+    `  </div>`,
+  ].join('\n') : '';
 
   return [
     `<section class="hero hero--${esc(page_type || 'ranking')}" aria-labelledby="hero-heading">`,
     `  <div class="hero__inner">`,
     `    <h1 id="hero-heading" class="hero__title">${esc(title)}</h1>`,
-    `    <p class="hero__persona">For <strong>${esc(personaLabel(persona))}</strong> travelers</p>`,
-    `    <p class="hero__tagline">${esc(personaTagline(persona))}</p>`,
+    isHotelDetail ? '' : `    <p class="hero__persona">For <strong>${esc(personaLabel(persona))}</strong> travelers</p>`,
+    isHotelDetail ? '' : `    <p class="hero__tagline">${esc(personaTagline(persona))}</p>`,
     /* target_keyword is exposed via <head> meta only — not repeated in body HTML */
+    ctaHtml,
     `  </div>`,
     `</section>`,
   ].filter(Boolean).join('\n');
@@ -1303,6 +1319,10 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `    .hero{padding:72px 0 60px;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -5%,rgba(201,168,76,.08) 0%,transparent 65%);pointer-events:none}.hero .container{position:relative}`,
     `    .hero__persona{display:inline-flex;align-items:center;gap:8px;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);background:var(--gold-glow);border:1px solid var(--border-gold);border-radius:var(--radius-pill);padding:5px 14px;margin-bottom:24px}.hero__persona::before{content:'●';font-size:.42rem;opacity:.7}`,
     `    .hero__title{margin-bottom:16px}.hero__tagline{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.8}`,
+    `    .hero__actions{margin-top:28px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}`,
+    `    .hero__cta-btn{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-bright) 50%,var(--gold-dim) 100%);background-size:200% auto;color:var(--deep-navy);font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:14px 32px;border-radius:var(--radius-pill);white-space:nowrap;transition:background-position .4s,box-shadow .3s,transform .2s;display:inline-block;position:relative;overflow:hidden}`,
+    `    .hero__cta-btn:hover{background-position:right center;box-shadow:0 8px 32px rgba(201,168,76,.55);transform:translateY(-2px)}`,
+    `    .hero__cta-note{font-size:.7rem;color:var(--muted)}`,
     `    .ranking-summary{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin:24px auto;max-width:1200px}`,
     `    .ranking-summary__heading{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-family:'DM Sans',sans-serif}`,
     `    .ranking-summary__list{list-style:none;display:flex;flex-direction:column;gap:10px}.ranking-summary__item{display:flex;align-items:center;gap:14px}.ranking-summary__rank{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:800;color:var(--gold);width:28px;flex-shrink:0}`,

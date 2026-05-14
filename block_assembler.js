@@ -454,6 +454,8 @@ function _makeHeroBlock(pageContext, position, trustScore) {
       target_keyword: pageContext.target_keyword || null,
       page_type:      pageContext.page_type,
       slug:           pageContext.slug           || null,
+      booking_url:    pageContext.booking_url    || null,
+      hotel_name:     pageContext.hotel_name     || null,
     },
     dependencies:      [],
     validation_status: VALIDATION_STATUS.VALID,
@@ -846,8 +848,13 @@ function assemble(rankedHotels, explanationObjects, pageContext, affiliateLinks,
   }
 
   // ── Stage 10: FAQ Block ───────────────────────────────────────────────────
-  trust += TRUST_WEIGHTS.faq;
-  commit(_makeFAQBlock(pageContext));
+  // Skip for hotel_detail pages — the hotel editorial block already includes
+  // hotel-specific FAQs with FAQPage schema. Adding a second FAQ block creates
+  // a duplicate section and duplicate structured data.
+  if (pageContext.page_type !== 'hotel_detail') {
+    trust += TRUST_WEIGHTS.faq;
+    commit(_makeFAQBlock(pageContext));
+  }
 
   // ── Stage 11: Disclosure Block (always) ───────────────────────────────────
   // Disclosure does NOT contribute to trust depth.

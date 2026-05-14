@@ -416,6 +416,10 @@ function _generateHotelContexts(dataset, options = {}) {
         target_keyword: `${_slugify(hotel.hotel_name).replace(/-/g, ' ')} mauritius review`,
         slug:           hotelSlug,
         hotel_id:       hotel.hotel_id,
+        hotel_name:     hotel.hotel_name,
+        booking_url:    (options.affiliateLinks && options.affiliateLinks[hotel.hotel_id])
+          ? options.affiliateLinks[hotel.hotel_id].booking_url
+          : null,
       },
       priority:    SITEMAP_PRIORITY.hotel,
       changefreq:  SITEMAP_CHANGEFREQ.hotel,
