@@ -114,7 +114,7 @@
   right: 24px;
   z-index: 9001;
 
-  width: 380px;
+  width: min(380px, calc(100vw - 48px));
   height: 560px;
   max-height: calc(100vh - 120px);
 
