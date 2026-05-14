@@ -1164,20 +1164,31 @@ function extractPageMeta(pageObject, options = {}) {
   const keyword = payload.target_keyword || '';
   const pageType = payload.page_type  || 'ranking';
 
-  // Build a description: use the top hotel's explanation_summary if available,
-  // otherwise fall back to a template string.
+  // Build a CTR-optimised meta description based on page type and persona.
+  const PERSONA_DESCRIPTIONS = {
+    luxury:       'Expert rankings of Mauritius\'s finest luxury hotels — independently scored on location, amenities, brand prestige, and value. No paid placements. Updated 2026.',
+    honeymoon:    'The best honeymoon hotels in Mauritius — adults-only retreats, private beach villas, and couples spas. Independently scored and ranked.',
+    family:       'Top family-friendly resorts in Mauritius, ranked for kids clubs, shallow lagoons, and family suites. Independent reviews from Mauritius Resort Finder.',
+    wellness:     'Mauritius\'s top wellness resorts — ranked by spa quality, yoga programmes, and holistic treatments. Independent scores, no sponsored placements.',
+    remote_work:  'Best hotels for remote work in Mauritius — fast Wi-Fi, quiet workspaces, and reliable connectivity. Independently reviewed and scored.',
+    value_luxury: 'The best-value luxury hotels in Mauritius — five-star quality at smart prices. Independently scored on amenities, location, and value.',
+  };
+
   let description = '';
-  const firstCard = blocks.find(b => b.block_type === 'hotel_card');
-  if (firstCard && firstCard.payload && firstCard.payload.explanation) {
-    const raw = firstCard.payload.explanation.explanation_summary || '';
-    description = raw.length > 160
-      ? raw.slice(0, 157) + '...'
-      : raw;
-  }
-  if (!description) {
+  if (pageType === 'hotel_detail' || pageType === 'hotel') {
+    const hotelName = payload.hotel_name || title.replace(/ Review & Booking Guide.*$/, '');
+    const hotelCard = blocks.find(b => b.block_type === 'hotel_card');
+    const region    = (hotelCard && hotelCard.payload && hotelCard.payload.hotel_data && hotelCard.payload.hotel_data.region) || null;
+    const locationStr = region ? `${region}, Mauritius` : 'Mauritius';
+    description = `${hotelName} — independent review covering location, amenities, guest ratings, and booking options in ${locationStr}.`;
+  } else if (PERSONA_DESCRIPTIONS[persona]) {
+    description = PERSONA_DESCRIPTIONS[persona];
+  } else if (pageType === 'region' || pageType === 'ranking') {
     description = `${title}. ${personaTagline(persona)} Independently scored and ranked.`;
-    if (description.length > 160) description = description.slice(0, 157) + '...';
+  } else {
+    description = `${title}. ${personaTagline(persona)} Independently scored and ranked.`;
   }
+  if (description.length > 160) description = description.slice(0, 157) + '...';
 
   return { title, description, slug, persona, keyword, pageType };
 }
@@ -1198,7 +1209,7 @@ function extractPageMeta(pageObject, options = {}) {
  */
 function generateStructuredData(pageObject, meta, baseUrl) {
   const blocks    = (pageObject && pageObject.blocks) || [];
-  const canonUrl  = `${baseUrl}/${meta.slug}`.replace(/\/+$/, '');
+  const canonUrl  = (`${baseUrl}/${meta.slug}`.replace(/\/+$/, '')) + '/';
 
   // BreadcrumbList
   const breadcrumb = {
@@ -1256,19 +1267,14 @@ function generateStructuredData(pageObject, meta, baseUrl) {
  * @returns {string}
  */
 function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
-  const canonUrl = `${baseUrl}/${meta.slug}`.replace(/\/+$/, '');
+  const canonUrl = (`${baseUrl}/${meta.slug}`.replace(/\/+$/, '')) + '/';
 
   const lines = [
     `  <meta charset="UTF-8">`,
     `  <meta name="viewport" content="width=device-width, initial-scale=1.0">`,
     `  <!-- Google Analytics -->`,
     `  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>`,
-    `  <script>`,
-    `    window.dataLayer = window.dataLayer || [];`,
-    `    function gtag(){dataLayer.push(arguments);}`,
-    `    gtag('js', new Date());`,
-    `    gtag('config', 'G-TN713HPVCQ');`,
-    `  </script>`,
+    `  <script src="/assets/js/analytics.js" defer></script>`,
     `  <title>${esc(meta.title)}</title>`,
     `  <meta name="description" content="${esc(meta.description)}">`,
     meta.keyword
