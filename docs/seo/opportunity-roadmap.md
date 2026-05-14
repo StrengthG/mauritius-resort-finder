@@ -11,16 +11,17 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 
 | Task | Type | Keyword Target | Notes |
 |---|---|---|---|
-| Add homepage to sitemap | Technical | "best resorts in Mauritius" | 2-line change in site_builder.js |
-| Internal links: hotel pages → persona pages | On-page | All hotel keywords | Each hotel appears in 1–3 personas |
-| Internal links: compare pages → hotel detail | On-page | Comparison keywords | Currently fully siloed |
-| Fix: `oneandonly-le-saint-g-ran` slug encoding | Technical | "One&Only Le Saint Géran" | Truncated slug looks broken in SERPs |
+| ~~Add homepage to sitemap~~ | ~~Technical~~ | — | ✅ Done 2026-05-15 |
+| ~~Internal links: hotel pages → persona pages~~ | ~~On-page~~ | — | ✅ Done 2026-05-15 |
+| ~~Internal links: compare pages → hotel detail~~ | ~~On-page~~ | — | ✅ Done 2026-05-15 |
+| ~~Fix: `oneandonly-le-saint-g-ran` slug encoding~~ | ~~Technical~~ | — | ✅ Done 2026-05-15 |
+| Add /best-time-to-visit-mauritius/ link to persona pages | Internal linking | All persona keywords | Reverse-link from 6 ranking pages |
 
 ## Tier 2 — Short term (next 2 weeks)
 
 | Task | Type | Keyword Target | Est. Traffic |
 |---|---|---|---|
-| Build "Best time to visit Mauritius" | Informational | "best time to visit Mauritius" | 8,000–12,000/mo |
+| ~~Build "Best time to visit Mauritius"~~ | ~~Informational~~ | — | ✅ Done 2026-05-15 (2,142 words) |
 | Build "Mauritius honeymoon guide" | Informational | "mauritius honeymoon guide" | 3,000–5,000/mo |
 | Build "East coast vs west coast Mauritius" | Informational | "east coast vs west coast mauritius" | 1,000–3,000/mo |
 | Build Le Morne regional page | Regional | "le morne hotels mauritius" | 500–1,500/mo |

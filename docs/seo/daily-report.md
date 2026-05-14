@@ -1,10 +1,8 @@
-# SEO Daily Report — 2026-05-15
+# SEO Daily Report — 2026-05-15 (Run 2)
 
 ## 1. Executive Summary
 
-First audit of Mauritius Resort Finder under Project Lighthouse. Four critical technical SEO issues were found and fixed in this session. Google Analytics was not firing on any page due to a Content Security Policy violation — meaning zero conversion tracking data has been collected. Canonical URLs conflicted with the sitemap, creating a duplicate-content signal on all 61 pages. All ranking page titles were two years stale. Meta descriptions were exposing internal scoring text, hurting CTR across the board.
-
-All four issues are now fixed and pushed. The next highest-priority work is: (1) informational content pages targeting high-volume queries, and (2) expanding the comparison page set to capture branded comparison searches.
+Four issues fixed and one high-value content page launched. The One&Only Le Saint Géran hotel had a broken URL slug in every URL it appeared in (hotel detail + 4 compare pages) — now corrected. All 7 static pages were still using the CSP-blocked inline GA script despite the earlier fix to generated pages — now corrected. Static pages (methodology, rankings, etc.) were not in the sitemap at all — now included. The new "Best time to visit Mauritius" page (2,100+ words, FAQPage schema) targets 8,000–12,000 monthly searches and is fully internal-linked to 8 persona and regional pages.
 
 ---
 
@@ -12,114 +10,58 @@ All four issues are now fixed and pushed. The next highest-priority work is: (1)
 
 | Issue | Severity | Status |
 |---|---|---|
-| CSP blocks GA inline script — no analytics data collected | **Critical** | Fixed |
-| Canonical URLs missing trailing slash (sitemap has them) | **High** | Fixed |
-| All persona + region page titles showing "2024" | **High** | Fixed |
-| Meta descriptions exposing internal scoring text | **High** | Fixed |
-| Cloudflare Pages had no build command — site never generated | **Critical** | Fixed (prev. session) |
+| `_slugify()` drops accented chars — One&Only slug broken in 5 URLs | High | Fixed |
+| Inline GA script in all 7 static pages still CSP-blocked | High | Fixed |
+| Static pages (methodology, rankings, etc.) absent from sitemap | Medium | Fixed |
+| PAGE_TYPES missing `informational` type | Low | Fixed |
 
-### CSP / Google Analytics
-The `Content-Security-Policy` header had `script-src 'self' https://www.googletagmanager.com` with no `'unsafe-inline'`. The GA initialisation was an inline `<script>` block, which was blocked. Solution: extracted to `assets/js/analytics.js` (served as `'self'`). GA should now fire on all 61 pages.
+### Slug encoding
+`_slugify('One&Only Le Saint Géran')` was producing `oneandonly-le-saint-g-ran` because `é` is non-ASCII and was replaced by `-`. Fixed by adding NFD normalisation + strip combining marks before slugifying. Affects: hotel detail page, and 4 compare pages. All 5 URLs now correct (`oneandonly-le-saint-geran`).
 
-### Canonical vs Sitemap Trailing Slash
-Sitemap: `https://mauritiusresortfinder.com/best-luxury-hotels-mauritius/` (trailing slash)
-Canonical was: `https://mauritiusresortfinder.com/best-luxury-hotels-mauritius` (no slash)
-Cloudflare Pages serves from directory `index.html` files, so the trailing-slash URL is authoritative. Canonicals now match the sitemap.
+### CSP in static pages
+The earlier fix applied to dynamically generated pages only. The 7 hand-authored HTML files in `pages/` still contained the inline GA init block. Replaced with `<script src="/assets/js/analytics.js" defer>` across all 7 files.
 
-### Stale Year in Titles
-- Before: "Best Luxury Hotels in Mauritius **2024**"
-- After: "Best Luxury Hotels in Mauritius **2026**"
-Affects all 6 persona pages and all 16 regional pages (22 pages total).
-
-### Meta Descriptions
-- Before (persona pages): Internal scoring text starting with "Four Seasons Resort Mauritius at Anahita: Overall score: 79/100. Leading signal — Brand score: 95/100..."
-- Before (hotel pages): Same scoring text for every hotel, regardless of which hotel the page is about
-- After (persona pages): Persona-specific copy targeting the user's intent
-- After (hotel pages): "Royal Palm Beachcomber Luxury — independent review covering location, amenities, guest ratings, and booking options in Grand Baie, Mauritius."
+### Static pages in sitemap
+`methodology`, `rankings`, `adults-only-resorts-mauritius`, `best-value-resorts-mauritius`, `best-resort-mauritius`, and the new `best-time-to-visit-mauritius` page were not appearing in `sitemap.xml`. Added `STATIC_PAGE_SPECS` constant that merges into the sitemap generation step only (not into the dynamic build pipeline).
 
 ---
 
-## 3. Content Opportunities
+## 3. Content Work Done This Run
 
-### Missing High-Value Pages (not yet built)
-| Page | Target Keyword | Est. Monthly Searches | Priority |
+### New page: Best Time to Visit Mauritius
+- **URL**: `/best-time-to-visit-mauritius/`
+- **Target keyword**: "best time to visit Mauritius" (est. 8,000–12,000 searches/month)
+- **Word count**: 2,142 words
+- **Structured data**: BreadcrumbList + FAQPage (6 questions)
+- **Internal links**: 8 links to persona and regional pages
+- **Content**: Month-by-month table, season comparison cards, coast guide, activity breakdown (beach, diving, golf, honeymoon), 6-item FAQ
+
+---
+
+## 4. Internal Linking Changes
+
+- New informational page links to: best-luxury, best-honeymoon, best-family, best-wellness, best-value-luxury + belle-mare, flic-en-flac, bel-ombre regional pages
+- Roadmap next: add a link to the new informational page from persona ranking pages (reverse linking)
+
+---
+
+## 5. Priority Action List for Next Run
+
+| # | Action | Type | Impact |
 |---|---|---|---|
-| Best time to visit Mauritius | "best time to visit Mauritius" | 8,000–12,000 | High |
-| East coast vs west coast Mauritius | "east coast vs west coast Mauritius" | 1,000–3,000 | High |
-| Mauritius honeymoon guide | "Mauritius honeymoon guide" | 3,000–5,000 | High |
-| Mauritius luxury travel guide | "Mauritius luxury travel guide" | 1,000–2,000 | Medium |
-| Le Morne luxury hotels | "le morne hotels mauritius" | 500–1,500 | Medium |
-
-### Comparison Pages — Current Coverage Gap
-The site has 10 comparison pages covering only 5 hotels. High-value comparisons missing:
-- Royal Palm vs One&Only Le Saint Géran
-- Shangri-La Le Touessrok vs Four Seasons Mauritius
-- LUX* Grand Gaube vs LUX* Belle Mare
-- Heritage Awali vs Shanti Maurice
-
-### Sitemap Missing the Homepage
-`https://mauritiusresortfinder.com/` is not in `sitemap.xml`. This is the most important page for ranking "best resorts in Mauritius".
+| 1 | Add link to /best-time-to-visit-mauritius/ from persona ranking pages | Internal linking | Medium |
+| 2 | Build "Mauritius honeymoon guide" | Content | High |
+| 3 | Build "East coast vs west coast Mauritius" | Content | Medium |
+| 4 | Expand comparison page set — 4 missing high-value pairs | Comparison | Medium |
+| 5 | Add FAQ schema to persona ranking pages (already in assembler, verify output) | Technical | Medium |
 
 ---
 
-## 4. Internal Linking Recommendations
+## 6. Expected SEO Impact
 
-- Hotel detail pages do not link back to the persona pages they appear on (e.g. Royal Palm has no link to `/best-luxury-hotels-mauritius/`).
-- Regional pages do not cross-link to each other or to the pillar page.
-- Compare pages are siloed — no links from hotel detail pages to relevant comparisons.
-- Homepage (`index.html`) should link to all 6 persona pages and the top 5 regional pages.
-
----
-
-## 5. Backlink Opportunities
-
-**Digital PR targets** (sites likely to cover Mauritius luxury travel):
-- Condé Nast Traveller (UK/US)
-- The Points Guy
-- Luxury Travel Magazine
-- Travel + Leisure
-- Forbes Travel Guide
-
-**Guest post targets:**
-- Honeymoon-specific blogs ("The Honeymoon Guy", "Honeymoons Inc blog")
-- Expat Mauritius communities
-- Beachcomber Hotels travel blog (potential partnership)
-
-**Data-driven PR angles** (unique angles from the scoring data):
-- "We ranked every 5-star hotel in Mauritius — here's what the data says"
-- "Best value for money luxury hotels in Mauritius 2026 (ranked by algorithm)"
-
----
-
-## 6. Conversion Improvements
-
-- **CTA placement**: "Check prices" buttons exist on all hotel cards but there is no sticky CTA in the site header for hotel detail pages.
-- **Affiliate disclosure**: The disclosure text is present but small and below the fold. Consider adding a brief inline note near each CTA.
-- **Missing price context**: Many hotel cards show no price estimate, reducing conversion intent.
-
----
-
-## 7. Priority Action List
-
-| # | Action | Impact | Effort | Score |
-|---|---|---|---|---|
-| 1 | Add homepage to sitemap.xml | High | Low | **High** |
-| 2 | Build "Best time to visit Mauritius" informational page | High | Medium | **High** |
-| 3 | Build "Mauritius honeymoon guide" informational page | High | Medium | **High** |
-| 4 | Add internal links from hotel pages → persona pages | Medium | Low | **High** |
-| 5 | Add internal links from compare pages → hotel pages | Medium | Low | **Medium** |
-| 6 | Expand comparison page set (missing 4 high-value pairs) | Medium | Medium | **Medium** |
-| 7 | Build Le Morne regional page | Medium | Low | **Medium** |
-| 8 | Add structured data (FAQPage) to persona ranking pages | Medium | Low | **Medium** |
-
----
-
-## 8. Expected SEO Impact
-
-| Fix | Expected Impact |
+| Change | Expected Impact |
 |---|---|
-| CSP / GA fixed | Analytics data now flowing; can make data-driven decisions |
-| Canonical trailing slash | Consolidates ranking signal; removes duplicate-content ambiguity on 61 pages |
-| Year 2024 → 2026 in titles | Improved CTR on ranking/persona pages (stale years signal outdated content) |
-| Meta descriptions | Improved CTR across all 61 pages; better SERP snippet quality |
-| Informational pages (next) | New organic traffic from high-volume head terms; supports topical authority |
+| One&Only slug fix | Corrects 5 broken URLs; Google can now index and attribute the hotel correctly |
+| CSP fix in static pages | GA now fires on all 61 pages including hand-authored static pages |
+| Static pages in sitemap | Methodology, rankings, adults-only etc. now crawlable via sitemap signal |
+| Best time to visit page | New organic entry point for 8–12k monthly searches; supports topical authority |
