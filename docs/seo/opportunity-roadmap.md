@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-15
+Last updated: 2026-05-15 (Run 3)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -15,17 +15,17 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Internal links: hotel pages → persona pages~~ | ~~On-page~~ | — | ✅ Done 2026-05-15 |
 | ~~Internal links: compare pages → hotel detail~~ | ~~On-page~~ | — | ✅ Done 2026-05-15 |
 | ~~Fix: `oneandonly-le-saint-g-ran` slug encoding~~ | ~~Technical~~ | — | ✅ Done 2026-05-15 |
-| Add /best-time-to-visit-mauritius/ link to persona pages | Internal linking | All persona keywords | Reverse-link from 6 ranking pages |
+| ~~Add /best-time-to-visit-mauritius/ link to persona pages~~ | ~~Internal linking~~ | — | ✅ Done 2026-05-15 (Run 3) |
 
 ## Tier 2 — Short term (next 2 weeks)
 
 | Task | Type | Keyword Target | Est. Traffic |
 |---|---|---|---|
 | ~~Build "Best time to visit Mauritius"~~ | ~~Informational~~ | — | ✅ Done 2026-05-15 (2,142 words) |
-| Build "Mauritius honeymoon guide" | Informational | "mauritius honeymoon guide" | 3,000–5,000/mo |
-| Build "East coast vs west coast Mauritius" | Informational | "east coast vs west coast mauritius" | 1,000–3,000/mo |
+| ~~Build "Mauritius honeymoon guide"~~ | ~~Informational~~ | — | ✅ Done 2026-05-15 (2,300 words) |
+| ~~Build "East coast vs west coast Mauritius"~~ | ~~Informational~~ | — | ✅ Done 2026-05-15 (2,100 words) |
+| ~~Expand comparison page set (5 new pairs)~~ | ~~Comparison~~ | — | ✅ Done 2026-05-15 (topN 5→6, 15 total) |
 | Build Le Morne regional page | Regional | "le morne hotels mauritius" | 500–1,500/mo |
-| Expand comparison page set (4 missing pairs) | Comparison | Branded comparison queries | 200–600/mo each |
 
 ## Tier 3 — Medium term (next month)
 

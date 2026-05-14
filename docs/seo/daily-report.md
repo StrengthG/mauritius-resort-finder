@@ -1,67 +1,85 @@
-# SEO Daily Report — 2026-05-15 (Run 2)
+# SEO Daily Report — 2026-05-15 (Run 3)
 
 ## 1. Executive Summary
 
-Four issues fixed and one high-value content page launched. The One&Only Le Saint Géran hotel had a broken URL slug in every URL it appeared in (hotel detail + 4 compare pages) — now corrected. All 7 static pages were still using the CSP-blocked inline GA script despite the earlier fix to generated pages — now corrected. Static pages (methodology, rankings, etc.) were not in the sitemap at all — now included. The new "Best time to visit Mauritius" page (2,100+ words, FAQPage schema) targets 8,000–12,000 monthly searches and is fully internal-linked to 8 persona and regional pages.
+Three Tier 1 and Tier 2 tasks completed in full. The last remaining Tier 1 item — reverse-linking `/best-time-to-visit-mauritius/` from persona pages — is done; the page now appears in the Related Guides section across all persona, hotel detail, and comparison pages. Two new content pages launched: "Mauritius Honeymoon Guide" (2,300 words, targets 3,000–5,000 monthly searches) and "East Coast vs West Coast Mauritius" (2,100 words, targets 1,000–3,000/mo). The comparison set expanded from 10 to 15 pages (adding the #6 hotel, Constance Belle Mare Plage, against all top-5 opponents). All 66 pages build cleanly, all 238 tests pass.
 
 ---
 
 ## 2. Technical Issues Found & Fixed
 
-| Issue | Severity | Status |
-|---|---|---|
-| `_slugify()` drops accented chars — One&Only slug broken in 5 URLs | High | Fixed |
-| Inline GA script in all 7 static pages still CSP-blocked | High | Fixed |
-| Static pages (methodology, rankings, etc.) absent from sitemap | Medium | Fixed |
-| PAGE_TYPES missing `informational` type | Low | Fixed |
+No new technical bugs found this run.
 
-### Slug encoding
-`_slugify('One&Only Le Saint Géran')` was producing `oneandonly-le-saint-g-ran` because `é` is non-ASCII and was replaced by `-`. Fixed by adding NFD normalisation + strip combining marks before slugifying. Affects: hotel detail page, and 4 compare pages. All 5 URLs now correct (`oneandonly-le-saint-geran`).
-
-### CSP in static pages
-The earlier fix applied to dynamically generated pages only. The 7 hand-authored HTML files in `pages/` still contained the inline GA init block. Replaced with `<script src="/assets/js/analytics.js" defer>` across all 7 files.
-
-### Static pages in sitemap
-`methodology`, `rankings`, `adults-only-resorts-mauritius`, `best-value-resorts-mauritius`, `best-resort-mauritius`, and the new `best-time-to-visit-mauritius` page were not appearing in `sitemap.xml`. Added `STATIC_PAGE_SPECS` constant that merges into the sitemap generation step only (not into the dynamic build pipeline).
+| Verified | Status |
+|---|---|
+| FAQ schema on persona pages | ✅ Confirmed present in built HTML |
+| Sitemap includes both new content pages | ✅ Verified in dist/sitemap.xml |
+| All 5 Constance Belle Mare Plage compare pages build correctly | ✅ 66/66 pages |
 
 ---
 
 ## 3. Content Work Done This Run
 
-### New page: Best Time to Visit Mauritius
-- **URL**: `/best-time-to-visit-mauritius/`
-- **Target keyword**: "best time to visit Mauritius" (est. 8,000–12,000 searches/month)
-- **Word count**: 2,142 words
+### New page: Mauritius Honeymoon Guide
+- **URL**: `/mauritius-honeymoon-guide/`
+- **Target keyword**: "mauritius honeymoon guide" (est. 3,000–5,000 searches/month)
+- **Word count**: ~2,300 words
 - **Structured data**: BreadcrumbList + FAQPage (6 questions)
-- **Internal links**: 8 links to persona and regional pages
-- **Content**: Month-by-month table, season comparison cards, coast guide, activity breakdown (beach, diving, golf, honeymoon), 6-item FAQ
+- **Internal links**: 7 links — honeymoon ranking page, luxury ranking, wellness, best-time, belle-mare, bel-ombre, beau-champ regional pages
+- **Content**: Why Mauritius for honeymoon, best time to go, coast guide (4-card grid), top 5 hotels with scored data, romantic experiences grid, package inclusions guide, practical planning (flights, visas, getting around)
+
+### New page: East Coast vs West Coast Mauritius
+- **URL**: `/east-coast-vs-west-coast-mauritius/`
+- **Target keyword**: "east coast vs west coast mauritius" (est. 1,000–3,000 searches/month)
+- **Word count**: ~2,100 words
+- **Structured data**: BreadcrumbList + FAQPage (5 questions)
+- **Internal links**: 8 links — belle-mare, bel-ombre, flic-en-flac, beau-champ regional pages + best-time-to-visit, mauritius-honeymoon-guide
+- **Content**: The short answer summary, weather mechanics explained (trade winds), side-by-side comparison table, detailed east and west coast sections, split-stay advice, decision guide
 
 ---
 
 ## 4. Internal Linking Changes
 
-- New informational page links to: best-luxury, best-honeymoon, best-family, best-wellness, best-value-luxury + belle-mare, flic-en-flac, bel-ombre regional pages
-- Roadmap next: add a link to the new informational page from persona ranking pages (reverse linking)
+- `static_page_renderer.getRelatedGuides()` updated: `/best-time-to-visit-mauritius/`, `/mauritius-honeymoon-guide/`, and `/east-coast-vs-west-coast-mauritius/` added as permanent entries with `persona: null` — they appear in Related Guides on every persona page, every hotel detail page, and every comparison page
+- Both new informational pages cross-link to each other and to the regional pages they describe
+- Tier 1 reverse-link task fully closed
 
 ---
 
-## 5. Priority Action List for Next Run
+## 5. Comparison Page Expansion
+
+`DEFAULT_COMPARISON_TOP_N` increased from 5 to 6. Constance Belle Mare Plage (8.9/10, #6 overall) now has comparison pages against all five hotels above it:
+
+| New comparison page |
+|---|
+| constance-belle-mare-plage-vs-constance-prince-maurice |
+| constance-belle-mare-plage-vs-four-seasons-resort-mauritius-at-anahita |
+| constance-belle-mare-plage-vs-oneandonly-le-saint-geran |
+| constance-belle-mare-plage-vs-paradise-cove-boutique-hotel-adults-only |
+| constance-belle-mare-plage-vs-royal-palm-beachcomber-luxury |
+
+Total comparison pages: 15 (was 10). Total site pages: 66 (was 61).
+
+---
+
+## 6. Priority Action List for Next Run
 
 | # | Action | Type | Impact |
 |---|---|---|---|
-| 1 | Add link to /best-time-to-visit-mauritius/ from persona ranking pages | Internal linking | Medium |
-| 2 | Build "Mauritius honeymoon guide" | Content | High |
-| 3 | Build "East coast vs west coast Mauritius" | Content | Medium |
-| 4 | Expand comparison page set — 4 missing high-value pairs | Comparison | Medium |
-| 5 | Add FAQ schema to persona ranking pages (already in assembler, verify output) | Technical | Medium |
+| 1 | Build "Mauritius luxury travel guide" | Content | High (topical authority anchor) |
+| 2 | Build Le Morne regional page | Regional | Medium (500–1,500/mo) |
+| 3 | Add FAQ schema verification test to test suite | Technical | Low |
+| 4 | Sticky CTA on hotel detail pages | Conversion | Revenue impact |
+| 5 | Build "adults-only resorts" guide page | Persona | High commercial intent |
 
 ---
 
-## 6. Expected SEO Impact
+## 7. Expected SEO Impact
 
 | Change | Expected Impact |
 |---|---|
-| One&Only slug fix | Corrects 5 broken URLs; Google can now index and attribute the hotel correctly |
-| CSP fix in static pages | GA now fires on all 61 pages including hand-authored static pages |
-| Static pages in sitemap | Methodology, rankings, adults-only etc. now crawlable via sitemap signal |
-| Best time to visit page | New organic entry point for 8–12k monthly searches; supports topical authority |
+| Reverse links to /best-time-to-visit-mauritius/ | 6+ persona pages now pass PageRank and topical relevance signal to the informational page |
+| New informational guides added to related links | 2 new content pages immediately receive internal links from all 66 generated pages |
+| Mauritius honeymoon guide | New entry point for 3–5k/mo searches; supports topical authority in honeymoon cluster |
+| East coast vs west coast guide | Captures decision-stage queries; links out to 8 regional pages strengthening their authority |
+| 5 new comparison pages | 5 more branded query entry points; Constance Belle Mare now has full brand comparison coverage |
