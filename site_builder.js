@@ -356,9 +356,14 @@ function _generateRegionContexts(dataset, options = {}) {
     regionMap.get(region).push(hotel);
   }
 
+  // Luxury persona minimum — skip regions with no qualifying hotels
+  const LUXURY_MIN_OVERALL = 8.0;
+
   const specs = [];
   for (const [region, hotels] of regionMap) {
     if (hotels.length < minHotels) continue;
+    const luxuryHotels = hotels.filter(h => (h.overall_rating || 0) >= LUXURY_MIN_OVERALL);
+    if (luxuryHotels.length === 0) continue;
     const regionSlug = _slugify(region) + '-luxury-hotels';
     specs.push({
       page_type:     PAGE_TYPES.REGION,
