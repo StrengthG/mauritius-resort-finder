@@ -134,7 +134,7 @@ const PERSONA_DEFINITIONS = Object.freeze([
 const DEFAULT_BASE_URL          = 'https://mauritiusresortfinder.com';
 const DEFAULT_OUT_DIR           = './dist';
 const DEFAULT_MAX_CONCURRENCY   = 10;
-const DEFAULT_COMPARISON_TOP_N  = 5;
+const DEFAULT_COMPARISON_TOP_N  = 6;
 const DEFAULT_REGION_MIN_HOTELS = 1;
 const FEED_MAX_ITEMS            = 20;
 
@@ -511,9 +511,11 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'best-resort-mauritius',          page_type: 'pillar',        priority: '0.9', changefreq: 'weekly'  },
   { slug: 'best-value-resorts-mauritius',   page_type: 'informational', priority: '0.8', changefreq: 'weekly'  },
   { slug: 'adults-only-resorts-mauritius',  page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
-  { slug: 'best-time-to-visit-mauritius',   page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
-  { slug: 'rankings',                       page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
-  { slug: 'methodology',                    page_type: 'informational', priority: '0.5', changefreq: 'monthly' },
+  { slug: 'best-time-to-visit-mauritius',        page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'mauritius-honeymoon-guide',           page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'east-coast-vs-west-coast-mauritius',  page_type: 'informational', priority: '0.7', changefreq: 'monthly' },
+  { slug: 'rankings',                            page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
+  { slug: 'methodology',                         page_type: 'informational', priority: '0.5', changefreq: 'monthly' },
 ]);
 
 function generatePageContexts(dataset, options = {}) {
