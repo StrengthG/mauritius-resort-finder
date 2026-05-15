@@ -953,6 +953,27 @@ async function buildSite(options = {}) {
     if (syncResult.affiliateLinks && typeof syncResult.affiliateLinks === 'object' &&
         !Array.isArray(syncResult.affiliateLinks)) {
       affiliateLinks = syncResult.affiliateLinks;
+    } else if (Array.isArray(hotelObjects)) {
+      // Fallback: extract affiliate links from _affiliate_links on each hotel object
+      // (used when syncFn is Airtable sync, which returns hotelObjects but not a
+      //  separate affiliateLinks map)
+      const extracted = {};
+      for (const h of hotelObjects) {
+        if (h.hotel_id && Array.isArray(h._affiliate_links) && h._affiliate_links.length > 0) {
+          const link = h._affiliate_links[0];
+          if (link.booking_url) {
+            extracted[h.hotel_id] = {
+              booking_url:     link.booking_url,
+              provider:        link.provider        || null,
+              commission_tier: link.commission_tier || null,
+            };
+          }
+        }
+      }
+      if (Object.keys(extracted).length > 0) {
+        affiliateLinks = extracted;
+        _log(`      → ${Object.keys(extracted).length} affiliate links extracted from hotel objects`);
+      }
     }
   } else {
     const harness = require('./integration_harness.js');
