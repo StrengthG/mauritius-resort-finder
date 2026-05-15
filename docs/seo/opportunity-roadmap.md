@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-15 (Run 3)
+Last updated: 2026-05-15 (Run 4)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -25,7 +25,7 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Build "Mauritius honeymoon guide"~~ | ~~Informational~~ | — | ✅ Done 2026-05-15 (2,300 words) |
 | ~~Build "East coast vs west coast Mauritius"~~ | ~~Informational~~ | — | ✅ Done 2026-05-15 (2,100 words) |
 | ~~Expand comparison page set (5 new pairs)~~ | ~~Comparison~~ | — | ✅ Done 2026-05-15 (topN 5→6, 15 total) |
-| Build Le Morne regional page | Regional | "le morne hotels mauritius" | 500–1,500/mo |
+| ~~Build Le Morne regional page~~ | ~~Regional~~ | — | ✅ Done 2026-05-15 (Run 4, 2,000 words) |
 
 ## Tier 3 — Medium term (next month)
 
