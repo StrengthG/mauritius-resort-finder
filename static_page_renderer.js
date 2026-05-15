@@ -451,12 +451,16 @@ function renderRankingSummary(block) {
   requirePayloadFields('ranking_summary', block.payload, ['hotels', 'persona', 'total_hotels']);
   const { hotels, persona, total_hotels } = block.payload;
 
-  const items = (hotels || []).map(h =>
-    `    <li class="ranking-summary__item">` +
-    `<span class="ranking-summary__rank">#${esc(h.rank)}</span>` +
-    `<a href="#hotel-${esc(h.hotel_id)}" class="ranking-summary__name">${esc(h.name)}</a>` +
-    `</li>`
-  ).join('\n');
+  const items = (hotels || []).map(h => {
+    const ctaHtml = h.booking_url
+      ? `<a href="${esc(_safeUrl(h.booking_url))}" rel="nofollow sponsored" class="ranking-summary__cta" aria-label="Check prices for ${esc(h.name)} on Expedia">Check prices &#8594;</a>`
+      : '';
+    return `    <li class="ranking-summary__item">` +
+      `<span class="ranking-summary__rank">#${esc(h.rank)}</span>` +
+      `<a href="#hotel-${esc(h.hotel_id)}" class="ranking-summary__name">${esc(h.name)}</a>` +
+      ctaHtml +
+      `</li>`;
+  }).join('\n');
 
   return [
     `<section class="ranking-summary" aria-label="Ranking overview">`,
@@ -1357,7 +1361,8 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `    .ranking-summary{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin:24px auto;max-width:1200px}`,
     `    .ranking-summary__heading{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-family:'DM Sans',sans-serif}`,
     `    .ranking-summary__list{list-style:none;display:flex;flex-direction:column;gap:10px}.ranking-summary__item{display:flex;align-items:center;gap:14px}.ranking-summary__rank{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:800;color:var(--gold);width:28px;flex-shrink:0}`,
-    `    .ranking-summary__name{font-size:.88rem;color:var(--text);transition:color .2s}.ranking-summary__name:hover{color:var(--gold)}`,
+    `    .ranking-summary__name{font-size:.88rem;color:var(--text);transition:color .2s;flex:1}.ranking-summary__name:hover{color:var(--gold)}`,
+    `    .ranking-summary__cta{flex-shrink:0;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--deep-navy);background:linear-gradient(135deg,var(--gold) 0%,var(--gold-bright) 50%,var(--gold-dim) 100%);background-size:200% auto;padding:5px 14px;border-radius:var(--radius-pill);white-space:nowrap;transition:background-position .3s,box-shadow .2s;display:inline-block}.ranking-summary__cta:hover{background-position:right center;box-shadow:0 4px 16px rgba(201,168,76,.45)}`,
     `    .methodology{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;margin:28px auto;max-width:1200px}`,
     `    .methodology__heading{margin-bottom:12px}.methodology__intro{font-size:.9rem;margin-bottom:18px;max-width:640px;line-height:1.75}`,
     `    .methodology__dimensions{list-style:none;display:flex;flex-wrap:wrap;gap:10px}.methodology__dimension{background:var(--navy-raised);border:1px solid var(--border-gold);border-radius:var(--radius-pill);padding:5px 16px;font-size:.75rem;font-weight:600;color:var(--gold)}`,

@@ -471,7 +471,8 @@ function _makeHeroBlock(pageContext, position, trustScore) {
  * @param  {number}   [trustScore=-1]
  * @returns {Object} Block
  */
-function _makeRankingSummaryBlock(rankedHotels, pageContext, position, trustScore) {
+function _makeRankingSummaryBlock(rankedHotels, pageContext, affiliateLinks, position, trustScore) {
+  const links = affiliateLinks || null;
   return {
     block_id:          'ranking_summary_001',
     block_type:        BLOCK_TYPES.RANKING_SUMMARY,
@@ -480,11 +481,16 @@ function _makeRankingSummaryBlock(rankedHotels, pageContext, position, trustScor
     payload: {
       total_hotels: rankedHotels.length,
       persona:      pageContext.persona,
-      hotels:       rankedHotels.map(h => ({
-        rank:     h.rank,
-        hotel_id: _getHotelId(h),
-        name:     _getHotelName(h),
-      })),
+      hotels:       rankedHotels.map(h => {
+        const id      = _getHotelId(h);
+        const linkObj = (links && id && links[id]) ? links[id] : null;
+        return {
+          rank:        h.rank,
+          hotel_id:    id,
+          name:        _getHotelName(h),
+          booking_url: (linkObj && linkObj.booking_url) ? linkObj.booking_url : null,
+        };
+      }),
     },
     dependencies:      ['hero_001'],
     validation_status: VALIDATION_STATUS.VALID,
@@ -796,7 +802,7 @@ function assemble(rankedHotels, explanationObjects, pageContext, affiliateLinks,
 
   // ── Stage 3: Ranking Summary Block ────────────────────────────────────────
   trust += TRUST_WEIGHTS.ranking_summary;
-  commit(_makeRankingSummaryBlock(sortedHotels, pageContext));
+  commit(_makeRankingSummaryBlock(sortedHotels, pageContext, links));
 
   // ── Stage 4: Methodology Block ────────────────────────────────────────────
   trust += TRUST_WEIGHTS.methodology;
