@@ -394,6 +394,7 @@ function getRelatedGuides(persona) {
     { label: 'Best Time to Visit Mauritius',          slug: 'best-time-to-visit-mauritius',       persona: null           },
     { label: 'Mauritius Honeymoon Guide',             slug: 'mauritius-honeymoon-guide',           persona: null           },
     { label: 'East Coast vs West Coast Mauritius',    slug: 'east-coast-vs-west-coast-mauritius',  persona: null           },
+    { label: 'Le Morne Hotels Guide',                 slug: 'le-morne-hotels-mauritius',            persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }

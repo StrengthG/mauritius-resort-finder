@@ -514,6 +514,7 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'best-time-to-visit-mauritius',        page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'mauritius-honeymoon-guide',           page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'east-coast-vs-west-coast-mauritius',  page_type: 'informational', priority: '0.7', changefreq: 'monthly' },
+  { slug: 'le-morne-hotels-mauritius',           page_type: 'informational', priority: '0.7', changefreq: 'monthly' },
   { slug: 'rankings',                            page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
   { slug: 'methodology',                         page_type: 'informational', priority: '0.5', changefreq: 'monthly' },
 ]);
