@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-15 (Run 4)
+Last updated: 2026-05-16 (Run 5)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -31,10 +31,10 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 
 | Task | Type | Keyword Target | Notes |
 |---|---|---|---|
-| Build "Mauritius luxury travel guide" | Informational | "mauritius luxury travel" | High-authority anchor content |
-| Add FAQ schema to all persona pages | Structured data | Featured snippet capture | FAQPage schema already generated |
-| Build "adults-only resorts" guide page | Persona | "adults only resorts mauritius" | High commercial intent |
-| Sticky CTA on hotel detail pages | Conversion | — | Revenue impact |
+| ~~Build "Mauritius luxury travel guide"~~ | ~~Informational~~ | ~~"mauritius luxury travel"~~ | ✅ Done 2026-05-16 (Run 5, 2,400 words) |
+| Rebuild adults-only resorts page (thin) | Informational | "adults only resorts mauritius" | High commercial intent; existing page is thin |
+| Add FAQ schema to all persona pages | Structured data | Featured snippet capture | FAQPage schema not yet on generated pages |
+| Sticky CTA on hotel detail pages | Conversion | — | Revenue impact; floating bar while reading review |
 | Build hotel photo/gallery pages | UX/engagement | — | Improves time-on-site |
 
 ## Tier 4 — Ongoing
