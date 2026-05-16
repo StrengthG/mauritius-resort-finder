@@ -395,6 +395,7 @@ function getRelatedGuides(persona) {
     { label: 'Mauritius Honeymoon Guide',             slug: 'mauritius-honeymoon-guide',           persona: null           },
     { label: 'East Coast vs West Coast Mauritius',    slug: 'east-coast-vs-west-coast-mauritius',  persona: null           },
     { label: 'Le Morne Hotels Guide',                 slug: 'le-morne-hotels-mauritius',            persona: null           },
+    { label: 'Mauritius Luxury Travel Guide',          slug: 'mauritius-luxury-travel-guide',         persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
