@@ -525,6 +525,7 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'mauritius-luxury-travel-guide',       page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'mauritius-family-holiday-guide',      page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'mauritius-wellness-retreat-guide',    page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'mauritius-all-inclusive-resorts',    page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'rankings',                            page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
   { slug: 'methodology',                         page_type: 'informational', priority: '0.5', changefreq: 'monthly' },
 ]);

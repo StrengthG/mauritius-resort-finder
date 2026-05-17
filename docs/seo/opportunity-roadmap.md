@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-17 (Run 9)
+Last updated: 2026-05-17 (Run 10)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -37,6 +37,7 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Sticky CTA on hotel detail pages~~ | ~~Conversion~~ | — | ✅ Done 2026-05-17 (Run 7) — slides up when main CTA scrolls out of view; all 29 hotels |
 | ~~Build "Mauritius family holiday guide"~~ | ~~Informational~~ | ~~"mauritius family holiday"~~ | ✅ Done 2026-05-17 (Run 8, ~2,000 words, FAQPage schema, 5 hotels) |
 | ~~Build "Mauritius wellness retreat guide"~~ | ~~Informational~~ | ~~"wellness retreat mauritius"~~ | ✅ Done 2026-05-17 (Run 9, ~2,100 words, FAQPage schema, 5 hotels) |
+| ~~Build "Mauritius all-inclusive resorts" guide~~ | ~~Informational~~ | ~~"all inclusive mauritius"~~ | ✅ Done 2026-05-17 (Run 10, ~2,150 words, FAQPage schema, 5 hotels) |
 | Build hotel photo/gallery pages | UX/engagement | — | Improves time-on-site |
 
 ## Tier 4 — Ongoing
