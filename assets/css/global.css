@@ -330,6 +330,17 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--gold);
   background: var(--gold-glow);
 }
+.btn--accent {
+  background: var(--gold-glow);
+  color: var(--gold);
+  border: 1px solid var(--border-gold);
+}
+.btn--accent:hover {
+  background: rgba(201,168,76,0.18);
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.2);
+  transform: translateY(-1px);
+}
 .btn--sm { font-size: 0.73rem; padding: 9px 20px; letter-spacing: 0.05em; }
 
 /* ── Section Header ────────────────────────────────────────────────────── */
