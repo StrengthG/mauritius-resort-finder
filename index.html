@@ -254,7 +254,7 @@
 </div>
 
 <!-- BIG DODO CALLOUT ══════════════════════════════════════════════════════ -->
-<div class="bd-callout reveal" role="complementary" aria-label="Big Dodo travel assistant">
+<div class="bd-callout" role="complementary" aria-label="Big Dodo travel assistant">
   <div class="bd-callout__inner">
     <div class="bd-callout__icon" aria-hidden="true">🦤</div>
     <div class="bd-callout__body">
@@ -263,7 +263,8 @@
       </p>
       <button
         class="bd-callout__btn"
-        onclick="if(window._bigDodo){window._bigDodo._open()}else{document.querySelector('.bd-trigger')&&document.querySelector('.bd-trigger').click()}"
+        id="bd-callout-btn"
+        type="button"
         aria-label="Open Big Dodo AI travel assistant"
       >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -974,6 +975,20 @@
 <link rel="stylesheet" href="/assets/css/big_dodo_widget.css">
 <script>window.BigDodoConfig = { apiUrl: '/api/chat', pageContext: { pageType: 'home', slug: '' } };</script>
 <script src="/assets/js/big_dodo_widget.js" defer></script>
+<script>
+window.addEventListener('load', function () {
+  var btn = document.getElementById('bd-callout-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    if (window._bigDodo) {
+      window._bigDodo._open();
+    } else {
+      var trigger = document.querySelector('.bd-trigger');
+      if (trigger) trigger.click();
+    }
+  });
+});
+</script>
 
 </body>
 </html>
