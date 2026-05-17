@@ -375,6 +375,20 @@ function getPersonaFAQs(persona, slug) {
                   'the quality delivered.',
       },
     ],
+    budget: [
+      {
+        question: 'What counts as a cheap hotel in Mauritius?',
+        answer:   'Our budget ranking includes only hotels priced at $500 per night or below ' +
+                  'with a value score of 7.0 or higher. Price alone does not qualify a property — ' +
+                  'it must also deliver strong quality relative to what you pay.',
+      },
+      {
+        question: 'Are cheap hotels in Mauritius still good quality?',
+        answer:   'Yes. Every hotel on this list is independently scored across five dimensions ' +
+                  'including overall quality, location, and amenities. A low price paired with ' +
+                  'poor quality simply does not make the ranking.',
+      },
+    ],
   };
 
   return [...base, ...(personaFAQs[persona] || [])];
@@ -1574,6 +1588,31 @@ function renderPage(pageObject, options = {}) {
 
   const mainContent = renderedBlocks.join('\n\n');
 
+  // Sticky CTA for hotel detail pages — floats at bottom when main CTA scrolls out of view
+  const ctaBlock = (meta.pageType === 'hotel_detail' || meta.pageType === 'hotel')
+    ? pageObject.blocks.find(b => b.block_type === 'affiliate_cta')
+    : null;
+  const stickyCta = (ctaBlock && ctaBlock.payload && ctaBlock.payload.booking_url)
+    ? [
+        `<div class="sticky-cta" id="sticky-cta" aria-hidden="true">`,
+        `  <span class="sticky-cta__name">${esc(ctaBlock.payload.hotel_name || '')}</span>`,
+        `  <a href="${esc(_safeUrl(ctaBlock.payload.booking_url))}"`,
+        `     rel="nofollow sponsored"`,
+        `     class="sticky-cta__btn"`,
+        `     aria-label="Check prices for ${esc(ctaBlock.payload.hotel_name || 'this hotel')} on Expedia">`,
+        `    Check prices &rarr;`,
+        `  </a>`,
+        `</div>`,
+        `<style>`,
+        `.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:150;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px;background:rgba(8,17,31,.97);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-top:1px solid var(--border-gold);transform:translateY(105%);transition:transform .35s cubic-bezier(.4,0,.2,1);will-change:transform}`,
+        `.sticky-cta.is-visible{transform:translateY(0)}`,
+        `.sticky-cta__name{font-size:.88rem;font-weight:600;color:var(--champagne);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}`,
+        `.sticky-cta__btn{flex-shrink:0;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-bright) 50%,var(--gold-dim) 100%);background-size:200% auto;color:var(--deep-navy);font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:10px 22px;border-radius:var(--radius-pill);white-space:nowrap;transition:background-position .3s,box-shadow .2s,transform .2s}.sticky-cta__btn:hover{background-position:right center;box-shadow:0 4px 20px rgba(201,168,76,.45);transform:translateY(-1px)}`,
+        `@media(max-width:480px){.sticky-cta{padding:12px 16px;gap:10px}.sticky-cta__name{font-size:.78rem}.sticky-cta__btn{font-size:.72rem;padding:9px 16px}}`,
+        `</style>`,
+      ].join('\n')
+    : '';
+
   // Inline scroll-reveal + score-bar animation (no external file dependency for generated pages)
   const inlineScript = [
     `<script>`,
@@ -1590,6 +1629,10 @@ function renderPage(pageObject, options = {}) {
     `  // Sticky nav`,
     `  var nav=document.querySelector('.site-header');`,
     `  if(nav){var ly=window.scrollY,ti=false;window.addEventListener('scroll',function(){if(!ti){requestAnimationFrame(function(){var y=window.scrollY;if(y>300){if(y>ly+6)nav.style.transform='translateY(-100%)';else if(y<ly-6)nav.style.transform='translateY(0)'}else nav.style.transform='translateY(0)';ly=y;ti=false})};ti=true},{passive:true})}`,
+    `  // Sticky CTA — show when main affiliate CTA scrolls out of view`,
+    `  var sc=document.getElementById('sticky-cta');`,
+    `  var mc=document.querySelector('.affiliate-cta');`,
+    `  if(sc&&mc){var ob=new IntersectionObserver(function(es){es.forEach(function(e){sc.classList.toggle('is-visible',!e.isIntersecting);sc.setAttribute('aria-hidden',e.isIntersecting?'true':'false')})},{threshold:0.1});ob.observe(mc)}`,
     `})();`,
     `</script>`,
   ].join('\n');
@@ -1605,6 +1648,7 @@ function renderPage(pageObject, options = {}) {
     mainContent,
     `</main>`,
     siteFooter,
+    stickyCta,
     inlineScript,
     _bigDodoWidget(meta),
     `</body>`,

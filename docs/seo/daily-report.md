@@ -1,67 +1,63 @@
-# SEO Daily Report — 2026-05-17 (Run 6)
+# SEO Daily Report — 2026-05-17 (Run 7)
 
 ## 1. Executive Summary
 
-Run 6 completed the adults-only resorts page rebuild (Tier 3 priority). The existing thin page (~600 words, wrong affiliate links, fabricated scores) was replaced with a ~2,200-word informational guide targeting "adults only resorts mauritius" (est. 1,000–2,000 searches/month, high commercial intent). All hotel scores and affiliate links verified against `data/hotels.json` ground truth. 66/66 pages built, 1,683 tests pass.
+Run 7 completed two Tier 3 structured-data and conversion tasks: (1) FAQ schema extended to cover the new budget persona page with 2 persona-specific questions, and (2) sticky "Check prices" CTA bar added to all 29 hotel detail pages. The bar slides up from the bottom of the viewport when the main affiliate CTA scrolls out of view, and hides when the user scrolls back. 67/67 pages built, 1,704 tests pass.
 
 ## 2. Technical Issues Found & Fixed
 
 | Issue | File | Fix |
 |---|---|---|
-| Wrong affiliate link for Paradise Cove | pages/adults-only-resorts-mauritius.html | Corrected `muB8P70` → `KYUg6DO` (from hotels.json) |
-| Inflated/fabricated scores on old page | pages/adults-only-resorts-mauritius.html | Replaced with verified scores from data/hotels.json |
-| Missing hotel: Constance Prince Maurice | pages/adults-only-resorts-mauritius.html | Added as 4th adults-only property (correct affiliate: WmRuuHu) |
-| No structured data on old page | pages/adults-only-resorts-mauritius.html | Added FAQPage schema (5 questions) + BreadcrumbList |
-| Thin content (~600 words) | pages/adults-only-resorts-mauritius.html | Rebuilt to ~2,200 words with full informational sections |
+| Budget persona missing FAQ questions | static_page_renderer.js | Added 2 budget-specific FAQs to getPersonaFAQs() |
+| No sticky CTA on hotel detail pages | static_page_renderer.js | Sticky bar injected via renderPage() for hotel_detail pages |
 
-**Build audit:** 66/66 pages succeeded. All static pages copied to dist/.
+**Sitemap audit:** Budget page present at priority 0.9. All 67 pages correct.
 
-**Test audit:** 1,683 passed, 0 failed.
+**Year audit:** No stale 2025 found in static pages.
 
-## 3. Content Work Done This Run
+**CSP audit:** Sticky CTA uses no external resources — inline styles and no additional script-src required.
 
-### Rebuilt: Adults-Only Resorts Mauritius
+## 3. Content / Feature Work Done This Run
 
-- **File:** `pages/adults-only-resorts-mauritius.html`
-- **Target keyword:** "adults only resorts mauritius" (est. 1,000–2,000/mo, high commercial intent)
-- **Word count:** ~2,200 words
-- **Sections:** Why choose adults-only | Hotel reviews (5 hotels) | Comparison table | Who should choose | FAQ (5 questions) | Related rankings
-- **Structured data:** FAQPage (5 questions) + BreadcrumbList + OG meta tags
-- **Hotels covered:**
-  1. Paradise Cove Boutique Hotel (affiliate: KYUg6DO) — scores from hotels.json
-  2. Lagoon Attitude (affiliate: 4toq7Ie) — scores from hotels.json
-  3. Royal Palm Beachcomber Luxury (affiliate: LLPswc1) — scores from hotels.json
-  4. Constance Prince Maurice (affiliate: WmRuuHu) — scores from hotels.json *(added; was missing from old page)*
-  5. Sea Diamond at Ambre Resort (affiliate: FA2X6xD) — scores from hotels.json
-- **Internal links:** Links to all 6 persona ranking pages, honeymoon guide, luxury guide, best-time-to-visit
+### Feature: Sticky "Check Prices" CTA — all hotel detail pages (29 hotels)
 
-**Data accuracy note:** All affiliate link IDs and hotel scores sourced exclusively from `data/hotels.json`. No fabrication.
+- **Trigger:** IntersectionObserver on `.affiliate-cta` — bar appears when main CTA scrolls out of view, disappears when user scrolls back up to it. No arbitrary scroll-distance threshold.
+- **Design:** Full-width fixed bar at bottom. Dark navy background + gold border-top + gold pill button. Hotel name left-aligned, button right.
+- **Accessibility:** `aria-hidden` toggled with visibility state. Respects `prefers-reduced-motion` via existing page-level guard.
+- **Mobile:** Smaller padding and font at ≤480px.
+- **Revenue impact:** Every hotel detail page now has a persistent booking prompt that follows the reader throughout the review.
+
+### Enhancement: Budget persona FAQs
+
+- Added 2 budget-specific FAQPage questions to `/best-cheap-hotels-mauritius/`:
+  - "What counts as a cheap hotel in Mauritius?" — explains $500/night cap + value_score ≥ 7.0
+  - "Are cheap hotels in Mauritius still good quality?" — addresses the quality concern directly
+- Budget page now has 4 questions total (2 base + 2 persona-specific), matching other persona pages.
 
 ## 4. Internal Linking Changes
 
-- Adults-only page links out to: luxury, honeymoon, wellness, value, family persona pages + honeymoon guide + luxury travel guide + best-time-to-visit
-- No new links pointing *to* the adults-only page added this run (existing links from Related Guides widget on persona pages already cover it)
-
-**Orphan check:** Adults-only page is reachable from every persona page via the nav and from hotel detail pages for Paradise Cove, Lagoon Attitude, Royal Palm, Constance Prince Maurice. Not an orphan.
+None this run.
 
 ## 5. Priority Action List for Next Run
 
 ### Technical
-- [ ] Verify Cloudflare deployment shows rebuilt adults-only page live (https://mauritiusresortfinder.com/adults-only-resorts-mauritius/)
-- [ ] Check structured data with Google Rich Results Test on adults-only page (FAQPage + BreadcrumbList)
+- [ ] Verify sticky CTA renders and animates correctly on live Cloudflare site
+- [ ] Check Google Rich Results Test on budget page for FAQPage schema
 
 ### Content (Tier 3 — remaining)
-- [ ] **FAQ schema on persona pages** — generated persona pages have hotel JSON-LD but no FAQPage schema; adding 3–4 questions per page could capture featured snippets
-- [ ] **Sticky CTA on hotel detail pages** — floating "Check prices" bar that follows the user while reading the hotel review (revenue impact)
 - [ ] **Build hotel photo/gallery pages** — improves time-on-site; UX/engagement play
+- [ ] **Build "Mauritius family travel guide"** — informational, targets "family holidays mauritius" (est. 2,000–5,000/mo)
+- [ ] **Build "Mauritius wellness retreat guide"** — targets "wellness retreat mauritius"
+
+### Conversion
+- [ ] **A/B test CTA copy** — "Check prices" vs "See availability" on hotel cards
 
 ### Backlinks
-- [ ] Begin outreach list for Condé Nast Traveller, The Points Guy, Honeymoon Dreams blog — "independently scored every luxury hotel in Mauritius" data angle
+- [ ] Begin outreach list for Condé Nast Traveller, The Points Guy, Honeymoon Dreams blog
 
 ## 6. Expected SEO Impact
 
 | Change | Expected Impact | Timeline |
 |---|---|---|
-| Adults-only guide rebuild | 100–400 organic visits/month at ranking; affiliate CTA clicks on 5 hotels | 8–16 weeks |
-| FAQPage schema (new page) | Featured snippet eligibility for adults-only queries | 2–4 weeks (next crawl) |
-| Corrected affiliate links | Accurate commission attribution for Paradise Cove bookings | Immediate |
+| Sticky CTA on hotel detail pages | Uplift in affiliate click-through rate; users reading full review now always have a booking prompt visible | Immediate (next deploy) |
+| Budget FAQPage questions | Featured snippet eligibility for "cheap hotels mauritius" and related queries | 2–4 weeks (next crawl) |
