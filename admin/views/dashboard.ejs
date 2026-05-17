@@ -1,0 +1,95 @@
+<%
+  layout = true;
+  title = 'Dashboard';
+  activePage = 'dashboard';
+%>
+<% locals.activePage = 'dashboard'; %>
+
+<!-- Page header -->
+<div class="mb-8">
+  <h1 class="text-2xl font-bold text-champagne">Dashboard</h1>
+  <p class="text-slate-500 text-sm mt-1">Overview of your Mauritius Resort Finder admin.</p>
+</div>
+
+<!-- Stats grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+  <div class="card p-6">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Hotels</p>
+    <p class="text-3xl font-bold text-champagne"><%= hotelCount %></p>
+    <p class="text-xs text-slate-500 mt-2">in admin database</p>
+  </div>
+  <div class="card p-6">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Images</p>
+    <p class="text-3xl font-bold text-champagne"><%= imageCount %></p>
+    <p class="text-xs text-slate-500 mt-2">uploaded hotel images</p>
+  </div>
+  <div class="card p-6">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Last Build</p>
+    <% if (lastBuild) { %>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="badge-<%= lastBuild.status === 'success' ? 'success' : lastBuild.status === 'running' ? 'pending' : 'error' %>">
+          <%= lastBuild.status %>
+        </span>
+      </div>
+      <p class="text-xs text-slate-500"><%= new Date(lastBuild.started_at).toLocaleString() %></p>
+      <% if (lastBuild.duration_ms) { %><p class="text-xs text-slate-600"><%= (lastBuild.duration_ms/1000).toFixed(1) %>s</p><% } %>
+    <% } else { %>
+      <p class="text-slate-600 text-sm">Never built</p>
+    <% } %>
+  </div>
+  <div class="card p-6">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Quick Actions</p>
+    <div class="space-y-2">
+      <a href="/admin/hotels/new" class="block text-xs font-semibold text-gold hover:text-gold-light transition-colors">+ Add hotel</a>
+      <a href="/admin/build" class="block text-xs font-semibold text-gold hover:text-gold-light transition-colors">⚡ Build site</a>
+      <a href="https://mauritiusresortfinder.com" target="_blank" class="block text-xs font-semibold text-slate-500 hover:text-slate-400 transition-colors">↗ View site</a>
+    </div>
+  </div>
+</div>
+
+<!-- Recent audit + build CTA -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+  <!-- Recent activity -->
+  <div class="card p-6">
+    <h2 class="text-sm font-bold text-champagne uppercase tracking-wide mb-4">Recent Activity</h2>
+    <% if (recentAudit && recentAudit.length) { %>
+      <div class="space-y-2">
+        <% recentAudit.forEach(entry => { %>
+        <div class="flex items-start gap-3 py-2 border-b border-white/[0.05] last:border-0">
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-white/5 text-slate-400 mt-0.5 whitespace-nowrap"><%= entry.action %></span>
+          <div class="min-w-0">
+            <p class="text-xs text-slate-400 truncate"><%= entry.detail || entry.entity_type || '—' %></p>
+            <p class="text-xs text-slate-600"><%= new Date(entry.created_at).toLocaleString() %></p>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    <% } else { %>
+      <p class="text-slate-600 text-sm">No activity yet.</p>
+    <% } %>
+    <a href="/admin/audit" class="block mt-4 text-xs text-gold hover:text-gold-light font-semibold">View full log →</a>
+  </div>
+
+  <!-- Upload & Rank CTA -->
+  <div class="card p-6 flex flex-col justify-between" style="border-color:rgba(201,168,76,0.2)">
+    <div>
+      <div class="inline-flex items-center justify-center w-10 h-10 rounded-xl mb-4" style="background:rgba(201,168,76,0.1)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h2 class="text-lg font-bold text-champagne mb-2">Upload & Rank</h2>
+      <p class="text-sm text-slate-400 mb-6 leading-relaxed">
+        Merge your admin hotel data, run the ranking pipeline, and regenerate all static pages — sitemap, RSS, and robots.txt included.
+      </p>
+    </div>
+    <a href="/admin/build" class="btn-primary text-center block">Go to Build →</a>
+  </div>
+
+</div>
+
+<script>
+// Set active page for sidebar
+document.querySelectorAll('.sidebar-link').forEach(l => {
+  if (l.getAttribute('href') === '/admin') l.classList.add('active');
+});
+</script>

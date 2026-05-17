@@ -1,0 +1,133 @@
+<%
+  title = 'Build Site';
+  activePage = 'build';
+%>
+
+<div class="mb-8">
+  <h1 class="text-2xl font-bold text-champagne">Build Site</h1>
+  <p class="text-slate-500 text-sm mt-1">Merge hotel data, run the ranking pipeline, and regenerate all static pages.</p>
+</div>
+
+<!-- Last build status -->
+<% if (last) { %>
+<div class="card p-5 mb-6 flex items-center gap-4">
+  <div>
+    <p class="text-xs text-slate-500 uppercase tracking-wide font-bold mb-1">Last Build</p>
+    <div class="flex items-center gap-3">
+      <span class="badge-<%= last.status === 'success' ? 'success' : last.status === 'running' ? 'pending' : 'error' %>"><%= last.status %></span>
+      <span class="text-sm text-slate-400"><%= new Date(last.started_at).toLocaleString() %></span>
+      <% if (last.duration_ms) { %><span class="text-sm text-slate-600"><%= (last.duration_ms / 1000).toFixed(1) %>s</span><% } %>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+  <!-- Build trigger -->
+  <div class="card p-7" style="border-color:rgba(201,168,76,0.2)">
+    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-5" style="background:rgba(201,168,76,0.1)">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#c9a84c" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    </div>
+    <h2 class="text-xl font-bold text-champagne mb-2">Upload &amp; Rank</h2>
+    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+      Exports all admin hotel records, merges with the baseline dataset, runs the scoring pipeline,
+      and rebuilds all 67+ pages — sitemap, RSS feed, and robots.txt included.
+    </p>
+
+    <div class="mb-6 text-sm space-y-2 text-slate-500">
+      <div class="flex items-center gap-2"><span class="text-gold">1.</span> Merge admin hotels → data/hotels.json</div>
+      <div class="flex items-center gap-2"><span class="text-gold">2.</span> Score each hotel per persona (6 personas)</div>
+      <div class="flex items-center gap-2"><span class="text-gold">3.</span> Generate explanations + page blocks</div>
+      <div class="flex items-center gap-2"><span class="text-gold">4.</span> Render all static HTML pages to dist/</div>
+      <div class="flex items-center gap-2"><span class="text-gold">5.</span> Generate sitemap.xml, robots.txt, feed.xml</div>
+    </div>
+
+    <form id="buildForm">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <button type="submit" id="buildBtn" class="btn-primary w-full" style="padding:14px;font-size:1rem">
+        ⚡ Upload &amp; Rank
+      </button>
+    </form>
+  </div>
+
+  <!-- Build log -->
+  <div class="card p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-sm font-bold text-champagne uppercase tracking-wide">Build Log</h2>
+      <div id="buildStatus" class="badge-pending" style="display:none">Running…</div>
+    </div>
+    <div id="buildLog" class="font-mono text-xs text-slate-400 overflow-y-auto space-y-0.5" style="height:320px;background:rgba(0,0,0,0.3);border-radius:8px;padding:16px;overflow-y:auto">
+      <% if (last && last.output) { %>
+        <% last.output.split('\n').forEach(line => { %>
+          <div><%= line %></div>
+        <% }); %>
+      <% } else { %>
+        <div class="text-slate-600">No build output yet. Click "Upload & Rank" to start.</div>
+      <% } %>
+    </div>
+    <div id="buildResult" class="mt-4 hidden"></div>
+  </div>
+</div>
+
+<script>
+const csrfToken = '<%= csrfToken %>';
+
+document.getElementById('buildForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('buildBtn');
+  const log = document.getElementById('buildLog');
+  const status = document.getElementById('buildStatus');
+  const result = document.getElementById('buildResult');
+
+  btn.disabled = true;
+  btn.textContent = 'Building…';
+  log.innerHTML = '<div class="text-gold">Starting build…</div>';
+  status.style.display = 'inline';
+  status.textContent = 'Running…';
+  status.className = 'badge-pending';
+  result.classList.add('hidden');
+
+  // Trigger build via POST
+  const res = await fetch('/admin/build', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: '_csrf=' + encodeURIComponent(csrfToken),
+  });
+  const json = await res.json();
+
+  if (json.error) {
+    log.innerHTML = '<div class="text-red-400">Error: ' + json.error + '</div>';
+    btn.disabled = false; btn.textContent = '⚡ Upload & Rank';
+    status.textContent = 'Failed'; status.className = 'badge-error';
+    return;
+  }
+
+  // Stream SSE log
+  const sse = new EventSource('/admin/build/stream?id=' + json.buildId);
+  sse.onmessage = e => {
+    const line = e.data;
+    if (line.startsWith('__done__:')) {
+      const code = Number(line.split(':')[1]);
+      sse.close();
+      btn.disabled = false; btn.textContent = '⚡ Upload & Rank';
+      if (code === 0) {
+        status.textContent = 'Success'; status.className = 'badge-success';
+        result.innerHTML = '<div class="badge-success inline-block">✓ Build complete — push to deploy</div>';
+      } else {
+        status.textContent = 'Failed'; status.className = 'badge-error';
+        result.innerHTML = '<div class="badge-error inline-block">✗ Build failed (exit ' + code + ')</div>';
+      }
+      result.classList.remove('hidden');
+    } else {
+      const div = document.createElement('div');
+      div.textContent = line;
+      if (line.startsWith('⚠')) div.style.color = '#fbbf24';
+      else if (line.startsWith('✓')) div.style.color = '#4ade80';
+      log.appendChild(div);
+      log.scrollTop = log.scrollHeight;
+    }
+  };
+  sse.onerror = () => { sse.close(); btn.disabled = false; btn.textContent = '⚡ Upload & Rank'; };
+});
+</script>

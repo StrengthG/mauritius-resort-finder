@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Sign In — MRF Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { navy: '#060c18', gold: '#c9a84c', champagne: '#f5e6c8' } } }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+  <style>
+    body { background: #060c18; font-family: 'Inter', sans-serif; }
+    input { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #f5e6c8; border-radius: 8px; padding: 12px 16px; width: 100%; font-size: 0.95rem; outline: none; transition: border-color 0.15s; }
+    input:focus { border-color: rgba(201,168,76,0.6); }
+    input::placeholder { color: rgba(200,208,220,0.3); }
+    label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7a8d; margin-bottom: 8px; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+
+  <div class="w-full max-w-sm">
+    <!-- Logo -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-5" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8"><path d="M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z"/></svg>
+      </div>
+      <h1 class="text-2xl font-bold text-champagne mb-1">Mauritius Resort Finder</h1>
+      <p class="text-sm text-slate-500">Admin Dashboard</p>
+    </div>
+
+    <!-- Card -->
+    <div class="rounded-2xl p-8" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)">
+      <% if (error) { %>
+      <div class="mb-6 px-4 py-3 rounded-lg text-sm font-medium text-red-400" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2)">
+        <%= error %>
+      </div>
+      <% } %>
+
+      <form action="/admin/login" method="POST" autocomplete="on">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+        <div class="mb-5">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Strength" autocomplete="username" autofocus required />
+        </div>
+
+        <div class="mb-6">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="••••••••••" autocomplete="current-password" required />
+        </div>
+
+        <div class="flex items-center justify-between mb-7">
+          <label class="flex items-center gap-2.5 cursor-pointer" style="text-transform:none;letter-spacing:0;font-size:0.84rem;color:#7a8a9a;font-weight:500">
+            <input type="checkbox" name="remember" style="width:auto;padding:0;border-radius:4px;background:rgba(255,255,255,0.06)" />
+            Remember me for 30 days
+          </label>
+        </div>
+
+        <button type="submit" style="width:100%;background:#c9a84c;color:#060c18;font-weight:700;padding:13px;border-radius:10px;font-size:0.92rem;cursor:pointer;border:none;transition:background 0.15s;letter-spacing:0.02em" onmouseover="this.style.background='#d4b86a'" onmouseout="this.style.background='#c9a84c'">
+          Sign in
+        </button>
+      </form>
+    </div>
+
+    <p class="text-center text-xs text-slate-600 mt-8">
+      Mauritius Resort Finder &mdash; Admin Area &mdash; Authorised access only
+    </p>
+  </div>
+
+</body>
+</html>

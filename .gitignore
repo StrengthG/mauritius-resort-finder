@@ -79,6 +79,12 @@ $RECYCLE.BIN/
 .wrangler/
 .dev.vars
 
+# ─── Admin Dashboard (runtime data — never commit) ────────────────────────────
+admin/data/*.db
+admin/data/*.db-shm
+admin/data/*.db-wal
+admin/uploads/
+
 # ─── Temporary ────────────────────────────────────────────────────────────────
 tmp/
 temp/

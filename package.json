@@ -5,18 +5,21 @@
   "main": "site_builder.js",
   "scripts": {
     "test": "node run_tests.js",
-    "test:scoring":    "node scoring_engine.test.js",
-    "test:phrases":    "echo 'phrase_library has no standalone test suite'",
+    "test:scoring": "node scoring_engine.test.js",
+    "test:phrases": "echo 'phrase_library has no standalone test suite'",
     "test:hallucination": "node hallucination_guard.test.js",
     "test:confidence": "node confidence_enforcer.test.js",
     "test:explanation": "node explanation_engine.test.js",
-    "test:assembler":  "node block_assembler.test.js",
-    "test:renderer":   "node static_page_renderer.test.js",
-    "test:sync":       "node airtable_sync.test.js",
-    "test:builder":    "node site_builder.test.js",
+    "test:assembler": "node block_assembler.test.js",
+    "test:renderer": "node static_page_renderer.test.js",
+    "test:sync": "node airtable_sync.test.js",
+    "test:builder": "node site_builder.test.js",
+    "test:admin": "node admin/admin.test.js",
     "build": "node site_builder.js",
     "sync": "node airtable_sync.js --out ./data",
-    "start": "node site_builder.js --verbose"
+    "start": "node site_builder.js --verbose",
+    "admin": "node admin/server.js",
+    "setup-admin": "node admin/setup.js"
   },
   "keywords": [
     "mauritius",
@@ -38,6 +41,19 @@
     "url": "https://github.com/YOUR_GITHUB_USERNAME/mauritius-resort-finder.git"
   },
   "homepage": "https://mauritiusresortfinder.com",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "connect-sqlite3": "^0.9.16",
+    "dotenv": "^17.4.2",
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.19.0",
+    "method-override": "^3.0.0",
+    "multer": "^2.1.1",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "supertest": "^7.2.2"
+  }
 }

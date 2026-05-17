@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= title || 'Error' %> — MRF Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>body{background:#060c18;font-family:system-ui,sans-serif;}</style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+  <div class="text-center px-6">
+    <p class="text-5xl font-bold mb-4" style="color:rgba(201,168,76,0.3)"><%= title || 'Error' %></p>
+    <p class="text-slate-400 mb-8"><%= message %></p>
+    <a href="/admin" style="color:#c9a84c;font-weight:600">← Back to dashboard</a>
+  </div>
+</body>
+</html>
