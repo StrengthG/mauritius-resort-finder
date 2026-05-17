@@ -412,6 +412,7 @@ function getRelatedGuides(persona) {
     { label: 'Le Morne Hotels Guide',                 slug: 'le-morne-hotels-mauritius',            persona: null           },
     { label: 'Mauritius Luxury Travel Guide',          slug: 'mauritius-luxury-travel-guide',         persona: null           },
     { label: 'Mauritius Family Holiday Guide',         slug: 'mauritius-family-holiday-guide',        persona: null           },
+    { label: 'Mauritius Wellness Retreat Guide',       slug: 'mauritius-wellness-retreat-guide',      persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }

@@ -1,68 +1,74 @@
-# SEO Daily Report — 2026-05-17 (Run 8)
+# SEO Daily Report — 2026-05-17 (Run 9)
 
 ## 1. Executive Summary
 
-Run 8 built the Mauritius family holiday guide — a 2,000-word informational page targeting "mauritius family holiday" (est. 2,000–5,000 searches/month). The page includes FAQPage schema (5 questions), BreadcrumbList, 5 data-backed hotel recommendations with verified affiliate links, and a regional guide covering both coasts. Registered in site_builder.js and static_page_renderer.js. 67/67 pages built (the guide is a static file copied to dist/), 1,704 tests pass.
+Run 9 built the Mauritius wellness retreat guide — a ~2,100 word informational page targeting "wellness retreat mauritius" and "spa resorts mauritius". The page includes FAQPage schema (5 questions), BreadcrumbList, 5 independently scored wellness hotels with verified affiliate links, a season guide, cost table, and practical tips. Registered in site_builder.js and static_page_renderer.js. 67/67 pages built (14 static pages in dist/), 1,704 tests pass.
 
 ## 2. Technical Issues Found & Fixed
 
 None this run.
 
-**Sitemap audit:** Family holiday guide registered at priority 0.8, changefreq monthly. 13 static pages in dist/. All 67 pages correct.
+**Sitemap audit:** Wellness retreat guide registered at priority 0.8, changefreq monthly. All 67 pages correct.
 
-**Year audit:** No stale 2025 found.
+**Year audit:** No stale 2025 found (copyright updated to 2026 in new page footer).
 
-**CSP audit:** Guide uses no external resources beyond existing CDN patterns.
+**CSP audit:** New page uses no external resources beyond existing CDN patterns.
 
 ## 3. Content / Feature Work Done This Run
 
-### New page: Mauritius Family Holiday Guide
+### New page: Mauritius Wellness Retreat Guide
 
-- **Target keyword:** "mauritius family holiday" (primary), "best family resorts mauritius", "mauritius with kids"
-- **Word count:** ~2,000 words
-- **URL:** `/mauritius-family-holiday-guide/`
+- **Target keyword:** "wellness retreat mauritius" (primary), "spa resorts mauritius", "best spa hotel mauritius"
+- **Word count:** ~2,100 words
+- **URL:** `/mauritius-wellness-retreat-guide/`
 - **Structured data:** FAQPage (5 questions) + BreadcrumbList
 
-**Hotels featured** (verified affiliate links from scoring engine output):
+**Hotels featured** (verified affiliate links from dataset):
 
-| Rank | Hotel | Price/night | Affiliate |
-|---|---|---|---|
-| #1 | Four Seasons Resort Mauritius at Anahita | $1,650 | s7PgDXw |
-| #2 | Constance Belle Mare Plage | $920 | joE5IeP |
-| #3 | Constance Le Chaland Iko Mauritius | $820 | a1VWvT2 |
-| #4 | Hilton Mauritius Resort & Spa | $530 | lb9Yl8f |
-| #5 | Le Meridien Ile Maurice | $560 | 8C3UdBg |
+| Rank | Hotel | Price/night | Overall | Amenity | Affiliate |
+|---|---|---|---|---|---|
+| #1 | Shanti Maurice Resort & Spa | $820 | 8.8 | 9.0 | AMUhp0j |
+| #2 | Oberoi Beach Resort Mauritius | $1,050 | 8.8 | 8.9 | o4m2Ako |
+| #3 | Anahita Golf & Spa Resort | $780 | 8.7 | 8.9 | 6oyzyzA |
+| #4 | The Westin Turtle Bay Resort & Spa | $650 | 8.6 | 8.7 | PJytcSS |
+| #5 | LUX* Belle Mare | $730 | 8.6 | 8.5 | FfYvZuT |
 
 **Sections covered:**
-- Is Mauritius worth it for families?
-- Which coast is better for families (east vs west)?
-- Top 5 family resorts with data
-- Best activities for kids
-- Best time to visit (seasonal guide)
-- Cost breakdown table
-- Practical tips (flights, transfers, health)
-- FAQ accordion
+- Is Mauritius good for a wellness retreat?
+- What separates a real wellness resort from a spa hotel
+- Top 5 wellness hotels with full hotel cards
+- Which coast for wellness (south / east / north)
+- Best time of year (seasonal grid)
+- Cost breakdown table (room rate + yoga + spa treatment costs)
+- Practical tips (booking, flights, currency)
+- FAQ (5 questions, all match FAQPage schema)
 
-**Internal links added:**
-- From guide → `/best-family-hotels-mauritius/`
-- From guide → `/best-time-to-visit-mauritius/`
-- From guide → `/east-coast-vs-west-coast-mauritius/`
-- `getRelatedGuides()` updated to surface guide from all persona/informational pages
+**Internal links from the guide:**
+- `/best-wellness-resorts-mauritius/` — persona page
+- `/best-luxury-hotels-mauritius/`
+- `/best-honeymoon-hotels-mauritius/`
+- `/mauritius-honeymoon-guide/`
+- `/best-time-to-visit-mauritius/`
+- `/east-coast-vs-west-coast-mauritius/`
+- `/mauritius-luxury-travel-guide/`
+- `/mauritius-family-holiday-guide/`
 
 ## 4. Internal Linking Changes
 
-- Added `mauritius-family-holiday-guide` to `getRelatedGuides()` in static_page_renderer.js — guide will appear in the "Related guides" section of all 67 pages
+- Added `mauritius-wellness-retreat-guide` to `getRelatedGuides()` in static_page_renderer.js — guide now surfaces in the related section of all 67 pages
 
 ## 5. Priority Action List for Next Run
 
 ### Technical
-- [ ] Verify sticky CTA renders and animates correctly on live Cloudflare site
-- [ ] Check Google Rich Results Test on budget page for FAQPage schema
-- [ ] Check Google Rich Results Test on family guide for FAQPage schema
+- [ ] Verify live Cloudflare site: sticky CTA, wellness guide, family guide rendering correctly
+- [ ] Google Rich Results Test on wellness guide and budget page for FAQPage schema
 
 ### Content (Tier 3 — remaining)
 - [ ] **Build hotel photo/gallery pages** — improves time-on-site; UX/engagement play
-- [ ] **Build "Mauritius wellness retreat guide"** — targets "wellness retreat mauritius"
+
+### New content opportunities
+- [ ] **"Where to stay in Mauritius" guide** — high-intent, broad keyword; good pillar candidate
+- [ ] **"Mauritius all-inclusive resorts" guide** — targets "all inclusive mauritius" (high commercial intent)
 
 ### Conversion
 - [ ] **A/B test CTA copy** — "Check prices" vs "See availability" on hotel cards
@@ -74,5 +80,6 @@ None this run.
 
 | Change | Expected Impact | Timeline |
 |---|---|---|
-| Mauritius family holiday guide | Ranking eligibility for "mauritius family holiday" and related long-tail queries; internal links strengthen family persona page | 4–12 weeks (indexing + ranking) |
-| FAQPage schema on guide | Featured snippet eligibility for "is mauritius good for families" and "best time for mauritius family holiday" | 2–4 weeks (next crawl) |
+| Mauritius wellness retreat guide | Ranking eligibility for "wellness retreat mauritius", "spa resorts mauritius"; supports wellness persona page via internal links | 4–12 weeks |
+| FAQPage schema | Featured snippet eligibility for "best wellness resort mauritius" and "when to visit mauritius for wellness" | 2–4 weeks (next crawl) |
+| getRelatedGuides update | Wellness guide now linked from 67 pages — accelerates indexing and PageRank distribution | Immediate (next crawl) |
