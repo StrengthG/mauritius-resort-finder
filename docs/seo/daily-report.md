@@ -1,77 +1,87 @@
-# SEO Daily Report — 2026-05-17 (Run 11)
+# SEO Daily Report — Run 12
+**Date:** 2026-05-18
+**Agent:** Dodo SEO Agent (Project Lighthouse)
+
+---
 
 ## 1. Executive Summary
 
-Run 11 built the "Where to Stay in Mauritius" pillar guide — a ~2,300 word area guide targeting "where to stay in mauritius" (broad, high-intent keyword). The page covers all four coasts (north, east, south-west, west) with a quick-decision table, zone-by-zone breakdowns, 7 independently scored hotel cards, an airport distance table, and a "where NOT to stay" section. Includes FAQPage schema (5 questions), BreadcrumbList. Registered at priority 0.9 in sitemap. 1,704 tests pass.
+Run 12 targeted the highest-priority uncovered keyword gap: **"best beach resorts in Mauritius"**. This is a high-volume, high-commercial-intent query the site had no dedicated page for. A 2,400-word independently scored guide was built, registered in the sitemap at priority 0.8, and added to the cross-site related guides network. All 1,704 tests pass; build 67/67 pages succeeded.
 
-## 2. Technical Issues Found & Fixed
+---
 
-None this run.
+## 2. Technical Issues Found
 
-**Sitemap audit:** Where to stay guide registered at priority 0.9 (higher than standard 0.8 — pillar page). All pages correct.
+| Issue | Status |
+|-------|--------|
+| Build failures | 0 — 67/67 pages succeeded |
+| Test regressions | 0 — 1,704/1,704 pass |
+| Admin image MIME rejection bug (pre-existing) | Fixed this session — CSRF now validated after multer parses multipart body |
 
-## 3. Content / Feature Work Done This Run
+---
 
-### New page: Where to Stay in Mauritius
+## 3. Content Created This Run
 
-- **Target keyword:** "where to stay in mauritius" (primary), "best area to stay in mauritius", "mauritius regions guide"
-- **Word count:** ~2,300 words
-- **URL:** `/where-to-stay-in-mauritius/`
-- **Structured data:** FAQPage (5 questions) + BreadcrumbList
+**Page:** `best-beach-resorts-mauritius`
+**Target keyword:** "best beach resorts in Mauritius"
+**Word count:** ~2,400
+**Hotels featured:** 7 (all verified against `data/hotels.json` with correct affiliate links)
 
-**Hotels featured** (verified affiliate links from dataset):
+| Hotel | Score | Affiliate code |
+|-------|-------|----------------|
+| Royal Palm Beachcomber Luxury | 9.2 | LLPswc1 |
+| Four Seasons Resort Mauritius at Anahita | 9.1 | s7PgDXw |
+| One&Only Le Saint Géran | 9.0 | jJhAhIn |
+| Constance Belle Mare Plage | 8.9 | joE5IeP |
+| Paradise Cove Boutique Hotel | 9.0 | KYUg6DO |
+| Shanti Maurice Resort & Spa | 8.8 | AMUhp0j |
+| Constance Le Chaland Iko Mauritius | 8.8 | a1VWvT2 |
 
-| Zone | Hotel | Overall | Price | Affiliate |
-|---|---|---|---|---|
-| North | Royal Palm Beachcomber Luxury | 9.2 | $1,450 | LLPswc1 |
-| North | Paradise Cove Boutique Hotel – Adults Only | 9.0 | $890 | KYUg6DO |
-| East | Four Seasons Resort Mauritius at Anahita | 9.1 | $1,650 | s7PgDXw |
-| East | One&Only Le Saint Géran | 9.0 | $1,380 | jJhAhIn |
-| East | Constance Prince Maurice | 9.0 | $1,250 | WmRuuHu |
-| South-West | Shanti Maurice Resort & Spa | 8.8 | $820 | AMUhp0j |
-| West | Hilton Mauritius Resort & Spa | 8.7 | $530 | lb9Yl8f |
+**Structured data:** FAQPage (5 questions) + BreadcrumbList
+**Sitemap priority:** 0.8, changefreq: monthly
 
-**Sections covered:**
-- Why location matters in Mauritius
-- Quick decision table (traveller type → best coast)
-- North coast (Grand Baie, Cap Malheureux, Grand Gaube, Balaclava)
-- East coast (Belle Mare, Poste de Flacq, Beau Champ, Blue Bay) — 3 hotel cards
-- South-west coast (Bel Ombre, Le Morne, Chemin Grenier)
-- West coast (Flic En Flac, Tamarin)
-- Where NOT to stay (Port Louis)
-- Airport distance table by coast
-- FAQ (5 questions, all match FAQPage schema)
+---
 
-**Internal links from the guide:**
-- `/east-coast-vs-west-coast-mauritius/`
-- `/mauritius-honeymoon-guide/`
-- `/mauritius-luxury-travel-guide/`
-- `/mauritius-all-inclusive-resorts/`
-- `/mauritius-family-holiday-guide/`
-- `/best-time-to-visit-mauritius/`
-- `/mauritius-wellness-retreat-guide/`
+## 4. Content Opportunities (Remaining Keyword Gaps)
 
-## 4. Internal Linking Changes
+| Priority | Keyword | Notes |
+|----------|---------|-------|
+| 1 | Best boutique hotels in Mauritius | Paradise Cove, SALT of Palmar, 20 Degres Sud — high differentiation |
+| 2 | Mauritius travel planning guide | Topical authority builder; feeds purchase funnel |
+| 3 | Grand Baie hotels dedicated guide | Auto-generated regional page exists but is thin |
+| 4 | Mauritius vs Maldives | Massive volume — frame as "choosing Mauritius", requires careful scoping |
+| 5 | Le Morne expanded guide | Kite-surf modifier adds volume; static page exists but short |
 
-- Added `where-to-stay-in-mauritius` to `getRelatedGuides()` — guide surfaces in related section of all pages
+---
 
-## 5. Priority Action List for Next Run
+## 5. Internal Linking Status
 
-### Content
-- [ ] **Hotel photo/gallery pages** — Tier 3 remaining; improves time-on-site
-- [ ] **"Mauritius honeymoon resorts" comparison** — more specific than the honeymoon guide; targets "best honeymoon resort mauritius"
-- [ ] **Budget guide update** — "cheap hotels mauritius" keyword; check if existing best-cheap-hotels page needs expansion
+**New page links to:** pillar, 4 informational guides, 7 hotel detail pages
+**New page linked from:** all 17 static pages via `getRelatedGuides()` widget
 
-### Conversion
-- [ ] A/B test CTA copy — "Check prices" vs "See availability"
+**Gap:** Homepage has no direct link to the beach page. Recommend adding it to a featured guides section or nav in a future run.
 
-### Backlinks
-- [ ] Outreach list: Condé Nast Traveller, The Points Guy, Honeymoon Dreams blog
+---
 
-## 6. Expected SEO Impact
+## 6. Priority Action List for Next Run
 
-| Change | Expected Impact | Timeline |
-|---|---|---|
-| Where to stay in Mauritius (pillar) | Broad "where to stay" keyword — high intent, high volume; pillar page supports all hotel and persona pages via internal links | 4–16 weeks |
-| FAQPage schema | Featured snippet eligibility for "where to stay mauritius first time", "best side of mauritius to stay" | 2–4 weeks |
-| getRelatedGuides update | Guide linked from all pages — accelerates indexing and distributes PageRank across the site | Immediate (next crawl) |
+1. `best-boutique-hotels-mauritius` — clear gap, strong differentiation from persona pages
+2. Homepage featured guides section — surface beach and informational pages, improving link equity flow
+3. Mauritius travel planning guide — builds topical authority for pre-purchase queries
+4. Grand Baie dedicated editorial guide — replaces thin auto-generated page
+
+---
+
+## 7. Expected SEO Impact
+
+| Signal | Expected outcome |
+|--------|-----------------|
+| New indexed page | +1 page in Google index |
+| FAQPage schema | Eligible for FAQ rich result — est. 15–30% CTR lift |
+| BreadcrumbList | Improved SERP display with breadcrumb trail |
+| 7 affiliate CTAs | Direct revenue on beach-query traffic |
+| Internal linking | PageRank flows to beach page from all 17 static pages |
+
+---
+
+*Generated by Dodo SEO Agent — Run 12*
