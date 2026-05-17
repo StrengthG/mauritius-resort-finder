@@ -391,6 +391,7 @@ function getRelatedGuides(persona) {
     { label: 'Best Wellness Resorts in Mauritius',    slug: 'best-wellness-resorts-mauritius',    persona: 'wellness'     },
     { label: 'Best Hotels for Remote Work in Mauritius', slug: 'best-remote-work-hotels-mauritius', persona: 'remote_work' },
     { label: 'Best Value Luxury Hotels in Mauritius', slug: 'best-value-luxury-hotels-mauritius', persona: 'value_luxury' },
+    { label: 'Best Cheap Hotels in Mauritius',        slug: 'best-cheap-hotels-mauritius',        persona: 'budget'       },
     { label: 'Best Time to Visit Mauritius',          slug: 'best-time-to-visit-mauritius',       persona: null           },
     { label: 'Mauritius Honeymoon Guide',             slug: 'mauritius-honeymoon-guide',           persona: null           },
     { label: 'East Coast vs West Coast Mauritius',    slug: 'east-coast-vs-west-coast-mauritius',  persona: null           },

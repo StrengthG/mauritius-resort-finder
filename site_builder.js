@@ -125,6 +125,13 @@ const PERSONA_DEFINITIONS = Object.freeze([
     target_keyword: 'value luxury hotels mauritius',
     page_type_tag:  'persona',
   },
+  {
+    persona:        'budget',
+    slug:           'best-cheap-hotels-mauritius',
+    title:          'Best Cheap Hotels in Mauritius 2026',
+    target_keyword: 'cheap hotels mauritius',
+    page_type_tag:  'persona',
+  },
 ]);
 
 // ─────────────────────────────────────────────────────────────────────────────

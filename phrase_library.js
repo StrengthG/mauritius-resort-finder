@@ -98,6 +98,7 @@ const PERSONA_KEYS = Object.freeze([
   'wellness',
   'remote_work',
   'value_luxury',
+  'budget',
 ]);
 
 /**

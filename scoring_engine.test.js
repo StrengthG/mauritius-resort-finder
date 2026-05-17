@@ -268,9 +268,9 @@ const config   = getScoringConfig();
 const personas = getPersonas();
 
 assert(SCORE_VERSION === '1.0.0', `SCORE_VERSION is '${SCORE_VERSION}'`);
-assert(personas.length === 6, `6 personas defined (got ${personas.length})`);
+assert(personas.length === 7, `7 personas defined (got ${personas.length})`);
 
-const expectedPersonas = ['honeymoon', 'luxury', 'family', 'wellness', 'remote_work', 'value_luxury'];
+const expectedPersonas = ['honeymoon', 'luxury', 'family', 'wellness', 'remote_work', 'value_luxury', 'budget'];
 for (const p of expectedPersonas) {
   assert(personas.includes(p), `Persona "${p}" exists`);
 }

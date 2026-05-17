@@ -317,6 +317,32 @@ const PERSONA_CONFIGS = Object.freeze({
     },
   },
 
+  budget: {
+    dimension_weights: {
+      overall_rating:   1.0,
+      location_score:   1.0,
+      amenity_score:    0.9,
+      brand_score:      0.4,  // Brand prestige irrelevant for budget travellers
+      value_score:      3.0,  // Value for money is the entire point
+      affiliate_weight: 1.0,
+    },
+    amenity_boosts: {
+      all_inclusive:       2.0,  // All-inclusive dramatically reduces total cost
+      breakfast_included:  1.5,
+      free_water_sports:   1.2,
+      free_wifi:           1.0,
+      free_shuttle:        1.0,
+      happy_hour:          0.5,
+    },
+    exclusion_rules: [
+      // Only include hotels at or under $500/night — above that is not "cheap"
+      (hotel) => (hotel.price_per_night_usd || 0) > 500,
+    ],
+    min_scores: {
+      value_score: 7.0,  // Must genuinely represent good value, not just cheap
+    },
+  },
+
 });
 
 // ─────────────────────────────────────────────────────────────────────────────

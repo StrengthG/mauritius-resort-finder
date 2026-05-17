@@ -120,6 +120,12 @@ const PERSONA_META = {
     why_col:  'Why It Fits — Best Value',
     intro:    'Best value-for-money luxury hotels: high quality at a relatively accessible price point.',
   },
+  budget: {
+    label:    'Best Cheap Hotels',
+    heading:  '# Best Cheap Hotels Rankings',
+    why_col:  'Why It Fits — Budget',
+    intro:    'Best cheap hotels in Mauritius under $500/night — independently scored so you get the most quality for your money.',
+  },
 };
 
 // ── Why-it-fits generator ─────────────────────────────────────────────────────
@@ -177,6 +183,14 @@ function buildWhyItFits(hotel, persona, score) {
       if (hotel.overall_rating >= 8) parts.push(`${hotel.overall_rating}/10 overall`);
       if (amenities.spa)           parts.push('spa included');
       if (amenities.private_beach) parts.push('beach access');
+      break;
+
+    case 'budget':
+      if (hotel.price_per_night_usd) parts.push(`from $${hotel.price_per_night_usd}/night`);
+      if (hotel.value_score >= 8)    parts.push(`value score ${hotel.value_score}/10`);
+      if (hotel.overall_rating >= 8) parts.push(`${hotel.overall_rating}/10 rated`);
+      if (amenities.private_beach)   parts.push('beach access');
+      if (amenities.pool)            parts.push('pool');
       break;
   }
 

@@ -227,8 +227,8 @@ it('PAGE_TYPES contains all expected values', () => {
 it('PERSONA_DEFINITIONS is frozen', () => {
   assert(Object.isFrozen(PERSONA_DEFINITIONS));
 });
-it('PERSONA_DEFINITIONS has 6 entries', () => {
-  assertEqual(PERSONA_DEFINITIONS.length, 6);
+it('PERSONA_DEFINITIONS has 7 entries', () => {
+  assertEqual(PERSONA_DEFINITIONS.length, 7);
 });
 it('PERSONA_DEFINITIONS has exactly 1 pillar entry', () => {
   assertEqual(PERSONA_DEFINITIONS.filter(p => p.page_type_tag === 'pillar').length, 1);
@@ -399,8 +399,8 @@ it('affiliateLinks defaults to {}', () => {
 
 section('_generatePersonaContexts()');
 
-it('returns 5 persona specs (non-pillar)', () => {
-  assertEqual(_generatePersonaContexts(MINI_DATASET).length, 5);
+it('returns 6 persona specs (non-pillar)', () => {
+  assertEqual(_generatePersonaContexts(MINI_DATASET).length, 6);
 });
 it('all specs have page_type persona', () => {
   _generatePersonaContexts(MINI_DATASET).forEach(s =>
@@ -627,7 +627,7 @@ it('duplicates is an array', () => {
 it('no duplicates in clean dataset', () => {
   assertEqual(generatePageContexts(MINI_DATASET, { comparisonTopN: 3 }).duplicates.length, 0);
 });
-it('total spec count = 1 pillar + 5 persona + regions + hotels + comparisons', () => {
+it('total spec count = 1 pillar + 6 persona + regions + hotels + comparisons', () => {
   const { specs } = generatePageContexts(MINI_DATASET, { comparisonTopN: 3 });
   const pillar  = specs.filter(s => s.page_type === 'pillar').length;
   const persona = specs.filter(s => s.page_type === 'persona').length;
@@ -635,7 +635,7 @@ it('total spec count = 1 pillar + 5 persona + regions + hotels + comparisons', (
   const hotel   = specs.filter(s => s.page_type === 'hotel').length;
   const comp    = specs.filter(s => s.page_type === 'comparison').length;
   assertEqual(pillar, 1);
-  assertEqual(persona, 5);
+  assertEqual(persona, 6);
   assertEqual(region, 2);
   assertEqual(hotel, 3);
   assertEqual(comp, 3);
@@ -656,7 +656,7 @@ it('affiliateLinks propagated to all specs', () => {
     assert(s.affiliateLinks === al || s.affiliateLinks.T001 !== undefined);
   });
 });
-it('empty dataset produces 1 pillar + 5 persona + 0 region + 0 hotel + 0 comparison', () => {
+it('empty dataset produces 1 pillar + 6 persona + 0 region + 0 hotel + 0 comparison', () => {
   const { specs } = generatePageContexts([], { comparisonTopN: 5 });
   assertEqual(specs.filter(s => s.page_type === 'region').length, 0);
   assertEqual(specs.filter(s => s.page_type === 'hotel').length, 0);
