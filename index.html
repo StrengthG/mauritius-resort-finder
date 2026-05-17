@@ -100,9 +100,77 @@
     }
     .skip-link:focus { left: 8px; }
 
+    /* Big Dodo callout */
+    .bd-callout {
+      background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, rgba(201,168,76,0.02) 100%);
+      border-top: 1px solid var(--border-gold);
+      border-bottom: 1px solid var(--border-gold);
+      padding: 28px 0;
+    }
+    .bd-callout__inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .bd-callout__icon {
+      font-size: 2.2rem;
+      line-height: 1;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 8px rgba(201,168,76,0.3));
+    }
+    .bd-callout__body {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+    .bd-callout__text {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      flex: 1;
+      min-width: 200px;
+    }
+    .bd-callout__text strong { color: var(--champagne); font-weight: 700; }
+    .bd-callout__btn {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--border-gold);
+      border-radius: var(--radius-pill);
+      padding: 10px 22px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .bd-callout__btn:hover, .bd-callout__btn:focus-visible {
+      background: var(--gold-glow);
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.22);
+      transform: translateY(-1px);
+      outline: none;
+    }
+    .bd-callout__btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
     @media (max-width: 640px) {
       .hero { padding: 80px 0 64px; }
       .hero__subtitle { font-size: 0.98rem; margin-bottom: 36px; }
+      .bd-callout__inner { gap: 14px; }
+      .bd-callout__icon { font-size: 1.8rem; }
+      .bd-callout__body { gap: 14px; }
+      .bd-callout__text { font-size: 0.88rem; }
     }
   </style>
 </head>
@@ -181,6 +249,26 @@
     <div class="trust-stat">
       <span class="trust-stat__value">0</span>
       <div class="trust-stat__label">Paid placements</div>
+    </div>
+  </div>
+</div>
+
+<!-- BIG DODO CALLOUT ══════════════════════════════════════════════════════ -->
+<div class="bd-callout reveal" role="complementary" aria-label="Big Dodo travel assistant">
+  <div class="bd-callout__inner">
+    <div class="bd-callout__icon" aria-hidden="true">🦤</div>
+    <div class="bd-callout__body">
+      <p class="bd-callout__text">
+        Confused about anything? Don&rsquo;t worry &mdash; <strong>Big Dodo</strong> is here to answer all your questions about Mauritius and help you find the perfect resort.
+      </p>
+      <button
+        class="bd-callout__btn"
+        onclick="if(window._bigDodo){window._bigDodo._open()}else{document.querySelector('.bd-trigger')&&document.querySelector('.bd-trigger').click()}"
+        aria-label="Open Big Dodo AI travel assistant"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Ask Big Dodo
+      </button>
     </div>
   </div>
 </div>
