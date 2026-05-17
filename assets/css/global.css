@@ -783,3 +783,210 @@ img { max-width: 100%; height: auto; display: block; }
 @media (max-width: 640px) {
   .back-to-top { bottom: 20px; right: 20px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Ambient Visuals — Hero Slideshow · Cinematic Strip · Floating Panels
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Ken Burns keyframes (one direction per slide slot) ─────────────────── */
+@keyframes kb-zoom-out {
+  from { transform: scale(1.14) translate(-1.5%, 0.5%); }
+  to   { transform: scale(1.02) translate(0%,    0%); }
+}
+@keyframes kb-pan-right {
+  from { transform: scale(1.08) translate(-3%,   0.5%); }
+  to   { transform: scale(1.12) translate(0.5%, -1%); }
+}
+@keyframes kb-zoom-in {
+  from { transform: scale(1.02) translate(1%,  0.5%); }
+  to   { transform: scale(1.12) translate(-1%, -0.5%); }
+}
+@keyframes kb-pan-left {
+  from { transform: scale(1.1)  translate(2.5%, -0.5%); }
+  to   { transform: scale(1.04) translate(-0.5%, 0.5%); }
+}
+
+/* ── Hero canvas ─────────────────────────────────────────────────────────── */
+.hero__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Dark cinematic overlay — preserves text contrast over any image */
+.hero__canvas::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg,
+      rgba(8,17,31,0.78) 0%,
+      rgba(8,17,31,0.52) 38%,
+      rgba(8,17,31,0.62) 100%);
+}
+
+/* Individual image slides */
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.8s ease;
+  will-change: transform, opacity;
+}
+
+.hero__slide.is-active {
+  opacity: 1;
+}
+
+/* Assign a unique Ken Burns animation to each slide position */
+.hero__slide:nth-child(1).is-active { animation: kb-zoom-out  7.8s ease-in-out forwards; }
+.hero__slide:nth-child(2).is-active { animation: kb-pan-right  7.8s ease-in-out forwards; }
+.hero__slide:nth-child(3).is-active { animation: kb-zoom-in    7.8s ease-in-out forwards; }
+.hero__slide:nth-child(4).is-active { animation: kb-pan-left   7.8s ease-in-out forwards; }
+
+/* Hero text container must sit above the canvas */
+.hero .container { position: relative; z-index: 3; }
+
+/* ── Ambient cinematic strip ─────────────────────────────────────────────── */
+.ambient-strip {
+  position: relative;
+  height: 50vh;
+  min-height: 260px;
+  max-height: 500px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.ambient-strip.is-visible { opacity: 1; }
+
+/* The image layer — slightly oversized so parallax has room to shift */
+.ambient-strip__img {
+  position: absolute;
+  inset: -14% -2%;
+  background-size: cover;
+  background-position: center 30%;
+  will-change: transform;
+  transform: scale(1.14);
+  transition: transform 0s; /* JS handles transform smoothly via RAF */
+}
+
+/* Gradient overlay: dark at edges, open in the middle */
+.ambient-strip__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(8,17,31,0.62) 0%,
+    rgba(8,17,31,0.16) 30%,
+    rgba(8,17,31,0.16) 70%,
+    rgba(8,17,31,0.68) 100%
+  );
+}
+
+/* Atmospheric caption */
+.ambient-strip__caption {
+  position: absolute;
+  bottom: 28px;
+  inset-inline: 0;
+  z-index: 2;
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245,230,200,0.45);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Floating ambient panels ─────────────────────────────────────────────── */
+.ambient-panels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 72px 28px;
+  overflow: hidden;
+  background: var(--deep-navy);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.ambient-panel {
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(48px) rotate(var(--tilt, 0deg));
+  transition:
+    opacity  0.95s var(--ease-out),
+    transform 0.95s var(--ease-out),
+    box-shadow 0.3s ease;
+  box-shadow: 0 20px 56px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+  will-change: opacity, transform;
+}
+
+.ambient-panel.is-visible {
+  opacity: 1;
+  transform: translateY(0) rotate(var(--tilt, 0deg));
+}
+
+.ambient-panel:hover {
+  box-shadow: 0 28px 72px rgba(0,0,0,0.7), 0 0 0 1px var(--border-gold);
+  transform: translateY(-6px) rotate(var(--tilt, 0deg)) scale(1.02);
+  transition-duration: 0.4s;
+}
+
+.ambient-panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Panel size + tilt variants */
+.ambient-panel--a {
+  width: 248px; height: 166px;
+  --tilt: -3.5deg;
+  transition-delay: 0.08s;
+}
+.ambient-panel--b {
+  width: 296px; height: 198px;
+  --tilt: 1.8deg;
+  transition-delay: 0.22s;
+}
+.ambient-panel--c {
+  width: 226px; height: 152px;
+  --tilt: -1.5deg;
+  transition-delay: 0.38s;
+}
+
+/* ── Responsive overrides ────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .ambient-strip { height: 42vh; }
+  .ambient-panel--a { width: 32vw; height: 21vw; }
+  .ambient-panel--b { width: 38vw; height: 25vw; }
+  .ambient-panel--c { width: 28vw; height: 19vw; }
+}
+
+@media (max-width: 640px) {
+  .ambient-strip { height: 38vw; min-height: 180px; }
+  .ambient-strip__caption { font-size: 0.56rem; letter-spacing: 0.16em; }
+  .ambient-panels { padding: 48px 16px; gap: 10px; }
+  .ambient-panel--a { width: 29vw; height: 20vw; border-radius: 7px; }
+  .ambient-panel--b { width: 36vw; height: 24vw; border-radius: 7px; }
+  .ambient-panel--c { width: 27vw; height: 18vw; border-radius: 7px; }
+  /* Disable hover tilt on touch devices — avoids sticky states */
+  .ambient-panel:hover { transform: translateY(0) rotate(var(--tilt, 0deg)); box-shadow: 0 20px 56px rgba(0,0,0,0.55); }
+}
