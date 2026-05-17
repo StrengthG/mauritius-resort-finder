@@ -976,18 +976,37 @@
 <script>window.BigDodoConfig = { apiUrl: '/api/chat', pageContext: { pageType: 'home', slug: '' } };</script>
 <script src="/assets/js/big_dodo_widget.js" defer></script>
 <script>
-window.addEventListener('load', function () {
-  var btn = document.getElementById('bd-callout-btn');
-  if (!btn) return;
-  btn.addEventListener('click', function () {
-    if (window._bigDodo) {
+(function () {
+  function openBigDodo() {
+    // 1. Proper API
+    if (window._bigDodo && typeof window._bigDodo._open === 'function') {
       window._bigDodo._open();
-    } else {
-      var trigger = document.querySelector('.bd-trigger');
-      if (trigger) trigger.click();
+      return;
     }
-  });
-});
+    // 2. Click the floating trigger button
+    var t = document.querySelector('.bd-trigger');
+    if (t) { t.click(); return; }
+    // 3. Directly toggle the panel via CSS class
+    var p = document.getElementById('bd-panel');
+    if (p) {
+      p.classList.add('bd-panel--open');
+      p.setAttribute('aria-hidden', 'false');
+      var i = document.getElementById('bd-input');
+      if (i) setTimeout(function () { i.focus(); }, 80);
+    }
+  }
+
+  function attach() {
+    var btn = document.getElementById('bd-callout-btn');
+    if (btn) btn.addEventListener('click', openBigDodo);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach);
+  } else {
+    attach();
+  }
+})();
 </script>
 
 </body>
