@@ -414,6 +414,7 @@ function getRelatedGuides(persona) {
     { label: 'Mauritius Family Holiday Guide',         slug: 'mauritius-family-holiday-guide',        persona: null           },
     { label: 'Mauritius Wellness Retreat Guide',       slug: 'mauritius-wellness-retreat-guide',      persona: null           },
     { label: 'Mauritius All-Inclusive Resorts',        slug: 'mauritius-all-inclusive-resorts',        persona: null           },
+    { label: 'Where to Stay in Mauritius',             slug: 'where-to-stay-in-mauritius',             persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
