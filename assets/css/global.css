@@ -815,17 +815,17 @@ img { max-width: 100%; height: auto; display: block; }
   pointer-events: none;
 }
 
-/* Dark cinematic overlay — preserves text contrast over any image */
+/* Dark cinematic overlay — calibrated so images are visible but text stays legible */
 .hero__canvas::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(180deg,
-      rgba(8,17,31,0.78) 0%,
-      rgba(8,17,31,0.52) 38%,
-      rgba(8,17,31,0.62) 100%);
+    linear-gradient(170deg,
+      rgba(6,12,24,0.52) 0%,
+      rgba(6,12,24,0.22) 42%,
+      rgba(6,12,24,0.38) 100%);
 }
 
 /* Individual image slides */
@@ -836,22 +836,13 @@ img { max-width: 100%; height: auto; display: block; }
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 1.8s ease;
+  transition: opacity 1.6s ease;
   will-change: transform, opacity;
 }
+/* JS sets opacity + animation directly — no class-based state needed */
 
-.hero__slide.is-active {
-  opacity: 1;
-}
-
-/* Assign a unique Ken Burns animation to each slide position */
-.hero__slide:nth-child(1).is-active { animation: kb-zoom-out  7.8s ease-in-out forwards; }
-.hero__slide:nth-child(2).is-active { animation: kb-pan-right  7.8s ease-in-out forwards; }
-.hero__slide:nth-child(3).is-active { animation: kb-zoom-in    7.8s ease-in-out forwards; }
-.hero__slide:nth-child(4).is-active { animation: kb-pan-left   7.8s ease-in-out forwards; }
-
-/* Hero text container must sit above the canvas */
-.hero .container { position: relative; z-index: 3; }
+/* Hero text sits above canvas (0), hero__bg (2), and hero::before (auto) */
+.hero .container { position: relative; z-index: 10; }
 
 /* ── Ambient cinematic strip ─────────────────────────────────────────────── */
 .ambient-strip {
