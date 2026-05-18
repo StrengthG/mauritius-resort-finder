@@ -417,6 +417,7 @@ function getRelatedGuides(persona) {
     { label: 'Where to Stay in Mauritius',             slug: 'where-to-stay-in-mauritius',             persona: null           },
     { label: 'Best Beach Resorts in Mauritius',        slug: 'best-beach-resorts-mauritius',           persona: null           },
     { label: 'Best Boutique Hotels in Mauritius',      slug: 'best-boutique-hotels-mauritius',         persona: null           },
+    { label: 'Mauritius Travel Guide',                 slug: 'mauritius-travel-guide',                 persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
