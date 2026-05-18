@@ -111,9 +111,25 @@ app.use((err, req, res, _next) => {
   res.status(500).render('error', { title: 'Server Error', message: 'An unexpected error occurred.' });
 });
 
+/* ── Auto-create initial admin on first boot (env-var triggered) ─────────────── */
+async function _maybeBootstrapAdmin(db) {
+  const setupUser = process.env.INITIAL_ADMIN_USERNAME;
+  const setupPass = process.env.INITIAL_ADMIN_PASSWORD;
+  if (!setupUser || !setupPass) return;
+  const existing = await db.get('SELECT id FROM users LIMIT 1');
+  if (existing) return;
+  const bcrypt = require('bcryptjs');
+  const hash   = await bcrypt.hash(setupPass, 12);
+  await db.run('INSERT INTO users (username, password_hash, role) VALUES (?, ?, ?)',
+    [setupUser.trim(), hash, 'super_admin']);
+  console.log(`  [setup] Created super_admin: ${setupUser}`);
+  console.log(`  [setup] Remove INITIAL_ADMIN_USERNAME/PASSWORD env vars now.`);
+}
+
 /* ── Start ───────────────────────────────────────────────────────────────────── */
 if (require.main === module) {
-  getDb().then(() => {
+  getDb().then(async db => {
+    await _maybeBootstrapAdmin(db);
     app.listen(PORT, () => {
       console.log(`\n  Admin dashboard → http://localhost:${PORT}/admin\n`);
     });
