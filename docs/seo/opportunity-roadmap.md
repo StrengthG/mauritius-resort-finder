@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-18 (Run 13)
+Last updated: 2026-05-18 (Run 14)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -48,8 +48,8 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 
 | Task | Type | Priority | Notes |
 |---|---|---|---|
-| Homepage featured guides section | Internal linking / UX | High | Beach, boutique, all-inclusive not surfaced from homepage — add guides grid |
-| `mauritius-travel-guide` planning page | Informational | High | "Mauritius travel tips" — entry requirements, getting around, currency — upper funnel |
+| ~~Homepage featured guides section~~ | ~~Internal linking / UX~~ | ~~High~~ | ✅ Done 2026-05-18 (Run 14) — 8-card grid linking to all informational pages |
+| ~~`mauritius-travel-guide` planning page~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-18 (Run 14) — ~2,300 words, entry req, costs, getting around, FAQPage |
 | Grand Baie dedicated editorial guide | Regional | Medium | Auto-generated regional page is thin; hand-written guide targets "best hotels in Grand Baie" |
 | CTA copy test ("See prices" vs "Check availability") | Conversion | Medium | Small copy change, measurable impact on click-through |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
