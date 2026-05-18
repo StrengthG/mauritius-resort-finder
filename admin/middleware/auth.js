@@ -48,4 +48,15 @@ async function audit(db, req, action, entityType, entityId, detail) {
   } catch (_) { /* non-critical */ }
 }
 
-module.exports = { requireAuth, csrfMiddleware, validateCsrf, audit };
+/* ── Role-based access control ───────────────────────────────────────────────── */
+function requireRole(role) {
+  return (req, res, next) => {
+    if (req.session && req.session.role === role) return next();
+    res.status(403).render('error', {
+      title:   'Forbidden',
+      message: 'You do not have permission to access this page.',
+    });
+  };
+}
+
+module.exports = { requireAuth, requireRole, csrfMiddleware, validateCsrf, audit };

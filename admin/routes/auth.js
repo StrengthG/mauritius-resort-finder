@@ -1,9 +1,19 @@
 'use strict';
 
-const express  = require('express');
-const bcrypt   = require('bcryptjs');
+const express   = require('express');
+const bcrypt    = require('bcryptjs');
+const rateLimit = require('express-rate-limit');
 const { getDb }                      = require('../db');
 const { validateCsrf, csrfMiddleware, audit } = require('../middleware/auth');
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: 'Too many login attempts. Please wait 15 minutes and try again.',
+  skipSuccessfulRequests: true,
+});
 
 const router = express.Router();
 
@@ -14,7 +24,7 @@ router.get('/login', csrfMiddleware, (req, res) => {
 });
 
 /* POST /admin/login ─────────────────────────────────────────────────────────── */
-router.post('/login', csrfMiddleware, validateCsrf, async (req, res) => {
+router.post('/login', loginLimiter, csrfMiddleware, validateCsrf, async (req, res) => {
   const { username, password, remember } = req.body;
 
   if (!username || !password) {

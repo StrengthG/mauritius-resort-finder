@@ -1,0 +1,43 @@
+<% locals.title = 'New User' %>
+
+<div class="max-w-md">
+  <div class="mb-8">
+    <a href="/admin/users" class="text-sm text-slate-500 hover:text-slate-300">&larr; Back to users</a>
+    <h1 class="text-2xl font-bold text-champagne mt-3">New User</h1>
+  </div>
+
+  <% if (error) { %>
+  <div class="mb-5 px-4 py-3 rounded-lg text-sm" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#f87171">
+    <%= error %>
+  </div>
+  <% } %>
+
+  <div class="card p-6">
+    <form action="/admin/users" method="POST" autocomplete="off">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+      <div class="mb-5">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required autocomplete="off" />
+      </div>
+
+      <div class="mb-5">
+        <label for="password">Password <span class="normal-case font-normal text-slate-500">(min 12 chars)</span></label>
+        <input type="password" id="password" name="password" required minlength="12" autocomplete="new-password" />
+      </div>
+
+      <div class="mb-6">
+        <label for="role">Role</label>
+        <select id="role" name="role">
+          <option value="editor">editor — hotels, images, builds</option>
+          <option value="super_admin">super_admin — full access + user management</option>
+        </select>
+      </div>
+
+      <div class="flex gap-3">
+        <button type="submit" class="btn-primary">Create User</button>
+        <a href="/admin/users" class="btn-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

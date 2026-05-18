@@ -1,0 +1,49 @@
+<% locals.title = 'Users' %>
+
+<div class="max-w-3xl">
+  <div class="flex items-center justify-between mb-8">
+    <div>
+      <h1 class="text-2xl font-bold text-champagne">Users</h1>
+      <p class="text-sm text-slate-500 mt-1">Manage admin accounts</p>
+    </div>
+    <a href="/admin/users/new" class="btn-primary">+ New User</a>
+  </div>
+
+  <div class="card overflow-hidden">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-white/[0.07] text-slate-500 text-xs uppercase tracking-wider">
+          <th class="text-left px-5 py-3">Username</th>
+          <th class="text-left px-5 py-3">Role</th>
+          <th class="text-left px-5 py-3">Created</th>
+          <th class="px-5 py-3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(u => { %>
+        <tr class="border-b border-white/[0.05] hover:bg-white/[0.02]">
+          <td class="px-5 py-3 font-medium text-champagne"><%= u.username %></td>
+          <td class="px-5 py-3">
+            <% if (u.role === 'super_admin') { %>
+              <span class="badge-success">super_admin</span>
+            <% } else { %>
+              <span class="badge-pending">editor</span>
+            <% } %>
+          </td>
+          <td class="px-5 py-3 text-slate-500"><%= u.created_at ? u.created_at.slice(0, 10) : '—' %></td>
+          <td class="px-5 py-3 text-right">
+            <% if (u.id !== locals.sessionUserId) { %>
+            <form action="/admin/users/<%= u.id %>/delete" method="POST" onsubmit="return confirm('Delete user <%= u.username %>? This cannot be undone.')">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+              <button type="submit" class="text-xs text-red-400 hover:text-red-300 font-medium">Delete</button>
+            </form>
+            <% } else { %>
+            <span class="text-xs text-slate-600">you</span>
+            <% } %>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
