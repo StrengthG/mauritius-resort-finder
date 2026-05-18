@@ -71,6 +71,7 @@ router.post('/:id/delete', validateCsrf, async (req, res) => {
     return res.redirect('/admin/users');
   }
 
+  await db.run('UPDATE audit_log SET user_id = NULL WHERE user_id = ?', [id]);
   await db.run('DELETE FROM users WHERE id = ?', [id]);
   await audit(db, req, 'USER_DELETED', 'user', id, `username: ${user.username}`);
   req.session.flash = { type: 'success', message: `User "${user.username}" deleted.` };
