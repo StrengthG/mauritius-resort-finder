@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 12
+# SEO Daily Report — Run 13
 **Date:** 2026-05-18
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,82 +6,85 @@
 
 ## 1. Executive Summary
 
-Run 12 targeted the highest-priority uncovered keyword gap: **"best beach resorts in Mauritius"**. This is a high-volume, high-commercial-intent query the site had no dedicated page for. A 2,400-word independently scored guide was built, registered in the sitemap at priority 0.8, and added to the cross-site related guides network. All 1,704 tests pass; build 67/67 pages succeeded.
+Run 13 completed a technical audit (0 critical issues), fixed 6 over-length meta descriptions that were being truncated in SERPs, and built the `best-boutique-hotels-mauritius` guide — the highest-priority uncovered keyword gap after Run 12. All 1,704 tests pass. Build: 67/67 pages succeeded. Two focused commits pushed.
 
 ---
 
-## 2. Technical Issues Found
+## 2. Technical Issues Found & Fixed
 
-| Issue | Status |
-|-------|--------|
-| Build failures | 0 — 67/67 pages succeeded |
-| Test regressions | 0 — 1,704/1,704 pass |
-| Admin image MIME rejection bug (pre-existing) | Fixed this session — CSRF now validated after multer parses multipart body |
+| Issue | Severity | Status |
+|-------|----------|--------|
+| 6 meta descriptions over 160 chars | Medium — Google truncates them, hurts CTR | ✅ Fixed |
+| CSP — GA and GTM allowed | OK | ✓ |
+| robots.txt references sitemap | OK | ✓ |
+| Canonical trailing slashes consistent | OK | ✓ |
+| Internal links use trailing slashes | OK | ✓ |
+| Beach resorts page (Run 12) in sitemap | OK | ✓ |
+
+**Fixed meta descriptions (were over 160 chars, now within limit):**
+- `best-resort-mauritius.html` — 173 → 155 chars
+- `best-time-to-visit-mauritius.html` — 189 → 157 chars
+- `le-morne-hotels-mauritius.html` — 174 → 159 chars
+- `mauritius-all-inclusive-resorts.html` — 167 → 143 chars
+- `mauritius-honeymoon-guide.html` — 161 → 131 chars
+- `where-to-stay-in-mauritius.html` — 170 → 157 chars
 
 ---
 
-## 3. Content Created This Run
+## 3. Content Work Done This Run
 
-**Page:** `best-beach-resorts-mauritius`
-**Target keyword:** "best beach resorts in Mauritius"
+**Page:** `best-boutique-hotels-mauritius`
+**Target keyword:** "best boutique hotels in Mauritius"
 **Word count:** ~2,400
-**Hotels featured:** 7 (all verified against `data/hotels.json` with correct affiliate links)
+**Hotels featured:** 5 (all verified against `data/hotels.json`)
 
-| Hotel | Score | Affiliate code |
-|-------|-------|----------------|
-| Royal Palm Beachcomber Luxury | 9.2 | LLPswc1 |
-| Four Seasons Resort Mauritius at Anahita | 9.1 | s7PgDXw |
-| One&Only Le Saint Géran | 9.0 | jJhAhIn |
-| Constance Belle Mare Plage | 8.9 | joE5IeP |
-| Paradise Cove Boutique Hotel | 9.0 | KYUg6DO |
-| Shanti Maurice Resort & Spa | 8.8 | AMUhp0j |
-| Constance Le Chaland Iko Mauritius | 8.8 | a1VWvT2 |
+| Hotel | Score | Price/night | Affiliate |
+|-------|-------|-------------|-----------|
+| Paradise Cove Boutique Hotel - Adults Only | 9.0 | ~$890 | KYUg6DO |
+| Jacaranda Luxury Villas by Maritim | 8.5 | ~$620 | uzq9Zlu |
+| Bubble Lodge Ile Aux Cerfs | 8.4 | ~$750 | nOTJrFM |
+| SALT of Palmar | 8.3 | ~$350 | rHzTaO0 |
+| 20 Degres Sud | 8.2 | ~$280 | 2VMyMj0 |
 
 **Structured data:** FAQPage (5 questions) + BreadcrumbList
-**Sitemap priority:** 0.8, changefreq: monthly
+**Sitemap:** priority 0.8, changefreq monthly
+**Unique angle:** Includes a "boutique vs large resort" decision framework — targets users comparing property types, not just searching by keyword.
 
 ---
 
-## 4. Content Opportunities (Remaining Keyword Gaps)
+## 4. Internal Linking Changes
 
-| Priority | Keyword | Notes |
-|----------|---------|-------|
-| 1 | Best boutique hotels in Mauritius | Paradise Cove, SALT of Palmar, 20 Degres Sud — high differentiation |
-| 2 | Mauritius travel planning guide | Topical authority builder; feeds purchase funnel |
-| 3 | Grand Baie hotels dedicated guide | Auto-generated regional page exists but is thin |
-| 4 | Mauritius vs Maldives | Massive volume — frame as "choosing Mauritius", requires careful scoping |
-| 5 | Le Morne expanded guide | Kite-surf modifier adds volume; static page exists but short |
+**New page links to:**
+- Pillar: `/best-resort-mauritius/`
+- Persona: `/best-luxury-hotels-mauritius/`, `/best-honeymoon-hotels-mauritius/`, `/best-value-luxury-hotels-mauritius/`
+- Informational: `/adults-only-resorts-mauritius/`, `/best-beach-resorts-mauritius/`, `/where-to-stay-in-mauritius/`
+- Hotel detail pages: all 5 featured hotels
 
----
-
-## 5. Internal Linking Status
-
-**New page links to:** pillar, 4 informational guides, 7 hotel detail pages
-**New page linked from:** all 17 static pages via `getRelatedGuides()` widget
-
-**Gap:** Homepage has no direct link to the beach page. Recommend adding it to a featured guides section or nav in a future run.
+**New page linked from:**
+- All 18 static pages via `getRelatedGuides()` widget (registered this run)
 
 ---
 
-## 6. Priority Action List for Next Run
+## 5. Priority Action List for Next Run
 
-1. `best-boutique-hotels-mauritius` — clear gap, strong differentiation from persona pages
-2. Homepage featured guides section — surface beach and informational pages, improving link equity flow
-3. Mauritius travel planning guide — builds topical authority for pre-purchase queries
-4. Grand Baie dedicated editorial guide — replaces thin auto-generated page
+1. **Homepage featured guides section** — Beach resorts, boutique, and all-inclusive pages are not surfaced from the homepage. Adding a "More Guides" grid would distribute link equity and improve discoverability.
+2. **Mauritius travel planning guide** (`mauritius-travel-guide`) — Pre-trip informational content ("entry requirements", "getting around", "currency") builds topical authority and captures upper-funnel searches that feed the purchase funnel.
+3. **Grand Baie dedicated editorial guide** — The auto-generated `/grand-baie-luxury-hotels/` page is algorithmically thin. A hand-written 1,500-word guide targeting "best hotels in Grand Baie" would compete better.
+4. **CTA copy A/B test** — "Check availability →" is functional but not optimised. Test "See prices at [Hotel Name] →" with a price anchor for higher click-through.
 
 ---
 
-## 7. Expected SEO Impact
+## 6. Expected SEO Impact
 
 | Signal | Expected outcome |
 |--------|-----------------|
-| New indexed page | +1 page in Google index |
+| 6 shorter meta descriptions | Eliminates SERP truncation — est. 5–15% CTR improvement on those pages |
+| New boutique page indexed | +1 page; captures "boutique hotels mauritius" query segment |
 | FAQPage schema | Eligible for FAQ rich result — est. 15–30% CTR lift |
-| BreadcrumbList | Improved SERP display with breadcrumb trail |
-| 7 affiliate CTAs | Direct revenue on beach-query traffic |
-| Internal linking | PageRank flows to beach page from all 17 static pages |
+| BreadcrumbList | Better SERP display |
+| 5 affiliate CTAs on boutique page | Revenue from boutique-query traffic; Bubble Lodge and Paradise Cove are high-margin bookings |
+| Cross-site related guides widget | PageRank flows from all 18 static pages to new boutique page |
 
 ---
 
-*Generated by Dodo SEO Agent — Run 12*
+*Generated by Dodo SEO Agent — Run 13*

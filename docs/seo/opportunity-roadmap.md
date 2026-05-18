@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-17 (Run 11)
+Last updated: 2026-05-18 (Run 13)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -39,14 +39,20 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Build "Mauritius wellness retreat guide"~~ | ~~Informational~~ | ~~"wellness retreat mauritius"~~ | ✅ Done 2026-05-17 (Run 9, ~2,100 words, FAQPage schema, 5 hotels) |
 | ~~Build "Mauritius all-inclusive resorts" guide~~ | ~~Informational~~ | ~~"all inclusive mauritius"~~ | ✅ Done 2026-05-17 (Run 10, ~2,150 words, FAQPage schema, 5 hotels) |
 | ~~Build "Where to stay in Mauritius" guide~~ | ~~Informational~~ | ~~"where to stay in mauritius"~~ | ✅ Done 2026-05-17 (Run 11, ~2,300 words, FAQPage schema, 7 hotels, priority 0.9) |
+| ~~Build "Best beach resorts in Mauritius" guide~~ | ~~Informational~~ | ~~"best beach resorts mauritius"~~ | ✅ Done 2026-05-18 (Run 12, ~2,400 words, 7 hotels, coast comparison, FAQPage schema) |
+| ~~Fix 6 over-length meta descriptions~~ | ~~Technical/On-page~~ | — | ✅ Done 2026-05-18 (Run 13) — all pages now ≤160 chars |
+| ~~Build "Best boutique hotels in Mauritius" guide~~ | ~~Informational~~ | ~~"best boutique hotels mauritius"~~ | ✅ Done 2026-05-18 (Run 13, ~2,400 words, 5 hotels, boutique vs resort framework, FAQPage) |
 | Build hotel photo/gallery pages | UX/engagement | — | Improves time-on-site |
 
-## Tier 4 — Ongoing
+## Tier 4 — Next Runs
 
-| Task | Type | Notes |
-|---|---|---|
-| Digital PR outreach (Condé Nast, TPG) | Backlinks | Data-driven "we ranked every hotel" angle |
-| Guest posts on honeymoon travel blogs | Backlinks | Target anchor: "best honeymoon hotels mauritius" |
-| Monitor GSC for new keyword opportunities | Analytics | Weekly check on impressions with low CTR |
-| A/B test CTA copy on hotel cards | Conversion | "Check prices" vs "See availability" |
-| Update hotel data quarterly | Content freshness | Scores decay; fresh data = ranking signal |
+| Task | Type | Priority | Notes |
+|---|---|---|---|
+| Homepage featured guides section | Internal linking / UX | High | Beach, boutique, all-inclusive not surfaced from homepage — add guides grid |
+| `mauritius-travel-guide` planning page | Informational | High | "Mauritius travel tips" — entry requirements, getting around, currency — upper funnel |
+| Grand Baie dedicated editorial guide | Regional | Medium | Auto-generated regional page is thin; hand-written guide targets "best hotels in Grand Baie" |
+| CTA copy test ("See prices" vs "Check availability") | Conversion | Medium | Small copy change, measurable impact on click-through |
+| Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
+| Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
+| Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
+| Update hotel data quarterly | Content freshness | Ongoing | Scores decay; fresh data = ranking signal |
