@@ -19,7 +19,7 @@ const auditRoutes  = require('./routes/audit');
 const userRoutes   = require('./routes/users');
 
 const app  = express();
-const PORT = process.env.ADMIN_PORT || 3001;
+const PORT = process.env.ADMIN_PORT || process.env.PORT || 3001;
 
 /* ── Trust Railway / Cloudflare proxy ───────────────────────────────────────── */
 app.set('trust proxy', 1);
