@@ -51,6 +51,8 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Homepage featured guides section~~ | ~~Internal linking / UX~~ | ~~High~~ | ✅ Done 2026-05-18 (Run 14) — 8-card grid linking to all informational pages |
 | ~~`mauritius-travel-guide` planning page~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-18 (Run 14) — ~2,300 words, entry req, costs, getting around, FAQPage |
 | ~~Grand Baie dedicated editorial guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 15, ~2,200 words, 6 hotels, north coast comparison, FAQPage schema) |
+| ~~Footer "Guides" navigation column~~ | ~~Internal linking / UX~~ | ~~High~~ | ✅ Done 2026-05-19 (Run 16) — 3-column footer on all 67 generated pages; 11 guide links |
+| ~~Balaclava/western north coast guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 16, ~2,100 words, 4 hotels, marine park angle, FAQPage schema) |
 | CTA copy test ("See prices" vs "Check availability") | Conversion | Medium | Small copy change, measurable impact on click-through |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |

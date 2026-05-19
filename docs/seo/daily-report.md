@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 15
+# SEO Daily Report — Run 16
 **Date:** 2026-05-19
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,42 +6,49 @@
 
 ## 1. Executive Summary
 
-Run 15 delivered the Grand Baie editorial guide — a ~2,200-word hand-written page targeting "best hotels in Grand Baie Mauritius", the highest-priority incomplete item on the roadmap. One technical fix was also shipped: the homepage meta description was trimmed from 168 to 158 chars, resolving the only remaining over-length description on the site. All 1,704 tests pass; 67/67 pages build successfully.
+Run 16 shipped two changes: a 3-column footer Guides navigation across all 67 generated pages (improving crawlability of all informational content), and a new Balaclava hotels editorial guide (~2,100 words) targeting "best hotels in Balaclava Mauritius". One test assertion failure was caught and fixed before commit (footer disclosure link text). All 1,704 tests pass; 67/67 pages build successfully.
 
 ## 2. Technical Issues Found & Fixed
 
 | Issue | Fix |
 |---|---|
-| Homepage meta description 168 chars (over 160) | Trimmed to 158 chars |
-| Region/compare pages showing 163 chars in raw HTML audit | Confirmed rendered length ≤160 (HTML entities inflate raw count); no action needed |
-
-All other checks clean: sitemap complete, robots.txt correct, no stale year references, all internal links use trailing slashes.
+| `generateSiteFooter: disclosure link` test failure | Footer "learn more" link text changed to "see affiliate disclosure" to include the required word |
 
 ## 3. Content Work Done This Run
 
-**New page: `/grand-baie-mauritius/`** (~2,200 words)
+**Footer Guides column** — all 67 generated pages
 
-Target keyword: "best hotels in Grand Baie Mauritius"
+Added a 3-column site footer replacing the previous single-line nav:
+- **Hotel Rankings**: Luxury, Honeymoon, Family, Wellness, Value Luxury
+- **Guides**: Where to Stay, Best Time, Travel Guide, Honeymoon Guide, Beach Resorts, Grand Baie, Balaclava
+- **Site**: Methodology, All Rankings
 
-- Top 3 Grand Baie hotels with independent scores: Royal Palm (9.2), Oberoi (8.8), 20 Degres Sud (8.2)
-- 3 nearby north coast picks: Paradise Cove (9.0), Lux* Grand Gaube (8.7), Westin Turtle Bay (8.6)
-- Area guide: beach, watersports, dining, shopping
-- Comparison table: Grand Baie vs east coast (7 factors)
+New CSS classes: `.site-footer__cols`, `.site-footer__col-heading`, `.site-footer__col`.
+
+---
+
+**New page: `/balaclava-mauritius-hotels/`** (~2,100 words)
+
+Target keyword: "best hotels in Balaclava Mauritius"
+
+- 4 hotels with independent scores: Westin Turtle Bay (8.6, $650), Jacaranda Luxury Villas (8.5, $620), Le Meridien Ile Maurice (8.5, $560), Ravenala Attitude (8.1, $290)
+- Marine park angle: Balaclava Marine Park diving, snorkelling, and protected lagoon
+- 7-factor Balaclava vs Grand Baie comparison table
 - Who should / shouldn't stay section
 - 6 FAQs with FAQPage schema, BreadcrumbList, Article structured data
-- 6 affiliate CTAs with disclosure; added to sitemap (priority 0.8)
+- 4 affiliate CTAs with disclosure; added to sitemap (priority 0.8)
 
 ## 4. Internal Linking Changes
 
-Grand Baie guide links outbound to 11 internal pages (all persona pages, where-to-stay, beach resorts, travel guide, methodology). Added to `getRelatedGuides()` — appears in Related Guides section on all 77 generated/static pages.
+Balaclava guide added to `getRelatedGuides()` — appears in Related Guides section on all 67 generated/static pages. Added to footer Guides column on all generated pages. Added to `STATIC_PAGE_SPECS` for sitemap inclusion.
 
 ## 5. Priority Action List for Next Run
 
-1. **Footer "Guides" navigation column** — adding a guides index to the footer improves crawlability for all informational pages without touching generated page templates
-2. **CTA copy test** — "See prices" vs "Check availability" on hotel detail pages
-3. **Compare pages internal link audit** — verify each compare page links to the relevant informational guide
-4. **Balaclava/western north coast guide** — Balaclava Marine Park angle; complements this run's Grand Baie guide
+1. **CTA copy test** — "See prices" vs "Check availability" on hotel detail pages; small change with measurable CTR impact
+2. **Compare pages internal link audit** — verify each compare page links to the relevant informational guide
+3. **South coast regional guide** — Blue Bay / Mahebourg angle; complements north coast (Grand Baie, Balaclava) coverage
+4. **Digital PR prep** — draft "we scored every 5-star hotel in Mauritius" pitch for Condé Nast Traveller
 
 ## 6. Expected SEO Impact
 
-Grand Baie targets a clear informational keyword with moderate competition. North coast geographic content was the main gap; this page fills it and links to all persona pages via `getRelatedGuides`. Homepage meta fix removes a mild crawl quality flag. Site now has 10 informational guides + 7 persona pages + 29 hotel pages + 15 compare pages + 16 regional pages = 77 indexed pages.
+Balaclava targets a clear informational keyword for an area popular with diving and snorkelling visitors — lower competition than Grand Baie. Footer Guides column puts all 11 informational pages one click from every generated page, improving crawl efficiency for Googlebot. Site now has 11 informational guides + 7 persona pages + 29 hotel pages + 15 compare pages + 16 regional pages = 78 indexed pages.
