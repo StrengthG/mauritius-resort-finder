@@ -422,6 +422,7 @@ function getRelatedGuides(persona) {
     { label: 'Balaclava Hotels Guide',                 slug: 'balaclava-mauritius-hotels',              persona: null           },
     { label: 'Belle Mare Hotels Guide',                slug: 'belle-mare-mauritius',                    persona: null           },
     { label: 'Flic en Flac Hotels Guide',              slug: 'flic-en-flac-mauritius',                  persona: null           },
+    { label: 'Bel Ombre Hotels Guide',                 slug: 'bel-ombre-mauritius',                     persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
@@ -1516,6 +1517,7 @@ function generateSiteFooter(siteName, baseUrl) {
     `        <li><a href="${b}/balaclava-mauritius-hotels/">Balaclava</a></li>`,
     `        <li><a href="${b}/belle-mare-mauritius/">Belle Mare</a></li>`,
     `        <li><a href="${b}/flic-en-flac-mauritius/">Flic en Flac</a></li>`,
+    `        <li><a href="${b}/bel-ombre-mauritius/">Bel Ombre</a></li>`,
     `      </ul>`,
     `    </div>`,
     `    <div class="site-footer__col">`,
