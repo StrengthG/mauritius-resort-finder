@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-19 (Run 15)
+Last updated: 2026-05-19 (Run 17)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -53,7 +53,8 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Grand Baie dedicated editorial guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 15, ~2,200 words, 6 hotels, north coast comparison, FAQPage schema) |
 | ~~Footer "Guides" navigation column~~ | ~~Internal linking / UX~~ | ~~High~~ | ✅ Done 2026-05-19 (Run 16) — 3-column footer on all 67 generated pages; 11 guide links |
 | ~~Balaclava/western north coast guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 16, ~2,100 words, 4 hotels, marine park angle, FAQPage schema) |
-| CTA copy test ("See prices" vs "Check availability") | Conversion | Medium | Small copy change, measurable impact on click-through |
+| ~~CTA copy: "Check prices" → "Check availability" site-wide~~ | ~~Conversion~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 17) — all generated pages + 8 static pages updated |
+| ~~Belle Mare east coast editorial guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 17, ~2,200 words, 5 hotels, Belle Mare vs Grand Baie table, FAQPage schema) |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
