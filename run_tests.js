@@ -26,6 +26,7 @@ const SUITES = [
   'site_builder.test.js',
   'hotel_content_engine.test.js',
   'seo_outreach.test.js',
+  'contact_api.test.js',
 ];
 
 const WIDTH = 64;

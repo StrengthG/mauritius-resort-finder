@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Mauritius Resort Finder</title>
+  <meta name="description" content="Get in touch with Mauritius Resort Finder. Have a question about a hotel, booking, or anything else? Send us a message and we'll get back to you." />
+  <link rel="canonical" href="https://mauritiusresortfinder.com/contact/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact Us | Mauritius Resort Finder" />
+  <meta property="og:description" content="Have a question about a hotel or booking? Send us a message and we'll get back to you as soon as possible." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mauritiusresortfinder.com/contact/" />
+  <meta property="og:site_name" content="Mauritius Resort Finder" />
+
+  <!-- Structured data: ContactPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Mauritius Resort Finder",
+    "description": "Get in touch with Mauritius Resort Finder — independent hotel reviews and rankings for Mauritius.",
+    "url": "https://mauritiusresortfinder.com/contact/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mauritius Resort Finder",
+      "url": "https://mauritiusresortfinder.com"
+    }
+  }
+  </script>
+
+  <!-- Structured data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mauritiusresortfinder.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://mauritiusresortfinder.com/contact/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+
+  <style>
+    /* ── Contact-page-specific styles ── */
+
+    body { padding-top: 72px; }
+
+    /* ── Nav (matches static page nav) ── */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(8,17,31,.96);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1240px; margin: 0 auto; padding: 0 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; gap: 24px;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif; font-weight: 700;
+      font-size: 1.05rem; color: var(--champagne); white-space: nowrap;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo::before {
+      content: 'M'; display: grid; place-items: center;
+      width: 30px; height: 30px; border-radius: 7px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+      font-size: .85rem; color: var(--deep-navy); font-weight: 900;
+      box-shadow: 0 2px 10px rgba(201,168,76,.35);
+    }
+    .nav-links {
+      display: flex; gap: 24px; align-items: center;
+    }
+    .nav-links a {
+      font-size: .73rem; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted);
+      transition: color .2s; position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--gold); transition: width .2s;
+    }
+    .nav-links a:hover { color: var(--champagne); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a[aria-current="page"] { color: var(--gold); }
+    .nav-links a[aria-current="page"]::after { width: 100%; }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── Hero ── */
+    .contact-hero {
+      padding: 72px 0 52px; text-align: center; position: relative; overflow: hidden;
+    }
+    .contact-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% -10%, rgba(201,168,76,.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .contact-hero .container { position: relative; max-width: 680px; }
+    .contact-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .65rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--gold); background: var(--gold-glow);
+      border: 1px solid var(--border-gold); border-radius: 100px;
+      padding: 5px 16px; margin-bottom: 24px;
+    }
+    .contact-pill::before { content: '●'; font-size: .42rem; opacity: .7; }
+    .contact-hero h1 {
+      margin-bottom: 18px; font-size: clamp(2.2rem, 5vw, 3.4rem);
+    }
+    .contact-hero p {
+      font-size: 1rem; line-height: 1.8; color: var(--muted); max-width: 520px; margin: 0 auto;
+    }
+
+    /* ── Form section ── */
+    .contact-form-section { padding: 0 0 96px; }
+    .contact-form-section .container { max-width: 680px; }
+
+    /* ── Card ── */
+    .contact-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 48px 52px;
+      box-shadow: var(--shadow-card);
+    }
+    @media (max-width: 640px) {
+      .contact-card { padding: 28px 20px; }
+    }
+
+    /* ── Success state ── */
+    .contact-success {
+      text-align: center; padding: 16px 0;
+    }
+    .contact-success__icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+      display: grid; place-items: center; margin: 0 auto 24px;
+      font-size: 1.6rem; color: var(--deep-navy); font-weight: 900;
+    }
+    .contact-success h2 { margin-bottom: 12px; font-size: 1.8rem; }
+    .contact-success p { font-size: .95rem; max-width: 380px; margin: 0 auto; }
+
+    /* ── Honeypot ── */
+    .contact-honeypot {
+      position: absolute; left: -9999px; top: -9999px;
+      width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;
+    }
+
+    /* ── Form fields ── */
+    .contact-field { margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+
+    .contact-label {
+      font-size: .75rem; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--text);
+    }
+    .contact-required { color: var(--gold); font-size: .85em; }
+
+    .contact-input {
+      width: 100%; padding: 13px 16px;
+      background: var(--navy-raised);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      color: var(--text); font-family: 'DM Sans', sans-serif;
+      font-size: .9rem; line-height: 1.5;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none; resize: none;
+    }
+    .contact-input::placeholder { color: var(--muted); opacity: .7; }
+    .contact-input:focus {
+      border-color: var(--border-gold-strong);
+      box-shadow: 0 0 0 3px rgba(201,168,76,.1);
+    }
+    .contact-input[aria-invalid="true"] {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239,68,68,.1);
+    }
+    .contact-textarea { min-height: 148px; }
+
+    /* ── Char count ── */
+    .contact-char-count {
+      font-size: .72rem; color: var(--muted); text-align: right;
+      transition: color .2s;
+    }
+    .contact-char-count--warn { color: #f59e0b; }
+
+    /* ── Inline errors ── */
+    .contact-error {
+      font-size: .78rem; color: #f87171; line-height: 1.4;
+      min-height: 1.1em;
+    }
+    .contact-error:empty { display: none; }
+
+    /* ── Submit button ── */
+    .contact-btn {
+      width: 100%; padding: 15px 32px; margin-top: 8px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold-dim) 100%);
+      background-size: 200% auto;
+      color: var(--deep-navy); font-family: 'DM Sans', sans-serif;
+      font-size: .9rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      border: none; border-radius: var(--radius-pill); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      transition: background-position .4s, box-shadow .3s, transform .2s, opacity .2s;
+      position: relative; overflow: hidden;
+    }
+    .contact-btn:hover:not(:disabled) {
+      background-position: right center;
+      box-shadow: 0 8px 32px rgba(201,168,76,.5);
+      transform: translateY(-2px);
+    }
+    .contact-btn:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+
+    /* ── Spinner ── */
+    .btn-spinner {
+      display: none; width: 18px; height: 18px; border-radius: 50%;
+      border: 2px solid rgba(8,17,31,.25);
+      border-top-color: var(--deep-navy);
+      animation: contact-spin .7s linear infinite;
+    }
+    .contact-btn--loading .btn-spinner { display: block; }
+    @keyframes contact-spin { to { transform: rotate(360deg); } }
+
+    /* ── Toast ── */
+    .contact-toast {
+      margin-top: 16px; padding: 13px 18px;
+      border-radius: var(--radius-sm); font-size: .85rem; line-height: 1.5;
+      opacity: 0; transform: translateY(6px);
+      transition: opacity .3s, transform .3s;
+      pointer-events: none;
+    }
+    .contact-toast--visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .contact-toast--error {
+      background: rgba(239,68,68,.12); border: 1px solid rgba(239,68,68,.3);
+      color: #fca5a5;
+    }
+    .contact-toast--success {
+      background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.25);
+      color: #86efac;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      border-top: 1px solid var(--border); padding: 40px 0;
+      margin-top: 0; text-align: center;
+    }
+    .footer-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+    .footer-inner p { font-size: .82rem; color: var(--muted); margin-bottom: 8px; }
+    .footer-inner a { color: var(--muted); transition: color .2s; }
+    .footer-inner a:hover { color: var(--gold); }
+    .footer-disclosure { font-size: .75rem; opacity: .7; max-width: 560px; margin: 8px auto 0; }
+  </style>
+</head>
+<body>
+
+<!-- Skip link -->
+<a href="#contact-form" class="skip-link" style="position:absolute;left:-9999px;top:8px;background:var(--gold);color:var(--deep-navy);padding:8px 16px;border-radius:6px;font-weight:700;z-index:999">Skip to contact form</a>
+<a href="#contact-form" style="position:absolute;left:-9999px;top:8px;font-size:0" onfocus="this.style.left='8px'">Skip to form</a>
+
+<!-- Nav -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mauritius Resort Finder</a>
+    <div class="nav-links">
+      <a href="/best-luxury-hotels-mauritius/">Top Hotels</a>
+      <a href="/where-to-stay-in-mauritius/">Where to Stay</a>
+      <a href="/best-time-to-visit-mauritius/">Best Time</a>
+      <a href="/mauritius-travel-guide/">Travel Guide</a>
+      <a href="/contact/" aria-current="page">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- Hero -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-pill">Get in Touch</div>
+      <h1>Contact Us</h1>
+      <p>Have a question about a hotel, booking, or anything else? Send us a message and we'll get back to you as soon as possible.</p>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="contact-form-section" aria-labelledby="contact-heading">
+    <div class="container">
+
+      <div class="contact-card">
+
+        <!-- Success state -->
+        <div class="contact-success" id="contact-success" hidden tabindex="-1" aria-live="polite">
+          <div class="contact-success__icon" aria-hidden="true">&#10003;</div>
+          <h2 id="contact-heading">Message Sent</h2>
+          <p>Thank you for reaching out. We'll reply to your email address as soon as possible, usually within 1–2 business days.</p>
+        </div>
+
+        <!-- Form -->
+        <form id="contact-form" novalidate>
+
+          <!-- Honeypot — must remain hidden from users and screen readers -->
+          <div class="contact-honeypot" aria-hidden="true">
+            <label for="website">Leave this empty</label>
+            <input type="text" id="website" name="website" tabindex="-1"
+              autocomplete="off" aria-hidden="true" />
+          </div>
+
+          <h2 id="contact-heading" style="margin-bottom:32px;font-size:clamp(1.4rem,2.5vw,1.9rem)">Send a Message</h2>
+
+          <!-- Full Name -->
+          <div class="contact-field">
+            <label class="contact-label" for="name">
+              Full Name <span class="contact-required" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text" id="name" name="name"
+              class="contact-input"
+              required minlength="2" maxlength="100"
+              autocomplete="name"
+              placeholder="Your full name"
+              aria-describedby="name-error"
+              aria-required="true"
+            />
+            <span class="contact-error" id="name-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-field">
+            <label class="contact-label" for="email">
+              Email Address <span class="contact-required" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="email" id="email" name="email"
+              class="contact-input"
+              required maxlength="254"
+              autocomplete="email"
+              placeholder="you@example.com"
+              aria-describedby="email-error"
+              aria-required="true"
+            />
+            <span class="contact-error" id="email-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Message -->
+          <div class="contact-field">
+            <label class="contact-label" for="message">
+              Message <span class="contact-required" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="message" name="message"
+              class="contact-input contact-textarea"
+              required minlength="10" maxlength="5000" rows="7"
+              placeholder="Tell us how we can help — a hotel question, booking query, or general feedback."
+              aria-describedby="message-error char-count"
+              aria-required="true"
+            ></textarea>
+            <span class="contact-char-count" id="char-count" aria-live="polite">0 / 5000</span>
+            <span class="contact-error" id="message-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <button type="submit" class="contact-btn" id="contact-submit">
+            <span class="btn-text">Send Message</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+
+          <div class="contact-toast" id="contact-toast" role="alert" aria-live="assertive"></div>
+
+        </form>
+
+      </div><!-- /.contact-card -->
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <p>
+      &copy; 2026 Mauritius Resort Finder &nbsp;&middot;&nbsp;
+      <a href="/methodology/">Methodology</a> &nbsp;&middot;&nbsp;
+      <a href="/rankings/">All Rankings</a> &nbsp;&middot;&nbsp;
+      <a href="/contact/">Contact</a>
+    </p>
+    <p class="footer-disclosure">All hotel rankings are independently produced. No hotel pays for placement or score.</p>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
+<script src="/assets/js/analytics.js" defer></script>
+
+<!-- Contact form logic -->
+<script src="/assets/js/contact.js" defer></script>
+
+</body>
+</html>
