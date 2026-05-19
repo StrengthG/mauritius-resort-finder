@@ -418,6 +418,7 @@ function getRelatedGuides(persona) {
     { label: 'Best Beach Resorts in Mauritius',        slug: 'best-beach-resorts-mauritius',           persona: null           },
     { label: 'Best Boutique Hotels in Mauritius',      slug: 'best-boutique-hotels-mauritius',         persona: null           },
     { label: 'Mauritius Travel Guide',                 slug: 'mauritius-travel-guide',                 persona: null           },
+    { label: 'Grand Baie Hotels Guide',                slug: 'grand-baie-mauritius',                    persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
