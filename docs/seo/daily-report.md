@@ -1,80 +1,47 @@
-# SEO Daily Report — Run 14
-**Date:** 2026-05-18
+# SEO Daily Report — Run 15
+**Date:** 2026-05-19
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
 ---
 
 ## 1. Executive Summary
 
-Run 14 executed three distinct improvements: fixed two stale 2025 year labels on the homepage, added an 8-card Planning Guides section to the homepage (surfacing informational pages that previously had no homepage link), and built the `mauritius-travel-guide` — a 2,300-word practical planning page targeting upper-funnel "Mauritius travel guide" queries. All 1,704 tests pass. Build 67/67 pages succeeded. Two focused commits pushed.
-
----
+Run 15 delivered the Grand Baie editorial guide — a ~2,200-word hand-written page targeting "best hotels in Grand Baie Mauritius", the highest-priority incomplete item on the roadmap. One technical fix was also shipped: the homepage meta description was trimmed from 168 to 158 chars, resolving the only remaining over-length description on the site. All 1,704 tests pass; 67/67 pages build successfully.
 
 ## 2. Technical Issues Found & Fixed
 
-| Issue | Severity | Status |
-|-------|----------|--------|
-| "Hotel Rankings 2025" label on homepage | Low — stale year, looks untrustworthy | ✅ Fixed → 2026 |
-| Footer "© 2025" on homepage | Low — stale year | ✅ Fixed → 2026 |
-| Informational pages not linked from homepage | Medium — PageRank pooled at top, not flowing to guides | ✅ Fixed — guides section added |
-| All meta descriptions ≤160 chars (from Run 13) | OK | ✓ |
-| CSP, robots.txt, sitemap, canonicals | OK | ✓ All clean |
+| Issue | Fix |
+|---|---|
+| Homepage meta description 168 chars (over 160) | Trimmed to 158 chars |
+| Region/compare pages showing 163 chars in raw HTML audit | Confirmed rendered length ≤160 (HTML entities inflate raw count); no action needed |
 
----
+All other checks clean: sitemap complete, robots.txt correct, no stale year references, all internal links use trailing slashes.
 
 ## 3. Content Work Done This Run
 
-### Homepage: Planning Guides Section
-8-card grid added before the CTA strip, linking directly to:
-- Where to Stay in Mauritius
-- Best Time to Visit Mauritius
-- Mauritius Honeymoon Guide
-- Best Beach Resorts in Mauritius
-- Mauritius All-Inclusive Resorts
-- Best Boutique Hotels in Mauritius
-- Mauritius Family Holiday Guide
-- Mauritius Wellness Retreat Guide
+**New page: `/grand-baie-mauritius/`** (~2,200 words)
 
-**Impact:** Every informational page now has a direct homepage link — significantly improves PageRank distribution to those pages and makes the site more useful to first-time visitors.
+Target keyword: "best hotels in Grand Baie Mauritius"
 
-### New Page: `mauritius-travel-guide`
-**Target keyword:** "Mauritius travel guide" / "Mauritius travel tips"
-**Word count:** ~2,300
-**Content:** When to go (month table), entry requirements, getting there (flight times), getting around (car/taxi/bus), costs table, health & safety, what to pack
-**Structured data:** FAQPage (5 questions) + BreadcrumbList
-**Affiliate links:** None — pure editorial planning guide
-**Sitemap priority:** 0.8, changefreq monthly
-
----
+- Top 3 Grand Baie hotels with independent scores: Royal Palm (9.2), Oberoi (8.8), 20 Degres Sud (8.2)
+- 3 nearby north coast picks: Paradise Cove (9.0), Lux* Grand Gaube (8.7), Westin Turtle Bay (8.6)
+- Area guide: beach, watersports, dining, shopping
+- Comparison table: Grand Baie vs east coast (7 factors)
+- Who should / shouldn't stay section
+- 6 FAQs with FAQPage schema, BreadcrumbList, Article structured data
+- 6 affiliate CTAs with disclosure; added to sitemap (priority 0.8)
 
 ## 4. Internal Linking Changes
 
-**Homepage** → now links to 8 informational pages via Planning Guides section
-**Travel guide** → links to: best-resort-mauritius, best-luxury, best-honeymoon, best-family, best-beach-resorts, where-to-stay, best-time-to-visit, honeymoon-guide, boutique-hotels, east-coast-vs-west-coast
-**Travel guide** linked from → all 19 static pages via `getRelatedGuides()` widget
-
----
+Grand Baie guide links outbound to 11 internal pages (all persona pages, where-to-stay, beach resorts, travel guide, methodology). Added to `getRelatedGuides()` — appears in Related Guides section on all 77 generated/static pages.
 
 ## 5. Priority Action List for Next Run
 
-1. **Grand Baie dedicated editorial guide** — `grand-baie-hotels-guide` targeting "best hotels in Grand Baie Mauritius". Auto-generated regional page is thin; a hand-written guide with hotel cards and area context will rank better.
-2. **Adults-only resorts — add new properties** — 2 newer adults-only properties have been added to the dataset since the adults-only page was built. Worth reviewing.
-3. **Internal link audit — compare pages** — comparison pages (compare/*) link to hotel detail pages but not to thematic guides. Adding 1–2 contextual guide links per compare page would improve topical depth.
-4. **Footer Guides column** — the footer's "About" column has 4 links; add a "Guides" column linking to the most important informational pages (honeymoon, beach, travel guide, where to stay).
-
----
+1. **Footer "Guides" navigation column** — adding a guides index to the footer improves crawlability for all informational pages without touching generated page templates
+2. **CTA copy test** — "See prices" vs "Check availability" on hotel detail pages
+3. **Compare pages internal link audit** — verify each compare page links to the relevant informational guide
+4. **Balaclava/western north coast guide** — Balaclava Marine Park angle; complements this run's Grand Baie guide
 
 ## 6. Expected SEO Impact
 
-| Signal | Expected outcome |
-|--------|-----------------|
-| Stale year labels fixed | Minor trust signal improvement in SERPs |
-| Homepage guides section | Informational pages receive direct homepage PageRank — improves their ranking potential |
-| Travel guide indexed | Captures "Mauritius travel guide" / "Mauritius travel tips" queries — upper-funnel traffic that feeds the hotel booking funnel |
-| FAQPage schema on travel guide | Eligible for FAQ rich result in SERPs |
-| 10 internal links from travel guide | Distributes topical authority to hotel and persona pages |
-| All 19 static pages link to travel guide | Strong internal link signal to new page |
-
----
-
-*Generated by Dodo SEO Agent — Run 14*
+Grand Baie targets a clear informational keyword with moderate competition. North coast geographic content was the main gap; this page fills it and links to all persona pages via `getRelatedGuides`. Homepage meta fix removes a mild crawl quality flag. Site now has 10 informational guides + 7 persona pages + 29 hotel pages + 15 compare pages + 16 regional pages = 77 indexed pages.
