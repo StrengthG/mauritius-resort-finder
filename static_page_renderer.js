@@ -420,6 +420,7 @@ function getRelatedGuides(persona) {
     { label: 'Mauritius Travel Guide',                 slug: 'mauritius-travel-guide',                 persona: null           },
     { label: 'Grand Baie Hotels Guide',                slug: 'grand-baie-mauritius',                    persona: null           },
     { label: 'Balaclava Hotels Guide',                 slug: 'balaclava-mauritius-hotels',              persona: null           },
+    { label: 'Belle Mare Hotels Guide',                slug: 'belle-mare-mauritius',                    persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
@@ -446,8 +447,8 @@ function renderHero(block) {
     `    <a href="${esc(_safeUrl(booking_url))}"`,
     `       rel="nofollow sponsored"`,
     `       class="hero__cta-btn"`,
-    `       aria-label="Check prices for ${esc(ctaTarget)} on Expedia">`,
-    `      Check prices on Expedia &#8594;`,
+    `       aria-label="Check availability for ${esc(ctaTarget)} on Expedia">`,
+    `      Check availability on Expedia &#8594;`,
     `    </a>`,
     `    <p class="hero__cta-note">Affiliate link &middot; no extra cost to you</p>`,
     `  </div>`,
@@ -478,7 +479,7 @@ function renderRankingSummary(block) {
 
   const items = (hotels || []).map(h => {
     const ctaHtml = h.booking_url
-      ? `<a href="${esc(_safeUrl(h.booking_url))}" rel="nofollow sponsored" class="ranking-summary__cta" aria-label="Check prices for ${esc(h.name)} on Expedia">Check prices &#8594;</a>`
+      ? `<a href="${esc(_safeUrl(h.booking_url))}" rel="nofollow sponsored" class="ranking-summary__cta" aria-label="Check availability for ${esc(h.name)} on Expedia">Check availability &#8594;</a>`
       : '';
     return `    <li class="ranking-summary__item">` +
       `<span class="ranking-summary__rank">#${esc(h.rank)}</span>` +
@@ -699,8 +700,8 @@ function renderHotelCard(block) {
           `    <a href="${esc(_safeUrl(bookingUrl))}"`,
           `       rel="nofollow sponsored"`,
           `       class="hotel-card__cta-btn"`,
-          `       aria-label="Check prices for ${esc(hotelName)} on Expedia">`,
-          `      Check prices &#8594;`,
+          `       aria-label="Check availability for ${esc(hotelName)} on Expedia">`,
+          `      Check availability &#8594;`,
           `    </a>`,
         ].join('\n')
       : '',
@@ -769,8 +770,8 @@ function renderAffiliateCTA(block) {
     `  <a href="${esc(_safeUrl(booking_url))}"`,
     `     rel="nofollow sponsored"`,
     `     class="affiliate-cta__link"`,
-    `     aria-label="Check prices for ${esc(hotel_name)} on Expedia">`,
-    `    Check prices →`,
+    `     aria-label="Check availability for ${esc(hotel_name)} on Expedia">`,
+    `    Check availability →`,
     `  </a>`,
     `  <p class="affiliate-cta__disclosure">`,
     `    <small>Affiliate link — we may earn a commission.`,
@@ -1512,6 +1513,7 @@ function generateSiteFooter(siteName, baseUrl) {
     `        <li><a href="${b}/best-beach-resorts-mauritius/">Beach Resorts</a></li>`,
     `        <li><a href="${b}/grand-baie-mauritius/">Grand Baie</a></li>`,
     `        <li><a href="${b}/balaclava-mauritius-hotels/">Balaclava</a></li>`,
+    `        <li><a href="${b}/belle-mare-mauritius/">Belle Mare</a></li>`,
     `      </ul>`,
     `    </div>`,
     `    <div class="site-footer__col">`,
@@ -1636,8 +1638,8 @@ function renderPage(pageObject, options = {}) {
         `  <a href="${esc(_safeUrl(ctaBlock.payload.booking_url))}"`,
         `     rel="nofollow sponsored"`,
         `     class="sticky-cta__btn"`,
-        `     aria-label="Check prices for ${esc(ctaBlock.payload.hotel_name || 'this hotel')} on Expedia">`,
-        `    Check prices &rarr;`,
+        `     aria-label="Check availability for ${esc(ctaBlock.payload.hotel_name || 'this hotel')} on Expedia">`,
+        `    Check availability &rarr;`,
         `  </a>`,
         `</div>`,
         `<style>`,

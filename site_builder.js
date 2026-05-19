@@ -532,6 +532,7 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'mauritius-travel-guide',              page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'grand-baie-mauritius',               page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'balaclava-mauritius-hotels',         page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'belle-mare-mauritius',               page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'contact',                            page_type: 'other',          priority: '0.5', changefreq: 'yearly'  },
   { slug: 'rankings',                            page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
   { slug: 'methodology',                         page_type: 'informational', priority: '0.5', changefreq: 'monthly' },
