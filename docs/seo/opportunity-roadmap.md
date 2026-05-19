@@ -56,7 +56,9 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~CTA copy: "Check prices" → "Check availability" site-wide~~ | ~~Conversion~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 17) — all generated pages + 8 static pages updated |
 | ~~Belle Mare east coast editorial guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 17, ~2,200 words, 5 hotels, Belle Mare vs Grand Baie table, FAQPage schema) |
 | ~~Flic en Flac west coast editorial guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 18, ~2,100 words, 4 hotels, Flic en Flac vs Belle Mare table, FAQPage schema) |
-| South coast guide (Bel Ombre) | Regional | High | Heritage Le Telfair (8.8/10) + Heritage Awali (8.4/10); final major geographic gap |
+| ~~South coast guide (Bel Ombre)~~ | ~~Regional~~ | ~~High~~ | ✅ Done 2026-05-20 (Run 19, ~2,100 words, 4 hotels, Bel Ombre vs Flic en Flac table, FAQPage schema) |
+| Compare pages internal link audit | On-page | High | Verify 15 compare pages each link to the most relevant informational guide |
+| Hotel page content expansion | On-page | High | Hotel detail pages ~300 words; expand to 600+ words for on-page depth |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
