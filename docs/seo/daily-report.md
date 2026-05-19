@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 17
+# SEO Daily Report — Run 18
 **Date:** 2026-05-19
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,7 +6,7 @@
 
 ## 1. Executive Summary
 
-Run 17 shipped two high-priority items: a site-wide CTA copy upgrade ("Check prices" → "Check availability" across all 67 generated pages and 8 static pages) and the Belle Mare east coast editorial guide (~2,200 words), filling the final major geographic gap on the east coast. All 1,768 tests pass; 67/67 pages build successfully.
+Run 18 shipped the Flic en Flac west coast editorial guide (~2,100 words), completing the primary geographic coverage arc: north (Grand Baie ✅, Balaclava ✅), east (Belle Mare ✅), west (Flic en Flac ✅). All 1,768 tests pass; 67/67 pages build successfully.
 
 ## 2. Technical Issues Found & Fixed
 
@@ -14,48 +14,31 @@ None this run. Full audit clean: sitemap complete, robots.txt correct, all meta 
 
 ## 3. Content Work Done This Run
 
-**CTA copy upgrade — all 67 generated pages + 8 static pages**
+**New page: `/flic-en-flac-mauritius/`** (~2,100 words)
 
-Changed all affiliate CTA button text from "Check prices" to "Check availability" site-wide.
+Target keyword: "best hotels in Flic en Flac Mauritius"
 
-Rationale: Travel booking research consistently shows availability-framing CTAs outperform price-framing CTAs for luxury segments. "Check availability" removes the psychological friction of anticipated sticker shock and positions the click as an exploratory action rather than a commitment. Changed in:
-- `static_page_renderer.js` (all generated persona, hotel, region, compare pages)
-- `pages/adults-only-resorts-mauritius.html`
-- `pages/affiliate-disclosure.html`
-- `pages/best-value-resorts-mauritius.html`
-- `pages/mauritius-family-holiday-guide.html`
-- `pages/mauritius-wellness-retreat-guide.html`
-- `pages/methodology.html`
-- `pages/privacy.html`
-- `pages/rankings.html`
-
----
-
-**New page: `/belle-mare-mauritius/`** (~2,200 words)
-
-Target keyword: "best hotels in Belle Mare Mauritius"
-
-- 3 Belle Mare hotels with independent scores: One&Only Le Saint Géran (9.0/10, $1,380), Constance Belle Mare Plage (8.9/10, $920), LUX* Belle Mare (8.6/10, $730)
-- 2 nearby east coast picks: Four Seasons Anahita (9.1/10, $1,650), Constance Prince Maurice (9.0/10, $1,250)
-- 7-factor Belle Mare vs Grand Baie comparison table
-- Area guide: 9km beach, lagoon conditions, Île aux Cerfs day trip, seasonal weather
+- 2 Flic en Flac hotels with independent scores: Hilton Mauritius Resort & Spa (8.7/10, $530/night), Sands Suites Resort & Spa (7.9/10, $210/night)
+- 2 nearby west/south coast picks: Shanti Maurice Resort & Spa (8.8/10, $820/night, Chemin Grenier), Le Meridien Ile Maurice (8.5/10, $560/night, Pointe Aux Piments)
+- 7-factor Flic en Flac vs Belle Mare comparison table (beach, price, snorkelling, nightlife, families, crowds, transfers)
+- Area guide: Casela Nature Park proximity, Black River Gorges access, sunset west-facing beach, lagoon snorkelling
 - Who should / shouldn't stay section
 - 6 FAQs with FAQPage schema, BreadcrumbList, Article structured data
-- 5 affiliate CTAs with disclosure; added to sitemap (priority 0.8)
+- 4 affiliate CTAs with disclosure; added to sitemap (priority 0.8)
 
 ## 4. Internal Linking Changes
 
-Belle Mare guide added to `getRelatedGuides()` — appears in Related Guides on all 67 generated/static pages. Added to footer Guides column. Added to `STATIC_PAGE_SPECS` for sitemap inclusion.
+Flic en Flac guide added to `getRelatedGuides()` — appears in Related Guides on all 67 generated/static pages. Added to footer Guides column. Added to `STATIC_PAGE_SPECS` for sitemap inclusion.
 
 ## 5. Priority Action List for Next Run
 
-1. **Flic en Flac / west coast editorial guide** — targets "best hotels in Flic en Flac Mauritius"; west coast sunset beach area with 2 hotels in dataset; complements east coast coverage
+1. **South coast guide (Bel Ombre)** — Heritage Le Telfair (8.8/10) and Heritage Awali (8.4/10); high-value luxury keyword, final major geographic gap
 2. **Compare pages internal link audit** — verify each of the 15 compare pages links to the most relevant informational guide
-3. **South coast guide (Bel Ombre)** — Heritage Le Telfair (8.8/10) and Heritage Awali; niche but high-value luxury keyword
-4. **Digital PR prep** — draft "we scored every 5-star hotel in Mauritius" pitch for Condé Nast Traveller and The Points Guy
+3. **Digital PR prep** — draft "we scored every 5-star hotel in Mauritius" pitch for Condé Nast Traveller and The Points Guy
+4. **Hotel photo/gallery pages** — improves time-on-site for hotel detail pages
 
 ## 6. Expected SEO Impact
 
-Belle Mare is one of the highest-competition east coast keywords and a primary travel destination for UK and French visitors — the two largest source markets for Mauritius luxury travel. The page fills the last major geographic editorial gap (north: Grand Baie ✅, Balaclava ✅; east: Belle Mare ✅; south: Bel Ombre pending; west: Flic en Flac pending). CTA copy change is a measurable conversion improvement visible in affiliate click-through rates within 2–4 weeks.
+Flic en Flac is the primary west coast keyword for Mauritius resort searches — the area has strong appeal for snorkellers, budget-conscious luxury travellers, and those seeking sunset-facing beaches. The page fills the west coast geographic gap and creates a natural cross-link with the Belle Mare east coast guide via the comparison table angle. Geographic coverage now spans all four coasts except south (Bel Ombre, next run).
 
-Site now has 12 informational guides + 7 persona pages + 29 hotel pages + 15 compare pages + 16 regional pages = 79 indexed pages.
+Site now has 13 informational guides + 7 persona pages + 29 hotel pages + 15 compare pages + 16 regional pages = 80 indexed pages.
