@@ -8,3 +8,9 @@ pages_build_output_dir = "dist"
 
 [ai]
 binding = "AI"
+
+# Contact form — plain (non-secret) variables
+# RESEND_API_KEY is a Secret — add it in the Cloudflare dashboard only
+[vars]
+EMAIL_FROM    = "noreply@mauritiusresortfinder.com"
+CONTACT_EMAIL = "strengthygivenncube@gmail.com"
