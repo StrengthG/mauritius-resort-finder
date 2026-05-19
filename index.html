@@ -130,12 +130,30 @@
     }
     .bd-callout__text strong { color: var(--champagne); font-weight: 700; }
 
+    /* Contact CTA section */
+    .contact-cta-card {
+      max-width: 680px; margin: 0 auto; text-align: center;
+      background: var(--navy-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 56px 48px;
+      box-shadow: 0 0 60px rgba(201,168,76,0.07), var(--shadow-card);
+      position: relative; overflow: hidden;
+    }
+    .contact-cta-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold-bright), var(--gold-dim));
+    }
+    .contact-cta-card h2 { margin: 16px 0 18px; }
+    .contact-cta-card p  { font-size: 1rem; line-height: 1.8; max-width: 480px; margin: 0 auto 36px; }
+
     @media (max-width: 640px) {
       .hero { padding: 80px 0 64px; }
       .hero__subtitle { font-size: 0.98rem; margin-bottom: 36px; }
       .bd-callout__inner { gap: 14px; }
       .bd-callout__icon { font-size: 1.8rem; }
       .bd-callout__text { font-size: 0.88rem; }
+      .contact-cta-card { padding: 36px 24px; }
     }
   </style>
 </head>
@@ -156,6 +174,7 @@
       <li><a href="#travel-styles">By Style</a></li>
       <li><a href="#regions">By Region</a></li>
       <li><a href="#methodology">Methodology</a></li>
+      <li><a href="/contact/">Contact</a></li>
     </ul>
     <a href="#rankings" class="nav__cta" aria-label="View hotel rankings">View Rankings</a>
     <button class="nav__hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
@@ -170,6 +189,7 @@
   <a href="#travel-styles">By Style</a>
   <a href="#regions">By Region</a>
   <a href="#methodology">Methodology</a>
+  <a href="/contact/">Contact</a>
   <a href="#rankings" class="btn btn--primary" style="margin-top:28px;justify-content:center;">View Rankings &rarr;</a>
 </nav>
 
@@ -984,6 +1004,18 @@
   </div>
 </div>
 
+<!-- CONTACT ═════════════════════════════════════════════════════════════════ -->
+<section class="section section--tight" id="contact" aria-labelledby="contact-cta-heading">
+  <div class="container">
+    <div class="contact-cta-card reveal reveal--scale">
+      <span class="section-header__label">Get in Touch</span>
+      <h2 id="contact-cta-heading">Have a question?</h2>
+      <p>Ask about a specific hotel, request a personalised recommendation, or share feedback. We read every message and reply personally.</p>
+      <a href="/contact/" class="btn btn--primary">Send us a message &rarr;</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <!-- FOOTER ═════════════════════════════════════════════════════════════════ -->
@@ -1024,6 +1056,7 @@
       <ul>
         <li><a href="#methodology">Methodology</a></li>
         <li><a href="#about">About this site</a></li>
+        <li><a href="/contact/">Contact</a></li>
         <li><a href="/privacy/">Privacy policy</a></li>
         <li><a href="/affiliate-disclosure/">Affiliate disclosure</a></li>
       </ul>
