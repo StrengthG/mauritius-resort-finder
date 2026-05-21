@@ -1,48 +1,53 @@
-# SEO Daily Report — Run 19
-**Date:** 2026-05-20
+# SEO Daily Report — Run 20
+**Date:** 2026-05-21
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
 ---
 
 ## 1. Executive Summary
 
-Run 19 shipped the Bel Ombre south coast editorial guide (~2,100 words) and fixed one overlong meta description on the Belle Mare page. Bel Ombre completes the four-coast geographic coverage arc: north (Grand Baie ✅, Balaclava ✅), east (Belle Mare ✅), west (Flic en Flac ✅), south (Bel Ombre ✅). All 1,768 tests pass; 67/67 pages build successfully.
+Run 20 was a pure technical SEO and internal linking fix run — no new content page (the four-coast editorial coverage is complete). Three linked bugs were identified and fixed: broken internal links to hotels with accented names caused by divergent `_slugify()` implementations, stale CTA copy on the homepage, and incorrect affiliate link `rel` attributes. All 1,768 tests pass; 67/67 pages build successfully.
 
 ## 2. Technical Issues Found & Fixed
 
-**Belle Mare meta description over limit**
+### Critical: Broken internal links to accented hotel slugs (production 404s)
 
-The `/belle-mare-mauritius/` page had a rendered meta description of 167 characters (limit: 160). Fixed by trimming ", and LUX* Belle Mare reviewed honestly. Mauritius's finest beach, explained" to "and LUX* Belle Mare reviewed. Mauritius's finest east coast beach." — now 157 characters. Full site audit ran; this was the only violation.
+**Root cause:** Two different `_slugify()` functions existed in the codebase:
+- `site_builder.js` normalized accents via NFD decomposition: "Géran" → "geran"
+- `static_page_renderer.js` did not normalize: "Géran" → "g-ran"
+
+**Impact:** All persona pages, regional pages, and compare pages that link to *One&Only Le Saint Géran* or *Villa Alizée* generated broken href values (`/hotels/oneandonly-le-saint-g-ran/`, `/hotels/villa-aliz-e/`). In production on Cloudflare (where dist/ is built fresh), these links are 404s. Affected: best-luxury-hotels-mauritius, best-honeymoon-hotels-mauritius, belle-mare-luxury-hotels, all 15 compare pages involving these hotels.
+
+**Fix:** Added `normalize('NFD').replace(/[̀-ͯ]/g, '')` to `static_page_renderer.js` `_slugify()` to match `site_builder.js`. All generated pages now link to the correct canonical slugs.
+
+**Also fixed in static source files:**
+- `pages/rankings.html` — two hardcoded broken href links corrected
+- `index.html` — one hardcoded broken href link corrected
+
+### Homepage CTA copy and rel attribute (missed in Run 17)
+
+- 5 hotel CTA buttons on `index.html` still read "Check prices →" — updated to "Check availability →" to match the Run 17 site-wide change
+- All corresponding aria-labels updated for accessibility consistency
+- FAQ and disclosure text referencing "Check prices" updated to "Check availability"
+- 5 affiliate links used `rel="nofollow sponsored"` — corrected to `rel="noopener sponsored"` (adds security attribute, consistent with every generated page)
 
 ## 3. Content Work Done This Run
 
-**New page: `/bel-ombre-mauritius/`** (~2,100 words)
-
-Target keyword: "best hotels in Bel Ombre Mauritius"
-
-- 2 Bel Ombre hotels with independent scores: Heritage Awali Golf & Spa Resort (8.4/10, $640/night), Tamassa Resort (7.9/10, $280/night)
-- 2 nearby south coast picks: Shanti Maurice Resort & Spa (8.8/10, $820/night, Chemin Grenier), Constance Le Chaland Iko Mauritius (8.8/10, $820/night, Blue Bay)
-- 7-factor Bel Ombre vs Flic en Flac comparison table (seclusion, golf, diving, beach, off-resort scene, nightly rate, top nearby score)
-- Area guide: Heritage estate, Château de Bel Ombre, golf, big-game fishing, Chamarel and Black River Gorges access
-- Who should / shouldn't stay section
-- 6 FAQs with FAQPage schema, BreadcrumbList, Article structured data
-- 4 affiliate CTAs with disclosure; added to sitemap (priority 0.8)
+No new editorial page. Four-coast geographic coverage is complete (Grand Baie, Balaclava, Belle Mare, Flic en Flac, Bel Ombre). Audit pass instead.
 
 ## 4. Internal Linking Changes
 
-Bel Ombre guide added to `getRelatedGuides()` — appears in Related Guides on all 67 generated/static pages. Added to footer Guides column. Added to `STATIC_PAGE_SPECS` for sitemap inclusion.
+Fixing `_slugify()` in `static_page_renderer.js` corrects all internal hotel links across the 67 generated pages. The two most-linked hotels (One&Only Le Saint Géran appears on every luxury, honeymoon, and comparison page) now route correctly.
 
 ## 5. Priority Action List for Next Run
 
-1. **Compare pages internal link audit** — verify each of the 15 compare pages links to the most relevant informational guide; add contextual internal links where missing
-2. **Hotel page content expansion** — hotel detail pages are thin (~300 words); expanding to 600+ words per hotel is a high-impact on-page SEO task
-3. **Digital PR prep** — draft "we scored every 5-star hotel in Mauritius" pitch for Condé Nast Traveller and The Points Guy
-4. **Hotel photo/gallery pages** — improves time-on-site metric
+1. **Compare pages internal link audit** — systematically verify each of the 15 compare pages links to the most contextually relevant informational guide (now that slugs are correct, these links will actually work)
+2. **`rel="nofollow"` audit across all static pages** — check `pages/*.html` files for any remaining nofollow on affiliate links
+3. **Hotel page `rel` attribute check** — verify generated hotel pages consistently use `rel="noopener sponsored"`
+4. **Digital PR prep** — draft "we scored every 5-star hotel in Mauritius" pitch for Condé Nast Traveller and The Points Guy
 
 ## 6. Expected SEO Impact
 
-Bel Ombre is a lower-volume keyword than Grand Baie or Flic en Flac but has strong commercial intent — travellers searching "best hotels in Bel Ombre" are typically in the final decision phase of a luxury booking. The Heritage estate's two-hotel model means fewer competitor pages to displace. The meta description fix on Belle Mare removes a crawl signal that could suppress click-through rate on that page.
+The broken internal link fix is the highest-impact item shipped this run. Every internal link from a persona page to One&Only Le Saint Géran or Villa Alizée was a crawl dead-end — Google would follow the link, hit a 404, and receive no link equity. With the fix, link equity now flows correctly from the 67 generated pages to the two affected hotel detail pages. The One&Only Le Saint Géran page in particular is one of the most-linked pages on the site; correctly receiving internal link equity will improve its ability to rank for brand and review queries.
 
-The four-coast geographic coverage is now complete. The site is the only independent review source covering all four Mauritius coastal areas with structured editorial content and FAQPage schema. This positions it well for featured snippet capture on geographic comparison queries.
-
-Site now has 14 informational guides + 7 persona pages + 29 hotel pages + 15 compare pages + 16 regional pages = 81 indexed pages.
+Site remains at 81 indexed pages.

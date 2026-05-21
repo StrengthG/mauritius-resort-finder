@@ -57,8 +57,10 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Belle Mare east coast editorial guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 17, ~2,200 words, 5 hotels, Belle Mare vs Grand Baie table, FAQPage schema) |
 | ~~Flic en Flac west coast editorial guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-19 (Run 18, ~2,100 words, 4 hotels, Flic en Flac vs Belle Mare table, FAQPage schema) |
 | ~~South coast guide (Bel Ombre)~~ | ~~Regional~~ | ~~High~~ | ✅ Done 2026-05-20 (Run 19, ~2,100 words, 4 hotels, Bel Ombre vs Flic en Flac table, FAQPage schema) |
+| ~~Broken slug links for accented hotel names~~ | ~~Technical~~ | ~~Critical~~ | ✅ Done 2026-05-21 (Run 20) — fixed _slugify() divergence; corrected 404 internal links on all persona/compare pages |
+| ~~Homepage CTA copy + rel attributes~~ | ~~On-page / Technical~~ | ~~Medium~~ | ✅ Done 2026-05-21 (Run 20) — "Check prices" → "Check availability" on index.html; nofollow → noopener on 5 affiliate links |
 | Compare pages internal link audit | On-page | High | Verify 15 compare pages each link to the most relevant informational guide |
-| Hotel page content expansion | On-page | High | Hotel detail pages ~300 words; expand to 600+ words for on-page depth |
+| rel="nofollow" audit on static pages | Technical | Medium | Check pages/*.html for remaining nofollow on affiliate links |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
