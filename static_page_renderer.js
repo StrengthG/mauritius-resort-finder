@@ -126,6 +126,7 @@ function _slugify(text) {
   if (!text || typeof text !== 'string') return '';
   return text
     .toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/&/g, 'and')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/-+/g, '-')
