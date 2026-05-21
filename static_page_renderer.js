@@ -425,6 +425,7 @@ function getRelatedGuides(persona) {
     { label: 'Flic en Flac Hotels Guide',              slug: 'flic-en-flac-mauritius',                  persona: null           },
     { label: 'Bel Ombre Hotels Guide',                 slug: 'bel-ombre-mauritius',                     persona: null           },
     { label: 'Cap Malheureux Hotels Guide',            slug: 'cap-malheureux-mauritius',                persona: null           },
+    { label: 'Grand Gaube Hotels Guide',               slug: 'grand-gaube-mauritius',                   persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
@@ -1521,6 +1522,7 @@ function generateSiteFooter(siteName, baseUrl) {
     `        <li><a href="${b}/flic-en-flac-mauritius/">Flic en Flac</a></li>`,
     `        <li><a href="${b}/bel-ombre-mauritius/">Bel Ombre</a></li>`,
     `        <li><a href="${b}/cap-malheureux-mauritius/">Cap Malheureux</a></li>`,
+    `        <li><a href="${b}/grand-gaube-mauritius/">Grand Gaube</a></li>`,
     `      </ul>`,
     `    </div>`,
     `    <div class="site-footer__col">`,

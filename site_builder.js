@@ -536,6 +536,7 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'flic-en-flac-mauritius',             page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'bel-ombre-mauritius',               page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'cap-malheureux-mauritius',          page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'grand-gaube-mauritius',             page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'contact',                            page_type: 'other',          priority: '0.5', changefreq: 'yearly'  },
   { slug: 'rankings',                            page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
   { slug: 'methodology',                         page_type: 'informational', priority: '0.5', changefreq: 'monthly' },
