@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 20
+# SEO Daily Report — Run 21
 **Date:** 2026-05-21
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,48 +6,60 @@
 
 ## 1. Executive Summary
 
-Run 20 was a pure technical SEO and internal linking fix run — no new content page (the four-coast editorial coverage is complete). Three linked bugs were identified and fixed: broken internal links to hotels with accented names caused by divergent `_slugify()` implementations, stale CTA copy on the homepage, and incorrect affiliate link `rel` attributes. All 1,768 tests pass; 67/67 pages build successfully.
+Run 21 shipped the Cap Malheureux north coast editorial guide (~2,100 words) and fixed a site-wide `rel="nofollow"` error on 32 affiliate links across 5 static pages. Cap Malheureux is the strongest remaining regional guide opportunity — 4 hotels in the dataset, including the 9.0/10 Paradise Cove (equal to One&Only Le Saint Géran), and the island's highest concentration of adults-only boutique properties. The compare pages internal link audit confirmed no changes needed — all 22 guides are already properly linked from every compare page. All 1,768 tests pass; 67/67 pages build successfully.
 
 ## 2. Technical Issues Found & Fixed
 
-### Critical: Broken internal links to accented hotel slugs (production 404s)
+### rel="nofollow sponsored" on 32 affiliate links in static pages (Run 20 follow-up)
 
-**Root cause:** Two different `_slugify()` functions existed in the codebase:
-- `site_builder.js` normalized accents via NFD decomposition: "Géran" → "geran"
-- `static_page_renderer.js` did not normalize: "Géran" → "g-ran"
+The Run 20 audit identified this pattern on `index.html` (5 links); a full audit this run found 32 more across 5 static pages:
+- `pages/rankings.html` — 12 affiliate links corrected
+- `pages/mauritius-wellness-retreat-guide.html` — 5 links corrected
+- `pages/mauritius-family-holiday-guide.html` — 5 links corrected
+- `pages/best-value-resorts-mauritius.html` — 5 links corrected
+- `pages/adults-only-resorts-mauritius.html` — 5 links corrected
 
-**Impact:** All persona pages, regional pages, and compare pages that link to *One&Only Le Saint Géran* or *Villa Alizée* generated broken href values (`/hotels/oneandonly-le-saint-g-ran/`, `/hotels/villa-aliz-e/`). In production on Cloudflare (where dist/ is built fresh), these links are 404s. Affected: best-luxury-hotels-mauritius, best-honeymoon-hotels-mauritius, belle-mare-luxury-hotels, all 15 compare pages involving these hotels.
+All changed from `rel="nofollow sponsored"` → `rel="noopener sponsored"`. Code examples in `methodology.html` and `affiliate-disclosure.html` also updated to reflect the correct value.
 
-**Fix:** Added `normalize('NFD').replace(/[̀-ͯ]/g, '')` to `static_page_renderer.js` `_slugify()` to match `site_builder.js`. All generated pages now link to the correct canonical slugs.
+Remaining `rel="nofollow"` instances in static pages are on non-affiliate external links (Google Analytics opt-out, Expedia/Cloudflare privacy policies) — these are correct usage.
 
-**Also fixed in static source files:**
-- `pages/rankings.html` — two hardcoded broken href links corrected
-- `index.html` — one hardcoded broken href link corrected
+### Compare pages internal link audit
 
-### Homepage CTA copy and rel attribute (missed in Run 17)
-
-- 5 hotel CTA buttons on `index.html` still read "Check prices →" — updated to "Check availability →" to match the Run 17 site-wide change
-- All corresponding aria-labels updated for accessibility consistency
-- FAQ and disclosure text referencing "Check prices" updated to "Check availability"
-- 5 affiliate links used `rel="nofollow sponsored"` — corrected to `rel="noopener sponsored"` (adds security attribute, consistent with every generated page)
+All 15 compare pages (plus 4 stale local-only pages) verified. Every compare page already links to all 22 informational guides via the Related Guides section — no changes needed. Task marked complete.
 
 ## 3. Content Work Done This Run
 
-No new editorial page. Four-coast geographic coverage is complete (Grand Baie, Balaclava, Belle Mare, Flic en Flac, Bel Ombre). Audit pass instead.
+**New page: `/cap-malheureux-mauritius/`** (~2,100 words)
+
+Target keyword: "best hotels in Cap Malheureux Mauritius"
+
+- 4 Cap Malheureux hotels with independent scores:
+  - Paradise Cove Boutique Hotel (9.0/10, $890/night, adults-only) — highest-rated hotel in northern Mauritius
+  - Lagoon Attitude — Adults Only (8.7/10, $520/night)
+  - Sea Diamond Boutique Hotel & Spa (8.5/10, $680/night, adults-preferred)
+  - Zilwa Attitude (8.2/10, $340/night, family-friendly)
+- 2 nearby Grand Gaube picks: LUX* Grand Gaube (8.7/10, $680/night), Mythic Suites & Villas (8.4/10, $500/night)
+- 7-factor Cap Malheureux vs Grand Baie comparison table (atmosphere, adults-only options, top hotel score, price range, Coin de Mire view, off-resort scene, best for)
+- Area guide: Notre Dame Auxiliatrice church, Coin de Mire island, village character, excursion options
+- Who should / shouldn't stay section with internal links to related pages
+- 6 FAQs with FAQPage schema, BreadcrumbList, Article structured data
+- 6 affiliate CTAs with disclosure; added to sitemap (priority 0.8)
+
+Editorial angle: Cap Malheureux is framed as the best adults-only/boutique alternative to the east coast ultra-luxury tier — same 9.0/10 score as One&Only Le Saint Géran, at lower rates, with the distinctive Coin de Mire view.
 
 ## 4. Internal Linking Changes
 
-Fixing `_slugify()` in `static_page_renderer.js` corrects all internal hotel links across the 67 generated pages. The two most-linked hotels (One&Only Le Saint Géran appears on every luxury, honeymoon, and comparison page) now route correctly.
+Cap Malheureux guide added to `getRelatedGuides()` — appears in Related Guides on all 67 generated/static pages. Added to footer Guides column. Added to `STATIC_PAGE_SPECS` for sitemap inclusion. Internal links from the new page: adults-only-resorts, best-honeymoon-hotels, best-luxury-hotels, grand-baie-mauritius, where-to-stay-in-mauritius.
 
 ## 5. Priority Action List for Next Run
 
-1. **Compare pages internal link audit** — systematically verify each of the 15 compare pages links to the most contextually relevant informational guide (now that slugs are correct, these links will actually work)
-2. **`rel="nofollow"` audit across all static pages** — check `pages/*.html` files for any remaining nofollow on affiliate links
-3. **Hotel page `rel` attribute check** — verify generated hotel pages consistently use `rel="noopener sponsored"`
-4. **Digital PR prep** — draft "we scored every 5-star hotel in Mauritius" pitch for Condé Nast Traveller and The Points Guy
+1. **Grand Gaube dedicated guide** — 2 more scored hotels (LUX* Grand Gaube 8.7/10, Mythic Suites 8.4/10) not yet featured in their own regional guide; natural companion to Cap Malheureux
+2. **Mauritius packing list** — informational page for the "what to pack for Mauritius" keyword cluster; low competition, useful for time-on-site
+3. **Digital PR prep** — draft "we scored every 5-star hotel in Mauritius" pitch for Condé Nast Traveller and The Points Guy
+4. **Hotel page photo/gallery** — improving time-on-site for hotel detail pages
 
 ## 6. Expected SEO Impact
 
-The broken internal link fix is the highest-impact item shipped this run. Every internal link from a persona page to One&Only Le Saint Géran or Villa Alizée was a crawl dead-end — Google would follow the link, hit a 404, and receive no link equity. With the fix, link equity now flows correctly from the 67 generated pages to the two affected hotel detail pages. The One&Only Le Saint Géran page in particular is one of the most-linked pages on the site; correctly receiving internal link equity will improve its ability to rank for brand and review queries.
+Paradise Cove Boutique Hotel is significantly under-represented in search — a 9.0/10 hotel with fewer indexed review pages than One&Only or Four Seasons despite similar quality scores. The Cap Malheureux guide creates the first editorial page specifically targeting "Cap Malheureux" geography and "Paradise Cove" informational queries. The adults-only angle (2 of 4 hotels strictly adults-only) opens an additional keyword cluster: "adults only hotels north Mauritius" and "boutique hotels Cap Malheureux." The `rel` fixes ensure 32 previously-nofollow affiliate links now pass the correct Google signal.
 
-Site remains at 81 indexed pages.
+Site now has 15 informational guides + 7 persona pages + 29 hotel pages + 15 compare pages + 17 regional pages = 83 indexed pages.

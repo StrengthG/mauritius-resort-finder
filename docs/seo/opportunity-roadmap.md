@@ -59,8 +59,11 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~South coast guide (Bel Ombre)~~ | ~~Regional~~ | ~~High~~ | ✅ Done 2026-05-20 (Run 19, ~2,100 words, 4 hotels, Bel Ombre vs Flic en Flac table, FAQPage schema) |
 | ~~Broken slug links for accented hotel names~~ | ~~Technical~~ | ~~Critical~~ | ✅ Done 2026-05-21 (Run 20) — fixed _slugify() divergence; corrected 404 internal links on all persona/compare pages |
 | ~~Homepage CTA copy + rel attributes~~ | ~~On-page / Technical~~ | ~~Medium~~ | ✅ Done 2026-05-21 (Run 20) — "Check prices" → "Check availability" on index.html; nofollow → noopener on 5 affiliate links |
-| Compare pages internal link audit | On-page | High | Verify 15 compare pages each link to the most relevant informational guide |
-| rel="nofollow" audit on static pages | Technical | Medium | Check pages/*.html for remaining nofollow on affiliate links |
+| ~~Compare pages internal link audit~~ | ~~On-page~~ | ~~High~~ | ✅ Done 2026-05-21 (Run 21) — all 22 guides already linked from every compare page; no changes needed |
+| ~~rel="nofollow" audit on static pages~~ | ~~Technical~~ | ~~Medium~~ | ✅ Done 2026-05-21 (Run 21) — 32 affiliate links fixed across rankings, wellness, family, value, adults-only pages |
+| ~~Cap Malheureux north coast guide~~ | ~~Regional~~ | ~~High~~ | ✅ Done 2026-05-21 (Run 21, ~2,100 words, 4 hotels incl. Paradise Cove 9.0/10, Cap Malheureux vs Grand Baie table, FAQPage schema) |
+| Grand Gaube regional guide | Regional | Medium | LUX* Grand Gaube (8.7/10) + Mythic Suites (8.4/10); companion to Cap Malheureux guide |
+| Mauritius packing list | Informational | Low | "what to pack for Mauritius" keyword; useful for time-on-site and topical depth |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
