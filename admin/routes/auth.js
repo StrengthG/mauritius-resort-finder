@@ -4,7 +4,7 @@ const express   = require('express');
 const bcrypt    = require('bcryptjs');
 const rateLimit = require('express-rate-limit');
 const { getDb }                      = require('../db');
-const { validateCsrf, csrfMiddleware, audit } = require('../middleware/auth');
+const { validateCsrf, csrfMiddleware, audit, requireAuth } = require('../middleware/auth');
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -50,8 +50,10 @@ router.post('/login', loginLimiter, csrfMiddleware, validateCsrf, async (req, re
 
       if (remember) req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
 
-      const returnTo = req.session.returnTo || '/admin';
+      const raw      = req.session.returnTo || '/admin';
       delete req.session.returnTo;
+      // Prevent open redirect — only allow same-origin relative paths
+      const returnTo = (typeof raw === 'string' && /^\/[^/\\]/.test(raw)) ? raw : '/admin';
       audit(db, req, 'LOGIN', 'user', user.id, null);
       res.redirect(returnTo);
     });
@@ -62,7 +64,7 @@ router.post('/login', loginLimiter, csrfMiddleware, validateCsrf, async (req, re
 });
 
 /* POST /admin/logout ─────────────────────────────────────────────────────────── */
-router.post('/logout', async (req, res) => {
+router.post('/logout', validateCsrf, async (req, res) => {
   const db = await getDb();
   await audit(db, req, 'LOGOUT', 'user', req.session.userId, null);
   req.session.destroy(() => res.redirect('/admin/login'));

@@ -21,7 +21,12 @@ const ALLOWED_EXT  = new Set(['.jpg', '.jpeg', '.png', '.webp']);
 /* ── Multer storage ─────────────────────────────────────────────────────────── */
 const storage = multer.diskStorage({
   destination(req, _file, cb) {
-    const dir = path.join(UPLOAD_BASE, String(req.params.id || 'tmp'));
+    const id = req.params.id;
+    // Validate id is a positive integer before using in path to prevent traversal
+    if (!id || !/^\d+$/.test(String(id))) {
+      return cb(new Error('Invalid hotel ID.'));
+    }
+    const dir = path.join(UPLOAD_BASE, id);
     fs.mkdirSync(dir, { recursive: true });
     cb(null, dir);
   },
@@ -160,8 +165,9 @@ router.post('/:id/delete', validateCsrf, async (req, res) => {
   const hotel = await db.get('SELECT * FROM hotels WHERE id = ?', [req.params.id]);
   if (!hotel) return res.redirect('/admin/hotels');
 
-  // Remove uploaded images from disk
-  const dir = path.join(UPLOAD_BASE, String(hotel.id));
+  // Remove uploaded images from disk (hotel.id is from DB — always a safe integer)
+  const safeId = String(Number(hotel.id));
+  const dir = path.join(UPLOAD_BASE, safeId);
   if (fs.existsSync(dir)) fs.rmSync(dir, { recursive: true, force: true });
 
   await db.run('DELETE FROM hotels WHERE id = ?', [hotel.id]);

@@ -25,6 +25,25 @@ const MAX_MESSAGE_LENGTH = 600;
 const MAX_HISTORY_TURNS  = 6;
 const MAX_HOTELS_CONTEXT = 9;
 
+const APPROVED_BOOKING_HOSTS = new Set(['expedia.com']);
+
+// ─── Chat rate limiter (per-IP, in-memory per edge instance) ──────────────────
+const _chatRateStore = new Map();
+const CHAT_RATE_LIMIT  = 20;         // max 20 requests
+const CHAT_RATE_WINDOW = 60 * 60 * 1000; // per hour
+
+function _checkChatRateLimit(ip) {
+  const now = Date.now();
+  const timestamps = (_chatRateStore.get(ip) || []).filter(t => now - t < CHAT_RATE_WINDOW);
+  if (timestamps.length >= CHAT_RATE_LIMIT) {
+    _chatRateStore.set(ip, timestamps);
+    return false;
+  }
+  timestamps.push(now);
+  _chatRateStore.set(ip, timestamps);
+  return true;
+}
+
 const SYSTEM_PROMPT = `You are Big Dodo, the AI concierge for Mauritius Resort Finder — an independent luxury hotel review platform.
 
 Your job: help travelers choose the best resort in Mauritius using only the verified hotel data provided to you.
@@ -205,6 +224,14 @@ export async function onRequestPost({ request, env }) {
     return jsonResp({ error: 'Message too long.' }, 400, origin);
   }
 
+  // Rate limit by IP
+  const ip = request.headers.get('CF-Connecting-IP')
+          || request.headers.get('X-Forwarded-For')
+          || 'unknown';
+  if (!_checkChatRateLimit(ip)) {
+    return jsonResp({ error: 'Too many requests. Please try again later.' }, 429, origin);
+  }
+
   // AI binding check
   if (!env.AI) {
     console.error('[Big Dodo] AI binding not configured');
@@ -272,13 +299,24 @@ export async function onRequestPost({ request, env }) {
   const result = {
     answer: String(parsed.answer || '').slice(0, 1200),
     recommendedHotels: Array.isArray(parsed.recommendedHotels)
-      ? parsed.recommendedHotels.slice(0, 3).map(h => ({
-          name:       String(h.name       || ''),
-          region:     String(h.region     || ''),
-          score:      Number(h.score)     || 0,
-          reason:     String(h.reason     || ''),
-          bookingUrl: String(h.bookingUrl || ''),
-        }))
+      ? parsed.recommendedHotels.slice(0, 3).map(h => {
+          const rawUrl = String(h.bookingUrl || '');
+          let safeBookingUrl = '';
+          try {
+            const parsed = new URL(rawUrl);
+            // Only allow approved booking domains to prevent AI-generated phishing URLs
+            if (parsed.protocol === 'https:' && APPROVED_BOOKING_HOSTS.has(parsed.hostname.replace(/^www\./, ''))) {
+              safeBookingUrl = rawUrl;
+            }
+          } catch { /* invalid URL — drop it */ }
+          return {
+            name:       String(h.name   || ''),
+            region:     String(h.region || ''),
+            score:      Number(h.score) || 0,
+            reason:     String(h.reason || ''),
+            bookingUrl: safeBookingUrl,
+          };
+        })
       : [],
     confidence: ['high', 'medium', 'low'].includes(parsed.confidence) ? parsed.confidence : 'medium',
   };

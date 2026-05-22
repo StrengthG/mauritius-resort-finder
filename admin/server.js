@@ -3,6 +3,7 @@
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
 
 const express        = require('express');
+const helmet         = require('helmet');
 const session        = require('express-session');
 const ejsLayouts     = require('express-ejs-layouts');
 const path           = require('path');
@@ -24,6 +25,31 @@ const PORT = process.env.ADMIN_PORT || process.env.PORT || 3001;
 /* ── Trust Railway / Cloudflare proxy ───────────────────────────────────────── */
 app.set('trust proxy', 1);
 
+/* ── Security headers (Helmet) ───────────────────────────────────────────────── */
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc:     ["'self'"],
+      scriptSrc:      ["'self'"],
+      styleSrc:       ["'self'", "'unsafe-inline'"],
+      fontSrc:        ["'self'"],
+      imgSrc:         ["'self'", 'data:'],
+      connectSrc:     ["'self'"],
+      objectSrc:      ["'none'"],
+      frameAncestors: ["'none'"],
+      baseUri:        ["'self'"],
+      formAction:     ["'self'"],
+    },
+  },
+  hsts: {
+    maxAge:            31536000,
+    includeSubDomains: true,
+    preload:           true,
+  },
+  referrerPolicy:         { policy: 'strict-origin-when-cross-origin' },
+  permittedCrossDomainPolicies: false,
+}));
+
 /* ── Session store DB path ───────────────────────────────────────────────────── */
 const SESSION_DB_DIR = path.join(__dirname, 'data');
 fs.mkdirSync(SESSION_DB_DIR, { recursive: true });
@@ -39,8 +65,8 @@ app.set('layout extractScripts', true);
 app.use('/admin/uploads', requireAuth, express.static(path.join(__dirname, 'uploads')));
 
 /* ── Body parsing ────────────────────────────────────────────────────────────── */
-app.use(express.urlencoded({ extended: false, limit: '2mb' }));
-app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: false, limit: '50kb' }));
+app.use(express.json({ limit: '50kb' }));
 
 /* ── Session ─────────────────────────────────────────────────────────────────── */
 const isProd = process.env.NODE_ENV === 'production';

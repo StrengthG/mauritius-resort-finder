@@ -379,7 +379,7 @@
         (metaStr ? '<div class="bd-hotel-card__meta">' + esc(metaStr) + '</div>' : '') +
         '<div class="bd-hotel-card__reason">' + esc(h.reason) + '</div>' +
         (hasCta
-          ? '<a href="' + esc(safeUrl(h.bookingUrl)) + '" rel="nofollow sponsored" target="_blank" class="bd-hotel-card__cta" aria-label="Check prices for ' + esc(h.name) + ' on Expedia">Check prices →</a>'
+          ? '<a href="' + esc(safeUrl(h.bookingUrl)) + '" rel="noopener nofollow sponsored" target="_blank" class="bd-hotel-card__cta" aria-label="Check prices for ' + esc(h.name) + ' on Expedia">Check prices →</a>'
           : '');
 
       // Analytics on booking click

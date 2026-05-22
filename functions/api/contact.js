@@ -164,6 +164,7 @@ function _corsHeaders(request) {
     'Access-Control-Allow-Origin': allowed,
     'Access-Control-Allow-Methods':'POST, OPTIONS',
     'Access-Control-Allow-Headers':'Content-Type',
+    'Vary':                        'Origin',
   };
 }
 
