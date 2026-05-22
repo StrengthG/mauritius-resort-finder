@@ -427,6 +427,7 @@ function getRelatedGuides(persona) {
     { label: 'Cap Malheureux Hotels Guide',            slug: 'cap-malheureux-mauritius',                persona: null           },
     { label: 'Grand Gaube Hotels Guide',               slug: 'grand-gaube-mauritius',                   persona: null           },
     { label: 'Mauritius Packing List',                 slug: 'mauritius-packing-list',                  persona: null           },
+    { label: 'Things to Do in Mauritius',              slug: 'things-to-do-in-mauritius',               persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
@@ -1527,6 +1528,7 @@ function generateSiteFooter(siteName, baseUrl) {
     `        <li><a href="${b}/cap-malheureux-mauritius/">Cap Malheureux</a></li>`,
     `        <li><a href="${b}/grand-gaube-mauritius/">Grand Gaube</a></li>`,
     `        <li><a href="${b}/mauritius-packing-list/">Packing List</a></li>`,
+    `        <li><a href="${b}/things-to-do-in-mauritius/">Things to Do</a></li>`,
     `      </ul>`,
     `    </div>`,
     `    <div class="site-footer__col">`,
