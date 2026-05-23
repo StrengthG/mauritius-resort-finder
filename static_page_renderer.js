@@ -428,6 +428,7 @@ function getRelatedGuides(persona) {
     { label: 'Grand Gaube Hotels Guide',               slug: 'grand-gaube-mauritius',                   persona: null           },
     { label: 'Mauritius Packing List',                 slug: 'mauritius-packing-list',                  persona: null           },
     { label: 'Things to Do in Mauritius',              slug: 'things-to-do-in-mauritius',               persona: null           },
+    { label: 'Best Beaches in Mauritius',              slug: 'best-beaches-in-mauritius',               persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
@@ -534,7 +535,7 @@ function renderMethodology(block) {
     dimItems,
     `  </ul>`,
     `  <p class="methodology__link-note">`,
-    `    <a href="/methodology" class="methodology__link">Read our full methodology →</a>`,
+    `    <a href="/methodology/" class="methodology__link">Read our full methodology →</a>`,
     `  </p>`,
     `</section>`,
   ].join('\n');
@@ -1529,6 +1530,7 @@ function generateSiteFooter(siteName, baseUrl) {
     `        <li><a href="${b}/grand-gaube-mauritius/">Grand Gaube</a></li>`,
     `        <li><a href="${b}/mauritius-packing-list/">Packing List</a></li>`,
     `        <li><a href="${b}/things-to-do-in-mauritius/">Things to Do</a></li>`,
+    `        <li><a href="${b}/best-beaches-in-mauritius/">Best Beaches</a></li>`,
     `      </ul>`,
     `    </div>`,
     `    <div class="site-footer__col">`,

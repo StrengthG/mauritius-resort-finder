@@ -539,6 +539,7 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'grand-gaube-mauritius',             page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'mauritius-packing-list',            page_type: 'informational', priority: '0.7', changefreq: 'yearly'  },
   { slug: 'things-to-do-in-mauritius',         page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'best-beaches-in-mauritius',         page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'contact',                            page_type: 'other',          priority: '0.5', changefreq: 'yearly'  },
   { slug: 'rankings',                            page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
   { slug: 'methodology',                         page_type: 'informational', priority: '0.5', changefreq: 'monthly' },

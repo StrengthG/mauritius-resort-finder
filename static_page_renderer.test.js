@@ -366,7 +366,7 @@ assert(methHtml.includes('<h2'), 'renderMethodology: h2');
 assert(methHtml.includes('<ul'), 'renderMethodology: dimensions list');
 assert(methHtml.includes('Location'), 'renderMethodology: Location dimension rendered');
 assert(methHtml.includes('Luxury'), 'renderMethodology: persona label present');
-assert(methHtml.includes('href="/methodology"'), 'renderMethodology: methodology link');
+assert(methHtml.includes('href="/methodology/"'), 'renderMethodology: methodology link');
 
 assertThrows(
   () => renderMethodology({ block_type: 'methodology', payload: { persona: 'luxury' } }),
