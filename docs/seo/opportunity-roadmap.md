@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-22 (Run 24)
+Last updated: 2026-05-23 (Run 25)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -65,6 +65,7 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Grand Gaube regional guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-22 (Run 22, ~2,000 words, 2 hotels, Grand Gaube vs Grand Baie table, FAQPage schema) |
 | ~~Mauritius packing list~~ | ~~Informational~~ | ~~Low~~ | ✅ Done 2026-05-22 (Run 23, ~2,100 words, 3 hotels, wet/dry season table, FAQPage schema) |
 | ~~Things to do in Mauritius~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-22 (Run 24, ~2,200 words, 3 hotels, activity-by-region table, 6 FAQs, FAQPage schema) |
+| ~~Best beaches in Mauritius~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-23 (Run 25, ~2,300 words, 3 hotels, 8-beach comparison table, purpose grid, 6 FAQs, FAQPage schema) |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
