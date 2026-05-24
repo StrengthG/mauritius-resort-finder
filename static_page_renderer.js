@@ -430,6 +430,7 @@ function getRelatedGuides(persona) {
     { label: 'Things to Do in Mauritius',              slug: 'things-to-do-in-mauritius',               persona: null           },
     { label: 'Best Beaches in Mauritius',              slug: 'best-beaches-in-mauritius',               persona: null           },
     { label: "Trou d'Eau Douce & Île aux Cerfs",       slug: 'trou-deau-douce-mauritius',               persona: null           },
+    { label: 'Restaurants & Dining Guide',             slug: 'mauritius-restaurants-dining-guide',      persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
@@ -1230,7 +1231,7 @@ function extractPageMeta(pageObject, options = {}) {
 
   // Build a CTR-optimised meta description based on page type and persona.
   const PERSONA_DESCRIPTIONS = {
-    luxury:       'Expert rankings of Mauritius\'s finest luxury hotels — independently scored on location, amenities, brand prestige, and value. No paid placements. Updated 2026.',
+    luxury:       'Expert rankings of Mauritius\'s finest luxury hotels — independently scored on location, amenities, brand prestige, and value. No paid placements. 2026.',
     honeymoon:    'The best honeymoon hotels in Mauritius — adults-only retreats, private beach villas, and couples spas. Independently scored and ranked.',
     family:       'Top family-friendly resorts in Mauritius, ranked for kids clubs, shallow lagoons, and family suites. Independent reviews from Mauritius Resort Finder.',
     wellness:     'Mauritius\'s top wellness resorts — ranked by spa quality, yoga programmes, and holistic treatments. Independent scores, no sponsored placements.',
@@ -1533,6 +1534,7 @@ function generateSiteFooter(siteName, baseUrl) {
     `        <li><a href="${b}/things-to-do-in-mauritius/">Things to Do</a></li>`,
     `        <li><a href="${b}/best-beaches-in-mauritius/">Best Beaches</a></li>`,
     `        <li><a href="${b}/trou-deau-douce-mauritius/">Trou d'Eau Douce</a></li>`,
+    `        <li><a href="${b}/mauritius-restaurants-dining-guide/">Restaurants & Dining</a></li>`,
     `      </ul>`,
     `    </div>`,
     `    <div class="site-footer__col">`,

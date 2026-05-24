@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-24 (Run 26)
+Last updated: 2026-05-24 (Run 27)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -67,7 +67,8 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Things to do in Mauritius~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-22 (Run 24, ~2,200 words, 3 hotels, activity-by-region table, 6 FAQs, FAQPage schema) |
 | ~~Best beaches in Mauritius~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-23 (Run 25, ~2,300 words, 3 hotels, 8-beach comparison table, purpose grid, 6 FAQs, FAQPage schema) |
 | ~~Trou d'Eau Douce & Île aux Cerfs regional guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-24 (Run 26, ~2,200 words, 3 hotels, Trou d'Eau Douce vs Belle Mare table, 6 FAQs, FAQPage schema) |
-| Mauritius restaurants & dining guide | Informational | High | Targets "best restaurants Mauritius"; links to hotel fine dining |
+| ~~Mauritius restaurants & dining guide~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-24 (Run 27, ~2,300 words, 3 hotels, dining-by-region sections, budget comparison table, 6 FAQs, FAQPage schema) |
+| Mauritius budget travel guide | Informational | High | Targets "budget hotels mauritius" / "cheap resorts mauritius"; value_luxury persona gap |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
