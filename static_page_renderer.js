@@ -429,6 +429,7 @@ function getRelatedGuides(persona) {
     { label: 'Mauritius Packing List',                 slug: 'mauritius-packing-list',                  persona: null           },
     { label: 'Things to Do in Mauritius',              slug: 'things-to-do-in-mauritius',               persona: null           },
     { label: 'Best Beaches in Mauritius',              slug: 'best-beaches-in-mauritius',               persona: null           },
+    { label: "Trou d'Eau Douce & Île aux Cerfs",       slug: 'trou-deau-douce-mauritius',               persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
@@ -453,7 +454,7 @@ function renderHero(block) {
   const ctaHtml = (isHotelDetail && booking_url) ? [
     `  <div class="hero__actions">`,
     `    <a href="${esc(_safeUrl(booking_url))}"`,
-    `       rel="nofollow sponsored"`,
+    `       rel="noopener sponsored"`,
     `       class="hero__cta-btn"`,
     `       aria-label="Check availability for ${esc(ctaTarget)} on Expedia">`,
     `      Check availability on Expedia &#8594;`,
@@ -487,7 +488,7 @@ function renderRankingSummary(block) {
 
   const items = (hotels || []).map(h => {
     const ctaHtml = h.booking_url
-      ? `<a href="${esc(_safeUrl(h.booking_url))}" rel="nofollow sponsored" class="ranking-summary__cta" aria-label="Check availability for ${esc(h.name)} on Expedia">Check availability &#8594;</a>`
+      ? `<a href="${esc(_safeUrl(h.booking_url))}" rel="noopener sponsored" class="ranking-summary__cta" aria-label="Check availability for ${esc(h.name)} on Expedia">Check availability &#8594;</a>`
       : '';
     return `    <li class="ranking-summary__item">` +
       `<span class="ranking-summary__rank">#${esc(h.rank)}</span>` +
@@ -706,7 +707,7 @@ function renderHotelCard(block) {
     ctaEligible
       ? [
           `    <a href="${esc(_safeUrl(bookingUrl))}"`,
-          `       rel="nofollow sponsored"`,
+          `       rel="noopener sponsored"`,
           `       class="hotel-card__cta-btn"`,
           `       aria-label="Check availability for ${esc(hotelName)} on Expedia">`,
           `      Check availability &#8594;`,
@@ -776,7 +777,7 @@ function renderAffiliateCTA(block) {
   return [
     `<div class="affiliate-cta${tierClass}" data-hotel-id="${esc(hotel_id)}">`,
     `  <a href="${esc(_safeUrl(booking_url))}"`,
-    `     rel="nofollow sponsored"`,
+    `     rel="noopener sponsored"`,
     `     class="affiliate-cta__link"`,
     `     aria-label="Check availability for ${esc(hotel_name)} on Expedia">`,
     `    Check availability →`,
@@ -1531,6 +1532,7 @@ function generateSiteFooter(siteName, baseUrl) {
     `        <li><a href="${b}/mauritius-packing-list/">Packing List</a></li>`,
     `        <li><a href="${b}/things-to-do-in-mauritius/">Things to Do</a></li>`,
     `        <li><a href="${b}/best-beaches-in-mauritius/">Best Beaches</a></li>`,
+    `        <li><a href="${b}/trou-deau-douce-mauritius/">Trou d'Eau Douce</a></li>`,
     `      </ul>`,
     `    </div>`,
     `    <div class="site-footer__col">`,
@@ -1653,7 +1655,7 @@ function renderPage(pageObject, options = {}) {
         `<div class="sticky-cta" id="sticky-cta" aria-hidden="true">`,
         `  <span class="sticky-cta__name">${esc(ctaBlock.payload.hotel_name || '')}</span>`,
         `  <a href="${esc(_safeUrl(ctaBlock.payload.booking_url))}"`,
-        `     rel="nofollow sponsored"`,
+        `     rel="noopener sponsored"`,
         `     class="sticky-cta__btn"`,
         `     aria-label="Check availability for ${esc(ctaBlock.payload.hotel_name || 'this hotel')} on Expedia">`,
         `    Check availability &rarr;`,

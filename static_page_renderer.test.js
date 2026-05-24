@@ -434,7 +434,7 @@ section('12: renderAffiliateCTA()');
 
 const ctaHtml = renderAffiliateCTA(AFFILIATE_CTA_BLOCK);
 assert(ctaHtml.includes('https://mauritiusresortfinder.com/r/MQ001'), 'renderAffiliateCTA: booking URL present');
-assert(ctaHtml.includes('rel="nofollow sponsored"'), 'renderAffiliateCTA: nofollow sponsored rel');
+assert(ctaHtml.includes('rel="noopener sponsored"'), 'renderAffiliateCTA: noopener sponsored rel');
 assert(ctaHtml.includes('Royal Palm Beachcomber'), 'renderAffiliateCTA: hotel name in link');
 assert(ctaHtml.includes('Expedia'), 'renderAffiliateCTA: Expedia shown in CTA (renderer hardcodes Expedia over payload provider)');
 assert(ctaHtml.includes('affiliate'), 'renderAffiliateCTA: disclosure text present');
@@ -636,7 +636,7 @@ assert(fullHtml.includes('id="hotel-MQ001"'), 'renderPage: hotel anchor present'
 assert(fullHtml.includes('Why It Ranks Here'), 'renderPage: hotel card explanation');
 assert(fullHtml.includes('affiliate_disclosure'), 'renderPage: disclosure mention');
 assert(fullHtml.includes('https://mauritiusresortfinder.com/r/MQ001'), 'renderPage: CTA booking URL');
-assert(fullHtml.includes('nofollow sponsored'), 'renderPage: rel attribute on CTA');
+assert(fullHtml.includes('noopener sponsored'), 'renderPage: rel attribute on CTA');
 assert(fullHtml.includes('FAQPage'), 'renderPage: FAQ schema');
 assert(fullHtml.includes('skip-link'), 'renderPage: accessibility skip link');
 assert(!fullHtml.includes('undefined'), 'renderPage: no undefined values');
@@ -871,7 +871,7 @@ if (fs.existsSync(artifactPath)) {
   if (renderOk) {
     assert(realHtml.startsWith('<!DOCTYPE html>'), 'artifacts/page.json: valid HTML');
     assert(realHtml.includes('One&amp;Only'), 'artifacts/page.json: hotel name present (escaped)');
-    assert(realHtml.includes('nofollow sponsored'), 'artifacts/page.json: CTA rel attr');
+    assert(realHtml.includes('noopener sponsored'), 'artifacts/page.json: CTA rel attr');
     assert(realHtml.includes('FAQPage'), 'artifacts/page.json: FAQ schema');
     assert(!realHtml.includes('undefined'), 'artifacts/page.json: no undefined values');
   }
