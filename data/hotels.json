@@ -5,7 +5,7 @@
     "overall_rating": 9.2,
     "location_score": 9.4,
     "amenity_score": 9.1,
-    "brand_score": 9.0,
+    "brand_score": 9,
     "value_score": 7.2,
     "review_count": 1340,
     "avg_rating": 4.8,
@@ -16,8 +16,25 @@
     "_status": "active",
     "_brand_name": "Beachcomber Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/LLPswc1", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true, "gym": true, "concierge": true, "private_pool": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/LLPswc1",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "private_pool": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ002",
@@ -26,7 +43,7 @@
     "location_score": 9.3,
     "amenity_score": 9.4,
     "brand_score": 9.5,
-    "value_score": 7.0,
+    "value_score": 7,
     "review_count": 1120,
     "avg_rating": 4.9,
     "price_per_night_usd": 1650,
@@ -36,15 +53,35 @@
     "_status": "active",
     "_brand_name": "Four Seasons",
     "_brand_tier": 10,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/s7PgDXw", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true, "golf": true, "gym": true, "concierge": true, "private_pool": true, "overwater_villa": true, "kids_club": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/s7PgDXw",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "gym": true,
+      "concierge": true,
+      "private_pool": true,
+      "overwater_villa": true,
+      "kids_club": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ003",
     "hotel_name": "One&Only Le Saint Géran",
-    "overall_rating": 9.0,
+    "overall_rating": 9,
     "location_score": 9.2,
-    "amenity_score": 9.0,
+    "amenity_score": 9,
     "brand_score": 9.3,
     "value_score": 6.8,
     "review_count": 980,
@@ -56,14 +93,32 @@
     "_status": "active",
     "_brand_name": "One&Only",
     "_brand_tier": 10,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/jJhAhIn", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true, "gym": true, "concierge": true, "private_pool": true, "wellness_programmes": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/jJhAhIn",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "private_pool": true,
+      "wellness_programmes": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ004",
     "hotel_name": "Constance Le Chaland Iko Mauritius",
     "overall_rating": 8.8,
-    "location_score": 9.0,
+    "location_score": 9,
     "amenity_score": 8.8,
     "brand_score": 8.6,
     "value_score": 7.4,
@@ -76,8 +131,26 @@
     "_status": "active",
     "_brand_name": "Constance Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/a1VWvT2", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "golf": true, "kids_club": true, "gym": true, "water_sports": true, "wellness_programmes": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/a1VWvT2",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "kids_club": true,
+      "gym": true,
+      "water_sports": true,
+      "wellness_programmes": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ006",
@@ -96,17 +169,33 @@
     "_status": "active",
     "_brand_name": "LUX* Resorts & Hotels",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/usEpyj6", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "gym": true, "water_sports": true, "wellness_programmes": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/usEpyj6",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "water_sports": true,
+      "wellness_programmes": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ007",
     "hotel_name": "Constance Prince Maurice",
-    "overall_rating": 9.0,
+    "overall_rating": 9,
     "location_score": 9.2,
     "amenity_score": 9.1,
-    "brand_score": 9.0,
-    "value_score": 7.0,
+    "brand_score": 9,
+    "value_score": 7,
     "review_count": 890,
     "avg_rating": 4.8,
     "price_per_night_usd": 1250,
@@ -116,13 +205,29 @@
     "_status": "active",
     "_brand_name": "Constance Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/WmRuuHu", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true, "overwater_villa": true, "wellness_programmes": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/WmRuuHu",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": true,
+      "fine_dining": true,
+      "pool": true,
+      "overwater_villa": true,
+      "wellness_programmes": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ008",
     "hotel_name": "Paradise Cove Boutique Hotel - Adults Only",
-    "overall_rating": 9.0,
+    "overall_rating": 9,
     "location_score": 9.1,
     "amenity_score": 8.9,
     "brand_score": 8.5,
@@ -136,8 +241,23 @@
     "_status": "active",
     "_brand_name": "Paradise Cove",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/KYUg6DO", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "adults_only": true, "wellness_programmes": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/KYUg6DO",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "adults_only": true,
+      "wellness_programmes": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ009",
@@ -145,7 +265,7 @@
     "overall_rating": 8.7,
     "location_score": 8.8,
     "amenity_score": 8.6,
-    "brand_score": 8.0,
+    "brand_score": 8,
     "value_score": 8.2,
     "review_count": 81,
     "avg_rating": 4.6,
@@ -156,8 +276,22 @@
     "_status": "active",
     "_brand_name": "Attitude Hotels",
     "_brand_tier": 7,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/4toq7Ie", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "adults_only": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/4toq7Ie",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "adults_only": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ010",
@@ -176,8 +310,20 @@
     "_status": "active",
     "_brand_name": "MJ Holidays",
     "_brand_tier": 7,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/c9Mfa5v", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "pool": true, "fine_dining": true, "high_speed_wifi": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/c9Mfa5v",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "fine_dining": true,
+      "high_speed_wifi": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ011",
@@ -185,8 +331,8 @@
     "overall_rating": 8.5,
     "location_score": 8.7,
     "amenity_score": 8.4,
-    "brand_score": 8.0,
-    "value_score": 8.0,
+    "brand_score": 8,
+    "value_score": 8,
     "review_count": 0,
     "avg_rating": 4.5,
     "price_per_night_usd": 680,
@@ -196,8 +342,22 @@
     "_status": "active",
     "_brand_name": "Sea Resorts",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/FA2X6xD", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "wellness_programmes": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/FA2X6xD",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "wellness_programmes": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ012",
@@ -216,8 +376,20 @@
     "_status": "active",
     "_brand_name": "Independent",
     "_brand_tier": 7,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/FyoIgaK", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "fine_dining": true, "pool": true, "high_speed_wifi": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/FyoIgaK",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "fine_dining": true,
+      "pool": true,
+      "high_speed_wifi": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ013",
@@ -236,8 +408,23 @@
     "_status": "active",
     "_brand_name": "Heritage Resorts",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/TzDUcJc", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "golf": true, "wellness_programmes": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/TzDUcJc",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "wellness_programmes": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ014",
@@ -256,14 +443,30 @@
     "_status": "active",
     "_brand_name": "LUX* Resorts & Hotels",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/FfYvZuT", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "gym": true, "wellness_programmes": true, "yoga": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/FfYvZuT",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "wellness_programmes": true,
+      "yoga": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ015",
     "hotel_name": "Oberoi Beach Resort Mauritius",
     "overall_rating": 8.8,
-    "location_score": 9.0,
+    "location_score": 9,
     "amenity_score": 8.9,
     "brand_score": 8.9,
     "value_score": 7.3,
@@ -276,15 +479,32 @@
     "_status": "active",
     "_brand_name": "Oberoi",
     "_brand_tier": 9,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/o4m2Ako", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true, "wellness_programmes": true, "yoga": true, "meditation": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/o4m2Ako",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": true,
+      "fine_dining": true,
+      "pool": true,
+      "wellness_programmes": true,
+      "yoga": true,
+      "meditation": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ016",
     "hotel_name": "Zilwa Attitude",
     "overall_rating": 8.2,
     "location_score": 8.5,
-    "amenity_score": 8.0,
+    "amenity_score": 8,
     "brand_score": 7.8,
     "value_score": 8.4,
     "review_count": 1320,
@@ -296,8 +516,23 @@
     "_status": "active",
     "_brand_name": "Attitude Hotels",
     "_brand_tier": 7,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/yLn0geY", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "pool": true, "water_sports": true, "kids_club": true, "high_speed_wifi": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/yLn0geY",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "pool": true,
+      "water_sports": true,
+      "kids_club": true,
+      "high_speed_wifi": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ021",
@@ -316,8 +551,25 @@
     "_status": "active",
     "_brand_name": "Westin (Marriott)",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/PJytcSS", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "gym": true, "wellness_programmes": true, "yoga": true, "concierge": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/PJytcSS",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "wellness_programmes": true,
+      "yoga": true,
+      "concierge": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ022",
@@ -336,15 +588,34 @@
     "_status": "active",
     "_brand_name": "Constance Hotels",
     "_brand_tier": 9,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/joE5IeP", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "golf": true, "kids_club": true, "gym": true, "water_sports": true, "wellness_programmes": true, "concierge": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/joE5IeP",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "kids_club": true,
+      "gym": true,
+      "water_sports": true,
+      "wellness_programmes": true,
+      "concierge": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ023",
     "hotel_name": "The Ravenala Attitude",
     "overall_rating": 8.1,
     "location_score": 8.3,
-    "amenity_score": 8.0,
+    "amenity_score": 8,
     "brand_score": 7.7,
     "value_score": 8.3,
     "review_count": 1080,
@@ -356,8 +627,24 @@
     "_status": "active",
     "_brand_name": "Attitude Hotels",
     "_brand_tier": 7,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/k1alVSX", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "kids_club": true, "water_sports": true, "high_speed_wifi": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/k1alVSX",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "kids_club": true,
+      "water_sports": true,
+      "high_speed_wifi": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ024",
@@ -376,15 +663,29 @@
     "_status": "active",
     "_brand_name": "Independent",
     "_brand_tier": 7,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/2VMyMj0", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "pool": true, "fine_dining": true, "high_speed_wifi": true, "dedicated_workspace": true, "business_centre": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/2VMyMj0",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "fine_dining": true,
+      "high_speed_wifi": true,
+      "dedicated_workspace": true,
+      "business_centre": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ025",
     "hotel_name": "Shanti Maurice Resort & Spa",
     "overall_rating": 8.8,
     "location_score": 8.7,
-    "amenity_score": 9.0,
+    "amenity_score": 9,
     "brand_score": 8.3,
     "value_score": 7.4,
     "review_count": 580,
@@ -396,8 +697,27 @@
     "_status": "active",
     "_brand_name": "Shanti Maurice",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/AMUhp0j", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "yoga": true, "wellness_programmes": true, "meditation": true, "healthy_dining": true, "gym": true, "naturopath": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/AMUhp0j",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "yoga": true,
+      "wellness_programmes": true,
+      "meditation": true,
+      "healthy_dining": true,
+      "gym": true,
+      "naturopath": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ026",
@@ -416,8 +736,22 @@
     "_status": "active",
     "_brand_name": "SALT Hotels",
     "_brand_tier": 7,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/rHzTaO0", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "pool": true, "fine_dining": true, "high_speed_wifi": true, "dedicated_workspace": true, "private_beach": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/rHzTaO0",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "fine_dining": true,
+      "high_speed_wifi": true,
+      "dedicated_workspace": true,
+      "private_beach": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ027",
@@ -425,7 +759,7 @@
     "overall_rating": 7.8,
     "location_score": 7.5,
     "amenity_score": 7.9,
-    "brand_score": 8.0,
+    "brand_score": 8,
     "value_score": 8.6,
     "review_count": 620,
     "avg_rating": 4.2,
@@ -436,8 +770,23 @@
     "_status": "active",
     "_brand_name": "IHG Holiday Inn",
     "_brand_tier": 7,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/KrkFlUB", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "pool": true, "fine_dining": true, "kids_club": true, "high_speed_wifi": true, "business_centre": true, "gym": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/KrkFlUB",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "fine_dining": true,
+      "kids_club": true,
+      "high_speed_wifi": true,
+      "business_centre": true,
+      "gym": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ028",
@@ -456,8 +805,22 @@
     "_status": "active",
     "_brand_name": "Independent",
     "_brand_tier": 6,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/jJkyMlG", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "gym": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/jJkyMlG",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ029",
@@ -476,8 +839,26 @@
     "_status": "active",
     "_brand_name": "Le Meridien (Marriott)",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/8C3UdBg", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "kids_club": true, "gym": true, "water_sports": true, "high_speed_wifi": true, "concierge": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/8C3UdBg",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "kids_club": true,
+      "gym": true,
+      "water_sports": true,
+      "high_speed_wifi": true,
+      "concierge": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ030",
@@ -496,15 +877,31 @@
     "_status": "active",
     "_brand_name": "Maritim Hotels",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/uzq9Zlu", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true, "private_pool": true, "concierge": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/uzq9Zlu",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": true,
+      "fine_dining": true,
+      "pool": true,
+      "private_pool": true,
+      "concierge": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ031",
     "hotel_name": "Tamassa Resort",
     "overall_rating": 7.9,
     "location_score": 8.1,
-    "amenity_score": 8.0,
+    "amenity_score": 8,
     "brand_score": 8.1,
     "value_score": 8.7,
     "review_count": 1020,
@@ -516,8 +913,25 @@
     "_status": "active",
     "_brand_name": "Beachcomber Hotels",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/oSrAbiY", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "pool": true, "private_beach": true, "fine_dining": true, "all_inclusive": true, "water_sports": true, "kids_club": true, "gym": true, "free_water_sports": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/oSrAbiY",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "all_inclusive": true,
+      "water_sports": true,
+      "kids_club": true,
+      "gym": true,
+      "free_water_sports": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ032",
@@ -536,8 +950,20 @@
     "_status": "active",
     "_brand_name": "Bubble Lodge",
     "_brand_tier": 7,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/nOTJrFM", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "pool": true, "fine_dining": true, "private_beach": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/nOTJrFM",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "fine_dining": true,
+      "private_beach": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ033",
@@ -556,14 +982,32 @@
     "_status": "active",
     "_brand_name": "Hilton",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/lb9Yl8f", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "fine_dining": true, "pool": true, "kids_club": true, "gym": true, "concierge": true, "high_speed_wifi": true, "wellness_programmes": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/lb9Yl8f",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "kids_club": true,
+      "gym": true,
+      "concierge": true,
+      "high_speed_wifi": true,
+      "wellness_programmes": true
+    },
+    "_admin_managed": true
   },
   {
     "hotel_id": "MQ034",
     "hotel_name": "Anahita Golf & Spa Resort",
     "overall_rating": 8.7,
-    "location_score": 9.0,
+    "location_score": 9,
     "amenity_score": 8.9,
     "brand_score": 8.5,
     "value_score": 7.2,
@@ -576,7 +1020,24 @@
     "_status": "active",
     "_brand_name": "Anahita",
     "_brand_tier": 8,
-    "_affiliate_links": [{ "booking_url": "https://expedia.com/affiliate/6oyzyzA", "provider": "expedia", "commission_rate": 0.05, "commission_tier": "standard" }],
-    "amenities": { "spa": true, "private_beach": true, "butler_service": true, "fine_dining": true, "pool": true, "golf": true, "wellness_programmes": true, "concierge": true }
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/6oyzyzA",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "wellness_programmes": true,
+      "concierge": true
+    },
+    "_admin_managed": true
   }
 ]
