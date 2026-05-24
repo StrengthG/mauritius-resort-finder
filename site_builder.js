@@ -843,8 +843,14 @@ async function _buildPage(spec, deps = {}, buildOptions = {}) {
     // ── Editorial content (hotel_detail pages only) ─────────────────────────
     let editorialContent = null;
     if (spec.pageContext.page_type === 'hotel_detail' && spec.hotels.length > 0) {
-      const hce = require('./hotel_content_engine.js');
-      editorialContent = hce.generateContent(spec.hotels[0], dataset);
+      const h0 = spec.hotels[0];
+      // Skip for admin-managed hotels that lack score data — content engine requires
+      // numeric overall_rating / location_score or it crashes on .toFixed() calls.
+      const hasScoreData = typeof h0.overall_rating === 'number' && typeof h0.location_score === 'number';
+      if (hasScoreData) {
+        const hce = require('./hotel_content_engine.js');
+        editorialContent = hce.generateContent(h0, dataset);
+      }
     }
 
     // ── Assemble ────────────────────────────────────────────────────────────
