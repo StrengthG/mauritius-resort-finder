@@ -150,7 +150,7 @@ async function _runProductionBuild(buildId, send, db) {
 
     log('→ Committing updated data/hotels.json to GitHub…');
     const putBody = JSON.stringify({
-      message: `data: admin sync — update hotels.json [skip ci]`,
+      message: `data: admin sync — update hotels.json`,
       content: encoded,
       sha:     getCurrent.sha,
       branch,
