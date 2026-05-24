@@ -86,6 +86,9 @@ function mergeAndWrite(adminHotels) {
     baseBySlug[s] = h;
   }
 
+  // Build a set of slugs currently in the admin DB
+  const adminSlugs = new Set(adminHotels.map(r => r.slug || slugify(r.name)));
+
   const merged = [...base];
 
   adminHotels.forEach((row, i) => {
@@ -109,8 +112,16 @@ function mergeAndWrite(adminHotels) {
     }
   });
 
-  fs.writeFileSync(BASE_HOTELS_PATH, JSON.stringify(merged, null, 2));
-  return merged;
+  // Prune admin-added hotels (null score data) that were deleted from the admin DB.
+  // Original scored hotels (overall_rating is a number) are never pruned.
+  const pruned = merged.filter(h => {
+    if (typeof h.overall_rating === 'number') return true; // original scored hotel — keep
+    const s = slugify(h.hotel_name);
+    return adminSlugs.has(s); // admin-added — keep only if still in admin DB
+  });
+
+  fs.writeFileSync(BASE_HOTELS_PATH, JSON.stringify(pruned, null, 2));
+  return pruned;
 }
 
 module.exports = { mergeAndWrite, slugify };
