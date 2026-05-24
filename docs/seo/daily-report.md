@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 27
+# SEO Daily Report — Run 28
 **Date:** 2026-05-24
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,43 +6,51 @@
 
 ## 1. Executive Summary
 
-Run 27 fixed an over-length luxury persona meta description (165 → 153 chars) and published the Mauritius Restaurants & Dining Guide (~2,300 words). The guide targets "best restaurants in Mauritius" and "Mauritius dining guide" — high-intent informational queries with strong internal linking value to hotel fine-dining amenities. All 1810 tests pass; 74/74 pages build successfully.
+Run 28 cleaned up four stale `saint-g-ran` compare directories from local dist (Cloudflare unaffected — it builds fresh), confirmed zero actual meta description violations after decoding HTML entities, published the Mauritius Budget Travel Guide (~2,400 words), and added it plus three other recent guides to the homepage Planning Guides grid. All 1810 tests pass; 74/74 pages build successfully.
 
 ---
 
 ## 2. Technical Issues Found & Fixed
 
-### Over-length luxury persona meta description (165 chars — 5 over limit)
-**Found:** `static_page_renderer.js` line 1233 — luxury persona meta was 165 characters. Limit is 160.
-**Fixed:** Removed "Updated" from "No paid placements. Updated 2026." → "No paid placements. 2026." → 153 chars.
-**Impact:** Prevents Google from rewriting the meta snippet on the highest-traffic persona page.
+### Stale old-slug compare directories in local dist/
+**Found:** Four `dist/compare/` directories using the pre-fix `oneandonly-le-saint-g-ran` slug still existed alongside the correct `oneandonly-le-saint-geran` directories. These were orphan leftovers from before the Run 20 slug fix — the current builder generates `saint-geran` dirs and never overwrites or deletes the old ones.
+**Fixed:** Deleted the four stale directories locally. No live-site impact (Cloudflare builds fresh).
+
+### Meta audit: HTML entity inflation
+**Found:** The meta-length audit script measured raw HTML lengths including `&amp;` (5 chars) and `&#39;` (5 chars), flagging 8 pages as "over 160." After decoding HTML entities, all were within the 155–160 limit. The four hotel-detail pages hit the 160-char hard truncation in `static_page_renderer.js` by design (line 1256). No changes needed.
+
+### Homepage Planning Guides grid missing recent pages
+**Found:** Four guides published in Runs 24–28 were missing from the homepage `#guides` section: Things to Do (Run 24), Best Beaches (Run 25), Restaurants & Dining (Run 27), and Budget Travel Guide (Run 28).
+**Fixed:** Added all four to the homepage Planning Guides grid. Grid now has 12 cards.
 
 ---
 
 ## 3. Content Work Done This Run
 
-**New page: `/mauritius-restaurants-dining-guide/`** (~2,300 words)
+**New page: `/mauritius-budget-travel-guide/`** (~2,400 words)
 
-Target keywords: "best restaurants in Mauritius" / "Mauritius dining guide" / "where to eat in Mauritius"
+Target keywords: "how much does Mauritius cost" / "budget travel Mauritius" / "cheap holidays Mauritius" / "Mauritius on a budget"
 
-Meta: "Where to eat in Mauritius in 2026: best hotel restaurants, beach BBQs, Creole cuisine, street food and fine dining by region. Honest guide, no paid placements." (161 chars — ≤160 verified)
+Meta: "How much does Mauritius cost in 2026? Hotel prices by tier, flight costs, food budget by region, and money-saving tips. Honest guide, no paid placements." (153 chars)
 
 Page sections:
-- **Introduction** — Mauritius as a culinary crossroads: Creole, Indian, Chinese, French, African influences
-- **Cuisine overview** — 4 core traditions with signature dishes and where to find them
-- **Dining by region** — Grand Baie (casual/touristy), Port Louis (Central Market, caudan waterfront), Flic en Flac (relaxed west coast), Belle Mare / east coast (hotel fine dining), Bel Ombre (integrated resort dining)
-- **Dining styles grid** — 6 categories: hotel restaurants, beach BBQs, port louis street food, local roulottes, casual beach bars, Creole family dining
-- **Hotel dining CTAs** — 3 verified affiliate CTAs:
-  - Royal Palm Beachcomber Luxury (9.2/10, $850/night, affiliate/LLPswc1) — Caprice fine dining
-  - Constance Belle Mare Plage (8.9/10, $620/night, affiliate/joE5IeP) — Blue Penny restaurant
-  - One&Only Le Saint Géran (9.0/10, $980/night, affiliate/jJhAhIn) — 4 restaurants including Indian Ocean
-- **Budget comparison table** — luxury hotel dining vs mid-range restaurants vs street food
-- **Practical notes** — alcohol, vegetarian options, tipping customs, food safety
-- **6 FAQs** — best restaurant type, BYOB, tipping, vegetarian Mauritius, best area for dining, food safety
+- **Introduction** — Mauritius price reality check; luxury-vs-local split
+- **Hotel prices by tier** — 4-tier visual grid ($80→$2,000+/night) with detailed explanations
+- **3 Hotel CTAs** — verified affiliate links from independently scored dataset:
+  - Holiday Inn Mauritius Mon Trésor (7.8/10, $190/night, affiliate/KrkFlUB) — most affordable scored hotel
+  - Tamassa Resort (7.9/10, $280/night all-inclusive, affiliate/oSrAbiY) — south coast value pick
+  - SALT of Palmar (8.3/10, $350/night, affiliate/rHzTaO0) — best score-to-price in dataset
+- **Flight costs** — 5-row table by departure region (UK, South Africa, India, Australia, GCC) with price ranges and flight times
+- **Seasonal pricing** — 4-card grid (Peak/High/Shoulder/Low) with price deltas and weather notes
+- **Food, transport, activities costs** — roulottes ($2–5), local restaurants ($8–18), car rental ($35–60/day), free beaches
+- **Region cost comparison** — 4-coast table (south cheapest, east most expensive)
+- **7-night total budget table** — 4 tiers from $2,980 to $35,600 for two people from UK
+- **8 money-saving tips** — actionable, specific to Mauritius data
+- **6 FAQs** — is Mauritius expensive?, cheapest time?, week cost?, cheapest region?, budget travel?, mid-range hotels?
 
 Structured data: FAQPage, Article, BreadcrumbList
 
-Internal links: registered in `site_builder.js` STATIC_PAGE_SPECS, `getRelatedGuides()`, and footer column.
+Internal links: registered in STATIC_PAGE_SPECS, `getRelatedGuides()`, footer column, and homepage Planning Guides grid.
 
 ---
 
@@ -54,14 +62,14 @@ Internal links: registered in `site_builder.js` STATIC_PAGE_SPECS, `getRelatedGu
 | Test suites | 12/12 |
 | Tests passed | 1810/1810 |
 | New static pages | 1 |
-| Meta length fixed | 1 |
-| Sitemap entries | 104 |
+| Homepage guide cards | 12 (was 8) |
+| Sitemap entries | 106 |
 
 ---
 
 ## 5. Next Recommended Actions
 
-1. **Mauritius budget travel guide** — "budget hotels mauritius" / "cheap resorts mauritius"; targets value_luxury persona gap
-2. **Port Louis city guide** — capital city visitor guide; targets "things to do port louis mauritius"
-3. **Hotel photo/gallery pages** — blocked until hotel-specific images are available
-4. **Digital PR outreach** — Condé Nast, TPG, honeymoon travel blogs
+1. **Port Louis city guide** — "things to do in Port Louis" / "Port Louis travel guide"; completes the regional coverage gap for the capital
+2. **Mauritius vs Maldives comparison** — "Mauritius or Maldives honeymoon" — high commercial intent, captures decision-stage searches
+3. **Digital PR outreach** — Condé Nast, The Points Guy, honeymoon travel blogs
+4. **Hotel photo/gallery pages** — blocked until hotel-specific images available

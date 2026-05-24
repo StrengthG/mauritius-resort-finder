@@ -542,6 +542,7 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'best-beaches-in-mauritius',         page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'trou-deau-douce-mauritius',          page_type: 'regional',      priority: '0.7', changefreq: 'monthly' },
   { slug: 'mauritius-restaurants-dining-guide', page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'mauritius-budget-travel-guide',      page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'contact',                            page_type: 'other',          priority: '0.5', changefreq: 'yearly'  },
   { slug: 'rankings',                            page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
   { slug: 'methodology',                         page_type: 'informational', priority: '0.5', changefreq: 'monthly' },

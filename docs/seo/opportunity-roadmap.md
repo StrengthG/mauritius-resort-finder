@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-24 (Run 27)
+Last updated: 2026-05-24 (Run 28)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -68,7 +68,9 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Best beaches in Mauritius~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-23 (Run 25, ~2,300 words, 3 hotels, 8-beach comparison table, purpose grid, 6 FAQs, FAQPage schema) |
 | ~~Trou d'Eau Douce & Île aux Cerfs regional guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-05-24 (Run 26, ~2,200 words, 3 hotels, Trou d'Eau Douce vs Belle Mare table, 6 FAQs, FAQPage schema) |
 | ~~Mauritius restaurants & dining guide~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-24 (Run 27, ~2,300 words, 3 hotels, dining-by-region sections, budget comparison table, 6 FAQs, FAQPage schema) |
-| Mauritius budget travel guide | Informational | High | Targets "budget hotels mauritius" / "cheap resorts mauritius"; value_luxury persona gap |
+| ~~Mauritius budget travel guide~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-24 (Run 28, ~2,400 words, 3 hotels, 4-tier cost grid, flight table, 7-night budget table, 8 tips, 6 FAQs) |
+| Port Louis city guide | Regional/Informational | High | Targets "things to do Port Louis" / "Port Louis Mauritius guide"; fills capital city gap |
+| Mauritius vs Maldives comparison | Informational | High | "Mauritius or Maldives honeymoon" — decision-stage, high commercial intent |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
