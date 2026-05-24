@@ -19,7 +19,8 @@
     "sync": "node airtable_sync.js --out ./data",
     "start": "node site_builder.js --verbose",
     "admin": "node admin/server.js",
-    "setup-admin": "node admin/setup.js"
+    "setup-admin": "node admin/setup.js",
+    "seed-admin": "node admin/seed-hotels.js"
   },
   "keywords": [
     "mauritius",
