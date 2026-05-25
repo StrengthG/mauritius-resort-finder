@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-26 (Run 31)
+Last updated: 2026-05-26 (Run 32)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -71,7 +71,7 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Mauritius budget travel guide~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-24 (Run 28, ~2,400 words, 3 hotels, 4-tier cost grid, flight table, 7-night budget table, 8 tips, 6 FAQs) |
 | ~~Port Louis city guide~~ | ~~Regional/Informational~~ | ~~High~~ | ✅ Done 2026-05-25 (Run 30, ~2,400 words, 6 attractions grid, 4 neighbourhoods, food guide, distance table, 3 hotel CTAs, day trips, 6 FAQs) |
 | ~~Mauritius vs Maldives comparison~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-25 (Run 29, ~2,500 words, 12-factor table, decision matrix, cost comparison, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
-| Mauritius visa &amp; entry guide | Informational | Medium | "do I need a visa for Mauritius" / "Mauritius entry requirements 2026"; pre-trip intent |
+| ~~Mauritius visa &amp; entry guide~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-05-26 (Run 32, ~2,200 words, visa-free table, airport arrival steps, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
 | ~~Mauritius vs Seychelles comparison~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-26 (Run 31, ~2,500 words, 12-factor table, wildlife section, decision matrix, 6 FAQs, FAQPage schema) |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
