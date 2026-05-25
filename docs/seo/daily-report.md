@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 29
+# SEO Daily Report — Run 30
 **Date:** 2026-05-25
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,40 +6,45 @@
 
 ## 1. Executive Summary
 
-Run 29 published the Mauritius vs Maldives destination comparison guide (~2,500 words), targeting one of the highest-intent search clusters in the Mauritius travel space — "Mauritius vs Maldives" / "Mauritius or Maldives honeymoon." The page adds a head-to-head table (12 factors), 6 hotel CTAs across both islands' positioning, a cost comparison table, a 6-cell decision matrix by travel style, and 6 FAQs with FAQPage schema. All 1810 tests pass; 74/74 pages build successfully.
+Run 30 confirmed zero technical issues (clean h1 audit, no orphaned pages, 107-entry sitemap intact), published the Port Louis City Guide (~2,400 words), and expanded the homepage Planning Guides grid to 14 cards. Port Louis targets "things to do in Port Louis Mauritius" and "Port Louis travel guide" — an underserved keyword cluster that fills the capital city gap in the site's regional coverage. All 1810 tests pass; 74/74 pages build successfully.
 
 ---
 
 ## 2. Technical Issues Found
 
-No structural issues found. Meta length audit confirmed zero genuine violations after HTML entity decoding (Run 28's audit identified 8 false positives — the measurement script inflated counts via `&amp;` entities). Title lengths on compare pages are unavoidably long but front-load the target keywords correctly.
+None. Full audit run:
+- **H1 tags:** All 33 static pages have exactly one h1. No missing or duplicate h1s.
+- **Orphaned pages:** Zero — all pages in `pages/` are registered in `STATIC_PAGE_SPECS`.
+- **Sitemap:** 107 entries, all pages represented.
+- **Internal links:** No broken href targets found on recent pages.
 
 ---
 
 ## 3. Content Work Done This Run
 
-**New page: `/mauritius-vs-maldives/`** (~2,500 words)
+**New page: `/port-louis-mauritius-guide/`** (~2,400 words)
 
-Target keywords: "Mauritius vs Maldives" / "Mauritius or Maldives honeymoon" / "Maldives vs Mauritius 2026" / "which is better Mauritius or Maldives"
+Target keywords: "things to do Port Louis Mauritius" / "Port Louis travel guide" / "visit Port Louis Mauritius" / "Port Louis tourist attractions"
 
-Meta: "Mauritius vs Maldives 2026: beaches, hotel quality, activities, overwater bungalows, and cost compared. Honest guide to choosing the right Indian Ocean island." (159 chars)
+Meta: "Port Louis travel guide 2026: Central Market, Caudan Waterfront, Blue Penny Museum, and the best street food in Mauritius's colourful capital city." (147 chars)
 
 Page sections:
-- **Quick verdict** — two side-by-side summary cards: choose Mauritius if / choose Maldives if
-- **Head-to-head table** — 12 factors: beach quality, overwater villas, snorkelling, land activities, cultural experience, hotel price range, food, seclusion, getting around, honeymoon appeal, family suitability, flight connections; winner annotated per row
-- **Hotel quality: Mauritius's finest** — 3 CTA cards from top of scored dataset:
-  - Royal Palm Beachcomber Luxury (9.2/10, $1,450/night, affiliate/LLPswc1) — #1 ranked
-  - Four Seasons Resort Mauritius at Anahita (9.1/10, $1,650/night, affiliate/s7PgDXw) — closest to Maldives experience in Mauritius
-  - One&Only Le Saint Géran (9.0/10, $940/night, affiliate/61eoozV) — direct comparison to One&Only Reethi Rah
-- **Cost comparison table** — budget to luxury tier vs Maldives equivalents; seaplane cost differential
-- **Activities comparison** — what Mauritius offers that Maldives can't (golf, hiking, culture, car travel) and vice versa (overwater villas, private island seclusion, bioluminescence)
-- **Decision matrix** — 6-cell grid by travel style: honeymooners / families / divers / golfers / budget-luxury / pure escapists
-- **Can you visit both?** — practical dual-island itinerary via Dubai, timeline, budget estimate ($22k–$38k for two)
-- **6 FAQs** — honeymoon choice, cost comparison, overwater bungalows, beaches, combining both, what Mauritius offers that Maldives can't
+- **Introduction** — Port Louis as the most underrated capital in the Indian Ocean; cultural mix argument
+- **Top 6 attractions** — card grid: Central Market, Caudan Waterfront, Blue Penny Museum, Aapravasi Ghat (UNESCO), Champ de Mars Racecourse, Natural History Museum (dodo collection)
+- **Neighbourhoods** — 4-card grid: Chinatown, Little India (Plaine Verte), Waterfront District, Government District / Place d'Armes
+- **Food & dining** — street food guide (dholl puri, mine frits, gateau piment, biryani, sugarcane juice), sit-down restaurants (Caudan, Chez Tante Athalie), what to buy at the market
+- **Getting there table** — 4 resort areas with distance, taxi cost/time, bus time, and car time
+- **3 hotel CTAs** — verified affiliate links from scored dataset:
+  - Villa Alizée (8.3/10, $415/night, Port Louis, affiliate/FyoIgaK) — only scored hotel in the city itself
+  - The Westin Turtle Bay Resort & Spa (8.6/10, $650/night, Balaclava, affiliate/PJytcSS) — closest 5-star to Port Louis
+  - The Ravenala Attitude (8.1/10, $290/night, Balaclava, affiliate/k1alVSX) — best value near Port Louis
+- **Day trips** — Pamplemousses Gardens (25 min), Black River Gorges (45 min), Chamarel (60 min), Mahebourg (75 min)
+- **Practical info** — best visiting time, dress code, currency, language, safety, cyclone season
+- **6 FAQs** — is it worth visiting?, what is it famous for?, how to get there?, best area to stay?, safety?, best time?
 
 Structured data: FAQPage, Article, BreadcrumbList
 
-Internal links: registered in STATIC_PAGE_SPECS, `getRelatedGuides()`, footer column, and homepage Planning Guides grid (now 13 cards).
+Internal links: registered in STATIC_PAGE_SPECS (regional, priority 0.7), `getRelatedGuides()`, footer column, and homepage Planning Guides grid (now 14 cards).
 
 ---
 
@@ -51,14 +56,14 @@ Internal links: registered in STATIC_PAGE_SPECS, `getRelatedGuides()`, footer co
 | Test suites | 12/12 |
 | Tests passed | 1810/1810 |
 | New static pages | 1 |
-| Homepage guide cards | 13 (was 12) |
-| Sitemap entries | 107 |
+| Homepage guide cards | 14 (was 13) |
+| Sitemap entries | 108 |
 
 ---
 
 ## 5. Next Recommended Actions
 
-1. **Port Louis city guide** — "things to do in Port Louis" / "Port Louis Mauritius"; fills the capital city gap; targets local/cultural tourism intent
-2. **Mauritius vs Seychelles** — follows the vs-Maldives pattern; high-intent decision searches
-3. **Digital PR outreach** — data-driven "we scored 36 hotels" angle to Condé Nast Traveller, The Points Guy, Wanderlust
+1. **Mauritius vs Seychelles** — "Mauritius vs Seychelles" / "Seychelles or Mauritius holiday"; same pattern as vs-Maldives; captures high-intent Indian Ocean comparison searches
+2. **Mauritius visa & entry guide** — "do I need a visa for Mauritius" / "Mauritius entry requirements 2026"; high informational intent, pre-trip search
+3. **Digital PR outreach** — Condé Nast, The Points Guy, Wanderlust — data-driven "we scored 36 hotels" angle
 4. **Hotel photo/gallery pages** — still blocked pending hotel-specific image assets
