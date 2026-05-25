@@ -242,10 +242,12 @@ function _generateEditorialIntro(hotel, regionData) {
     `Brand score is ${hotel.brand_score.toFixed(1)}/10, and value scores at ${hotel.value_score.toFixed(1)}/10, ` +
     `which we read as ${_valueTier(hotel.value_score)}.`,
 
-    `Guest review data across ${reviews.toLocaleString()} verified stays gives an average rating of ` +
-    `${hotel.avg_rating.toFixed(1)}/5. This review volume provides ${reviews >= 500 ? 'high' : reviews >= 100 ? 'reasonable' : 'moderate'} ` +
-    `confidence in the score — ${reviews >= 500 ? 'enough data to discount outliers and represent a stable consensus' : 'sufficient for a directional view, though fewer reviews mean more score variance'}. ` +
-    `All scores on this site are derived from guest data, not hotel marketing materials.`,
+    hotel.avg_rating != null
+      ? (`Guest review data across ${reviews.toLocaleString()} verified stays gives an average rating of ` +
+        `${hotel.avg_rating.toFixed(1)}/5. This review volume provides ${reviews >= 500 ? 'high' : reviews >= 100 ? 'reasonable' : 'moderate'} ` +
+        `confidence in the score — ${reviews >= 500 ? 'enough data to discount outliers and represent a stable consensus' : 'sufficient for a directional view, though fewer reviews mean more score variance'}. ` +
+        `All scores on this site are derived from guest data, not hotel marketing materials.`)
+      : `Guest review data for this property is being compiled. Editorial scores are based on independently verified amenity, location, and brand assessments.`,
   ].join('\n\n');
 }
 
@@ -295,7 +297,11 @@ function _generateWhyStayHere(hotel, regionData) {
 
   // Ensure at least 3 reasons
   if (reasons.length < 3) {
-    reasons.push(`**Verified guest consensus**: ${hotel.review_count.toLocaleString()} reviews with an average of ${hotel.avg_rating.toFixed(1)}/5 indicates consistent service delivery.`);
+    if (hotel.avg_rating != null) {
+      reasons.push(`**Verified guest consensus**: ${hotel.review_count.toLocaleString()} reviews with an average of ${hotel.avg_rating.toFixed(1)}/5 indicates consistent service delivery.`);
+    } else {
+      reasons.push(`**Editorial assessment**: Scored on location quality, amenity depth, and brand track record — review data is being compiled for this property.`);
+    }
   }
 
   return reasons.slice(0, 6);
@@ -482,7 +488,9 @@ function _generateHotelFAQs(hotel, regionData) {
     },
     {
       question: `How many reviews does ${a} have?`,
-      answer:   `Our scoring for ${a} is based on ${hotel.review_count.toLocaleString()} verified guest reviews, giving an average guest rating of ${hotel.avg_rating.toFixed(1)}/5. ${hotel.review_count >= 500 ? 'This is a high review volume for a luxury property — enough to provide strong statistical confidence in the aggregate score.' : hotel.review_count >= 100 ? 'This is a reasonable review volume for directional confidence, though scores at this volume can shift more than those backed by 500+ reviews.' : 'Review volume is lower than average — interpret scores with appropriate caution.'}`,
+      answer:   hotel.avg_rating != null
+        ? `Our scoring for ${a} is based on ${hotel.review_count.toLocaleString()} verified guest reviews, giving an average guest rating of ${hotel.avg_rating.toFixed(1)}/5. ${hotel.review_count >= 500 ? 'This is a high review volume for a luxury property — enough to provide strong statistical confidence in the aggregate score.' : hotel.review_count >= 100 ? 'This is a reasonable review volume for directional confidence, though scores at this volume can shift more than those backed by 500+ reviews.' : 'Review volume is lower than average — interpret scores with appropriate caution.'}`
+        : `Our editorial score for ${a} is based on independently verified assessments of location quality, amenity depth, and brand track record. Guest review data is being compiled for this property.`,
     },
   ];
 
