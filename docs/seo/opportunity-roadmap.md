@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-25 (Run 30)
+Last updated: 2026-05-26 (Run 31)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -72,7 +72,7 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Port Louis city guide~~ | ~~Regional/Informational~~ | ~~High~~ | ✅ Done 2026-05-25 (Run 30, ~2,400 words, 6 attractions grid, 4 neighbourhoods, food guide, distance table, 3 hotel CTAs, day trips, 6 FAQs) |
 | ~~Mauritius vs Maldives comparison~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-25 (Run 29, ~2,500 words, 12-factor table, decision matrix, cost comparison, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
 | Mauritius visa &amp; entry guide | Informational | Medium | "do I need a visa for Mauritius" / "Mauritius entry requirements 2026"; pre-trip intent |
-| Mauritius vs Seychelles comparison | Informational | High | "Mauritius vs Seychelles" — same pattern as vs-Maldives; decision-stage, high intent |
+| ~~Mauritius vs Seychelles comparison~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-26 (Run 31, ~2,500 words, 12-factor table, wildlife section, decision matrix, 6 FAQs, FAQPage schema) |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
