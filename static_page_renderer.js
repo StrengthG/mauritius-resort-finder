@@ -432,6 +432,7 @@ function getRelatedGuides(persona) {
     { label: "Trou d'Eau Douce & Île aux Cerfs",       slug: 'trou-deau-douce-mauritius',               persona: null           },
     { label: 'Restaurants & Dining Guide',             slug: 'mauritius-restaurants-dining-guide',      persona: null           },
     { label: 'Budget Travel Guide',                    slug: 'mauritius-budget-travel-guide',           persona: null           },
+    { label: 'Mauritius vs Maldives',                  slug: 'mauritius-vs-maldives',                   persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
@@ -1537,6 +1538,7 @@ function generateSiteFooter(siteName, baseUrl) {
     `        <li><a href="${b}/trou-deau-douce-mauritius/">Trou d'Eau Douce</a></li>`,
     `        <li><a href="${b}/mauritius-restaurants-dining-guide/">Restaurants & Dining</a></li>`,
     `        <li><a href="${b}/mauritius-budget-travel-guide/">Budget Travel Guide</a></li>`,
+    `        <li><a href="${b}/mauritius-vs-maldives/">Mauritius vs Maldives</a></li>`,
     `      </ul>`,
     `    </div>`,
     `    <div class="site-footer__col">`,
