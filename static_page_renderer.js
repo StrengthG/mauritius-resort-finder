@@ -434,6 +434,7 @@ function getRelatedGuides(persona) {
     { label: 'Budget Travel Guide',                    slug: 'mauritius-budget-travel-guide',           persona: null           },
     { label: 'Mauritius vs Maldives',                  slug: 'mauritius-vs-maldives',                   persona: null           },
     { label: 'Port Louis City Guide',                  slug: 'port-louis-mauritius-guide',              persona: null           },
+    { label: 'Mauritius vs Seychelles',                slug: 'mauritius-vs-seychelles',                 persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
@@ -1541,6 +1542,7 @@ function generateSiteFooter(siteName, baseUrl) {
     `        <li><a href="${b}/mauritius-budget-travel-guide/">Budget Travel Guide</a></li>`,
     `        <li><a href="${b}/mauritius-vs-maldives/">Mauritius vs Maldives</a></li>`,
     `        <li><a href="${b}/port-louis-mauritius-guide/">Port Louis Guide</a></li>`,
+    `        <li><a href="${b}/mauritius-vs-seychelles/">Mauritius vs Seychelles</a></li>`,
     `      </ul>`,
     `    </div>`,
     `    <div class="site-footer__col">`,
