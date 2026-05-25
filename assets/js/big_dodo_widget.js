@@ -14,7 +14,8 @@
 
   // ── Config & constants ────────────────────────────────────────────────────
 
-  const cfg = window.BigDodoConfig || {};
+  const _cfgEl = document.getElementById('big-dodo-config');
+  const cfg = window.BigDodoConfig || (_cfgEl ? JSON.parse(_cfgEl.textContent || '{}') : {});
   const API_URL    = cfg.apiUrl    || '/api/chat';
   const PAGE_CTX   = cfg.pageContext || {};
 
