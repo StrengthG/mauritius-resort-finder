@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-26 (Run 32)
+Last updated: 2026-05-26 (Run 33)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -73,6 +73,9 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Mauritius vs Maldives comparison~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-25 (Run 29, ~2,500 words, 12-factor table, decision matrix, cost comparison, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
 | ~~Mauritius visa &amp; entry guide~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-05-26 (Run 32, ~2,200 words, visa-free table, airport arrival steps, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
 | ~~Mauritius vs Seychelles comparison~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-26 (Run 31, ~2,500 words, 12-factor table, wildlife section, decision matrix, 6 FAQs, FAQPage schema) |
+| ~~Mauritius honeymoon itinerary~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-26 (Run 33, ~2,200 words, 7-day + 10-day plans, budget table, season guide, 6 romantic experiences, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
+| Mauritius water sports guide | Informational | High | "water sports mauritius" / "snorkelling mauritius" / "kitesurfing le morne"; activity cluster underrepresented |
+| Mauritius car hire &amp; getting around | Informational | Medium | "car hire mauritius" / "getting around mauritius"; practical pre-trip intent, no dedicated page |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
