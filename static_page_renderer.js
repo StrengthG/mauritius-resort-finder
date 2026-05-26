@@ -438,6 +438,7 @@ function getRelatedGuides(persona) {
     { label: 'Visa & Entry Guide',                     slug: 'mauritius-visa-entry-guide',              persona: null           },
     { label: 'Honeymoon Itinerary',                    slug: 'mauritius-honeymoon-itinerary',           persona: null           },
     { label: 'Water Sports Guide',                     slug: 'mauritius-water-sports-guide',            persona: null           },
+    { label: 'Car Hire & Getting Around',              slug: 'mauritius-car-hire-guide',                persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
