@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 34
+# SEO Daily Report — Run 35
 **Date:** 2026-05-26
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,7 +6,7 @@
 
 ## 1. Executive Summary
 
-Run 34 confirmed zero technical issues (74/74 build, 1810/1810 tests), published the Mauritius Water Sports Guide (~2,300 words), and expanded the homepage Planning Guides grid to 18 cards. The page targets "water sports in Mauritius", "snorkelling mauritius", "kitesurfing mauritius le morne", and "scuba diving mauritius" — a cluster that was entirely absent from the site despite the topic being a core reason people choose Mauritius over other Indian Ocean destinations. The guide covers 6 sports across 8 named locations with a 14-row cost table, making it the most comprehensive activity resource on the site.
+Run 35 confirmed zero technical issues (74/74 build, 1810/1810 tests), published the Mauritius Car Hire & Getting Around Guide (~2,300 words), and added the page to the sitemap and internal link network. The page targets "car hire mauritius", "getting around mauritius", and "mauritius driving tips" — a practical pre-trip intent cluster that was entirely absent from the site. The guide covers the do-you-need-a-car decision, licence and age requirements, driving on the left, three scenic driving routes, taxis and the no-Uber situation, and a comparative cost table — making it the most thorough transport resource for Mauritius visitors on the site.
 
 ---
 
@@ -23,50 +23,69 @@ None. Audit this run:
 
 ## 3. Content Work Done This Run
 
-**New page: `/mauritius-water-sports-guide/`** (~2,300 words)
+**New page: `/mauritius-car-hire-guide/`** (~2,300 words)
 
-Target keywords: "water sports in Mauritius" / "snorkelling mauritius" / "kitesurfing mauritius" / "kitesurfing le morne" / "scuba diving mauritius" / "catamaran mauritius"
+Target keywords: "car hire mauritius" / "getting around mauritius" / "mauritius car rental" / "mauritius driving tips" / "do you need a car in mauritius"
 
-Meta: "Complete guide to water sports in Mauritius: best snorkelling spots, kitesurfing at Le Morne, scuba diving, catamaran sailing, and deep-sea fishing. Costs and top hotels." (168 chars)
+Title: "Car Hire in Mauritius 2026 — Getting Around the Island"
+Meta (154 chars): "Complete guide to car hire in Mauritius 2026: rental costs, driving on the left, licence requirements, best routes, and when a car is worth it vs taxis."
 
 Page sections:
-- **Quick facts strip** — best snorkel spot, kitesurfing hub, diving season, top hotel
-- **Jump navigation** — 6 sport anchors (snorkelling, kitesurfing, diving, catamaran, fishing, kayak/SUP)
-- **Snorkelling** — 4 spot cards: Blue Bay Marine Park (best), Île aux Cerfs, Flic en Flac, Coin de Mire; what to bring, visibility notes
-- **Kitesurfing & windsurfing** — Le Morne focus (UNESCO World Heritage site, consistent south-east trade winds), Le Morne vs One Eye distinction, best months (May–Oct), lesson costs
-- **Scuba diving** — 4 dive sites: Le Morne Wall (20–40m), Stella Maru wreck, Cathedral at Flic en Flac (25m), Coin de Mire north; certifications, liveaboard notes
-- **Catamaran sailing** — full-day vs sunset cruises, Blue Bay lagoon, Île aux Cerfs snorkel stops, shared vs private pricing
-- **Deep-sea fishing** — Blue Marlin peak season (Oct–Mar), Port Louis & Black River, catch & release, boat charter pricing
-- **Kayak & stand-up paddleboarding** — resort-based for beginners, Blue Bay Marine Park SUP, flat-water spots
-- **Cost comparison table** — 14 rows across 6 sports: snorkel day trip, snorkel gear hire, kite lesson (2h), kite course (5-day IKO), windsurf hire (1h), scuba intro dive, PADI OW course, fun dive (single), catamaran (shared), catamaran (private half-day), deep-sea fishing (shared), deep-sea fishing (private), kayak (hour), SUP (hour)
-- **3 hotel CTAs** — verified affiliate links near best water sports locations:
-  - Hilton Mauritius Resort & Spa (8.7/10, $530/night, Flic En Flac, affiliate/lb9Yl8f) — scuba & snorkel hub
-  - Constance Belle Mare Plage (8.9/10, $920/night, Belle Mare, affiliate/joE5IeP) — lagoon access
-  - Constance Le Chaland Iko Mauritius (8.8/10, $820/night, Blue Bay, affiliate/a1VWvT2) — marine park on the doorstep
-- **6 practical tips** — book kitesurfing in advance, best visibility months, PADI card recognition, Le Morne One Eye warning, sunscreen reef-safe, sea sickness advice
-- **6 FAQs** — best overall sport, kitesurfing season, snorkelling without a boat, diving certification, best area to stay, cost for a week of water sports
-
-Structured data: FAQPage, Article, BreadcrumbList
-
-Internal links: registered in STATIC_PAGE_SPECS (informational, priority 0.8), `getRelatedGuides()`, footer Guides column, and homepage Planning Guides grid (now 18 cards).
+- **Quick facts strip** — drive left, from €30/day, age 23+, 2,000km road network, 90 min north-to-south, no Uber
+- **Jump navigation** — 8 section anchors
+- **Do you need a car?** — green/amber decision grid (hire vs skip), rule-of-thumb breakeven point (3+ excursions)
+- **How to hire a car** — 5-step process (IDP, age, credit card, CDW, booking timing); operator brands at SSR Airport; fuel pricing and sparse south coast stations
+- **Driving in Mauritius** — 6 tip cards: left-hand traffic, roundabout yield rule, Port Louis peak hours, livestock/speed bumps, Google Maps, speed limits (40/60/80/110 km/h)
+- **Best driving routes** — 3 route cards: south coast road trip (Le Morne→Chamarel→Gris Gris, full day, 120km); east coast loop (Belle Mare→Trou d'Eau Douce→Blue Bay, half day); north coast loop (Grand Baie→Cap Malheureux→Pamplemousses, half day)
+- **Taxis & alternatives** — metered taxis, no Uber, resort transfers, MTC public buses
+- **11-row cost table** — car hire vs taxi for all common journeys; 7-day hire vs 7 taxis comparison
+- **3 hotel CTAs** — Holiday Inn Mon Tresor (airport proximity, $190/night), Heritage Awali (south coast isolation, $640/night), Four Seasons Anahita (east coast island-wide base, $1,650/night)
+- **6 FAQs** with FAQPage structured data + BreadcrumbList schema
 
 ---
 
-## 4. Metrics
+## 4. Content Opportunities Identified
 
-| Metric | Value |
-|---|---|
-| Pages built | 74/74 |
-| Test suites | 12/12 |
-| Tests passed | 1810/1810 |
-| New static pages | 1 |
-| Homepage guide cards | 18 (was 17) |
-| Sitemap entries | Updated |
+- **Mauritius golf guide** — "golf mauritius" / "golf resorts mauritius". Three of the site's hotels have championship courses (Constance Belle Mare Plage, Heritage Awali, Four Seasons Anahita). Dedicated page would capture this niche with strong commercial intent.
+- **Mauritius snorkelling guide** — partially covered in water sports guide but a standalone page targeting "snorkelling mauritius" and "snorkelling spots mauritius" could rank independently for this high-volume query.
+- **Mauritius luxury villa rentals** — growing search volume for "private villa mauritius" not captured by the current hotel-focused pages.
 
 ---
 
-## 5. Next Recommended Actions
+## 5. Internal Linking
 
-1. **Mauritius car hire & getting around guide** — "car hire mauritius" / "getting around mauritius" — practical high-volume search, pre-trip intent, currently no dedicated page
-2. **Mauritius golf guide** — "golf mauritius" / "golf courses mauritius" — Anahita Golf & Spa already in dataset (8.1/10); niche but high commercial intent
-3. **Digital PR outreach** — 18 editorial guides provides strong topical authority for a Condé Nast / The Points Guy pitch
+Car hire guide added to `getRelatedGuides()` — now appears in the related guides section on all 74 generated pages. The page links out to: travel guide, visa guide, where to stay, east-vs-west-coast, best time to visit, packing list, things to do, budget guide.
+
+---
+
+## 6. Backlink Opportunities
+
+No new outreach work this run. Standing targets:
+- Condé Nast Traveller: "we scored every luxury hotel in Mauritius" data angle
+- The Points Guy: comparison page cluster (15 head-to-head pages)
+- Honeymoon travel blogs: anchor "best honeymoon hotels mauritius"
+- Family travel sites: anchor "mauritius family holiday guide"
+
+---
+
+## 7. Conversion Improvements
+
+No changes to CTA copy or placement this run. Car hire guide uses standard affiliate CTA pattern (orange "Check Availability" button, affiliate disclosure in footer of hotel section).
+
+---
+
+## 8. Priority Action List (Next Run)
+
+| Priority | Task | Type | Keyword Target |
+|---|---|---|---|
+| High | Mauritius golf guide | Informational | "golf mauritius" / "golf resorts mauritius" |
+| Medium | Mauritius snorkelling guide (standalone) | Informational | "snorkelling mauritius" / "best snorkelling mauritius" |
+| Medium | Homepage planning guides grid expansion | Internal linking | Add car hire card to homepage grid |
+| Ongoing | Digital PR outreach (Condé Nast, TPG) | Backlinks | Data-driven hotel ranking angle |
+| Ongoing | Monitor GSC for new low-CTR pages | Analytics | Weekly review |
+
+---
+
+## 9. Expected SEO Impact
+
+The car hire guide targets a practical pre-booking cluster ("getting around mauritius" ~1,200 searches/mo estimated; "car hire mauritius" ~800/mo estimated). It is the only dedicated transport resource from a Mauritius hotel editorial site — existing competition is dominated by car hire aggregators, not travel content sites. Expected ranking: position 8–20 within 60 days, top 5 within 6 months as domain authority builds. Commercial upside: the Holiday Inn Mon Tresor CTA targets a $190/night hotel at the airport — highest-probability conversion for readers in the pre-trip planning phase.
