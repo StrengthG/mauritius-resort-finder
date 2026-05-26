@@ -1,15 +1,80 @@
 <%
   title = 'Hotels';
   activePage = 'hotels';
+
+  // Determine live status relative to last successful build
+  const buildTime = lastBuild ? new Date(lastBuild.finished_at) : null;
+
+  function hotelStatus(hotel) {
+    if (!buildTime) return 'pending';
+    const created = new Date(hotel.created_at);
+    const updated = new Date(hotel.updated_at);
+    if (created > buildTime) return 'new';       // added after last build
+    if (updated > buildTime) return 'updated';   // edited after last build
+    return 'live';
+  }
+
+  const allStatuses = hotels.map(hotelStatus);
+  const pendingCount = allStatuses.filter(s => s === 'new' || s === 'updated').length;
+  const liveCount    = allStatuses.filter(s => s === 'live').length;
 %>
 
-<div class="flex items-center justify-between mb-8">
+<div class="flex items-center justify-between mb-6">
   <div>
     <h1 class="text-2xl font-bold text-champagne">Hotels</h1>
     <p class="text-slate-500 text-sm mt-1"><%= hotels.length %> hotel<%= hotels.length !== 1 ? 's' : '' %> in admin database</p>
   </div>
   <a href="/admin/hotels/new" class="btn-primary">+ New Hotel</a>
 </div>
+
+<!-- ── Site sync status banner ──────────────────────────────────────────────── -->
+<% if (!lastBuild) { %>
+<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px">
+  <span style="font-size:1.2rem">⚠️</span>
+  <div>
+    <div style="font-size:0.85rem;font-weight:600;color:#f59e0b">Not yet published to mauritiusresortfinder.com</div>
+    <div style="font-size:0.78rem;color:#94a3b8;margin-top:2px">No successful build found. Go to <a href="/admin/build" style="color:#c9a84c;text-decoration:underline">Build &amp; Deploy</a> to push hotels to the live site.</div>
+  </div>
+</div>
+<% } else { %>
+<div style="background:rgba(<%= pendingCount > 0 ? '245,158,11' : '34,197,94' %>,0.07);border:1px solid rgba(<%= pendingCount > 0 ? '245,158,11' : '34,197,94' %>,0.22);border-radius:10px;padding:14px 18px;margin-bottom:20px">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-size:1.1rem"><%= pendingCount > 0 ? '🔄' : '✅' %></span>
+      <div>
+        <div style="font-size:0.85rem;font-weight:600;color:<%= pendingCount > 0 ? '#f59e0b' : '#4ade80' %>">
+          <% if (pendingCount > 0) { %>
+            <%= pendingCount %> hotel<%= pendingCount !== 1 ? 's' : '' %> not yet live — build needed
+          <% } else { %>
+            All <%= liveCount %> hotel<%= liveCount !== 1 ? 's' : '' %> are live on mauritiusresortfinder.com
+          <% } %>
+        </div>
+        <div style="font-size:0.78rem;color:#94a3b8;margin-top:2px">
+          Last published: <%= new Date(lastBuild.finished_at).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' }) %>
+          &nbsp;·&nbsp; <a href="https://mauritiusresortfinder.com/rankings/" target="_blank" style="color:#c9a84c;text-decoration:underline">View live rankings ↗</a>
+        </div>
+      </div>
+    </div>
+    <% if (pendingCount > 0) { %>
+    <a href="/admin/build" class="btn-primary" style="font-size:0.8rem;padding:8px 16px;white-space:nowrap">Publish changes →</a>
+    <% } %>
+  </div>
+  <% if (pendingCount > 0) { %>
+  <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)">
+    <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6b7a8d;margin-bottom:8px">Pending changes</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">
+      <% hotels.forEach(function(hotel) {
+        const s = hotelStatus(hotel);
+        if (s === 'new') { %>
+      <span style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:20px;padding:3px 10px;font-size:0.75rem;color:#fbbf24">+ <%= hotel.name %></span>
+      <% } else if (s === 'updated') { %>
+      <span style="background:rgba(99,179,237,0.12);border:1px solid rgba(99,179,237,0.25);border-radius:20px;font-size:0.75rem;padding:3px 10px;color:#90cdf4">~ <%= hotel.name %></span>
+      <% } }) %>
+    </div>
+  </div>
+  <% } %>
+</div>
+<% } %>
 
 <!-- Search -->
 <form method="GET" class="mb-6">
@@ -35,12 +100,15 @@
         <th style="text-align:left;padding:12px 20px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b7a8d">Hotel</th>
         <th style="text-align:left;padding:12px 16px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b7a8d">Region</th>
         <th style="text-align:center;padding:12px 16px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b7a8d">Images</th>
-        <th style="text-align:left;padding:12px 16px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b7a8d">Updated</th>
+        <th style="text-align:center;padding:12px 16px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b7a8d">Site status</th>
+        <th style="text-align:left;padding:12px 16px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b7a8d">Added</th>
         <th style="text-align:right;padding:12px 20px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b7a8d">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <% hotels.forEach(hotel => { %>
+      <% hotels.forEach(hotel => {
+        const status = hotelStatus(hotel);
+      %>
       <tr style="border-bottom:1px solid rgba(255,255,255,0.04)" onmouseover="this.style.background='rgba(255,255,255,0.02)'" onmouseout="this.style.background='transparent'">
         <td style="padding:16px 20px">
           <div class="font-semibold text-champagne text-sm"><%= hotel.name %></div>
@@ -52,11 +120,28 @@
             <%= hotel.image_count %>
           </span>
         </td>
-        <td style="padding:16px;font-size:0.78rem;color:#6b7a8d"><%= new Date(hotel.updated_at).toLocaleDateString() %></td>
+        <td style="padding:16px;text-align:center">
+          <% if (status === 'live') { %>
+            <span title="Live on mauritiusresortfinder.com" style="display:inline-flex;align-items:center;gap:4px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:20px;padding:3px 10px;font-size:0.72rem;font-weight:600;color:#4ade80;white-space:nowrap">
+              <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;display:inline-block"></span> Live
+            </span>
+          <% } else if (status === 'new') { %>
+            <span title="Added since last build — not yet on the live site" style="display:inline-flex;align-items:center;gap:4px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:20px;padding:3px 10px;font-size:0.72rem;font-weight:600;color:#fbbf24;white-space:nowrap">
+              <span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;display:inline-block"></span> New
+            </span>
+          <% } else if (status === 'updated') { %>
+            <span title="Updated since last build — changes not yet live" style="display:inline-flex;align-items:center;gap:4px;background:rgba(99,179,237,0.12);border:1px solid rgba(99,179,237,0.3);border-radius:20px;padding:3px 10px;font-size:0.72rem;font-weight:600;color:#90cdf4;white-space:nowrap">
+              <span style="width:6px;height:6px;border-radius:50%;background:#90cdf4;display:inline-block"></span> Updated
+            </span>
+          <% } else { %>
+            <span style="font-size:0.78rem;color:#4a5568">—</span>
+          <% } %>
+        </td>
+        <td style="padding:16px;font-size:0.78rem;color:#6b7a8d"><%= new Date(hotel.created_at).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) %></td>
         <td style="padding:16px 20px;text-align:right">
           <div class="flex items-center justify-end gap-2">
             <a href="/admin/hotels/<%= hotel.id %>" class="btn-secondary" style="padding:6px 14px;font-size:0.8rem">Edit</a>
-            <a href="https://mauritiusresortfinder.com/hotels/<%= hotel.slug %>/" target="_blank" class="btn-secondary" style="padding:6px 14px;font-size:0.8rem" title="Preview">↗</a>
+            <a href="https://mauritiusresortfinder.com/hotels/<%= hotel.slug %>/" target="_blank" class="btn-secondary" style="padding:6px 14px;font-size:0.8rem" title="View on site">↗</a>
             <button onclick="confirmDelete(<%= hotel.id %>, '<%= hotel.name.replace(/'/g, "\\'") %>')" class="btn-danger" style="padding:6px 14px;font-size:0.8rem">Delete</button>
           </div>
         </td>

@@ -69,7 +69,10 @@ router.get('/', async (req, res) => {
     : await db.all(`SELECT h.*, COUNT(i.id) AS image_count
         FROM hotels h LEFT JOIN hotel_images i ON i.hotel_id = h.id
         GROUP BY h.id ORDER BY h.name`);
-  res.render('hotels/index', { hotels, q, flash: req.session.flash, csrfToken: res.locals.csrfToken });
+  const lastBuild = await db.get(
+    `SELECT * FROM build_log WHERE status = 'success' ORDER BY id DESC LIMIT 1`
+  );
+  res.render('hotels/index', { hotels, q, lastBuild: lastBuild || null, flash: req.session.flash, csrfToken: res.locals.csrfToken });
   delete req.session.flash;
 });
 
