@@ -76,7 +76,8 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Mauritius honeymoon itinerary~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-26 (Run 33, ~2,200 words, 7-day + 10-day plans, budget table, season guide, 6 romantic experiences, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
 | ~~Mauritius water sports guide~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-05-26 (Run 34, ~2,300 words, 6 sports, 14-row cost table, 4 snorkel spots, 4 dive sites, kitesurfing Le Morne focus, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
 | ~~Mauritius car hire &amp; getting around~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-05-26 (Run 35, ~2,300 words, decision grid, 3 routes, 11-row cost table, no-Uber note, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
-| Mauritius golf guide | Informational | Medium | "golf mauritius" / "golf resorts mauritius"; Constance BPMP, Heritage Awali, Four Seasons Anahita all have courses |
+| ~~Mauritius golf guide~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-05-27 (Run 36, ~2,300 words, 6 courses, season grid, 9-row fees table, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
+| Homepage golf guide card | Internal linking | Low | Add golf card to planning guides grid on homepage |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
