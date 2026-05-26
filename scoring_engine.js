@@ -366,6 +366,9 @@ function validateHotel(hotel) {
   // Required field presence
   for (const field of REQUIRED_FIELDS) {
     if (hotel[field] === undefined || hotel[field] === null) {
+      // avg_rating may be null for hotels with no reviews yet; computeBayesianRating
+      // handles null by falling back to the prior mean (BAYESIAN_M).
+      if (field === 'avg_rating' && hotel.review_count === 0) continue;
       errors.push(`Missing required field: "${field}"`);
     }
   }
@@ -396,6 +399,8 @@ function validateHotel(hotel) {
   };
   for (const [field, [lo, hi]] of Object.entries(scoreFields)) {
     const v = hotel[field];
+    // avg_rating is allowed to be null when review_count is 0
+    if (v === null && field === 'avg_rating') continue;
     if (typeof v !== 'number' || isNaN(v)) {
       errors.push(`"${field}" must be a number, received: ${JSON.stringify(v)}`);
     } else if (v < lo || v > hi) {
