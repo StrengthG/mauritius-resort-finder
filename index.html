@@ -147,6 +147,80 @@
     .contact-cta-card h2 { margin: 16px 0 18px; }
     .contact-cta-card p  { font-size: 1rem; line-height: 1.8; max-width: 480px; margin: 0 auto 36px; }
 
+    /* ── Planning guides — tabbed ──────────────────────────────────────────── */
+    .guides-tabs {
+      display: flex; gap: 8px; margin-bottom: 2.5rem; flex-wrap: wrap;
+    }
+    .guides-tab {
+      padding: 8px 22px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-light);
+      background: transparent;
+      color: var(--text-dim);
+      font-family: inherit;
+      font-size: .85rem; font-weight: 600;
+      cursor: pointer;
+      transition: all var(--duration);
+      letter-spacing: .02em;
+    }
+    .guides-tab:hover {
+      border-color: var(--border-gold);
+      color: var(--champagne);
+      background: var(--gold-glow);
+    }
+    .guides-tab.active {
+      background: var(--gold-glow);
+      border-color: var(--border-gold-strong);
+      color: var(--gold);
+    }
+    .guides-panel {
+      display: none;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .guides-panel.active {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      opacity: 1;
+      animation: fadeIn .2s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .guide-link {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 22px;
+      background: var(--navy-card);
+      text-decoration: none;
+      color: inherit;
+      transition: background var(--duration);
+      border-left: 2px solid transparent;
+    }
+    .guide-link:hover {
+      background: var(--navy-raised);
+      border-left-color: var(--gold);
+    }
+    .guide-link__icon { font-size: 1.35rem; flex-shrink: 0; line-height: 1; }
+    .guide-link__body { flex: 1; min-width: 0; }
+    .guide-link__title {
+      display: block; font-size: .92rem; font-weight: 700;
+      color: var(--champagne); margin-bottom: 3px;
+    }
+    .guide-link__sub {
+      display: block; font-size: .75rem; color: var(--muted);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .guide-link__arrow {
+      color: var(--gold); font-size: .8rem; flex-shrink: 0;
+      opacity: 0; transition: opacity var(--duration), transform var(--duration);
+    }
+    .guide-link:hover .guide-link__arrow { opacity: 1; transform: translateX(3px); }
+    @media (max-width: 720px) {
+      .guides-panel.active { grid-template-columns: 1fr; }
+    }
+
     /* ── Persona cards with images ─────────────────────────────────────────── */
     .region-card--persona {
       padding: 0;
@@ -963,240 +1037,55 @@
   <div class="container">
     <div class="section-header reveal">
       <span class="section-header__label">Planning Guides</span>
-      <h2 id="guides-heading">Everything you need to plan your Mauritius trip</h2>
-      <p>In-depth guides covering timing, location, travel style, and what to expect — written independently, no sponsored content.</p>
+      <h2 id="guides-heading">Plan your trip</h2>
     </div>
-    <div class="regions-grid stagger-children">
 
-      <a href="/where-to-stay-in-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Where to Stay</span>
-          <span class="region-card__best">Coast guide</span>
-        </div>
-        <p class="region-card__desc">North, east, south-west, or west? A coast-by-coast breakdown with independently scored hotels and no paid placements.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">4 coasts covered</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/best-time-to-visit-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Best Time to Visit</span>
-          <span class="region-card__best">Month-by-month</span>
-        </div>
-        <p class="region-card__desc">May–October is the dry season, but every month has trade-offs. Full breakdown covering beach, diving, and honeymoon timing.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">12 months analysed</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-honeymoon-guide/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Honeymoon Guide</span>
-          <span class="region-card__best">Couples</span>
-        </div>
-        <p class="region-card__desc">Best honeymoon hotels, romantic experiences, ideal timing, and which coast suits your travel style.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">Top score: 9.2</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/best-beach-resorts-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Best Beach Resorts</span>
-          <span class="region-card__best">Ranked by beach quality</span>
-        </div>
-        <p class="region-card__desc">7 independently scored beach resorts ranked by lagoon quality, private beach length, and snorkelling access.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">7 resorts ranked</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-all-inclusive-resorts/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">All-Inclusive Resorts</span>
-          <span class="region-card__best">Is it worth it?</span>
-        </div>
-        <p class="region-card__desc">5 best all-inclusive resorts in Mauritius with an honest breakdown of what's included and whether the package is good value.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">5 resorts reviewed</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/best-boutique-hotels-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Boutique Hotels</span>
-          <span class="region-card__best">Small &amp; distinctive</span>
-        </div>
-        <p class="region-card__desc">From a private island bubble lodge to a secluded granite cove — 5 boutique hotels that big resorts cannot replicate.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">From $280/night</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-family-holiday-guide/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Family Holiday Guide</span>
-          <span class="region-card__best">Families</span>
-        </div>
-        <p class="region-card__desc">Best family-friendly resorts in Mauritius with kids' clubs, calm lagoons, and activities that work for all ages.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">5 family resorts</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-wellness-retreat-guide/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Wellness Retreats</span>
-          <span class="region-card__best">Spa &amp; wellbeing</span>
-        </div>
-        <p class="region-card__desc">Best wellness resorts and spa retreats in Mauritius — Ayurveda, yoga, and serious spa programmes ranked independently.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">5 wellness resorts</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-restaurants-dining-guide/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Restaurants &amp; Dining</span>
-          <span class="region-card__best">Where to eat</span>
-        </div>
-        <p class="region-card__desc">Creole street food, hotel fine dining, beach BBQs, and Port Louis market — a region-by-region guide to eating in Mauritius. Honest, no paid placements.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">6 dining styles covered</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/things-to-do-in-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Things to Do</span>
-          <span class="region-card__best">Activities &amp; experiences</span>
-        </div>
-        <p class="region-card__desc">Snorkelling, hiking, island day trips, cultural sites, and water sports — the best activities in Mauritius by region and season.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">Activity guide</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/best-beaches-in-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Best Beaches</span>
-          <span class="region-card__best">8 beaches ranked</span>
-        </div>
-        <p class="region-card__desc">Trou d'Eau Douce, Belle Mare, Flic en Flac, and more — 8 beaches ranked by swimming, snorkelling, and crowd level so you pick the right one.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">8 beaches compared</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-budget-travel-guide/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Budget Travel Guide</span>
-          <span class="region-card__best">How much does it cost?</span>
-        </div>
-        <p class="region-card__desc">Hotel prices by tier, flight costs by departure, food budget, and seasonal pricing — an honest breakdown of what Mauritius actually costs in 2026.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">4 budget tiers covered</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-vs-maldives/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Mauritius vs Maldives</span>
-          <span class="region-card__best">Which should you choose?</span>
-        </div>
-        <p class="region-card__desc">Beaches, overwater villas, activities, and total cost compared side by side. A decision-framework guide for couples and honeymooners.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">12 factors compared</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/port-louis-mauritius-guide/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Port Louis Guide</span>
-          <span class="region-card__best">Capital city</span>
-        </div>
-        <p class="region-card__desc">Central Market, Caudan Waterfront, Blue Penny Museum, and the best street food in Mauritius — a half-day in the capital that most visitors miss.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">6 top attractions</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-vs-seychelles/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Mauritius vs Seychelles</span>
-          <span class="region-card__best">Which should you choose?</span>
-        </div>
-        <p class="region-card__desc">Beaches, wildlife, hotel quality, cost, and travel style compared. Honest guide to choosing between the Indian Ocean's two most popular island holidays.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">12 factors compared</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-visa-entry-guide/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Visa &amp; Entry Guide</span>
-          <span class="region-card__best">2026 requirements</span>
-        </div>
-        <p class="region-card__desc">Visa-free countries, entry documents, SSR airport arrival, and how to extend your stay. Everything you need before you fly to Mauritius.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">40+ nationalities covered</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-honeymoon-itinerary/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Honeymoon Itinerary</span>
-          <span class="region-card__best">7 &amp; 10 day plans</span>
-        </div>
-        <p class="region-card__desc">Day-by-day honeymoon itinerary for 7 or 10 nights: best areas, romantic experiences, budget breakdown, and when to go.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">7 &amp; 10 day plans</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-water-sports-guide/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Water Sports Guide</span>
-          <span class="region-card__best">Snorkelling · Kitesurfing · Diving</span>
-        </div>
-        <p class="region-card__desc">Best spots for snorkelling, kitesurfing, scuba diving, catamaran sailing, and deep-sea fishing — with costs and top hotels near the action.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">6 water sports covered</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/mauritius-car-hire-guide/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Car Hire Guide</span>
-          <span class="region-card__best">Getting around</span>
-        </div>
-        <p class="region-card__desc">Do you need a car? Rental costs, driving on the left, best scenic routes, taxis vs hire, and a cost comparison table for 2026.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">3 driving routes</span>
-          <span class="region-card__link">Read guide &rarr;</span>
-        </div>
-      </a>
-
+    <div class="guides-tabs" role="tablist" aria-label="Guide categories">
+      <button class="guides-tab active" role="tab" aria-selected="true"  aria-controls="tab-plan"    data-tab="plan">Plan</button>
+      <button class="guides-tab"        role="tab" aria-selected="false" aria-controls="tab-stay"    data-tab="stay">Stay</button>
+      <button class="guides-tab"        role="tab" aria-selected="false" aria-controls="tab-explore" data-tab="explore">Explore</button>
+      <button class="guides-tab"        role="tab" aria-selected="false" aria-controls="tab-compare" data-tab="compare">Compare</button>
     </div>
+
+    <!-- Plan -->
+    <div class="guides-panel active" id="tab-plan" role="tabpanel">
+      <a href="/mauritius-travel-guide/"    class="guide-link"><span class="guide-link__icon" aria-hidden="true">📋</span><span class="guide-link__body"><span class="guide-link__title">Travel Guide</span><span class="guide-link__sub">Complete Mauritius planner — costs, regions, when to go</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/best-time-to-visit-mauritius/" class="guide-link"><span class="guide-link__icon" aria-hidden="true">📅</span><span class="guide-link__body"><span class="guide-link__title">Best Time to Visit</span><span class="guide-link__sub">Month-by-month weather, beach &amp; diving seasons</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-visa-entry-guide/" class="guide-link"><span class="guide-link__icon" aria-hidden="true">✈️</span><span class="guide-link__body"><span class="guide-link__title">Visa &amp; Entry Guide</span><span class="guide-link__sub">Visa-free countries, airport arrival, 2026 requirements</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-car-hire-guide/"  class="guide-link"><span class="guide-link__icon" aria-hidden="true">🚗</span><span class="guide-link__body"><span class="guide-link__title">Car Hire &amp; Getting Around</span><span class="guide-link__sub">Drive left · 3 scenic routes · taxis vs hire</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-packing-list/"   class="guide-link"><span class="guide-link__icon" aria-hidden="true">🎒</span><span class="guide-link__body"><span class="guide-link__title">Packing List</span><span class="guide-link__sub">What to bring for wet &amp; dry season travel</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-budget-travel-guide/" class="guide-link"><span class="guide-link__icon" aria-hidden="true">💰</span><span class="guide-link__body"><span class="guide-link__title">Budget Travel Guide</span><span class="guide-link__sub">Flights, hotels, food — what Mauritius actually costs</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+    </div>
+
+    <!-- Stay -->
+    <div class="guides-panel" id="tab-stay" role="tabpanel">
+      <a href="/where-to-stay-in-mauritius/"       class="guide-link"><span class="guide-link__icon" aria-hidden="true">🗺️</span><span class="guide-link__body"><span class="guide-link__title">Where to Stay</span><span class="guide-link__sub">North, east, south-west or west coast — which is right for you?</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/best-beach-resorts-mauritius/"      class="guide-link"><span class="guide-link__icon" aria-hidden="true">🏖️</span><span class="guide-link__body"><span class="guide-link__title">Best Beach Resorts</span><span class="guide-link__sub">7 resorts ranked by lagoon quality &amp; private beach</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-honeymoon-guide/"         class="guide-link"><span class="guide-link__icon" aria-hidden="true">💍</span><span class="guide-link__body"><span class="guide-link__title">Honeymoon Guide</span><span class="guide-link__sub">Best romance resorts, private villas &amp; seclusion</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-family-holiday-guide/"    class="guide-link"><span class="guide-link__icon" aria-hidden="true">👨‍👩‍👧</span><span class="guide-link__body"><span class="guide-link__title">Family Holiday Guide</span><span class="guide-link__sub">Kids' clubs, calm lagoons &amp; family activity programmes</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-wellness-retreat-guide/"  class="guide-link"><span class="guide-link__icon" aria-hidden="true">🧘</span><span class="guide-link__body"><span class="guide-link__title">Wellness Retreats</span><span class="guide-link__sub">Ayurveda, spa programmes &amp; wellbeing resorts ranked</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-all-inclusive-resorts/"   class="guide-link"><span class="guide-link__icon" aria-hidden="true">🍹</span><span class="guide-link__body"><span class="guide-link__title">All-Inclusive Resorts</span><span class="guide-link__sub">Is the package worth it? Honest breakdown of 5 resorts</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/best-boutique-hotels-mauritius/"    class="guide-link"><span class="guide-link__icon" aria-hidden="true">🌿</span><span class="guide-link__body"><span class="guide-link__title">Boutique Hotels</span><span class="guide-link__sub">Small, distinctive stays — from $280/night</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+    </div>
+
+    <!-- Explore -->
+    <div class="guides-panel" id="tab-explore" role="tabpanel">
+      <a href="/things-to-do-in-mauritius/"         class="guide-link"><span class="guide-link__icon" aria-hidden="true">🏄</span><span class="guide-link__body"><span class="guide-link__title">Things to Do</span><span class="guide-link__sub">Best activities by region — hiking, island trips &amp; culture</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/best-beaches-in-mauritius/"          class="guide-link"><span class="guide-link__icon" aria-hidden="true">🏝️</span><span class="guide-link__body"><span class="guide-link__title">Best Beaches</span><span class="guide-link__sub">8 beaches ranked by swimming, snorkelling &amp; crowds</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-water-sports-guide/"       class="guide-link"><span class="guide-link__icon" aria-hidden="true">🤿</span><span class="guide-link__body"><span class="guide-link__title">Water Sports Guide</span><span class="guide-link__sub">Snorkelling, kitesurfing, diving &amp; catamaran — with costs</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-golf-guide/"               class="guide-link"><span class="guide-link__icon" aria-hidden="true">⛳</span><span class="guide-link__body"><span class="guide-link__title">Golf Guide</span><span class="guide-link__sub">6 courses · Ernie Els at Anahita · green fees table</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-restaurants-dining-guide/" class="guide-link"><span class="guide-link__icon" aria-hidden="true">🍽️</span><span class="guide-link__body"><span class="guide-link__title">Restaurants &amp; Dining</span><span class="guide-link__sub">Creole street food, beach BBQs &amp; resort fine dining</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/port-louis-mauritius-guide/"         class="guide-link"><span class="guide-link__icon" aria-hidden="true">🏙️</span><span class="guide-link__body"><span class="guide-link__title">Port Louis Guide</span><span class="guide-link__sub">Central Market, Caudan Waterfront &amp; the best street food</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-honeymoon-itinerary/"      class="guide-link"><span class="guide-link__icon" aria-hidden="true">🗓️</span><span class="guide-link__body"><span class="guide-link__title">Honeymoon Itinerary</span><span class="guide-link__sub">Day-by-day 7 &amp; 10-night plans with budget breakdown</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+    </div>
+
+    <!-- Compare -->
+    <div class="guides-panel" id="tab-compare" role="tabpanel">
+      <a href="/mauritius-vs-maldives/"              class="guide-link"><span class="guide-link__icon" aria-hidden="true">⚖️</span><span class="guide-link__body"><span class="guide-link__title">Mauritius vs Maldives</span><span class="guide-link__sub">12 factors compared — beaches, cost, overwater villas</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/mauritius-vs-seychelles/"            class="guide-link"><span class="guide-link__icon" aria-hidden="true">🌊</span><span class="guide-link__body"><span class="guide-link__title">Mauritius vs Seychelles</span><span class="guide-link__sub">Wildlife, beaches, hotel quality &amp; total cost compared</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+      <a href="/east-coast-vs-west-coast-mauritius/" class="guide-link"><span class="guide-link__icon" aria-hidden="true">↔️</span><span class="guide-link__body"><span class="guide-link__title">East Coast vs West Coast</span><span class="guide-link__sub">Which coast suits your travel style &amp; budget?</span></span><span class="guide-link__arrow" aria-hidden="true">→</span></a>
+    </div>
+
   </div>
 </section>
 
@@ -1279,6 +1168,23 @@
     </p>
   </div>
 </footer>
+
+<!-- Guide tabs -->
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.guides-tab');
+  var panels = document.querySelectorAll('.guides-panel');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      document.getElementById('tab-'+tab.dataset.tab).classList.add('active');
+    });
+  });
+})();
+</script>
 
 <!-- Scripts (defer = non-blocking) -->
 <script src="/assets/js/animations.js" defer></script>
