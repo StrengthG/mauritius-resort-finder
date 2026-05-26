@@ -147,6 +147,60 @@
     .contact-cta-card h2 { margin: 16px 0 18px; }
     .contact-cta-card p  { font-size: 1rem; line-height: 1.8; max-width: 480px; margin: 0 auto 36px; }
 
+    /* ── Persona cards with images ─────────────────────────────────────────── */
+    .region-card--persona {
+      padding: 0;
+      overflow: hidden;
+    }
+    .region-card--persona .region-card__img-wrap {
+      position: relative;
+      height: 172px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .region-card--persona .region-card__img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      filter: brightness(0.68) saturate(0.8);
+      transition: transform 0.55s var(--ease-out), filter 0.4s;
+      will-change: transform;
+    }
+    .region-card--persona:hover .region-card__img {
+      transform: scale(1.07);
+      filter: brightness(0.82) saturate(1);
+    }
+    .region-card--persona .region-card__img-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(8,15,35,0.90) 0%,
+        rgba(8,15,35,0.35) 52%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+    .region-card--persona .region-card__img-label {
+      position: absolute; bottom: 14px; left: 18px; z-index: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--champagne); line-height: 1;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+    }
+    .region-card--persona .region-card__img-badge {
+      position: absolute; top: 12px; right: 12px; z-index: 1;
+      font-size: 0.65rem; font-weight: 700;
+      color: var(--gold);
+      background: rgba(8,15,35,0.70);
+      border: 1px solid var(--border-gold);
+      border-radius: 4px; padding: 2px 9px;
+      backdrop-filter: blur(4px);
+    }
+    .region-card--persona .region-card__body {
+      padding: 18px 22px 22px;
+      display: flex; flex-direction: column; gap: 10px; flex: 1;
+    }
+
     @media (max-width: 640px) {
       .hero { padding: 80px 0 64px; }
       .hero__subtitle { font-size: 0.98rem; margin-bottom: 36px; }
@@ -154,6 +208,7 @@
       .bd-callout__icon { font-size: 1.8rem; }
       .bd-callout__text { font-size: 0.88rem; }
       .contact-cta-card { padding: 36px 24px; }
+      .region-card--persona .region-card__img-wrap { height: 150px; }
     }
   </style>
 </head>
@@ -427,87 +482,108 @@
     </div>
     <div class="regions-grid stagger-children">
 
-      <a href="/best-luxury-hotels-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Luxury</span>
-          <span class="region-card__best">26 resorts</span>
+      <a href="/best-luxury-hotels-mauritius/" class="region-card region-card--persona">
+        <div class="region-card__img-wrap">
+          <img src="/assets/images/personality/luxury.jpg" alt="" role="presentation" class="region-card__img">
+          <span class="region-card__img-label">Luxury</span>
+          <span class="region-card__img-badge">26 resorts</span>
         </div>
-        <p class="region-card__desc">Five-star properties with butler service, private beaches, and world-class dining. Ranked by location prestige, brand credibility, and premium amenities.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">Top score: 9.2</span>
-          <span class="region-card__link">View list &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/best-honeymoon-hotels-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Honeymoon</span>
-          <span class="region-card__best">36 hotels</span>
-        </div>
-        <p class="region-card__desc">Romance-focused resorts with private villas, couples spa treatments, and seclusion. Adults-only properties and overwater suites weighted highest.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">Top score: 9.1</span>
-          <span class="region-card__link">View list &rarr;</span>
+        <div class="region-card__body">
+          <p class="region-card__desc">Five-star properties with butler service, private beaches, and world-class dining. Ranked by location prestige, brand credibility, and premium amenities.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="region-card__count">Top score: 9.2</span>
+            <span class="region-card__link">View list &rarr;</span>
+          </div>
         </div>
       </a>
 
-      <a href="/best-family-hotels-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Family</span>
-          <span class="region-card__best">27 resorts</span>
+      <a href="/best-honeymoon-hotels-mauritius/" class="region-card region-card--persona">
+        <div class="region-card__img-wrap">
+          <img src="/assets/images/personality/honeymoon.jpg" alt="" role="presentation" class="region-card__img">
+          <span class="region-card__img-label">Honeymoon</span>
+          <span class="region-card__img-badge">36 hotels</span>
         </div>
-        <p class="region-card__desc">Resorts with dedicated kids clubs, shallow lagoons, connecting rooms, and family activity programmes. Adults-only properties excluded.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">Top score: 9.1</span>
-          <span class="region-card__link">View list &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/best-wellness-resorts-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Wellness</span>
-          <span class="region-card__best">22 resorts</span>
-        </div>
-        <p class="region-card__desc">Spa-led retreats ranked by treatment menu depth, Ayurvedic credentials, fitness facilities, and healthy dining. Requires on-site spa.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">Top score: 9.1</span>
-          <span class="region-card__link">View list &rarr;</span>
+        <div class="region-card__body">
+          <p class="region-card__desc">Romance-focused resorts with private villas, couples spa treatments, and seclusion. Adults-only properties and overwater suites weighted highest.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="region-card__count">Top score: 9.1</span>
+            <span class="region-card__link">View list &rarr;</span>
+          </div>
         </div>
       </a>
 
-      <a href="/best-remote-work-hotels-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Remote Work</span>
-          <span class="region-card__best">36 hotels</span>
+      <a href="/best-family-hotels-mauritius/" class="region-card region-card--persona">
+        <div class="region-card__img-wrap">
+          <img src="/assets/images/personality/family.jpg" alt="" role="presentation" class="region-card__img">
+          <span class="region-card__img-label">Family</span>
+          <span class="region-card__img-badge">27 resorts</span>
         </div>
-        <p class="region-card__desc">Hotels ranked for fast Wi-Fi reliability, workspace quality, business facilities, and long-stay value. Suited to workcation and digital nomad travel.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">Top score: 9.1</span>
-          <span class="region-card__link">View list &rarr;</span>
-        </div>
-      </a>
-
-      <a href="/best-value-luxury-hotels-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Value Luxury</span>
-          <span class="region-card__best">36 hotels</span>
-        </div>
-        <p class="region-card__desc">High-quality resorts where the experience outpaces the price tag. Ranked by value score — the most points per dollar spent in Mauritius.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">Top score: 9.0</span>
-          <span class="region-card__link">View list &rarr;</span>
+        <div class="region-card__body">
+          <p class="region-card__desc">Resorts with dedicated kids clubs, shallow lagoons, connecting rooms, and family activity programmes. Adults-only properties excluded.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="region-card__count">Top score: 9.1</span>
+            <span class="region-card__link">View list &rarr;</span>
+          </div>
         </div>
       </a>
 
-      <a href="/best-cheap-hotels-mauritius/" class="region-card">
-        <div class="region-card__header">
-          <span class="region-card__name">Cheap Hotels</span>
-          <span class="region-card__best">9 resorts</span>
+      <a href="/best-wellness-resorts-mauritius/" class="region-card region-card--persona">
+        <div class="region-card__img-wrap">
+          <img src="/assets/images/personality/wellness.jpg" alt="" role="presentation" class="region-card__img">
+          <span class="region-card__img-label">Wellness</span>
+          <span class="region-card__img-badge">22 resorts</span>
         </div>
-        <p class="region-card__desc">The best hotels in Mauritius under $500 a night, independently scored. High value scores only — no cutting corners on quality to hit a price point.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="region-card__count">Top score: 8.4</span>
-          <span class="region-card__link">View list &rarr;</span>
+        <div class="region-card__body">
+          <p class="region-card__desc">Spa-led retreats ranked by treatment menu depth, Ayurvedic credentials, fitness facilities, and healthy dining. Requires on-site spa.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="region-card__count">Top score: 9.1</span>
+            <span class="region-card__link">View list &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/best-remote-work-hotels-mauritius/" class="region-card region-card--persona">
+        <div class="region-card__img-wrap">
+          <img src="/assets/images/personality/remote-work.jpg" alt="" role="presentation" class="region-card__img">
+          <span class="region-card__img-label">Remote Work</span>
+          <span class="region-card__img-badge">36 hotels</span>
+        </div>
+        <div class="region-card__body">
+          <p class="region-card__desc">Hotels ranked for fast Wi-Fi reliability, workspace quality, business facilities, and long-stay value. Suited to workcation and digital nomad travel.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="region-card__count">Top score: 9.1</span>
+            <span class="region-card__link">View list &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/best-value-luxury-hotels-mauritius/" class="region-card region-card--persona">
+        <div class="region-card__img-wrap">
+          <img src="/assets/images/personality/value-luxury.jpg" alt="" role="presentation" class="region-card__img">
+          <span class="region-card__img-label">Value Luxury</span>
+          <span class="region-card__img-badge">36 hotels</span>
+        </div>
+        <div class="region-card__body">
+          <p class="region-card__desc">High-quality resorts where the experience outpaces the price tag. Ranked by value score — the most points per dollar spent in Mauritius.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="region-card__count">Top score: 9.0</span>
+            <span class="region-card__link">View list &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/best-cheap-hotels-mauritius/" class="region-card region-card--persona">
+        <div class="region-card__img-wrap">
+          <img src="/assets/images/personality/cheap-hotels.jpg" alt="" role="presentation" class="region-card__img">
+          <span class="region-card__img-label">Cheap Hotels</span>
+          <span class="region-card__img-badge">9 resorts</span>
+        </div>
+        <div class="region-card__body">
+          <p class="region-card__desc">The best hotels in Mauritius under $500 a night, independently scored. High value scores only — no cutting corners on quality to hit a price point.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="region-card__count">Top score: 8.4</span>
+            <span class="region-card__link">View list &rarr;</span>
+          </div>
         </div>
       </a>
 
