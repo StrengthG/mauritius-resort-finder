@@ -437,6 +437,7 @@ function getRelatedGuides(persona) {
     { label: 'Mauritius vs Seychelles',                slug: 'mauritius-vs-seychelles',                 persona: null           },
     { label: 'Visa & Entry Guide',                     slug: 'mauritius-visa-entry-guide',              persona: null           },
     { label: 'Honeymoon Itinerary',                    slug: 'mauritius-honeymoon-itinerary',           persona: null           },
+    { label: 'Water Sports Guide',                     slug: 'mauritius-water-sports-guide',            persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }
@@ -1547,6 +1548,7 @@ function generateSiteFooter(siteName, baseUrl) {
     `        <li><a href="${b}/mauritius-vs-seychelles/">Mauritius vs Seychelles</a></li>`,
     `        <li><a href="${b}/mauritius-visa-entry-guide/">Visa &amp; Entry Guide</a></li>`,
     `        <li><a href="${b}/mauritius-honeymoon-itinerary/">Honeymoon Itinerary</a></li>`,
+    `        <li><a href="${b}/mauritius-water-sports-guide/">Water Sports Guide</a></li>`,
     `      </ul>`,
     `    </div>`,
     `    <div class="site-footer__col">`,

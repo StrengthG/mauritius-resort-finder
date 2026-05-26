@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 33
+# SEO Daily Report — Run 34
 **Date:** 2026-05-26
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,16 +6,16 @@
 
 ## 1. Executive Summary
 
-Run 33 confirmed zero technical issues (74/74 build, 1810/1810 tests), published the Mauritius Honeymoon Itinerary guide (~2,200 words), and expanded the homepage Planning Guides grid to 17 cards. The page targets "mauritius honeymoon itinerary", "7 days in mauritius honeymoon", and "10 day mauritius honeymoon" — high-intent, transactional-adjacent searches from couples in the active planning window. It complements the existing hotel-focused honeymoon guide by offering the day-by-day structure that couples search for but the hotel guide doesn't provide.
+Run 34 confirmed zero technical issues (74/74 build, 1810/1810 tests), published the Mauritius Water Sports Guide (~2,300 words), and expanded the homepage Planning Guides grid to 18 cards. The page targets "water sports in Mauritius", "snorkelling mauritius", "kitesurfing mauritius le morne", and "scuba diving mauritius" — a cluster that was entirely absent from the site despite the topic being a core reason people choose Mauritius over other Indian Ocean destinations. The guide covers 6 sports across 8 named locations with a 14-row cost table, making it the most comprehensive activity resource on the site.
 
 ---
 
 ## 2. Technical Issues Found
 
 None. Audit this run:
-- **H1 tags:** All 37 static pages have exactly one h1. Clean.
-- **Orphaned pages:** Zero — persona slugs in STATIC_PAGE_SPECS are dynamically-built (expected). `affiliate-disclosure` and `privacy` are utility pages intentionally excluded from STATIC_PAGE_SPECS.
-- **Sitemap:** 111 entries, all pages represented.
+- **H1 tags:** All static pages have exactly one h1. Clean.
+- **Orphaned pages:** Zero.
+- **Sitemap:** Updated with new entry; all pages represented.
 - **Build:** 74/74 succeeded, 0 failed.
 - **Tests:** 1810/1810 passed across 12 suites.
 
@@ -23,37 +23,32 @@ None. Audit this run:
 
 ## 3. Content Work Done This Run
 
-**New page: `/mauritius-honeymoon-itinerary/`** (~2,200 words)
+**New page: `/mauritius-water-sports-guide/`** (~2,300 words)
 
-Target keywords: "mauritius honeymoon itinerary" / "7 days in mauritius honeymoon" / "10 day mauritius honeymoon itinerary" / "mauritius honeymoon trip planner"
+Target keywords: "water sports in Mauritius" / "snorkelling mauritius" / "kitesurfing mauritius" / "kitesurfing le morne" / "scuba diving mauritius" / "catamaran mauritius"
 
-Meta: "Mauritius honeymoon itinerary for 7 or 10 days: day-by-day plans, best areas, romantic experiences, costs, and when to go. Expert-planned routes for couples." (158 chars)
+Meta: "Complete guide to water sports in Mauritius: best snorkelling spots, kitesurfing at Le Morne, scuba diving, catamaran sailing, and deep-sea fishing. Costs and top hotels." (168 chars)
 
 Page sections:
-- **Quick facts strip** — best season, ideal duration, best area, budget per couple
-- **Why Mauritius intro** — east coast focus, no visa/language barrier, 12-hour flight
-- **7-day itinerary** — 7 day-blocks with header badges, bullet activities, and specific tips per day:
-  - Day 1: Arrival & settling in — east coast hotel, recover from flight
-  - Day 2: Beach day & first snorkel — Belle Mare beach, coral reef, spa
-  - Day 3: Île aux Cerfs day trip — boat from Trou d'Eau Douce, blue lagoon snorkel
-  - Day 4: South coast road trip — Mahébourg, Gris Gris, Le Morne peninsula
-  - Day 5: Inland & Chamarel — Seven Coloured Earths, Chamarel Waterfall, rum distillery
-  - Day 6: Catamaran sunset cruise — west/north coast, dolphin watching, private or shared
-  - Day 7: Final beach day & departure
-- **10-day extension** — days 8–10 with two options: second hotel (north coast) or slow east coast extension; includes northern islands day trip and Pamplemousses garden
-- **Best areas grid** — 3-card layout: East Coast (top pick), North Coast (boutique & lively), South-West (dramatic scenery)
-- **3 hotel CTAs** — verified affiliate links from scored dataset:
-  - Four Seasons Resort at Anahita (9.1/10, $1,650/night, Beau Champ, affiliate/s7PgDXw) — #1 honeymoon pick
-  - One&Only Le Saint Géran (9.0/10, $940/night, Belle Mare, affiliate/61eoozV) — peninsula setting
-  - Paradise Cove Boutique Hotel Adults Only (9.0/10, $890/night, Cap Malheureux, affiliate/KYUg6DO) — adults-only boutique
-- **Budget table** — 3-tier breakdown (4-star, mid-range, luxury) across 6 cost categories with 7-night totals
-- **Season guide** — visual 12-month bar (peak/shoulder/wet), with written guidance on each period
-- **6 romantic experiences** — private catamaran, Chamarel sunrise, beach dinner setup, dolphin swimming, couples spa, Casela adventure park
-- **6 FAQs** — ideal duration, honeymoon suitability, best time, one vs two hotels, total cost, unmissable experiences
+- **Quick facts strip** — best snorkel spot, kitesurfing hub, diving season, top hotel
+- **Jump navigation** — 6 sport anchors (snorkelling, kitesurfing, diving, catamaran, fishing, kayak/SUP)
+- **Snorkelling** — 4 spot cards: Blue Bay Marine Park (best), Île aux Cerfs, Flic en Flac, Coin de Mire; what to bring, visibility notes
+- **Kitesurfing & windsurfing** — Le Morne focus (UNESCO World Heritage site, consistent south-east trade winds), Le Morne vs One Eye distinction, best months (May–Oct), lesson costs
+- **Scuba diving** — 4 dive sites: Le Morne Wall (20–40m), Stella Maru wreck, Cathedral at Flic en Flac (25m), Coin de Mire north; certifications, liveaboard notes
+- **Catamaran sailing** — full-day vs sunset cruises, Blue Bay lagoon, Île aux Cerfs snorkel stops, shared vs private pricing
+- **Deep-sea fishing** — Blue Marlin peak season (Oct–Mar), Port Louis & Black River, catch & release, boat charter pricing
+- **Kayak & stand-up paddleboarding** — resort-based for beginners, Blue Bay Marine Park SUP, flat-water spots
+- **Cost comparison table** — 14 rows across 6 sports: snorkel day trip, snorkel gear hire, kite lesson (2h), kite course (5-day IKO), windsurf hire (1h), scuba intro dive, PADI OW course, fun dive (single), catamaran (shared), catamaran (private half-day), deep-sea fishing (shared), deep-sea fishing (private), kayak (hour), SUP (hour)
+- **3 hotel CTAs** — verified affiliate links near best water sports locations:
+  - Hilton Mauritius Resort & Spa (8.7/10, $530/night, Flic En Flac, affiliate/lb9Yl8f) — scuba & snorkel hub
+  - Constance Belle Mare Plage (8.9/10, $920/night, Belle Mare, affiliate/joE5IeP) — lagoon access
+  - Constance Le Chaland Iko Mauritius (8.8/10, $820/night, Blue Bay, affiliate/a1VWvT2) — marine park on the doorstep
+- **6 practical tips** — book kitesurfing in advance, best visibility months, PADI card recognition, Le Morne One Eye warning, sunscreen reef-safe, sea sickness advice
+- **6 FAQs** — best overall sport, kitesurfing season, snorkelling without a boat, diving certification, best area to stay, cost for a week of water sports
 
 Structured data: FAQPage, Article, BreadcrumbList
 
-Internal links: registered in STATIC_PAGE_SPECS (informational, priority 0.8), `getRelatedGuides()`, footer Guides column, and homepage Planning Guides grid (now 17 cards).
+Internal links: registered in STATIC_PAGE_SPECS (informational, priority 0.8), `getRelatedGuides()`, footer Guides column, and homepage Planning Guides grid (now 18 cards).
 
 ---
 
@@ -65,13 +60,13 @@ Internal links: registered in STATIC_PAGE_SPECS (informational, priority 0.8), `
 | Test suites | 12/12 |
 | Tests passed | 1810/1810 |
 | New static pages | 1 |
-| Homepage guide cards | 17 (was 16) |
-| Sitemap entries | 111 |
+| Homepage guide cards | 18 (was 17) |
+| Sitemap entries | Updated |
 
 ---
 
 ## 5. Next Recommended Actions
 
-1. **Mauritius water sports guide** — "water sports in Mauritius" / "snorkelling mauritius" / "kitesurfing mauritius le morne" — activity cluster is underrepresented relative to accommodation depth; strong for social sharing
-2. **Mauritius car hire & getting around guide** — "car hire mauritius" / "getting around mauritius" — practical high-volume search, pre-trip intent, currently no dedicated page
-3. **Digital PR outreach** — 17 editorial guides now provides strong topical authority for a Condé Nast / The Points Guy pitch
+1. **Mauritius car hire & getting around guide** — "car hire mauritius" / "getting around mauritius" — practical high-volume search, pre-trip intent, currently no dedicated page
+2. **Mauritius golf guide** — "golf mauritius" / "golf courses mauritius" — Anahita Golf & Spa already in dataset (8.1/10); niche but high commercial intent
+3. **Digital PR outreach** — 18 editorial guides provides strong topical authority for a Condé Nast / The Points Guy pitch
