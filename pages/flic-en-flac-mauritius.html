@@ -100,41 +100,111 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    body { background: #0a0f1e; color: #e8e0d0; font-family: 'Georgia', serif; margin: 0; }
+    .page-hero { background: linear-gradient(135deg, #0d1728 0%, #1a2540 100%); padding: 80px 24px 60px; text-align: center; }
+    .page-hero__label { display: inline-block; background: rgba(201,168,76,0.15); color: #c9a84c; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; font-family: 'Arial', sans-serif; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: #fff; margin: 0 auto 20px; max-width: 820px; line-height: 1.25; }
+    .page-hero__sub { font-size: 1.05rem; color: #b0a898; max-width: 620px; margin: 0 auto; line-height: 1.75; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .content-section { padding: 52px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .content-section:last-child { border-bottom: none; }
+    h2 { font-size: 1.55rem; color: #e8dfc8; margin: 0 0 18px; }
+    h3 { font-size: 1.15rem; color: #c9a84c; margin: 28px 0 10px; }
+    p { line-height: 1.85; color: #ccc4b4; margin: 0 0 18px; }
+    ul, ol { color: #ccc4b4; line-height: 1.85; padding-left: 22px; margin: 0 0 18px; }
+    li { margin-bottom: 6px; }
+    strong { color: #e8dfc8; }
+    .breadcrumb { font-size: 0.82rem; color: #7a7260; font-family: 'Arial', sans-serif; padding: 18px 0 0; }
+    .breadcrumb a { color: #9a8e78; text-decoration: none; }
+    .breadcrumb a:hover { color: #c9a84c; }
+    .answer-banner { background: rgba(123,191,123,0.08); border: 1px solid rgba(123,191,123,0.3); border-radius: 12px; padding: 24px 28px; margin: 28px 0; }
+    .answer-banner__title { font-size: 1.05rem; color: #7bbf7b; font-family: 'Arial', sans-serif; font-weight: bold; margin-bottom: 10px; }
+    .answer-banner p { color: #bbb3a3; margin: 0; }
+    .data-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.92rem; }
+    .data-table th { background: rgba(201,168,76,0.12); color: #c9a84c; text-align: left; padding: 12px 14px; font-family: 'Arial', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .data-table td { padding: 12px 14px; color: #ccc4b4; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(255,255,255,0.03); }
+    td strong { color: #e8dfc8; }
+    .tick { color: #7bbf7b; font-weight: bold; }
+    .cross { color: #bf7b7b; font-weight: bold; }
+    .req-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 24px 0; }
+    .req-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px; }
+    .req-card__icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .req-card__title { font-size: 0.95rem; color: #e8dfc8; font-weight: bold; margin-bottom: 8px; font-family: 'Arial', sans-serif; }
+    .req-card p { font-size: 0.88rem; color: #9a8e78; margin: 0; line-height: 1.6; }
+    .hotel-cta { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 28px; margin: 24px 0; }
+    .hotel-cta__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .hotel-cta__name { font-size: 1.2rem; color: #e8dfc8; font-weight: bold; margin: 0; }
+    .hotel-cta__score { background: rgba(201,168,76,0.15); color: #c9a84c; font-size: 0.9rem; font-weight: bold; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+    .hotel-cta__meta { font-size: 0.88rem; color: #9a8e78; font-family: 'Arial', sans-serif; margin-bottom: 12px; }
+    .hotel-cta__desc { color: #bbb3a3; font-size: 0.97rem; line-height: 1.7; margin-bottom: 18px; }
+    .hotel-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .btn-primary { background: #c9a84c; color: #0a0f1e; font-weight: bold; padding: 11px 22px; border-radius: 6px; text-decoration: none; font-size: 0.92rem; font-family: 'Arial', sans-serif; }
+    .btn-primary:hover { background: #e0bc5a; }
+    .btn-review { color: #c9a84c; border: 1px solid rgba(201,168,76,0.4); padding: 10px 18px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-family: 'Arial', sans-serif; }
+    .btn-review:hover { border-color: #c9a84c; }
+    .hotel-cta__disclosure { font-size: 0.75rem; color: #6a6456; margin: 10px 0 0; font-family: 'Arial', sans-serif; }
+    .hotel-cta__disclosure a { color: #7a7260; }
+    .info-box { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 16px 20px; margin: 24px 0; font-size: 0.9rem; color: #9a8e78; font-family: 'Arial', sans-serif; }
+    .info-box a { color: #c9a84c; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 22px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item h3 { color: #e8dfc8; font-size: 1.05rem; margin: 0 0 10px; }
+    .faq-item p { margin: 0; font-size: 0.97rem; }
+    .disclosure-banner { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 14px 18px; margin: 32px 0; font-size: 0.85rem; color: #9a8e78; font-family: 'Arial', sans-serif; }
+    .disclosure-banner a { color: #c9a84c; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 24px 0; }
+    .related-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px; text-decoration: none; display: block; transition: border-color 0.2s; }
+    .related-card:hover { border-color: rgba(201,168,76,0.4); }
+    .related-card__label { font-size: 0.82rem; color: #c9a84c; font-family: 'Arial', sans-serif; margin-bottom: 6px; }
+    .related-card__title { color: #e8dfc8; font-size: 1rem; }
+    nav.site-nav { background: rgba(10,15,30,0.95); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; border-bottom: 1px solid rgba(255,255,255,0.07); position: sticky; top: 0; z-index: 100; }
+    nav.site-nav a { color: #b0a898; text-decoration: none; font-size: 0.88rem; font-family: 'Arial', sans-serif; }
+    nav.site-nav .nav__logo { color: #e8dfc8; font-weight: bold; font-size: 1rem; }
+    nav.site-nav .nav__cta { background: #c9a84c; color: #0a0f1e !important; padding: 7px 16px; border-radius: 5px; font-weight: bold; }
+    footer { background: #060c1a; border-top: 1px solid rgba(255,255,255,0.07); padding: 40px 24px; text-align: center; color: #6a6456; font-size: 0.82rem; font-family: 'Arial', sans-serif; }
+    footer a { color: #7a7260; text-decoration: none; }
+    .guide-toc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px 24px; margin: 28px 0; }
+    .guide-toc strong { color: #e8dfc8; display: block; margin-bottom: 12px; font-family: 'Arial', sans-serif; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .guide-toc ul { margin: 0; padding-left: 18px; }
+    .guide-toc li { margin-bottom: 6px; font-size: 0.9rem; }
+    .guide-toc a { color: #c9a84c; text-decoration: none; }
+    .guide-toc a:hover { text-decoration: underline; }
+    .guide-meta { font-size: 0.82rem; color: #6a6456; font-family: 'Arial', sans-serif; margin: 0 0 28px; }
+    .hcard__cta { display: inline-block; background: #c9a84c; color: #0a0f1e; font-weight: bold; padding: 11px 22px; border-radius: 6px; text-decoration: none; font-size: 0.92rem; font-family: 'Arial', sans-serif; margin: 8px 0; }
+    .hcard__cta:hover { background: #e0bc5a; }
+    .hcard__disclosure { font-size: 0.78rem; color: #6a6456; font-family: 'Arial', sans-serif; margin: 4px 0 24px; }
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9rem; }
+    .comparison-table th { background: rgba(201,168,76,0.12); color: #c9a84c; text-align: left; padding: 12px 14px; font-family: 'Arial', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .comparison-table td { padding: 12px 14px; color: #ccc4b4; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.03); }
+  </style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav class="site-nav" aria-label="Site navigation">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">Mauritius Resort Finder</a>
-    <div class="nav-links">
-      <a href="/best-luxury-hotels-mauritius/">Top Hotels</a>
-      <a href="/where-to-stay-in-mauritius/">Where to Stay</a>
-      <a href="/best-time-to-visit-mauritius/">Best Time</a>
-      <a href="/mauritius-travel-guide/">Travel Guide</a>
-      <a href="/contact/">Contact</a>
-    </div>
-  </div>
+  <a href="/" class="nav__logo">Mauritius Resort Finder</a>
+  <a href="/rankings/" class="nav__cta">View Rankings</a>
 </nav>
 
-<main class="guide-main">
-<article class="guide-article">
-
-  <!-- Breadcrumb -->
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a> &rsaquo; <span>Flic en Flac Hotels Guide</span>
-  </nav>
-
-  <header class="guide-header">
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; Flic en Flac Hotels Guide
+    </div>
+    <span class="page-hero__label">Regional Guide</span>
     <h1>Best Hotels in Flic en Flac, Mauritius</h1>
-    <p class="guide-subtitle">The west coast's sunset beach — ranked by independent data, not marketing copy</p>
-    <p class="guide-meta">2,100 words &nbsp;·&nbsp; Updated May 2026 &nbsp;·&nbsp; 4 hotels scored</p>
-  </header>
+    <p class="page-hero__sub">The west coast's sunset beach — ranked by independent data, not marketing copy</p>
+  </div>
+</div>
 
-  <div class="guide-body">
+<main class="container">
+
+  <section class="content-section" id="flic-hotels">
+    <p class="guide-meta">2,100 words &nbsp;·&nbsp; Updated May 2026 &nbsp;·&nbsp; 4 hotels scored</p>
 
     <p>Flic en Flac is where the west coast begins to make its case. While Mauritius's luxury hotel market has long concentrated on the east coast's white-sand lagoons, the west offers something the east cannot: sunsets. Every evening, the Indian Ocean turns amber behind the silhouette of Le Morne Brabant — a view that is, frankly, more dramatic than anything on the Belle Mare side of the island.</p>
 
@@ -152,8 +222,7 @@
       </ul>
     </div>
 
-    <!-- Section 1: Flic en Flac hotels -->
-    <h2 id="flic-hotels">Hotels in Flic en Flac</h2>
+    <h2>Hotels in Flic en Flac</h2>
 
     <p>Two rated hotels sit directly in Flic en Flac. The market here skews toward four-star-plus properties — the area lacks the ultra-luxury positioning of Belle Mare or Grand Baie, but that is reflected in significantly lower nightly rates for genuinely comfortable, well-located accommodation.</p>
 
@@ -184,9 +253,10 @@
     <p><strong>Score: 7.9 / 10 &nbsp;·&nbsp; From $210/night</strong></p>
     <a href="https://expedia.com/affiliate/jJkyMlG" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at Sands Suites Resort and Spa on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
+  </section>
 
-    <!-- Section 2: Nearby picks -->
-    <h2 id="west-coast-picks">Nearby West Coast Alternatives</h2>
+  <section class="content-section" id="west-coast-picks">
+    <h2>Nearby West Coast Alternatives</h2>
 
     <p>Two hotels within 30–40 minutes of Flic en Flac score above 8.5 and are worth serious consideration, particularly if you want a spa-focused retreat or a south coast setting with mountain scenery.</p>
 
@@ -207,9 +277,10 @@
     <p><strong>Score: 8.5 / 10 &nbsp;·&nbsp; From $560/night</strong></p>
     <a href="https://expedia.com/affiliate/8C3UdBg" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at Le Meridien Ile Maurice on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
+  </section>
 
-    <!-- Section 3: Area guide -->
-    <h2 id="area-guide">What Flic en Flac Is Like</h2>
+  <section class="content-section" id="area-guide">
+    <h2>What Flic en Flac Is Like</h2>
 
     <p>Flic en Flac is a village of about 10,000 people on the west coast, roughly 25 kilometres from Port Louis by the M1 motorway. The name is Creole — believed to derive from the Dutch "Fried Landt Flaak" (free flat land) from the colonial era. The beach stretches for approximately 9 kilometres from Wolmar in the north to La Preneuse in the south, backed by casuarina trees and fronted by a wide, flat lagoon.</p>
 
@@ -220,9 +291,10 @@
     <p><strong>Village life.</strong> The village has a genuine street-level scene: a covered market, a cluster of Creole restaurants along the beachfront road, a supermarket, and several casual cafés. This is more than Grand Baie's overdeveloped strip and more than the east coast's near-total resort isolation. You can walk to dinner without booking a taxi.</p>
 
     <p><strong>Excursions.</strong> Casela Nature Parks (10 minutes) is the island's best wildlife day out — lion interaction, zip-lining, safari drives, and a petting zoo. Black River Gorges National Park (30 minutes south) has endemic birds, waterfalls at Alexandra Falls, and serious hiking. Chamarel (40 minutes) has the famous Seven Coloured Earth and the island's best rum distillery.</p>
+  </section>
 
-    <!-- Section 4: Comparison table -->
-    <h2 id="vs-belle-mare">Flic en Flac vs Belle Mare: 7 Key Differences</h2>
+  <section class="content-section" id="vs-belle-mare">
+    <h2>Flic en Flac vs Belle Mare: 7 Key Differences</h2>
 
     <table class="comparison-table">
       <thead>
@@ -270,9 +342,10 @@
         </tr>
       </tbody>
     </table>
+  </section>
 
-    <!-- Section 5: Who should stay -->
-    <h2 id="who-should-stay">Who Should Stay in Flic en Flac</h2>
+  <section class="content-section" id="who-should-stay">
+    <h2>Who Should Stay in Flic en Flac</h2>
 
     <p><strong>Stay in Flic en Flac if:</strong> Sunsets matter to you. You want to dive seriously. You are price-conscious and want a genuine beach hotel at a meaningfully lower rate than the east coast. You want to explore the west of the island — Casela, Black River Gorges, Chamarel — from a convenient base. You want a village feel and the ability to walk to restaurants.</p>
 
@@ -286,70 +359,59 @@
       <li><a href="/where-to-stay-in-mauritius/">Where to stay in Mauritius</a> — full coast-by-coast breakdown for every traveller type</li>
       <li><a href="/belle-mare-mauritius/">Belle Mare hotels guide</a> — the east coast alternative, explained</li>
     </ul>
+  </section>
 
-    <!-- FAQ -->
-    <h2 id="faq">Frequently Asked Questions</h2>
+  <section class="content-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
 
-    <div class="faq-block">
-
-      <div class="faq-item">
-        <h3>What is Flic en Flac known for in Mauritius?</h3>
-        <p>Flic en Flac is Mauritius's premier west coast beach town — known for its long beach, spectacular sunsets, and the island's best diving. The lagoon stretches for around 9 kilometres and is backed by the Rempart and Trois Mamelles mountains. It is livelier than the quiet south coast and offers meaningfully lower hotel rates than the luxury east coast resorts.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>What is the best hotel in Flic en Flac?</h3>
-        <p>Hilton Mauritius Resort &amp; Spa scores 8.7/10 in our independent dataset — the highest-rated hotel in Flic en Flac. It has four pools, multiple restaurants, a spa, and a prime beachfront position with infinity pool views of the Indian Ocean at sunset. For those wanting a premium west coast experience at a more accessible price than the east coast ultra-luxury tier, it is the clear first choice.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Is Flic en Flac good for diving?</h3>
-        <p>Yes — Flic en Flac is widely considered the best diving base in Mauritius. The Rempart artificial reef is one of the island's most visited dive sites, with lionfish, moray eels, and large pelagics. The lagoon has consistently good visibility of 20–30 metres in the dry season. Main dive operators are based in the village and offer everything from beginner lessons to PADI certification dives.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>How does Flic en Flac compare to Belle Mare?</h3>
-        <p>Belle Mare has the finest sand and the most prestigious luxury hotels in Mauritius; Flic en Flac has better sunsets, superior diving, a more active village scene, and significantly lower hotel rates. Choose Belle Mare for resort prestige and the finest east coast beach. Choose Flic en Flac for sunsets, diving, and better value with more to do off-resort.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>What else is near Flic en Flac worth visiting?</h3>
-        <p>Casela Nature Parks (10 minutes) is the island's best wildlife attraction with lions, zip-lining, and safaris. Black River Gorges National Park (30 minutes south) has endemic birds, waterfalls, and hiking trails. Chamarel (40 minutes) has the Seven Coloured Earth and the island's best rum distillery. La Preneuse village (10 minutes south) has the best casual west coast dining.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>When is the best time to visit Flic en Flac?</h3>
-        <p>May to November is the dry season — best for diving visibility. The west coast is sheltered from the south-east trade winds that affect the east coast in July and August, making it a better choice than Belle Mare during those months. Sunsets are spectacular year-round but particularly vivid from June to August. December to March brings heat, humidity, and some cyclone risk, but rates drop significantly.</p>
-      </div>
-
+    <div class="faq-item">
+      <h3>What is Flic en Flac known for in Mauritius?</h3>
+      <p>Flic en Flac is Mauritius's premier west coast beach town — known for its long beach, spectacular sunsets, and the island's best diving. The lagoon stretches for around 9 kilometres and is backed by the Rempart and Trois Mamelles mountains. It is livelier than the quiet south coast and offers meaningfully lower hotel rates than the luxury east coast resorts.</p>
     </div>
 
-  </div><!-- /.guide-body -->
-</article>
+    <div class="faq-item">
+      <h3>What is the best hotel in Flic en Flac?</h3>
+      <p>Hilton Mauritius Resort &amp; Spa scores 8.7/10 in our independent dataset — the highest-rated hotel in Flic en Flac. It has four pools, multiple restaurants, a spa, and a prime beachfront position with infinity pool views of the Indian Ocean at sunset. For those wanting a premium west coast experience at a more accessible price than the east coast ultra-luxury tier, it is the clear first choice.</p>
+    </div>
 
-<!-- Related guides -->
-<section class="related-guides">
-  <div class="related-inner">
+    <div class="faq-item">
+      <h3>Is Flic en Flac good for diving?</h3>
+      <p>Yes — Flic en Flac is widely considered the best diving base in Mauritius. The Rempart artificial reef is one of the island's most visited dive sites, with lionfish, moray eels, and large pelagics. The lagoon has consistently good visibility of 20–30 metres in the dry season. Main dive operators are based in the village and offer everything from beginner lessons to PADI certification dives.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How does Flic en Flac compare to Belle Mare?</h3>
+      <p>Belle Mare has the finest sand and the most prestigious luxury hotels in Mauritius; Flic en Flac has better sunsets, superior diving, a more active village scene, and significantly lower hotel rates. Choose Belle Mare for resort prestige and the finest east coast beach. Choose Flic en Flac for sunsets, diving, and better value with more to do off-resort.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What else is near Flic en Flac worth visiting?</h3>
+      <p>Casela Nature Parks (10 minutes) is the island's best wildlife attraction with lions, zip-lining, and safaris. Black River Gorges National Park (30 minutes south) has endemic birds, waterfalls, and hiking trails. Chamarel (40 minutes) has the Seven Coloured Earth and the island's best rum distillery. La Preneuse village (10 minutes south) has the best casual west coast dining.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>When is the best time to visit Flic en Flac?</h3>
+      <p>May to November is the dry season — best for diving visibility. The west coast is sheltered from the south-east trade winds that affect the east coast in July and August, making it a better choice than Belle Mare during those months. Sunsets are spectacular year-round but particularly vivid from June to August. December to March brings heat, humidity, and some cyclone risk, but rates drop significantly.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
     <h2>More Mauritius Hotel Guides</h2>
     <div class="related-grid">
-      <a href="/where-to-stay-in-mauritius/" class="related-card">Where to Stay in Mauritius</a>
-      <a href="/belle-mare-mauritius/" class="related-card">Belle Mare Hotels Guide</a>
-      <a href="/grand-baie-mauritius/" class="related-card">Grand Baie Hotels Guide</a>
-      <a href="/best-wellness-resorts-mauritius/" class="related-card">Best Wellness Resorts</a>
-      <a href="/best-luxury-hotels-mauritius/" class="related-card">Best Luxury Hotels</a>
-      <a href="/mauritius-travel-guide/" class="related-card">Mauritius Travel Guide</a>
+      <a href="/where-to-stay-in-mauritius/" class="related-card"><span class="related-card__title">Where to Stay in Mauritius</span></a>
+      <a href="/belle-mare-mauritius/" class="related-card"><span class="related-card__title">Belle Mare Hotels Guide</span></a>
+      <a href="/grand-baie-mauritius/" class="related-card"><span class="related-card__title">Grand Baie Hotels Guide</span></a>
+      <a href="/best-wellness-resorts-mauritius/" class="related-card"><span class="related-card__title">Best Wellness Resorts</span></a>
+      <a href="/best-luxury-hotels-mauritius/" class="related-card"><span class="related-card__title">Best Luxury Hotels</span></a>
+      <a href="/mauritius-travel-guide/" class="related-card"><span class="related-card__title">Mauritius Travel Guide</span></a>
     </div>
-  </div>
-</section>
+  </section>
 
 </main>
 
-<!-- Footer -->
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <p>© 2026 Mauritius Resort Finder &nbsp;·&nbsp; <a href="/methodology/">Methodology</a> &nbsp;·&nbsp; <a href="/rankings/">All Rankings</a> &nbsp;·&nbsp; <a href="/contact/">Contact</a></p>
-    <p class="footer-disclosure">This page contains affiliate links. We earn a small commission if you book through them, at no extra cost to you. Our scores and editorial opinions are independent.</p>
-  </div>
+<footer>
+  <p>&copy; 2026 Mauritius Resort Finder &nbsp;&middot;&nbsp; <a href="/affiliate-disclosure/">Affiliate Disclosure</a> &nbsp;&middot;&nbsp; <a href="/methodology/">Methodology</a> &nbsp;&middot;&nbsp; <a href="/contact/">Contact</a></p>
+  <p style="margin-top:8px;">Independent hotel reviews. No paid placements. No inflated scores.</p>
 </footer>
 
 <!-- Google Analytics -->

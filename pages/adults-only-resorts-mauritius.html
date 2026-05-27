@@ -77,96 +77,135 @@
   }
   </script>
 
-  <!-- Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
   <script src="/assets/js/analytics.js" defer></script>
 
-  <!-- Design system -->
-  <link rel="stylesheet" href="/assets/css/global.css" />
   <style>
-    .guide-hero { padding: 72px 0 48px; text-align: center; position: relative; }
-    .guide-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,168,76,.09) 0%, transparent 65%); pointer-events: none; }
-    .guide-hero .container { position: relative; }
-    .guide-hero__label { display: inline-flex; align-items: center; gap: 8px; font-size: .65rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); background: var(--gold-glow); border: 1px solid var(--border-gold); border-radius: var(--radius-pill); padding: 5px 14px; margin-bottom: 20px; }
-    .guide-hero__title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; color: var(--champagne); line-height: 1.15; margin-bottom: 18px; }
-    .guide-hero__intro { font-size: 1rem; color: var(--muted); max-width: 620px; margin: 0 auto; line-height: 1.8; }
-    .guide-section { max-width: 860px; margin: 0 auto 48px; padding: 0 28px; }
-    .guide-section h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.35rem, 2.4vw, 1.9rem); color: var(--champagne); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-    .guide-section p { font-size: .9rem; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
-    .guide-section ul { padding-left: 20px; margin-bottom: 14px; }
-    .guide-section li { font-size: .88rem; color: var(--muted); line-height: 1.75; margin-bottom: 8px; }
-    .guide-section strong { color: var(--text); font-weight: 600; }
-    .info-callout { background: var(--navy-card); border-left: 3px solid var(--gold); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 18px 22px; margin: 0 0 32px; }
-    .info-callout p { font-size: .86rem; line-height: 1.75; color: var(--muted); margin: 0; }
-    .section-label { font-size: .68rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 40px 0 20px; font-family: 'DM Sans', sans-serif; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-    .resort-card { background: var(--navy-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 20px; transition: border-color .2s, transform .2s; }
-    .resort-card:hover { border-color: var(--border-gold); transform: translateY(-2px); }
-    .resort-card__badge { display: inline-block; font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-radius: var(--radius-pill); padding: 4px 13px; margin-bottom: 14px; }
-    .badge--formal { background: rgba(201,168,76,.15); color: var(--gold); border: 1px solid var(--border-gold); }
-    .badge--quiet { background: var(--navy-raised); color: var(--muted); border: 1px solid var(--border); }
-    .resort-card__name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--champagne); margin-bottom: 6px; }
+    body { background: #0a0f1e; color: #e8e0d0; font-family: 'Georgia', serif; margin: 0; }
+    .page-hero { background: linear-gradient(135deg, #0d1728 0%, #1a2540 100%); padding: 80px 24px 60px; text-align: center; }
+    .page-hero__label { display: inline-block; background: rgba(201,168,76,0.15); color: #c9a84c; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; font-family: 'Arial', sans-serif; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: #fff; margin: 0 auto 20px; max-width: 820px; line-height: 1.25; }
+    .page-hero__sub { font-size: 1.05rem; color: #b0a898; max-width: 620px; margin: 0 auto; line-height: 1.75; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .content-section { padding: 52px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .content-section:last-child { border-bottom: none; }
+    h2 { font-size: 1.55rem; color: #e8dfc8; margin: 0 0 18px; }
+    h3 { font-size: 1.15rem; color: #c9a84c; margin: 28px 0 10px; }
+    p { line-height: 1.85; color: #ccc4b4; margin: 0 0 18px; }
+    ul, ol { color: #ccc4b4; line-height: 1.85; padding-left: 22px; margin: 0 0 18px; }
+    li { margin-bottom: 6px; }
+    strong { color: #e8dfc8; }
+    .breadcrumb { font-size: 0.82rem; color: #7a7260; font-family: 'Arial', sans-serif; padding: 18px 0 0; }
+    .breadcrumb a { color: #9a8e78; text-decoration: none; }
+    .breadcrumb a:hover { color: #c9a84c; }
+    .answer-banner { background: rgba(123,191,123,0.08); border: 1px solid rgba(123,191,123,0.3); border-radius: 12px; padding: 24px 28px; margin: 28px 0; }
+    .answer-banner__title { font-size: 1.05rem; color: #7bbf7b; font-family: 'Arial', sans-serif; font-weight: bold; margin-bottom: 10px; }
+    .answer-banner p { color: #bbb3a3; margin: 0; }
+    .data-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.92rem; }
+    .data-table th { background: rgba(201,168,76,0.12); color: #c9a84c; text-align: left; padding: 12px 14px; font-family: 'Arial', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .data-table td { padding: 12px 14px; color: #ccc4b4; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(255,255,255,0.03); }
+    td strong { color: #e8dfc8; }
+    .tick { color: #7bbf7b; font-weight: bold; }
+    .cross { color: #bf7b7b; font-weight: bold; }
+    .req-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 24px 0; }
+    .req-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px; }
+    .req-card__icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .req-card__title { font-size: 0.95rem; color: #e8dfc8; font-weight: bold; margin-bottom: 8px; font-family: 'Arial', sans-serif; }
+    .req-card p { font-size: 0.88rem; color: #9a8e78; margin: 0; line-height: 1.6; }
+    .hotel-cta { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 28px; margin: 24px 0; }
+    .hotel-cta__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .hotel-cta__name { font-size: 1.2rem; color: #e8dfc8; font-weight: bold; margin: 0; }
+    .hotel-cta__score { background: rgba(201,168,76,0.15); color: #c9a84c; font-size: 0.9rem; font-weight: bold; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+    .hotel-cta__meta { font-size: 0.88rem; color: #9a8e78; font-family: 'Arial', sans-serif; margin-bottom: 12px; }
+    .hotel-cta__desc { color: #bbb3a3; font-size: 0.97rem; line-height: 1.7; margin-bottom: 18px; }
+    .hotel-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .btn-primary { background: #c9a84c; color: #0a0f1e; font-weight: bold; padding: 11px 22px; border-radius: 6px; text-decoration: none; font-size: 0.92rem; font-family: 'Arial', sans-serif; }
+    .btn-primary:hover { background: #e0bc5a; }
+    .btn-review { color: #c9a84c; border: 1px solid rgba(201,168,76,0.4); padding: 10px 18px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-family: 'Arial', sans-serif; }
+    .btn-review:hover { border-color: #c9a84c; }
+    .hotel-cta__disclosure { font-size: 0.75rem; color: #6a6456; margin: 10px 0 0; font-family: 'Arial', sans-serif; }
+    .hotel-cta__disclosure a { color: #7a7260; }
+    .info-box { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 16px 20px; margin: 24px 0; font-size: 0.9rem; color: #9a8e78; font-family: 'Arial', sans-serif; }
+    .info-box a { color: #c9a84c; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 22px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item h3 { color: #e8dfc8; font-size: 1.05rem; margin: 0 0 10px; }
+    .faq-item p { margin: 0; font-size: 0.97rem; }
+    .disclosure-banner { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 14px 18px; margin: 32px 0; font-size: 0.85rem; color: #9a8e78; font-family: 'Arial', sans-serif; }
+    .disclosure-banner a { color: #c9a84c; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 24px 0; }
+    .related-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px; text-decoration: none; display: block; transition: border-color 0.2s; }
+    .related-card:hover { border-color: rgba(201,168,76,0.4); }
+    .related-card__label { font-size: 0.82rem; color: #c9a84c; font-family: 'Arial', sans-serif; margin-bottom: 6px; }
+    .related-card__title { color: #e8dfc8; font-size: 1rem; }
+    nav.site-nav { background: rgba(10,15,30,0.95); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; border-bottom: 1px solid rgba(255,255,255,0.07); position: sticky; top: 0; z-index: 100; }
+    nav.site-nav a { color: #b0a898; text-decoration: none; font-size: 0.88rem; font-family: 'Arial', sans-serif; }
+    nav.site-nav .nav__logo { color: #e8dfc8; font-weight: bold; font-size: 1rem; }
+    nav.site-nav .nav__cta { background: #c9a84c; color: #0a0f1e !important; padding: 7px 16px; border-radius: 5px; font-weight: bold; }
+    footer { background: #060c1a; border-top: 1px solid rgba(255,255,255,0.07); padding: 40px 24px; text-align: center; color: #6a6456; font-size: 0.82rem; font-family: 'Arial', sans-serif; }
+    footer a { color: #7a7260; text-decoration: none; }
+
+    /* Page-specific CSS */
+    .info-callout { background: rgba(255,255,255,0.04); border-left: 3px solid #c9a84c; border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 0 0 32px; }
+    .info-callout p { font-size: 0.86rem; line-height: 1.75; color: #9a8e78; margin: 0; }
+    .section-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #9a8e78; margin: 40px 0 20px; font-family: 'Arial', sans-serif; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .resort-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 28px 32px; margin-bottom: 20px; transition: border-color 0.2s, transform 0.2s; }
+    .resort-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-2px); }
+    .resort-card__badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 20px; padding: 4px 13px; margin-bottom: 14px; }
+    .badge--formal { background: rgba(201,168,76,0.15); color: #c9a84c; border: 1px solid rgba(201,168,76,0.3); }
+    .badge--quiet { background: rgba(255,255,255,0.04); color: #9a8e78; border: 1px solid rgba(255,255,255,0.08); }
+    .resort-card__name { font-size: 1.3rem; font-weight: 700; color: #e8dfc8; margin-bottom: 6px; }
     .resort-card__meta { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 18px; }
-    .resort-card__score { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; }
-    .resort-card__score-label { font-size: .62rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-top: 2px; }
-    .resort-card__region { font-size: .82rem; color: var(--muted); }
-    .resort-card__desc { font-size: .88rem; line-height: 1.8; color: var(--muted); margin-bottom: 20px; }
+    .resort-card__score { font-size: 2rem; font-weight: 700; color: #c9a84c; line-height: 1; }
+    .resort-card__score-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: #9a8e78; margin-top: 2px; }
+    .resort-card__region { font-size: 0.82rem; color: #9a8e78; }
+    .resort-card__desc { font-size: 0.88rem; line-height: 1.8; color: #ccc4b4; margin-bottom: 20px; }
     .resort-card__scores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
-    .score-pill { background: var(--navy-raised); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; text-align: center; }
-    .score-pill__val { font-family: 'Cormorant Garamond', serif; font-size: .95rem; font-weight: 700; color: var(--gold); }
-    .score-pill__label { font-size: .62rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-top: 2px; }
+    .score-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 10px 12px; text-align: center; }
+    .score-pill__val { font-size: 0.95rem; font-weight: 700; color: #c9a84c; }
+    .score-pill__label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9a8e78; margin-top: 2px; }
     .resort-card__amenities { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-    .amenity-tag { font-size: .7rem; background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 4px 11px; color: var(--muted); }
-    .resort-card__footer { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid var(--border); }
-    .resort-card__cta { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold-dim) 100%); background-size: 200% auto; color: var(--deep-navy); font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 10px 22px; border-radius: var(--radius-pill); transition: background-position .3s, box-shadow .2s; white-space: nowrap; }
-    .resort-card__cta:hover { background-position: right center; box-shadow: 0 6px 20px rgba(201,168,76,.45); }
-    .resort-card__disclosure { font-size: .68rem; color: var(--muted); }
-    .faq-section { max-width: 860px; margin: 0 auto 48px; padding: 0 28px; }
-    .faq-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.35rem, 2.4vw, 1.9rem); color: var(--champagne); margin-bottom: 24px; }
-    .faq-item { background: var(--navy-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 22px 26px; margin-bottom: 12px; transition: border-color .2s; }
-    .faq-item:hover { border-color: var(--border-light); }
-    .faq-item__q { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--champagne); margin-bottom: 10px; font-weight: 700; }
-    .faq-item__a { font-size: .87rem; color: var(--muted); line-height: 1.75; }
-    .persona-links { max-width: 860px; margin: 0 auto 48px; padding: 0 28px; }
-    .persona-links h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--champagne); margin-bottom: 16px; }
+    .amenity-tag { font-size: 0.7rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 4px 11px; color: #9a8e78; }
+    .resort-card__footer { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .resort-card__cta { background: #c9a84c; color: #0a0f1e; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 22px; border-radius: 20px; text-decoration: none; white-space: nowrap; }
+    .resort-card__cta:hover { background: #e0bc5a; }
+    .resort-card__disclosure { font-size: 0.68rem; color: #9a8e78; }
+    .faq-item__q { font-size: 1rem; color: #e8dfc8; margin-bottom: 10px; font-weight: 700; }
+    .faq-item__a { font-size: 0.87rem; color: #ccc4b4; line-height: 1.75; }
+    .persona-links h2 { font-size: 1.2rem; color: #e8dfc8; margin-bottom: 16px; }
     .persona-links__grid { display: flex; flex-wrap: wrap; gap: 10px; }
-    .persona-links__btn { background: var(--navy-card); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 10px 20px; font-size: .8rem; color: var(--muted); transition: all .2s; white-space: nowrap; }
-    .persona-links__btn:hover { border-color: var(--border-gold); color: var(--gold); }
+    .persona-links__btn { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 10px 20px; font-size: 0.8rem; color: #9a8e78; transition: all 0.2s; white-space: nowrap; text-decoration: none; display: inline-block; }
+    .persona-links__btn:hover { border-color: rgba(201,168,76,0.4); color: #c9a84c; }
     @media (max-width: 640px) {
-      .guide-section, .faq-section, .persona-links { padding: 0 16px; }
       .resort-card { padding: 20px 16px; }
       .resort-card__scores { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
 
-<header class="site-header" role="banner">
-  <nav class="site-nav" aria-label="Site navigation">
-    <a href="https://mauritiusresortfinder.com/" class="site-logo" rel="home">
-      <div class="site-logo__mark" aria-hidden="true">M</div>
-      Mauritius Resort Finder
-    </a>
-    <ul class="site-nav__list">
-      <li><a href="https://mauritiusresortfinder.com/#rankings">Rankings</a></li>
-      <li><a href="/best-luxury-hotels-mauritius/">By Style</a></li>
-      <li><a href="/methodology/">Methodology</a></li>
-    </ul>
-  </nav>
-</header>
+<nav class="site-nav" aria-label="Site navigation">
+  <a href="/" class="nav__logo">Mauritius Resort Finder</a>
+  <a href="/rankings/" class="nav__cta">View Rankings</a>
+</nav>
 
-<main id="main-content">
-
-  <section class="guide-hero" aria-labelledby="hero-heading">
-    <div class="container">
-      <div class="guide-hero__label">Adults Only &middot; Independently Scored &middot; No Paid Placements</div>
-      <h1 id="hero-heading" class="guide-hero__title">Adults-Only Resorts in Mauritius</h1>
-      <p class="guide-hero__intro">Mauritius has two resorts that formally exclude children, and a handful more that attract almost exclusively adult guests by design. This guide covers all of them — scored on the same independent criteria we apply to every property on the island.</p>
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; Adults-Only Resorts Mauritius
     </div>
-  </section>
+    <span class="page-hero__label">Hotel Guide</span>
+    <h1>Adults-Only Resorts in Mauritius</h1>
+    <p class="page-hero__sub">Mauritius has two resorts that formally exclude children, and a handful more that attract almost exclusively adult guests by design. This guide covers all of them — scored on the same independent criteria we apply to every property on the island.</p>
+  </div>
+</div>
+
+<main class="container">
 
   <!-- What adults-only means in Mauritius -->
-  <section class="guide-section reveal">
+  <section class="content-section">
     <h2>What "adults-only" means in Mauritius</h2>
     <div class="info-callout">
       <p><strong>Mauritius has no island-wide adults-only standard.</strong> The term covers two genuinely different things: resorts that contractually exclude children (formal policy), and resorts that permit children but attract very few by virtue of their pricing, character, or age minimums. This guide distinguishes between both — because if you've been burned by a "couples preferred" hotel that had a crèche in the lobby, the difference matters.</p>
@@ -177,11 +216,8 @@
   </section>
 
   <!-- Formally Adults-Only -->
-  <div class="guide-section" style="margin-bottom: 8px;">
+  <section class="content-section">
     <p class="section-label">Formally Adults-Only Resorts</p>
-  </div>
-
-  <div class="guide-section" style="margin-top: 0;">
 
     <!-- Paradise Cove -->
     <article class="resort-card" aria-label="Paradise Cove Boutique Hotel — Adults Only">
@@ -248,15 +284,12 @@
         <p class="resort-card__disclosure">Affiliate link &middot; commission earned at no cost to you &middot; ranking not influenced</p>
       </div>
     </article>
-  </div>
+  </section>
 
   <!-- Predominantly Adult -->
-  <div class="guide-section" style="margin-bottom: 8px;">
+  <section class="content-section">
     <p class="section-label">Predominantly Adult — Quiet Alternatives for Couples</p>
-  </div>
-
-  <div class="guide-section" style="margin-top: 0;">
-    <p style="font-size:.86rem;color:var(--muted);margin-bottom:24px;">These resorts permit children but attract very few. Royal Palm enforces a 16+ minimum age. Constance Prince Maurice and Sea Diamond draw almost exclusively couples through pricing, scale, and character. None carry a formal children's exclusion policy — if a strict guarantee matters to you, choose the formally adults-only properties above.</p>
+    <p style="font-size:0.86rem;color:#9a8e78;margin-bottom:24px;">These resorts permit children but attract very few. Royal Palm enforces a 16+ minimum age. Constance Prince Maurice and Sea Diamond draw almost exclusively couples through pricing, scale, and character. None carry a formal children's exclusion policy — if a strict guarantee matters to you, choose the formally adults-only properties above.</p>
 
     <!-- Royal Palm -->
     <article class="resort-card" aria-label="Royal Palm Beachcomber Luxury">
@@ -354,22 +387,22 @@
         <p class="resort-card__disclosure">Affiliate link &middot; commission earned at no cost to you &middot; ranking not influenced</p>
       </div>
     </article>
-  </div>
+  </section>
 
   <!-- Who should choose adults-only -->
-  <section class="guide-section reveal">
+  <section class="content-section">
     <h2>Who should choose an adults-only resort?</h2>
     <p>Adults-only resorts are not only for couples — they suit any traveller for whom a quiet, child-free environment is the priority. In practice the guest mix is predominantly honeymooners, anniversary travellers, and couples in their 30s–50s who want the guarantee of calm that family resorts cannot offer even when they try.</p>
     <ul>
-      <li><strong>Honeymooners:</strong> Paradise Cove and Lagoon Attitude are among the island's strongest honeymoon stays by score. For the full ranked list of honeymoon-optimised resorts (including non-adults-only properties with high romance scores), see our <a href="/best-honeymoon-hotels-mauritius/" style="color:var(--gold)">honeymoon hotel rankings</a>.</li>
-      <li><strong>Wellness travellers:</strong> Shanti Maurice, Four Seasons, and Heritage resorts score highly for spa and wellness but are not adults-only. If wellness is the primary draw, our <a href="/best-wellness-resorts-mauritius/" style="color:var(--gold)">wellness resort rankings</a> cover the full picture.</li>
-      <li><strong>Couples prioritising value:</strong> Lagoon Attitude (value score 8.2/10) and Sea Diamond (8.0/10) offer the best value within the quiet-couples category. For the broadest value comparison, see our <a href="/best-value-luxury-hotels-mauritius/" style="color:var(--gold)">best value luxury rankings</a>.</li>
-      <li><strong>Luxury seekers:</strong> Royal Palm (9.2/10 overall) and Constance Prince Maurice (9.0/10) are two of the top five luxury properties in Mauritius. The <a href="/best-luxury-hotels-mauritius/" style="color:var(--gold)">full luxury rankings</a> cover all 29 scored properties.</li>
+      <li><strong>Honeymooners:</strong> Paradise Cove and Lagoon Attitude are among the island's strongest honeymoon stays by score. For the full ranked list of honeymoon-optimised resorts (including non-adults-only properties with high romance scores), see our <a href="/best-honeymoon-hotels-mauritius/" style="color:#c9a84c">honeymoon hotel rankings</a>.</li>
+      <li><strong>Wellness travellers:</strong> Shanti Maurice, Four Seasons, and Heritage resorts score highly for spa and wellness but are not adults-only. If wellness is the primary draw, our <a href="/best-wellness-resorts-mauritius/" style="color:#c9a84c">wellness resort rankings</a> cover the full picture.</li>
+      <li><strong>Couples prioritising value:</strong> Lagoon Attitude (value score 8.2/10) and Sea Diamond (8.0/10) offer the best value within the quiet-couples category. For the broadest value comparison, see our <a href="/best-value-luxury-hotels-mauritius/" style="color:#c9a84c">best value luxury rankings</a>.</li>
+      <li><strong>Luxury seekers:</strong> Royal Palm (9.2/10 overall) and Constance Prince Maurice (9.0/10) are two of the top five luxury properties in Mauritius. The <a href="/best-luxury-hotels-mauritius/" style="color:#c9a84c">full luxury rankings</a> cover all 29 scored properties.</li>
     </ul>
   </section>
 
   <!-- FAQ -->
-  <section class="faq-section reveal" aria-label="Frequently asked questions">
+  <section class="content-section" aria-label="Frequently asked questions">
     <h2>Frequently Asked Questions</h2>
 
     <div class="faq-item">
@@ -399,7 +432,7 @@
   </section>
 
   <!-- Related rankings -->
-  <nav class="persona-links reveal" aria-label="Related rankings">
+  <section class="content-section persona-links" aria-label="Related rankings">
     <h2>Related rankings</h2>
     <div class="persona-links__grid">
       <a href="/best-honeymoon-hotels-mauritius/" class="persona-links__btn">Honeymoon Hotels</a>
@@ -409,25 +442,14 @@
       <a href="/mauritius-honeymoon-guide/" class="persona-links__btn">Honeymoon Guide</a>
       <a href="/mauritius-luxury-travel-guide/" class="persona-links__btn">Luxury Travel Guide</a>
     </div>
-  </nav>
+  </section>
 
 </main>
 
-<footer class="site-footer" role="contentinfo">
-  <p class="site-footer__copy">&copy; 2026 Mauritius Resort Finder. Independent reviews. We earn a commission if you book through our links, at no extra cost to you.</p>
-  <nav class="site-footer__nav" aria-label="Footer navigation">
-    <ul>
-      <li><a href="/methodology/">Methodology</a></li>
-      <li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
-      <li><a href="/privacy/">Privacy</a></li>
-    </ul>
-  </nav>
+<footer>
+  <p>&copy; 2026 Mauritius Resort Finder &nbsp;&middot;&nbsp; <a href="/affiliate-disclosure/">Affiliate Disclosure</a> &nbsp;&middot;&nbsp; <a href="/methodology/">Methodology</a> &nbsp;&middot;&nbsp; <a href="/contact/">Contact</a></p>
+  <p style="margin-top:8px;">Independent hotel reviews. No paid placements. No inflated scores.</p>
 </footer>
-
-<script src="/assets/js/animations.js" defer></script>
-<link rel="stylesheet" href="/assets/css/big_dodo_widget.css">
-<script>window.BigDodoConfig = { apiUrl: '/api/chat', pageContext: { pageType: 'page', slug: 'adults-only-resorts-mauritius' } };</script>
-<script src="/assets/js/big_dodo_widget.js" defer></script>
 
 </body>
 </html>

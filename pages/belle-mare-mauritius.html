@@ -100,41 +100,116 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
+  <script src="/assets/js/analytics.js" defer></script>
+
+  <style>
+    body { background: #0a0f1e; color: #e8e0d0; font-family: 'Georgia', serif; margin: 0; }
+    .page-hero { background: linear-gradient(135deg, #0d1728 0%, #1a2540 100%); padding: 80px 24px 60px; text-align: center; }
+    .page-hero__label { display: inline-block; background: rgba(201,168,76,0.15); color: #c9a84c; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; font-family: 'Arial', sans-serif; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: #fff; margin: 0 auto 20px; max-width: 820px; line-height: 1.25; }
+    .page-hero__sub { font-size: 1.05rem; color: #b0a898; max-width: 620px; margin: 0 auto; line-height: 1.75; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .content-section { padding: 52px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .content-section:last-child { border-bottom: none; }
+    h2 { font-size: 1.55rem; color: #e8dfc8; margin: 0 0 18px; }
+    h3 { font-size: 1.15rem; color: #c9a84c; margin: 28px 0 10px; }
+    p { line-height: 1.85; color: #ccc4b4; margin: 0 0 18px; }
+    ul, ol { color: #ccc4b4; line-height: 1.85; padding-left: 22px; margin: 0 0 18px; }
+    li { margin-bottom: 6px; }
+    strong { color: #e8dfc8; }
+    .breadcrumb { font-size: 0.82rem; color: #7a7260; font-family: 'Arial', sans-serif; padding: 18px 0 0; }
+    .breadcrumb a { color: #9a8e78; text-decoration: none; }
+    .breadcrumb a:hover { color: #c9a84c; }
+    .answer-banner { background: rgba(123,191,123,0.08); border: 1px solid rgba(123,191,123,0.3); border-radius: 12px; padding: 24px 28px; margin: 28px 0; }
+    .answer-banner__title { font-size: 1.05rem; color: #7bbf7b; font-family: 'Arial', sans-serif; font-weight: bold; margin-bottom: 10px; }
+    .answer-banner p { color: #bbb3a3; margin: 0; }
+    .data-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.92rem; }
+    .data-table th { background: rgba(201,168,76,0.12); color: #c9a84c; text-align: left; padding: 12px 14px; font-family: 'Arial', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .data-table td { padding: 12px 14px; color: #ccc4b4; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(255,255,255,0.03); }
+    td strong { color: #e8dfc8; }
+    .tick { color: #7bbf7b; font-weight: bold; }
+    .cross { color: #bf7b7b; font-weight: bold; }
+    .req-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 24px 0; }
+    .req-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px; }
+    .req-card__icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .req-card__title { font-size: 0.95rem; color: #e8dfc8; font-weight: bold; margin-bottom: 8px; font-family: 'Arial', sans-serif; }
+    .req-card p { font-size: 0.88rem; color: #9a8e78; margin: 0; line-height: 1.6; }
+    .hotel-cta { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 28px; margin: 24px 0; }
+    .hotel-cta__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .hotel-cta__name { font-size: 1.2rem; color: #e8dfc8; font-weight: bold; margin: 0; }
+    .hotel-cta__score { background: rgba(201,168,76,0.15); color: #c9a84c; font-size: 0.9rem; font-weight: bold; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+    .hotel-cta__meta { font-size: 0.88rem; color: #9a8e78; font-family: 'Arial', sans-serif; margin-bottom: 12px; }
+    .hotel-cta__desc { color: #bbb3a3; font-size: 0.97rem; line-height: 1.7; margin-bottom: 18px; }
+    .hotel-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .btn-primary { background: #c9a84c; color: #0a0f1e; font-weight: bold; padding: 11px 22px; border-radius: 6px; text-decoration: none; font-size: 0.92rem; font-family: 'Arial', sans-serif; }
+    .btn-primary:hover { background: #e0bc5a; }
+    .btn-review { color: #c9a84c; border: 1px solid rgba(201,168,76,0.4); padding: 10px 18px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-family: 'Arial', sans-serif; }
+    .btn-review:hover { border-color: #c9a84c; }
+    .hotel-cta__disclosure { font-size: 0.75rem; color: #6a6456; margin: 10px 0 0; font-family: 'Arial', sans-serif; }
+    .hotel-cta__disclosure a { color: #7a7260; }
+    .info-box { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 16px 20px; margin: 24px 0; font-size: 0.9rem; color: #9a8e78; font-family: 'Arial', sans-serif; }
+    .info-box a { color: #c9a84c; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 22px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item h3 { color: #e8dfc8; font-size: 1.05rem; margin: 0 0 10px; }
+    .faq-item p { margin: 0; font-size: 0.97rem; }
+    .disclosure-banner { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 14px 18px; margin: 32px 0; font-size: 0.85rem; color: #9a8e78; font-family: 'Arial', sans-serif; }
+    .disclosure-banner a { color: #c9a84c; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 24px 0; }
+    .related-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px; text-decoration: none; display: block; transition: border-color 0.2s; }
+    .related-card:hover { border-color: rgba(201,168,76,0.4); }
+    .related-card__label { font-size: 0.82rem; color: #c9a84c; font-family: 'Arial', sans-serif; margin-bottom: 6px; }
+    .related-card__title { color: #e8dfc8; font-size: 1rem; }
+    nav.site-nav { background: rgba(10,15,30,0.95); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; border-bottom: 1px solid rgba(255,255,255,0.07); position: sticky; top: 0; z-index: 100; }
+    nav.site-nav a { color: #b0a898; text-decoration: none; font-size: 0.88rem; font-family: 'Arial', sans-serif; }
+    nav.site-nav .nav__logo { color: #e8dfc8; font-weight: bold; font-size: 1rem; }
+    nav.site-nav .nav__cta { background: #c9a84c; color: #0a0f1e !important; padding: 7px 16px; border-radius: 5px; font-weight: bold; }
+    footer { background: #060c1a; border-top: 1px solid rgba(255,255,255,0.07); padding: 40px 24px; text-align: center; color: #6a6456; font-size: 0.82rem; font-family: 'Arial', sans-serif; }
+    footer a { color: #7a7260; text-decoration: none; }
+
+    /* Extra CSS */
+    .guide-toc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px 24px; margin: 28px 0; }
+    .guide-toc strong { color: #e8dfc8; display: block; margin-bottom: 12px; font-family: 'Arial', sans-serif; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .guide-toc ul { margin: 0; padding-left: 18px; }
+    .guide-toc li { margin-bottom: 6px; font-size: 0.9rem; }
+    .guide-toc a { color: #c9a84c; text-decoration: none; }
+    .guide-toc a:hover { text-decoration: underline; }
+    .guide-meta { font-size: 0.82rem; color: #6a6456; font-family: 'Arial', sans-serif; margin: 0 0 28px; }
+    .hcard__cta { display: inline-block; background: #c9a84c; color: #0a0f1e; font-weight: bold; padding: 11px 22px; border-radius: 6px; text-decoration: none; font-size: 0.92rem; font-family: 'Arial', sans-serif; margin: 8px 0; }
+    .hcard__cta:hover { background: #e0bc5a; }
+    .hcard__disclosure { font-size: 0.78rem; color: #6a6456; font-family: 'Arial', sans-serif; margin: 4px 0 24px; }
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9rem; }
+    .comparison-table th { background: rgba(201,168,76,0.12); color: #c9a84c; text-align: left; padding: 12px 14px; font-family: 'Arial', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .comparison-table td { padding: 12px 14px; color: #ccc4b4; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.03); }
+  </style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav class="site-nav" aria-label="Site navigation">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">Mauritius Resort Finder</a>
-    <div class="nav-links">
-      <a href="/best-luxury-hotels-mauritius/">Top Hotels</a>
-      <a href="/where-to-stay-in-mauritius/">Where to Stay</a>
-      <a href="/best-time-to-visit-mauritius/">Best Time</a>
-      <a href="/mauritius-travel-guide/">Travel Guide</a>
-      <a href="/contact/">Contact</a>
-    </div>
-  </div>
+  <a href="/" class="nav__logo">Mauritius Resort Finder</a>
+  <a href="/rankings/" class="nav__cta">View Rankings</a>
 </nav>
 
-<main class="guide-main">
-<article class="guide-article">
-
-  <!-- Breadcrumb -->
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a> &rsaquo; <span>Belle Mare Hotels Guide</span>
-  </nav>
-
-  <header class="guide-header">
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; Belle Mare Guide
+    </div>
+    <span class="page-hero__label">Regional Guide</span>
     <h1>Best Hotels in Belle Mare, Mauritius</h1>
-    <p class="guide-subtitle">The east coast's finest beach — ranked by independent data, not commission rates</p>
-    <p class="guide-meta">2,200 words &nbsp;·&nbsp; Updated May 2026 &nbsp;·&nbsp; 5 hotels scored</p>
-  </header>
+    <p class="page-hero__sub">The east coast's finest beach — ranked by independent data, not commission rates</p>
+  </div>
+</div>
 
-  <div class="guide-body">
+<main class="container">
+
+  <section class="content-section">
+    <p class="guide-meta">2,200 words &nbsp;·&nbsp; Updated May 2026 &nbsp;·&nbsp; 5 hotels scored</p>
 
     <p>Belle Mare is the reason travellers choose Mauritius's east coast over everything else. Nine kilometres of powder-white sand, a calm turquoise lagoon protected by a coral reef, and three of the island's most prestigious resorts. It is quieter than Grand Baie, more exclusive than Flic en Flac, and consistently produces the clearest water on the island.</p>
 
@@ -151,9 +226,10 @@
         <li><a href="#faq">Frequently asked questions</a></li>
       </ul>
     </div>
+  </section>
 
-    <!-- Section 1: Belle Mare hotels -->
-    <h2 id="belle-mare-hotels">The Best Hotels in Belle Mare</h2>
+  <section class="content-section" id="belle-mare-hotels">
+    <h2>The Best Hotels in Belle Mare</h2>
 
     <p>Three five-star resorts sit directly on Belle Mare beach. They cover the full luxury spectrum — from an ultra-exclusive private peninsula to a sprawling golf-and-beach estate to a contemporary lifestyle resort. All three face the same lagoon; they differ sharply in atmosphere, scale, and what they offer beyond the beach.</p>
 
@@ -166,8 +242,8 @@
     <p><strong>Best for:</strong> Couples seeking the most prestigious east coast address. Honeymoon suites with plunge pools directly over the lagoon. Guests who value seclusion above all else.</p>
     <p><strong>Consider elsewhere if:</strong> You want the energy of a larger resort, need an extensive kids' programme, or are travelling with a group that needs multiple beach activities running simultaneously.</p>
 
-    <p><strong>Score: 9.0 / 10 &nbsp;·&nbsp; From $1,380/night</strong></p>
-    <a href="https://expedia.com/affiliate/jJhAhIn" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at One&amp;Only Le Saint Géran on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 9.0 / 10 &nbsp;&middot;&nbsp; From $1,380/night</strong></p>
+    <a href="https://expedia.com/affiliate/jJhAhIn" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at One&amp;Only Le Saint Géran on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
 
     <h3>2. Constance Belle Mare Plage — 8.9 / 10</h3>
@@ -179,8 +255,8 @@
     <p><strong>Best for:</strong> Families wanting maximum facilities. Golfers. Groups with mixed preferences (beach, spa, activity). Guests who want the top-rated east coast address at slightly lower nightly rates than One&amp;Only.</p>
     <p><strong>Consider elsewhere if:</strong> You want a quieter, more intimate atmosphere. The scale and energy of a large resort does not appeal.</p>
 
-    <p><strong>Score: 8.9 / 10 &nbsp;·&nbsp; From $920/night</strong></p>
-    <a href="https://expedia.com/affiliate/joE5IeP" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at Constance Belle Mare Plage on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 8.9 / 10 &nbsp;&middot;&nbsp; From $920/night</strong></p>
+    <a href="https://expedia.com/affiliate/joE5IeP" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at Constance Belle Mare Plage on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
 
     <h3>3. LUX* Belle Mare — 8.6 / 10</h3>
@@ -192,12 +268,13 @@
     <p><strong>Best for:</strong> Younger couples, honeymooners who want a livelier atmosphere, groups looking for the best beach in Mauritius with a more social vibe.</p>
     <p><strong>Consider elsewhere if:</strong> You want a serious spa programme, championship golf, or the most formal luxury service experience.</p>
 
-    <p><strong>Score: 8.6 / 10 &nbsp;·&nbsp; From $730/night</strong></p>
-    <a href="https://expedia.com/affiliate/FfYvZuT" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at LUX* Belle Mare on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 8.6 / 10 &nbsp;&middot;&nbsp; From $730/night</strong></p>
+    <a href="https://expedia.com/affiliate/FfYvZuT" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at LUX* Belle Mare on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
+  </section>
 
-    <!-- Section 2: East coast picks -->
-    <h2 id="east-coast-picks">Top East Coast Alternatives Near Belle Mare</h2>
+  <section class="content-section" id="east-coast-picks">
+    <h2>Top East Coast Alternatives Near Belle Mare</h2>
 
     <p>Two resorts within 15 minutes of Belle Mare score above 9.0 and are worth considering seriously, particularly if you want overwater accommodation or architectural drama that Belle Mare's beach properties do not offer.</p>
 
@@ -205,20 +282,21 @@
 
     <p>The highest-scoring resort on the east coast, Four Seasons Anahita sits around its own private lagoon at Beau Champ — roughly 10 minutes south of Belle Mare. Overwater villas extend directly into the Indian Ocean, and the resort occupies a finger of land with water on three sides. Service here operates at the Four Seasons standard — meticulous, warm, and personalised from the moment of arrival. The golf course wraps around the lagoon with some of the most dramatic Indian Ocean views anywhere in Mauritius.</p>
 
-    <p><strong>Score: 9.1 / 10 &nbsp;·&nbsp; From $1,650/night</strong></p>
-    <a href="https://expedia.com/affiliate/s7PgDXw" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at Four Seasons Resort Mauritius at Anahita on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 9.1 / 10 &nbsp;&middot;&nbsp; From $1,650/night</strong></p>
+    <a href="https://expedia.com/affiliate/s7PgDXw" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at Four Seasons Resort Mauritius at Anahita on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
 
     <h3>Constance Prince Maurice — 9.0 / 10</h3>
 
     <p>The most architecturally distinctive resort in Mauritius, Prince Maurice sits in a mangrove estuary at Poste de Flacq — 15 minutes north of Belle Mare. Its overwater restaurant, L'Archipel, is suspended above a fish reserve and serves some of the finest cooking in the Indian Ocean. Rooms are housed in villas on stilts above the water or in garden settings. The atmosphere is meditative and sophisticated — a counterpoint to the beach-focused energy of Belle Mare proper.</p>
 
-    <p><strong>Score: 9.0 / 10 &nbsp;·&nbsp; From $1,250/night</strong></p>
-    <a href="https://expedia.com/affiliate/WmRuuHu" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at Constance Prince Maurice on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 9.0 / 10 &nbsp;&middot;&nbsp; From $1,250/night</strong></p>
+    <a href="https://expedia.com/affiliate/WmRuuHu" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at Constance Prince Maurice on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
+  </section>
 
-    <!-- Section 3: Area guide -->
-    <h2 id="area-guide">What Belle Mare Is Like</h2>
+  <section class="content-section" id="area-guide">
+    <h2>What Belle Mare Is Like</h2>
 
     <p>Belle Mare is a village on the north-east coast, roughly 35 kilometres from Port Louis by road. The beach itself stretches from Belle Mare village south to Palmar — a continuous arc of white sand that is the longest beach in Mauritius. Unlike Grand Baie, there is no strip of restaurants, no catamaran piers, no nightlife. The beach is what Belle Mare is. That is entirely the point.</p>
 
@@ -227,9 +305,10 @@
     <p>Off the beach, there is little to do within walking distance. The nearest town with restaurants is Trou d'Eau Douce (10 minutes by taxi), a charming fishing village with a handful of good Creole restaurants and the ferry departure point for Île aux Cerfs — Mauritius's most popular day-trip island, with a turquoise lagoon and a championship golf course. Most east coast guests do this trip at least once.</p>
 
     <p>The east coast receives less rainfall than the west. Trade winds from the south-east keep temperatures pleasant from May through November. In summer (December to March), the air is hot and humid, cyclone risk is non-trivial, but hotel rates drop substantially and the lagoon is at its warmest.</p>
+  </section>
 
-    <!-- Section 4: Comparison table -->
-    <h2 id="vs-grand-baie">Belle Mare vs Grand Baie: 7 Key Differences</h2>
+  <section class="content-section" id="vs-grand-baie">
+    <h2>Belle Mare vs Grand Baie: 7 Key Differences</h2>
 
     <table class="comparison-table">
       <thead>
@@ -277,9 +356,10 @@
         </tr>
       </tbody>
     </table>
+  </section>
 
-    <!-- Section 5: Who should stay -->
-    <h2 id="who-should-stay">Who Should Stay in Belle Mare</h2>
+  <section class="content-section" id="who-should-stay">
+    <h2>Who Should Stay in Belle Mare</h2>
 
     <p><strong>Stay in Belle Mare if:</strong> The beach is the centrepiece of your holiday. You want the finest sand and clearest water in Mauritius. You are honeymooning and want seclusion. You want championship golf adjacent to a luxury resort. You have young children and want a calm, safe lagoon.</p>
 
@@ -288,80 +368,65 @@
     <h2>Find Your Best Match</h2>
     <p>Our independent scoring ranks every hotel across Mauritius by traveller type:</p>
     <ul>
-      <li><a href="/best-luxury-hotels-mauritius/">Best luxury hotels in Mauritius</a> — One&amp;Only Le Saint Géran and Four Seasons Anahita both feature prominently</li>
-      <li><a href="/best-honeymoon-hotels-mauritius/">Best honeymoon hotels in Mauritius</a> — the east coast dominates this category</li>
-      <li><a href="/best-family-hotels-mauritius/">Best family hotels in Mauritius</a> — Constance Belle Mare Plage scores highly for families</li>
-      <li><a href="/where-to-stay-in-mauritius/">Where to stay in Mauritius</a> — full coast-by-coast breakdown</li>
+      <li><a href="/best-luxury-hotels-mauritius/" style="color:#c9a84c">Best luxury hotels in Mauritius</a> — One&amp;Only Le Saint Géran and Four Seasons Anahita both feature prominently</li>
+      <li><a href="/best-honeymoon-hotels-mauritius/" style="color:#c9a84c">Best honeymoon hotels in Mauritius</a> — the east coast dominates this category</li>
+      <li><a href="/best-family-hotels-mauritius/" style="color:#c9a84c">Best family hotels in Mauritius</a> — Constance Belle Mare Plage scores highly for families</li>
+      <li><a href="/where-to-stay-in-mauritius/" style="color:#c9a84c">Where to stay in Mauritius</a> — full coast-by-coast breakdown</li>
     </ul>
+  </section>
 
-    <!-- FAQ -->
-    <h2 id="faq">Frequently Asked Questions</h2>
+  <section class="content-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
 
-    <div class="faq-block">
-
-      <div class="faq-item">
-        <h3>What is Belle Mare known for in Mauritius?</h3>
-        <p>Belle Mare is home to the longest continuous beach in Mauritius — roughly 9 kilometres of white sand facing a calm, turquoise lagoon. It sits on the east coast and is significantly quieter and more exclusive than Grand Baie in the north. The water is exceptionally clear, the sand powder-fine, and the lagoon shallow and safe for swimming. It is the benchmark east coast beach against which all others in Mauritius are measured.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>What is the best hotel in Belle Mare?</h3>
-        <p>One&amp;Only Le Saint Géran scores 9.0/10 in our independent dataset — the highest-rated hotel physically in Belle Mare. It sits on its own private peninsula with butler service, five restaurants, and the finest spa on the east coast. Constance Belle Mare Plage (8.9/10) is the closest rival and offers significantly more facilities including championship golf.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Is Belle Mare good for families?</h3>
-        <p>Yes — Belle Mare is one of the best areas in Mauritius for families. The lagoon is calm, shallow, and safe for children. Constance Belle Mare Plage scores highly for families with its large beach, three pools, kids' club, and extensive facilities. LUX* Belle Mare also caters well for families with a more relaxed atmosphere. The beach itself is long enough that it never feels crowded even in peak season.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>How does Belle Mare compare to Grand Baie?</h3>
-        <p>Belle Mare offers a longer, wider, and quieter beach with calmer water — it is more exclusive and peaceful. Grand Baie has the island's best restaurant scene, watersports, day trips to offshore islands, and nightlife. If you want seclusion and the best beach in Mauritius, choose Belle Mare. If you want buzz, restaurants, and things to do off-resort, choose Grand Baie.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>What are the best nearby resorts to Belle Mare?</h3>
-        <p>Four Seasons Resort Mauritius at Anahita (9.1/10, Beau Champ) is the highest-scoring resort on the east coast — set around a private lagoon with overwater villas. Constance Prince Maurice (9.0/10, Poste de Flacq) is architecturally the most distinctive resort in Mauritius, with an overwater restaurant set above a fish reserve.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>When is the best time to visit Belle Mare?</h3>
-        <p>October to November and April to May are the sweet spots — warm, low humidity, little rain, and mild trade winds. July and August bring stronger south-east trade winds; these months are peak season for Europeans despite the breeze. December to March is hot and humid with some cyclone risk, but hotel rates drop significantly and the lagoon is at its warmest.</p>
-      </div>
-
+    <div class="faq-item">
+      <h3>What is Belle Mare known for in Mauritius?</h3>
+      <p>Belle Mare is home to the longest continuous beach in Mauritius — roughly 9 kilometres of white sand facing a calm, turquoise lagoon. It sits on the east coast and is significantly quieter and more exclusive than Grand Baie in the north. The water is exceptionally clear, the sand powder-fine, and the lagoon shallow and safe for swimming. It is the benchmark east coast beach against which all others in Mauritius are measured.</p>
     </div>
 
-  </div><!-- /.guide-body -->
-</article>
+    <div class="faq-item">
+      <h3>What is the best hotel in Belle Mare?</h3>
+      <p>One&amp;Only Le Saint Géran scores 9.0/10 in our independent dataset — the highest-rated hotel physically in Belle Mare. It sits on its own private peninsula with butler service, five restaurants, and the finest spa on the east coast. Constance Belle Mare Plage (8.9/10) is the closest rival and offers significantly more facilities including championship golf.</p>
+    </div>
 
-<!-- Related guides -->
-<section class="related-guides">
-  <div class="related-inner">
+    <div class="faq-item">
+      <h3>Is Belle Mare good for families?</h3>
+      <p>Yes — Belle Mare is one of the best areas in Mauritius for families. The lagoon is calm, shallow, and safe for children. Constance Belle Mare Plage scores highly for families with its large beach, three pools, kids' club, and extensive facilities. LUX* Belle Mare also caters well for families with a more relaxed atmosphere. The beach itself is long enough that it never feels crowded even in peak season.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How does Belle Mare compare to Grand Baie?</h3>
+      <p>Belle Mare offers a longer, wider, and quieter beach with calmer water — it is more exclusive and peaceful. Grand Baie has the island's best restaurant scene, watersports, day trips to offshore islands, and nightlife. If you want seclusion and the best beach in Mauritius, choose Belle Mare. If you want buzz, restaurants, and things to do off-resort, choose Grand Baie.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What are the best nearby resorts to Belle Mare?</h3>
+      <p>Four Seasons Resort Mauritius at Anahita (9.1/10, Beau Champ) is the highest-scoring resort on the east coast — set around a private lagoon with overwater villas. Constance Prince Maurice (9.0/10, Poste de Flacq) is architecturally the most distinctive resort in Mauritius, with an overwater restaurant set above a fish reserve.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>When is the best time to visit Belle Mare?</h3>
+      <p>October to November and April to May are the sweet spots — warm, low humidity, little rain, and mild trade winds. July and August bring stronger south-east trade winds; these months are peak season for Europeans despite the breeze. December to March is hot and humid with some cyclone risk, but hotel rates drop significantly and the lagoon is at its warmest.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
     <h2>More Mauritius Hotel Guides</h2>
     <div class="related-grid">
-      <a href="/where-to-stay-in-mauritius/" class="related-card">Where to Stay in Mauritius</a>
-      <a href="/grand-baie-mauritius/" class="related-card">Grand Baie Hotels Guide</a>
-      <a href="/balaclava-mauritius-hotels/" class="related-card">Balaclava Hotels Guide</a>
-      <a href="/best-luxury-hotels-mauritius/" class="related-card">Best Luxury Hotels</a>
-      <a href="/best-honeymoon-hotels-mauritius/" class="related-card">Honeymoon Hotels</a>
-      <a href="/mauritius-travel-guide/" class="related-card">Mauritius Travel Guide</a>
+      <a href="/where-to-stay-in-mauritius/" class="related-card"><span class="related-card__title">Where to Stay in Mauritius</span></a>
+      <a href="/grand-baie-mauritius/" class="related-card"><span class="related-card__title">Grand Baie Hotels Guide</span></a>
+      <a href="/balaclava-mauritius-hotels/" class="related-card"><span class="related-card__title">Balaclava Hotels Guide</span></a>
+      <a href="/best-luxury-hotels-mauritius/" class="related-card"><span class="related-card__title">Best Luxury Hotels</span></a>
+      <a href="/best-honeymoon-hotels-mauritius/" class="related-card"><span class="related-card__title">Honeymoon Hotels</span></a>
+      <a href="/mauritius-travel-guide/" class="related-card"><span class="related-card__title">Mauritius Travel Guide</span></a>
     </div>
-  </div>
-</section>
+  </section>
 
 </main>
 
-<!-- Footer -->
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <p>© 2026 Mauritius Resort Finder &nbsp;·&nbsp; <a href="/methodology/">Methodology</a> &nbsp;·&nbsp; <a href="/rankings/">All Rankings</a> &nbsp;·&nbsp; <a href="/contact/">Contact</a></p>
-    <p class="footer-disclosure">This page contains affiliate links. We earn a small commission if you book through them, at no extra cost to you. Our scores and editorial opinions are independent.</p>
-  </div>
+<footer>
+  <p>&copy; 2026 Mauritius Resort Finder &nbsp;&middot;&nbsp; <a href="/affiliate-disclosure/">Affiliate Disclosure</a> &nbsp;&middot;&nbsp; <a href="/methodology/">Methodology</a> &nbsp;&middot;&nbsp; <a href="/contact/">Contact</a></p>
+  <p style="margin-top:8px;">Independent hotel reviews. No paid placements. No inflated scores.</p>
 </footer>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
-<script src="/assets/js/analytics.js" defer></script>
 
 </body>
 </html>

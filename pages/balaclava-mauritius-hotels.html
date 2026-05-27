@@ -100,40 +100,120 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" />
-  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
+  <script src="/assets/js/analytics.js" defer></script>
+
+  <style>
+    body { background: #0a0f1e; color: #e8e0d0; font-family: 'Georgia', serif; margin: 0; }
+    .page-hero { background: linear-gradient(135deg, #0d1728 0%, #1a2540 100%); padding: 80px 24px 60px; text-align: center; }
+    .page-hero__label { display: inline-block; background: rgba(201,168,76,0.15); color: #c9a84c; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; font-family: 'Arial', sans-serif; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: #fff; margin: 0 auto 20px; max-width: 820px; line-height: 1.25; }
+    .page-hero__sub { font-size: 1.05rem; color: #b0a898; max-width: 620px; margin: 0 auto; line-height: 1.75; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .content-section { padding: 52px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .content-section:last-child { border-bottom: none; }
+    h2 { font-size: 1.55rem; color: #e8dfc8; margin: 0 0 18px; }
+    h3 { font-size: 1.15rem; color: #c9a84c; margin: 28px 0 10px; }
+    p { line-height: 1.85; color: #ccc4b4; margin: 0 0 18px; }
+    ul, ol { color: #ccc4b4; line-height: 1.85; padding-left: 22px; margin: 0 0 18px; }
+    li { margin-bottom: 6px; }
+    strong { color: #e8dfc8; }
+    .breadcrumb { font-size: 0.82rem; color: #7a7260; font-family: 'Arial', sans-serif; padding: 18px 0 0; }
+    .breadcrumb a { color: #9a8e78; text-decoration: none; }
+    .breadcrumb a:hover { color: #c9a84c; }
+    .answer-banner { background: rgba(123,191,123,0.08); border: 1px solid rgba(123,191,123,0.3); border-radius: 12px; padding: 24px 28px; margin: 28px 0; }
+    .answer-banner__title { font-size: 1.05rem; color: #7bbf7b; font-family: 'Arial', sans-serif; font-weight: bold; margin-bottom: 10px; }
+    .answer-banner p { color: #bbb3a3; margin: 0; }
+    .data-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.92rem; }
+    .data-table th { background: rgba(201,168,76,0.12); color: #c9a84c; text-align: left; padding: 12px 14px; font-family: 'Arial', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .data-table td { padding: 12px 14px; color: #ccc4b4; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(255,255,255,0.03); }
+    td strong { color: #e8dfc8; }
+    .tick { color: #7bbf7b; font-weight: bold; }
+    .cross { color: #bf7b7b; font-weight: bold; }
+    .req-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 24px 0; }
+    .req-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px; }
+    .req-card__icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .req-card__title { font-size: 0.95rem; color: #e8dfc8; font-weight: bold; margin-bottom: 8px; font-family: 'Arial', sans-serif; }
+    .req-card p { font-size: 0.88rem; color: #9a8e78; margin: 0; line-height: 1.6; }
+    .hotel-cta { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 28px; margin: 24px 0; }
+    .hotel-cta__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .hotel-cta__name { font-size: 1.2rem; color: #e8dfc8; font-weight: bold; margin: 0; }
+    .hotel-cta__score { background: rgba(201,168,76,0.15); color: #c9a84c; font-size: 0.9rem; font-weight: bold; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+    .hotel-cta__meta { font-size: 0.88rem; color: #9a8e78; font-family: 'Arial', sans-serif; margin-bottom: 12px; }
+    .hotel-cta__desc { color: #bbb3a3; font-size: 0.97rem; line-height: 1.7; margin-bottom: 18px; }
+    .hotel-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .btn-primary { background: #c9a84c; color: #0a0f1e; font-weight: bold; padding: 11px 22px; border-radius: 6px; text-decoration: none; font-size: 0.92rem; font-family: 'Arial', sans-serif; }
+    .btn-primary:hover { background: #e0bc5a; }
+    .btn-review { color: #c9a84c; border: 1px solid rgba(201,168,76,0.4); padding: 10px 18px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-family: 'Arial', sans-serif; }
+    .btn-review:hover { border-color: #c9a84c; }
+    .hotel-cta__disclosure { font-size: 0.75rem; color: #6a6456; margin: 10px 0 0; font-family: 'Arial', sans-serif; }
+    .hotel-cta__disclosure a { color: #7a7260; }
+    .info-box { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 16px 20px; margin: 24px 0; font-size: 0.9rem; color: #9a8e78; font-family: 'Arial', sans-serif; }
+    .info-box a { color: #c9a84c; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 22px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item h3 { color: #e8dfc8; font-size: 1.05rem; margin: 0 0 10px; }
+    .faq-item p { margin: 0; font-size: 0.97rem; }
+    .disclosure-banner { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 14px 18px; margin: 32px 0; font-size: 0.85rem; color: #9a8e78; font-family: 'Arial', sans-serif; }
+    .disclosure-banner a { color: #c9a84c; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 24px 0; }
+    .related-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px; text-decoration: none; display: block; transition: border-color 0.2s; }
+    .related-card:hover { border-color: rgba(201,168,76,0.4); }
+    .related-card__label { font-size: 0.82rem; color: #c9a84c; font-family: 'Arial', sans-serif; margin-bottom: 6px; }
+    .related-card__title { color: #e8dfc8; font-size: 1rem; }
+    nav.site-nav { background: rgba(10,15,30,0.95); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; border-bottom: 1px solid rgba(255,255,255,0.07); position: sticky; top: 0; z-index: 100; }
+    nav.site-nav a { color: #b0a898; text-decoration: none; font-size: 0.88rem; font-family: 'Arial', sans-serif; }
+    nav.site-nav .nav__logo { color: #e8dfc8; font-weight: bold; font-size: 1rem; }
+    nav.site-nav .nav__cta { background: #c9a84c; color: #0a0f1e !important; padding: 7px 16px; border-radius: 5px; font-weight: bold; }
+    footer { background: #060c1a; border-top: 1px solid rgba(255,255,255,0.07); padding: 40px 24px; text-align: center; color: #6a6456; font-size: 0.82rem; font-family: 'Arial', sans-serif; }
+    footer a { color: #7a7260; text-decoration: none; }
+
+    /* Extra CSS for guide-style pages */
+    .btn-cta { display: inline-block; background: #c9a84c; color: #0a0f1e; font-weight: bold; padding: 11px 22px; border-radius: 6px; text-decoration: none; font-size: 0.92rem; font-family: 'Arial', sans-serif; }
+    .btn-cta:hover { background: #e0bc5a; }
+    .cta-inline { margin: 20px 0 6px; }
+    .affiliate-note { font-size: 0.78rem; color: #6a6456; font-family: 'Arial', sans-serif; margin: 0 0 24px; }
+    .affiliate-note a { color: #7a7260; }
+    .guide-toc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px 24px; margin: 28px 0; }
+    .guide-toc strong { color: #e8dfc8; display: block; margin-bottom: 12px; font-family: 'Arial', sans-serif; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .guide-toc ul { margin: 0; padding-left: 18px; }
+    .guide-toc li { margin-bottom: 6px; font-size: 0.9rem; }
+    .guide-toc a { color: #c9a84c; text-decoration: none; }
+    .guide-toc a:hover { text-decoration: underline; }
+    .guide-meta { font-size: 0.82rem; color: #6a6456; font-family: 'Arial', sans-serif; margin: 0 0 28px; }
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9rem; }
+    .comparison-table th { background: rgba(201,168,76,0.12); color: #c9a84c; text-align: left; padding: 12px 14px; font-family: 'Arial', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .comparison-table td { padding: 12px 14px; color: #ccc4b4; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.03); }
+    .related-guides { padding: 40px 0; }
+    .related-guides h2 { font-size: 1.3rem; color: #e8dfc8; margin-bottom: 20px; }
+  </style>
 </head>
 <body>
 
-<!-- Nav -->
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">Mauritius Resort Finder</a>
-    <div class="nav-links">
-      <a href="/best-luxury-hotels-mauritius/">Top Hotels</a>
-      <a href="/where-to-stay-in-mauritius/">Where to Stay</a>
-      <a href="/grand-baie-mauritius/">Grand Baie</a>
-      <a href="/mauritius-travel-guide/">Travel Guide</a>
-    </div>
-  </div>
+<nav class="site-nav" aria-label="Site navigation">
+  <a href="/" class="nav__logo">Mauritius Resort Finder</a>
+  <a href="/rankings/" class="nav__cta">View Rankings</a>
 </nav>
 
-<main class="guide-main">
-<article class="guide-article">
-
-  <!-- Breadcrumb -->
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a> &rsaquo; <a href="/where-to-stay-in-mauritius/">Where to Stay</a> &rsaquo; <span>Balaclava Hotels Guide</span>
-  </nav>
-
-  <header class="guide-header">
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; Balaclava Hotels Guide
+    </div>
+    <span class="page-hero__label">Regional Guide</span>
     <h1>Best Hotels in Balaclava, Mauritius</h1>
-    <p class="guide-subtitle">The north-west coast's marine park retreat — ranked by independent data</p>
-    <p class="guide-meta">2,100 words &nbsp;·&nbsp; Updated May 2026 &nbsp;·&nbsp; 4 hotels scored</p>
-  </header>
+    <p class="page-hero__sub">The north-west coast's marine park retreat — ranked by independent data</p>
+  </div>
+</div>
 
-  <div class="guide-body">
+<main class="container">
+
+  <section class="content-section">
+    <p class="guide-meta">2,100 words &nbsp;·&nbsp; Updated May 2026 &nbsp;·&nbsp; 4 hotels scored</p>
 
     <p>Balaclava sits on Mauritius's north-west coast, 15 minutes west of Grand Baie, facing one of the island's most intact marine parks. It is not a tourist village — there is no high street or beach bar strip. What it has is a genuinely protected lagoon with exceptional snorkelling, three well-rated resorts, and the kind of quiet that is hard to find on the north coast without retreating entirely to the south.</p>
 
@@ -150,12 +230,14 @@
         <li><a href="#faq">Frequently asked questions</a></li>
       </ul>
     </div>
+  </section>
 
-    <h2 id="hotels">Hotels in Balaclava and Pointe aux Piments</h2>
+  <section class="content-section" id="hotels">
+    <h2>Hotels in Balaclava and Pointe aux Piments</h2>
 
     <p>There are three rated hotels in Balaclava and one in adjacent Pointe aux Piments — a total of four independent scores from our 40-point dataset. They span five-star international brands to an affordable four-star, giving genuine range at this end of the north coast.</p>
 
-    <h3>1. The Westin Turtle Bay Resort & Spa, Mauritius — 8.6 / 10</h3>
+    <h3>1. The Westin Turtle Bay Resort &amp; Spa, Mauritius — 8.6 / 10</h3>
     <p><strong>Best for: families, divers, five-star amenities seekers</strong></p>
 
     <p>The Westin is the flagship of the Balaclava area — a large five-star Marriott property with 190 rooms and suites, scoring 8.6/10 in our dataset. Its standout advantage over most hotels on the island is direct adjacency to the Balaclava Marine Park, meaning guests can snorkel from the beach without a boat trip. The coral garden visible from the shore is genuinely good — not a token reef, but a protected system with fish density that rewards even a casual swim with a mask.</p>
@@ -164,7 +246,7 @@
 
     <p>The main limitation: rooms are hotel-standard rather than villa-style, and the beach, while clean and calm, is narrower than those at Belle Mare or Le Morne. If beach width matters to you, this is worth noting.</p>
 
-    <p class="cta-inline"><a href="https://expedia.com/affiliate/PJytcSS" rel="noopener sponsored" class="btn-cta">Check availability at Westin Turtle Bay →</a></p>
+    <p class="cta-inline"><a href="https://expedia.com/affiliate/PJytcSS" rel="noopener sponsored" class="btn-cta">Check availability at Westin Turtle Bay &rarr;</a></p>
     <p class="affiliate-note">Affiliate link — we earn a small commission at no cost to you. <a href="/methodology/">About our links</a>.</p>
 
     <h3>2. Jacaranda Luxury Villas by Maritim — 8.5 / 10</h3>
@@ -174,7 +256,7 @@
 
     <p>It suits couples who want the seclusion of a private villa without the full remoteness of the south-west coast. The tradeoff versus the Westin is fewer on-site amenities and a smaller pool; the gain is considerably more privacy and a less resort-like atmosphere.</p>
 
-    <p class="cta-inline"><a href="https://expedia.com/affiliate/uzq9Zlu" rel="noopener sponsored" class="btn-cta">Check availability at Jacaranda Villas →</a></p>
+    <p class="cta-inline"><a href="https://expedia.com/affiliate/uzq9Zlu" rel="noopener sponsored" class="btn-cta">Check availability at Jacaranda Villas &rarr;</a></p>
 
     <h3>3. The Ravenala Attitude — 8.1 / 10</h3>
     <p><strong>Best for: value seekers, younger travellers, social atmosphere</strong></p>
@@ -183,7 +265,7 @@
 
     <p>It is not a luxury property, but the value-per-score ratio is strong. For budget-conscious travellers who still want a proper beach base on the north-west coast, the Ravenala is the most credible option in the area.</p>
 
-    <p class="cta-inline"><a href="https://expedia.com/affiliate/k1alVSX" rel="noopener sponsored" class="btn-cta">Check availability at Ravenala Attitude →</a></p>
+    <p class="cta-inline"><a href="https://expedia.com/affiliate/k1alVSX" rel="noopener sponsored" class="btn-cta">Check availability at Ravenala Attitude &rarr;</a></p>
 
     <h3>4. Le Meridien Ile Maurice — 8.5 / 10 (Pointe aux Piments)</h3>
     <p><strong>Best for: families wanting five-star at a mid-range price</strong></p>
@@ -192,9 +274,11 @@
 
     <p>If the Westin's rates are out of reach but you want five-star quality in this area, Le Meridien is the better-value alternative. Its beach is slightly wider than the Westin's.</p>
 
-    <p class="cta-inline"><a href="https://expedia.com/affiliate/8C3UdBg" rel="noopener sponsored" class="btn-cta">Check availability at Le Meridien Ile Maurice →</a></p>
+    <p class="cta-inline"><a href="https://expedia.com/affiliate/8C3UdBg" rel="noopener sponsored" class="btn-cta">Check availability at Le Meridien Ile Maurice &rarr;</a></p>
+  </section>
 
-    <h2 id="marine-park">Balaclava Marine Park — What to Expect</h2>
+  <section class="content-section" id="marine-park">
+    <h2>Balaclava Marine Park — What to Expect</h2>
 
     <p>The Balaclava Marine Park (sometimes referred to as the Turtle Bay Marine Park) is a gazetted protected area covering the lagoon and reef system off Balaclava. It is one of the few areas in Mauritius where the reef remains genuinely healthy — the combination of legal protection and calm conditions has preserved coral coverage that has declined in many other areas of the island.</p>
 
@@ -203,8 +287,10 @@
     <p><strong>Diving:</strong> The Westin's PADI dive centre runs guided dives to the outer reef, Cathedral Cave (a submerged rock formation with resident moray eels), and occasionally to the offshore wreck site at Trou aux Biches. Water temperature ranges from 23°C in August to 28°C in February. Most dive sites are suitable for Open Water certification and above.</p>
 
     <p><strong>Non-divers:</strong> Catamaran snorkel trips depart daily from the Westin pier and from Grand Baie (a 15-minute drive). Glass-bottom boat trips cover the marine park for those who prefer to stay dry. Paddleboarding and kayaking are available through the resort and are well-suited to the lagoon's calm conditions.</p>
+  </section>
 
-    <h2 id="area">The Area: Beaches, Access, Atmosphere</h2>
+  <section class="content-section" id="area">
+    <h2>The Area: Beaches, Access, Atmosphere</h2>
 
     <h3>Beaches</h3>
     <p>The Balaclava beach is a narrow strip of pale sand fronting the marine park — calm, clean, and generally uncrowded outside school holidays. It is not the widest beach in Mauritius (Belle Mare and Flic en Flac both have broader strands), but the water quality and the coral immediately offshore make it more rewarding for snorkellers than many wider alternatives.</p>
@@ -216,8 +302,10 @@
 
     <h3>Dining outside the hotels</h3>
     <p>There are no standalone restaurants in Balaclava itself — the area is entirely resort-based for food. Trou aux Biches village (5 minutes north) has a handful of Creole restaurants and a small supermarket. Grand Baie's full restaurant strip is 15 minutes away. This is worth factoring in: if variety of dining is important, the Westin's multiple-restaurant setup becomes more valuable, or Grand Baie becomes a better base.</p>
+  </section>
 
-    <h2 id="vs-grand-baie">Balaclava vs Grand Baie</h2>
+  <section class="content-section" id="vs-grand-baie">
+    <h2>Balaclava vs Grand Baie</h2>
 
     <table class="comparison-table">
       <thead>
@@ -268,9 +356,11 @@
 
     <p>The clearest case for Balaclava: you want serious snorkelling or diving from your hotel beach, you do not need nightly restaurant variety, and you want five-star quality at a lower price than Royal Palm or Oberoi. Grand Baie's premium properties cost roughly double for a broadly similar north-coast location.</p>
 
-    <p>See also: <a href="/grand-baie-mauritius/">Grand Baie hotels guide</a> · <a href="/east-coast-vs-west-coast-mauritius/">East vs west coast comparison</a> · <a href="/where-to-stay-in-mauritius/">Full where-to-stay guide</a></p>
+    <p>See also: <a href="/grand-baie-mauritius/" style="color:#c9a84c">Grand Baie hotels guide</a> &middot; <a href="/where-to-stay-in-mauritius/" style="color:#c9a84c">Full where-to-stay guide</a></p>
+  </section>
 
-    <h2 id="who">Who Should Stay in Balaclava</h2>
+  <section class="content-section" id="who">
+    <h2>Who Should Stay in Balaclava</h2>
 
     <p><strong>Balaclava suits you if:</strong></p>
     <ul>
@@ -284,86 +374,72 @@
     <p><strong>Consider elsewhere if:</strong></p>
     <ul>
       <li>You want to walk to dinner at different restaurants each night (Grand Baie is the better base)</li>
-      <li>You want the widest, most secluded beaches (east coast — <a href="/belle-mare-luxury-hotels/">Belle Mare</a> or <a href="/best-beach-resorts-mauritius/">Trou d'Eau Douce</a>)</li>
-      <li>You want dramatic landscape and a surf vibe (south-west — <a href="/le-morne-hotels-mauritius/">Le Morne</a>)</li>
+      <li>You want the widest, most secluded beaches (east coast — Belle Mare or Trou d'Eau Douce)</li>
+      <li>You want dramatic landscape and a surf vibe (south-west — Le Morne)</li>
     </ul>
 
     <h2>Ranked by Traveller Type</h2>
     <p>The Westin Turtle Bay and Le Meridien feature in our ranked lists for specific traveller types:</p>
     <ul>
-      <li><a href="/best-family-hotels-mauritius/">Best family hotels in Mauritius</a> — Westin Turtle Bay rated for families</li>
-      <li><a href="/best-luxury-hotels-mauritius/">Best luxury hotels in Mauritius</a> — island-wide top 29 by overall score</li>
-      <li><a href="/best-value-luxury-hotels-mauritius/">Best value luxury hotels</a> — Le Meridien and Ravenala rate well here</li>
-      <li><a href="/best-wellness-resorts-mauritius/">Best wellness resorts in Mauritius</a> — Westin's spa scores feature</li>
+      <li><a href="/best-family-hotels-mauritius/" style="color:#c9a84c">Best family hotels in Mauritius</a> — Westin Turtle Bay rated for families</li>
+      <li><a href="/best-luxury-hotels-mauritius/" style="color:#c9a84c">Best luxury hotels in Mauritius</a> — island-wide top 29 by overall score</li>
+      <li><a href="/best-value-luxury-hotels-mauritius/" style="color:#c9a84c">Best value luxury hotels</a> — Le Meridien and Ravenala rate well here</li>
+      <li><a href="/best-wellness-resorts-mauritius/" style="color:#c9a84c">Best wellness resorts in Mauritius</a> — Westin's spa scores feature</li>
     </ul>
+  </section>
 
-    <h2 id="faq">Frequently Asked Questions</h2>
+  <section class="content-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
 
-    <div class="faq-block">
-
-      <div class="faq-item">
-        <h3>What is Balaclava known for in Mauritius?</h3>
-        <p>Balaclava is known for its marine park — a protected area of coral reef and calm lagoon on Mauritius's north-west coast, rated among the island's best spots for snorkelling and diving. The area is quieter than Grand Baie (15 minutes east) but still within easy reach of the north coast's restaurants and activities.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>What is the best hotel in Balaclava, Mauritius?</h3>
-        <p>The Westin Turtle Bay Resort & Spa scores 8.6/10 in our independent dataset — the highest-rated five-star hotel in Balaclava. It has direct access to the marine park, a large pool complex, and strong service scores. Jacaranda Luxury Villas by Maritim scores 8.5/10 and suits smaller groups wanting villa-style accommodation.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Is Balaclava good for snorkelling and diving?</h3>
-        <p>Yes — Balaclava is one of the best areas in Mauritius for snorkelling. The marine park has protected coral gardens with excellent visibility, and the calm, sheltered lagoon makes it accessible even for beginners. The Westin Turtle Bay has dive facilities on site.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Is Balaclava suitable for families?</h3>
-        <p>Yes. Balaclava's lagoon is extremely calm — one of the most sheltered on the island — making it safe for young children. The Westin Turtle Bay has a kids' club and family facilities. Families who want a quieter base than Grand Baie but still easy access to it should consider Balaclava or Pointe aux Piments.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>How does Balaclava compare to Grand Baie?</h3>
-        <p>Grand Baie is livelier with more restaurants, nightlife, and watersports operators. Balaclava is quieter and more resort-focused, with the marine park as its main draw. The two areas are 15 minutes apart. Balaclava suits those who want a calm retreat with easy access to Grand Baie's amenities when wanted.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>What is the cheapest good hotel near Balaclava?</h3>
-        <p>The Ravenala Attitude in Balaclava scores 8.1/10 at around $290/night — the most affordable rated hotel in the area. Le Meridien Ile Maurice at Pointe aux Piments scores 8.5/10 at around $560/night if you want five-star quality at a lower price than the Westin.</p>
-      </div>
-
+    <div class="faq-item">
+      <h3>What is Balaclava known for in Mauritius?</h3>
+      <p>Balaclava is known for its marine park — a protected area of coral reef and calm lagoon on Mauritius's north-west coast, rated among the island's best spots for snorkelling and diving. The area is quieter than Grand Baie (15 minutes east) but still within easy reach of the north coast's restaurants and activities.</p>
     </div>
 
-  </div><!-- /.guide-body -->
-</article>
+    <div class="faq-item">
+      <h3>What is the best hotel in Balaclava, Mauritius?</h3>
+      <p>The Westin Turtle Bay Resort &amp; Spa scores 8.6/10 in our independent dataset — the highest-rated five-star hotel in Balaclava. It has direct access to the marine park, a large pool complex, and strong service scores. Jacaranda Luxury Villas by Maritim scores 8.5/10 and suits smaller groups wanting villa-style accommodation.</p>
+    </div>
 
-<!-- Related guides -->
-<section class="related-guides">
-  <div class="related-inner">
+    <div class="faq-item">
+      <h3>Is Balaclava good for snorkelling and diving?</h3>
+      <p>Yes — Balaclava is one of the best areas in Mauritius for snorkelling. The marine park has protected coral gardens with excellent visibility, and the calm, sheltered lagoon makes it accessible even for beginners. The Westin Turtle Bay has dive facilities on site.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is Balaclava suitable for families?</h3>
+      <p>Yes. Balaclava's lagoon is extremely calm — one of the most sheltered on the island — making it safe for young children. The Westin Turtle Bay has a kids' club and family facilities. Families who want a quieter base than Grand Baie but still easy access to it should consider Balaclava or Pointe aux Piments.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How does Balaclava compare to Grand Baie?</h3>
+      <p>Grand Baie is livelier with more restaurants, nightlife, and watersports operators. Balaclava is quieter and more resort-focused, with the marine park as its main draw. The two areas are 15 minutes apart. Balaclava suits those who want a calm retreat with easy access to Grand Baie's amenities when wanted.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the cheapest good hotel near Balaclava?</h3>
+      <p>The Ravenala Attitude in Balaclava scores 8.1/10 at around $290/night — the most affordable rated hotel in the area. Le Meridien Ile Maurice at Pointe aux Piments scores 8.5/10 at around $560/night if you want five-star quality at a lower price than the Westin.</p>
+    </div>
+  </section>
+
+  <section class="content-section related-guides">
     <h2>More Mauritius Hotel Guides</h2>
     <div class="related-grid">
-      <a href="/grand-baie-mauritius/" class="related-card">Grand Baie Hotels Guide</a>
-      <a href="/where-to-stay-in-mauritius/" class="related-card">Where to Stay in Mauritius</a>
-      <a href="/best-beach-resorts-mauritius/" class="related-card">Best Beach Resorts</a>
-      <a href="/best-family-hotels-mauritius/" class="related-card">Best Family Hotels</a>
-      <a href="/mauritius-travel-guide/" class="related-card">Mauritius Travel Guide</a>
-      <a href="/best-luxury-hotels-mauritius/" class="related-card">Best Luxury Hotels</a>
+      <a href="/grand-baie-mauritius/" class="related-card"><span class="related-card__title">Grand Baie Hotels Guide</span></a>
+      <a href="/where-to-stay-in-mauritius/" class="related-card"><span class="related-card__title">Where to Stay in Mauritius</span></a>
+      <a href="/best-family-hotels-mauritius/" class="related-card"><span class="related-card__title">Best Family Hotels</span></a>
+      <a href="/best-luxury-hotels-mauritius/" class="related-card"><span class="related-card__title">Best Luxury Hotels</span></a>
+      <a href="/best-value-luxury-hotels-mauritius/" class="related-card"><span class="related-card__title">Best Value Luxury Hotels</span></a>
+      <a href="/best-wellness-resorts-mauritius/" class="related-card"><span class="related-card__title">Best Wellness Resorts</span></a>
     </div>
-  </div>
-</section>
+  </section>
 
 </main>
 
-<!-- Footer -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <p>© 2026 Mauritius Resort Finder &nbsp;·&nbsp; <a href="/methodology/">Methodology</a> &nbsp;·&nbsp; <a href="/rankings/">All Rankings</a></p>
-    <p class="footer-disclosure">This page contains affiliate links. We earn a small commission if you book through them, at no extra cost to you. Our scores and editorial opinions are independent.</p>
-  </div>
+<footer>
+  <p>&copy; 2026 Mauritius Resort Finder &nbsp;&middot;&nbsp; <a href="/affiliate-disclosure/">Affiliate Disclosure</a> &nbsp;&middot;&nbsp; <a href="/methodology/">Methodology</a> &nbsp;&middot;&nbsp; <a href="/contact/">Contact</a></p>
+  <p style="margin-top:8px;">Independent hotel reviews. No paid placements. No inflated scores.</p>
 </footer>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
-<script src="/assets/js/analytics.js" defer></script>
 
 </body>
 </html>

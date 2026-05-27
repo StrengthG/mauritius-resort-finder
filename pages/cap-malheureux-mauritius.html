@@ -100,41 +100,82 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
+  <script src="/assets/js/analytics.js" defer></script>
+
+  <style>
+    body { background: #0a0f1e; color: #e8e0d0; font-family: 'Georgia', serif; margin: 0; }
+    .page-hero { background: linear-gradient(135deg, #0d1728 0%, #1a2540 100%); padding: 80px 24px 60px; text-align: center; }
+    .page-hero__label { display: inline-block; background: rgba(201,168,76,0.15); color: #c9a84c; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; font-family: 'Arial', sans-serif; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: #fff; margin: 0 auto 20px; max-width: 820px; line-height: 1.25; }
+    .page-hero__sub { font-size: 1.05rem; color: #b0a898; max-width: 620px; margin: 0 auto; line-height: 1.75; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .content-section { padding: 52px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .content-section:last-child { border-bottom: none; }
+    h2 { font-size: 1.55rem; color: #e8dfc8; margin: 0 0 18px; }
+    h3 { font-size: 1.15rem; color: #c9a84c; margin: 28px 0 10px; }
+    p { line-height: 1.85; color: #ccc4b4; margin: 0 0 18px; }
+    ul, ol { color: #ccc4b4; line-height: 1.85; padding-left: 22px; margin: 0 0 18px; }
+    li { margin-bottom: 6px; }
+    strong { color: #e8dfc8; }
+    .breadcrumb { font-size: 0.82rem; color: #7a7260; font-family: 'Arial', sans-serif; padding: 18px 0 0; }
+    .breadcrumb a { color: #9a8e78; text-decoration: none; }
+    .breadcrumb a:hover { color: #c9a84c; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 22px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item h3 { color: #e8dfc8; font-size: 1.05rem; margin: 0 0 10px; }
+    .faq-item p { margin: 0; font-size: 0.97rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 24px 0; }
+    .related-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px; text-decoration: none; display: block; transition: border-color 0.2s; }
+    .related-card:hover { border-color: rgba(201,168,76,0.4); }
+    .related-card__title { color: #e8dfc8; font-size: 1rem; }
+    nav.site-nav { background: rgba(10,15,30,0.95); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; border-bottom: 1px solid rgba(255,255,255,0.07); position: sticky; top: 0; z-index: 100; }
+    nav.site-nav a { color: #b0a898; text-decoration: none; font-size: 0.88rem; font-family: 'Arial', sans-serif; }
+    nav.site-nav .nav__logo { color: #e8dfc8; font-weight: bold; font-size: 1rem; }
+    nav.site-nav .nav__cta { background: #c9a84c; color: #0a0f1e !important; padding: 7px 16px; border-radius: 5px; font-weight: bold; }
+    footer { background: #060c1a; border-top: 1px solid rgba(255,255,255,0.07); padding: 40px 24px; text-align: center; color: #6a6456; font-size: 0.82rem; font-family: 'Arial', sans-serif; }
+    footer a { color: #7a7260; text-decoration: none; }
+
+    /* Extra CSS */
+    .guide-toc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px 24px; margin: 28px 0; }
+    .guide-toc strong { color: #e8dfc8; display: block; margin-bottom: 12px; font-family: 'Arial', sans-serif; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .guide-toc ul { margin: 0; padding-left: 18px; }
+    .guide-toc li { margin-bottom: 6px; font-size: 0.9rem; }
+    .guide-toc a { color: #c9a84c; text-decoration: none; }
+    .guide-toc a:hover { text-decoration: underline; }
+    .guide-meta { font-size: 0.82rem; color: #6a6456; font-family: 'Arial', sans-serif; margin: 0 0 28px; }
+    .hcard__cta { display: inline-block; background: #c9a84c; color: #0a0f1e; font-weight: bold; padding: 11px 22px; border-radius: 6px; text-decoration: none; font-size: 0.92rem; font-family: 'Arial', sans-serif; margin: 8px 0; }
+    .hcard__cta:hover { background: #e0bc5a; }
+    .hcard__disclosure { font-size: 0.78rem; color: #6a6456; font-family: 'Arial', sans-serif; margin: 4px 0 24px; }
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9rem; }
+    .comparison-table th { background: rgba(201,168,76,0.12); color: #c9a84c; text-align: left; padding: 12px 14px; font-family: 'Arial', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .comparison-table td { padding: 12px 14px; color: #ccc4b4; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.03); }
+  </style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav class="site-nav" aria-label="Site navigation">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">Mauritius Resort Finder</a>
-    <div class="nav-links">
-      <a href="/best-luxury-hotels-mauritius/">Top Hotels</a>
-      <a href="/where-to-stay-in-mauritius/">Where to Stay</a>
-      <a href="/best-time-to-visit-mauritius/">Best Time</a>
-      <a href="/mauritius-travel-guide/">Travel Guide</a>
-      <a href="/contact/">Contact</a>
-    </div>
-  </div>
+  <a href="/" class="nav__logo">Mauritius Resort Finder</a>
+  <a href="/rankings/" class="nav__cta">View Rankings</a>
 </nav>
 
-<main class="guide-main">
-<article class="guide-article">
-
-  <!-- Breadcrumb -->
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a> &rsaquo; <span>Cap Malheureux Hotels Guide</span>
-  </nav>
-
-  <header class="guide-header">
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; Cap Malheureux Guide
+    </div>
+    <span class="page-hero__label">Regional Guide</span>
     <h1>Best Hotels in Cap Malheureux, Mauritius</h1>
-    <p class="guide-subtitle">The north coast's most private village — ranked by independent data, not marketing copy</p>
-    <p class="guide-meta">2,100 words &nbsp;·&nbsp; Updated May 2026 &nbsp;·&nbsp; 6 hotels scored</p>
-  </header>
+    <p class="page-hero__sub">The north coast's most private village — ranked by independent data, not marketing copy</p>
+  </div>
+</div>
 
-  <div class="guide-body">
+<main class="container">
+
+  <section class="content-section">
+    <p class="guide-meta">2,100 words &nbsp;·&nbsp; Updated May 2026 &nbsp;·&nbsp; 6 hotels scored</p>
 
     <p>Cap Malheureux sits at the northernmost tip of Mauritius — a small fishing village with a red-domed church, an unobstructed view of Coin de Mire island, and the island's highest concentration of boutique adults-only hotels. It is 15 minutes from Grand Baie by road and feels like a different country.</p>
 
@@ -153,9 +194,10 @@
         <li><a href="#faq">Frequently asked questions</a></li>
       </ul>
     </div>
+  </section>
 
-    <!-- Section 1: Cap Malheureux hotels -->
-    <h2 id="cap-hotels">Hotels in Cap Malheureux</h2>
+  <section class="content-section" id="cap-hotels">
+    <h2>Hotels in Cap Malheureux</h2>
 
     <p>Four hotels in our dataset occupy the Cap Malheureux shoreline. The range runs from the 9.0/10 Paradise Cove — one of the highest-scoring boutique properties on the entire island — to the more accessible Zilwa Attitude at 8.2/10. The key characteristic across all four: they are smaller, quieter, and more design-conscious than any hotel in Grand Baie.</p>
 
@@ -170,8 +212,8 @@
     <p><strong>Best for:</strong> Couples and honeymooners who want the boutique equivalent of east coast ultra-luxury — similar service standards and scored quality, at a meaningful discount to One&amp;Only or Four Seasons rates. Adults-only travellers who actively want a child-free environment. Those who want the Coin de Mire view.</p>
     <p><strong>Consider elsewhere if:</strong> You need family accommodation, a large resort complex with multiple restaurants, or proximity to Grand Baie's social scene within walking distance.</p>
 
-    <p><strong>Score: 9.0 / 10 &nbsp;·&nbsp; From $890/night</strong></p>
-    <a href="https://expedia.com/affiliate/KYUg6DO" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at Paradise Cove Boutique Hotel on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 9.0 / 10 &nbsp;&middot;&nbsp; From $890/night</strong></p>
+    <a href="https://expedia.com/affiliate/KYUg6DO" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at Paradise Cove Boutique Hotel on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
 
     <h3>2. Lagoon Attitude — Adults Only — 8.7 / 10</h3>
@@ -185,8 +227,8 @@
     <p><strong>Best for:</strong> Couples on a honeymoon or anniversary trip who want the adults-only environment without the Paradise Cove price tag. Wellness-focused travellers who want a quieter setting than Grand Baie. Repeat visitors to Mauritius looking for a different north coast experience.</p>
     <p><strong>Consider elsewhere if:</strong> A large pool, multiple dining options, or a resort complex with extensive facilities matter more than an intimate boutique experience.</p>
 
-    <p><strong>Score: 8.7 / 10 &nbsp;·&nbsp; From $520/night</strong></p>
-    <a href="https://expedia.com/affiliate/4toq7Ie" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at Lagoon Attitude Adults Only on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 8.7 / 10 &nbsp;&middot;&nbsp; From $520/night</strong></p>
+    <a href="https://expedia.com/affiliate/4toq7Ie" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at Lagoon Attitude Adults Only on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
 
     <h3>3. Sea Diamond Boutique Hotel &amp; Spa — 8.5 / 10</h3>
@@ -198,8 +240,8 @@
     <p><strong>Best for:</strong> Wellness-focused travellers who want a structured programme. Couples who prefer adults-preferred over strictly adults-only. Those who want boutique quality without the top-tier pricing of Paradise Cove.</p>
     <p><strong>Consider elsewhere if:</strong> You want a lively pool scene or the broadest range of dining options — Sea Diamond's focus on wellness means the food offering prioritises health-conscious menus over variety.</p>
 
-    <p><strong>Score: 8.5 / 10 &nbsp;·&nbsp; From $680/night</strong></p>
-    <a href="https://expedia.com/affiliate/FA2X6xD" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at Sea Diamond Boutique Hotel and Spa on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 8.5 / 10 &nbsp;&middot;&nbsp; From $680/night</strong></p>
+    <a href="https://expedia.com/affiliate/FA2X6xD" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at Sea Diamond Boutique Hotel and Spa on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
 
     <h3>4. Zilwa Attitude — 8.2 / 10</h3>
@@ -211,12 +253,13 @@
     <p><strong>Best for:</strong> Families with children, travellers who want a genuine immersion in Mauritian culture and hospitality, those looking for boutique quality at a north coast price that doesn't reach east coast levels.</p>
     <p><strong>Consider elsewhere if:</strong> A spa or structured wellness programme is important. You want fine dining as a primary activity.</p>
 
-    <p><strong>Score: 8.2 / 10 &nbsp;·&nbsp; From $340/night</strong></p>
-    <a href="https://expedia.com/affiliate/yLn0geY" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at Zilwa Attitude on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 8.2 / 10 &nbsp;&middot;&nbsp; From $340/night</strong></p>
+    <a href="https://expedia.com/affiliate/yLn0geY" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at Zilwa Attitude on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
+  </section>
 
-    <!-- Section 2: Grand Gaube -->
-    <h2 id="grand-gaube-picks">Nearby Grand Gaube Alternatives</h2>
+  <section class="content-section" id="grand-gaube-picks">
+    <h2>Nearby Grand Gaube Alternatives</h2>
 
     <p>Grand Gaube sits 10 minutes east of Cap Malheureux along the north coast road, with two scored properties offering a different take on the same broad area.</p>
 
@@ -224,20 +267,21 @@
 
     <p>The largest property on the north coast and the one with the most comprehensive resort facilities. LUX* Grand Gaube occupies a headland position with its own private lagoon — a rarity on the north coast — giving the hotel access to genuinely calm, sheltered swimming water that most Cap Malheureux hotels lack. The resort has six restaurants, a spa, gym, and an extensive water sports offering including a dedicated dive centre. For travellers who want the resort-scale experience (multiple dining choices, large pool complex, more activities under one roof) without committing to the Grand Baie noise, LUX* Grand Gaube is the best option in the north.</p>
 
-    <p><strong>Score: 8.7 / 10 &nbsp;·&nbsp; From $680/night</strong></p>
-    <a href="https://expedia.com/affiliate/usEpyj6" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at LUX Grand Gaube Resort and Villas on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 8.7 / 10 &nbsp;&middot;&nbsp; From $680/night</strong></p>
+    <a href="https://expedia.com/affiliate/usEpyj6" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at LUX Grand Gaube Resort and Villas on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
 
     <h3>Mythic Suites &amp; Villas by MJ Holidays — 8.4 / 10</h3>
 
     <p>A boutique villa-style property in Grand Gaube offering suite and villa accommodation with private pools. Mythic Suites targets the self-contained luxury segment — guests who want the privacy of a villa with hotel-standard service. There is no large resort beach (the property is not directly on the beach), but the villa format, high-speed connectivity, and proximity to the north coast's excursion operators make it a strong choice for longer-stay travellers or those who work remotely and want a more spacious base than a standard hotel room.</p>
 
-    <p><strong>Score: 8.4 / 10 &nbsp;·&nbsp; From $500/night</strong></p>
-    <a href="https://expedia.com/affiliate/c9Mfa5v" rel="noopener sponsored" class="hcard__cta" target="_blank" aria-label="Check availability at Mythic Suites and Villas on Expedia">Check availability &rarr;</a>
+    <p><strong>Score: 8.4 / 10 &nbsp;&middot;&nbsp; From $500/night</strong></p>
+    <a href="https://expedia.com/affiliate/c9Mfa5v" rel="noopener sponsored" class="hcard__cta" aria-label="Check availability at Mythic Suites and Villas on Expedia">Check availability &rarr;</a>
     <p class="hcard__disclosure">Affiliate link — we earn a small commission if you book, at no extra cost to you.</p>
+  </section>
 
-    <!-- Section 3: Area guide -->
-    <h2 id="area-guide">What Cap Malheureux Is Like</h2>
+  <section class="content-section" id="area-guide">
+    <h2>What Cap Malheureux Is Like</h2>
 
     <p>Cap Malheureux — "Cape of Misfortune" in French, named after the 1810 British naval landing that ended French rule of Mauritius — sits at the northernmost extremity of the island. The village is small: a handful of streets, a church, a few restaurants, and a fishing quay where boats come and go each morning. The coastline here faces north into the open Indian Ocean, and in calm weather the water takes on the particular electric-blue clarity that marks shallow reef lagoons throughout the tropics.</p>
 
@@ -246,9 +290,10 @@
     <p><strong>Notre Dame Auxiliatrice.</strong> The red-roofed church on the foreshore is the most-photographed building in northern Mauritius. Built in 1938, it is still an active parish church. The image of the red dome against the turquoise lagoon and Coin de Mire in the background is the standard opening shot of most north coast travel photography. It is 10 minutes' walk from any Cap Malheureux hotel.</p>
 
     <p><strong>The village scene.</strong> Cap Malheureux has a small collection of casual Creole restaurants and one or two beach bars, but it is not a destination for nightlife or self-guided shopping. For those things, Grand Baie is 15 minutes south and has everything the north coast can offer in terms of dining variety, water sports operators, and evening options. Cap Malheureux is best understood as a retreat from all of that — a quiet place to spend time in well-designed accommodation with views of the sea.</p>
+  </section>
 
-    <!-- Section 4: Comparison table -->
-    <h2 id="vs-grand-baie">Cap Malheureux vs Grand Baie: 7 Key Differences</h2>
+  <section class="content-section" id="vs-grand-baie">
+    <h2>Cap Malheureux vs Grand Baie: 7 Key Differences</h2>
 
     <table class="comparison-table">
       <thead>
@@ -296,9 +341,10 @@
         </tr>
       </tbody>
     </table>
+  </section>
 
-    <!-- Section 5: Who should stay -->
-    <h2 id="who-should-stay">Who Should Stay in Cap Malheureux</h2>
+  <section class="content-section" id="who-should-stay">
+    <h2>Who Should Stay in Cap Malheureux</h2>
 
     <p><strong>Stay in Cap Malheureux if:</strong> An adults-only or adults-preferred environment is important. You want boutique quality — smaller properties, higher staff ratios, more personal service — rather than a large resort complex. The Coin de Mire view and the church-and-lagoon landscape matter to you. You want the north coast's location advantages (proximity to Grand Baie excursions, Balaclava Marine Park, Pamplemousses Gardens) without the Grand Baie noise. Privacy and a quiet beach are the primary requirements.</p>
 
@@ -307,81 +353,66 @@
     <h2>Find Your Best Match</h2>
     <p>Our independent scoring compares every hotel across all four coasts:</p>
     <ul>
-      <li><a href="/best-luxury-hotels-mauritius/">Best luxury hotels in Mauritius</a> — Paradise Cove and Royal Palm compared head-to-head</li>
-      <li><a href="/best-honeymoon-hotels-mauritius/">Best honeymoon hotels in Mauritius</a> — adults-only and couples-focused properties ranked</li>
-      <li><a href="/adults-only-resorts-mauritius/">Adults-only resorts in Mauritius</a> — full guide to every adults-only property on the island</li>
-      <li><a href="/grand-baie-mauritius/">Grand Baie hotels guide</a> — the north coast alternative with more choice and nightlife</li>
-      <li><a href="/where-to-stay-in-mauritius/">Where to stay in Mauritius</a> — full coast-by-coast breakdown</li>
+      <li><a href="/best-luxury-hotels-mauritius/" style="color:#c9a84c">Best luxury hotels in Mauritius</a> — Paradise Cove and Royal Palm compared head-to-head</li>
+      <li><a href="/best-honeymoon-hotels-mauritius/" style="color:#c9a84c">Best honeymoon hotels in Mauritius</a> — adults-only and couples-focused properties ranked</li>
+      <li><a href="/adults-only-resorts-mauritius/" style="color:#c9a84c">Adults-only resorts in Mauritius</a> — full guide to every adults-only property on the island</li>
+      <li><a href="/grand-baie-mauritius/" style="color:#c9a84c">Grand Baie hotels guide</a> — the north coast alternative with more choice and nightlife</li>
+      <li><a href="/where-to-stay-in-mauritius/" style="color:#c9a84c">Where to stay in Mauritius</a> — full coast-by-coast breakdown</li>
     </ul>
+  </section>
 
-    <!-- FAQ -->
-    <h2 id="faq">Frequently Asked Questions</h2>
+  <section class="content-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
 
-    <div class="faq-block">
-
-      <div class="faq-item">
-        <h3>What is Cap Malheureux known for in Mauritius?</h3>
-        <p>Cap Malheureux is the northernmost village in Mauritius, known for the iconic red-domed Notre Dame Auxiliatrice church, views of Coin de Mire island, and the island's highest concentration of adults-only boutique hotels. It is quieter and more private than Grand Baie, with a genuinely local fishing-village character and far fewer tourists than the north coast's busier resort areas.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>What is the best hotel in Cap Malheureux?</h3>
-        <p>Paradise Cove Boutique Hotel scores 9.0/10 in our independent dataset — equal to One&amp;Only Le Saint Géran on the east coast and one of the highest-rated boutique properties on the island. Adults-only, with a private beach cove, full-service spa, and fine dining that sources fish directly from the local fleet. For couples and honeymooners wanting boutique luxury on the north coast, it is the clear first choice.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Is Cap Malheureux good for couples and honeymooners?</h3>
-        <p>Yes — it is arguably the best north coast destination for couples. Two of the four rated hotels are exclusively adults-only (Paradise Cove and Lagoon Attitude) and a third (Sea Diamond) operates adults-preferred. The village has no crowded beach bars or holiday-resort animation — just calm lagoon water, boutique hotels, and the Coin de Mire view. For honeymooners who find Grand Baie too busy, Cap Malheureux is the obvious north coast alternative.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>How does Cap Malheureux compare to Grand Baie?</h3>
-        <p>Grand Baie is the north coast's commercial hub — developed, diverse, and social. Cap Malheureux is 15 minutes north and entirely different: boutique, quiet, and adults-oriented. Grand Baie suits travellers who want variety and nightlife. Cap Malheureux suits those who want seclusion, a private beach, adults-only options, and the Coin de Mire view without the Grand Baie crowd.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>What is there to do near Cap Malheureux?</h3>
-        <p>Coin de Mire island catamaran trips are the main excursion — excellent snorkelling with reef fish and turtles. Grand Baie (15 min south) has shopping, watersports operators, and dining. Balaclava Marine Park (30 min west) is the best diving site on the north coast. Pamplemousses Botanical Garden (30 min south-west) is one of the oldest in the Southern Hemisphere. The Sunday market at Goodlands (20 min east) offers authentic local market experience.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>When is the best time to visit Cap Malheureux?</h3>
-        <p>May to November is the dry season and generally most comfortable — calmer seas, better snorkelling visibility, and settled weather. The north coast faces north-west, giving it calmer conditions than the east coast during July and August trade winds. December to March brings heat, humidity, and cyclone risk; rates typically drop. The Coin de Mire view is clearest in dry-season months.</p>
-      </div>
-
+    <div class="faq-item">
+      <h3>What is Cap Malheureux known for in Mauritius?</h3>
+      <p>Cap Malheureux is the northernmost village in Mauritius, known for the iconic red-domed Notre Dame Auxiliatrice church, views of Coin de Mire island, and the island's highest concentration of adults-only boutique hotels. It is quieter and more private than Grand Baie, with a genuinely local fishing-village character and far fewer tourists than the north coast's busier resort areas.</p>
     </div>
 
-  </div><!-- /.guide-body -->
-</article>
+    <div class="faq-item">
+      <h3>What is the best hotel in Cap Malheureux?</h3>
+      <p>Paradise Cove Boutique Hotel scores 9.0/10 in our independent dataset — equal to One&amp;Only Le Saint Géran on the east coast and one of the highest-rated boutique properties on the island. Adults-only, with a private beach cove, full-service spa, and fine dining that sources fish directly from the local fleet. For couples and honeymooners wanting boutique luxury on the north coast, it is the clear first choice.</p>
+    </div>
 
-<!-- Related guides -->
-<section class="related-guides">
-  <div class="related-inner">
+    <div class="faq-item">
+      <h3>Is Cap Malheureux good for couples and honeymooners?</h3>
+      <p>Yes — it is arguably the best north coast destination for couples. Two of the four rated hotels are exclusively adults-only (Paradise Cove and Lagoon Attitude) and a third (Sea Diamond) operates adults-preferred. The village has no crowded beach bars or holiday-resort animation — just calm lagoon water, boutique hotels, and the Coin de Mire view. For honeymooners who find Grand Baie too busy, Cap Malheureux is the obvious north coast alternative.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How does Cap Malheureux compare to Grand Baie?</h3>
+      <p>Grand Baie is the north coast's commercial hub — developed, diverse, and social. Cap Malheureux is 15 minutes north and entirely different: boutique, quiet, and adults-oriented. Grand Baie suits travellers who want variety and nightlife. Cap Malheureux suits those who want seclusion, a private beach, adults-only options, and the Coin de Mire view without the Grand Baie crowd.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is there to do near Cap Malheureux?</h3>
+      <p>Coin de Mire island catamaran trips are the main excursion — excellent snorkelling with reef fish and turtles. Grand Baie (15 min south) has shopping, watersports operators, and dining. Balaclava Marine Park (30 min west) is the best diving site on the north coast. Pamplemousses Botanical Garden (30 min south-west) is one of the oldest in the Southern Hemisphere. The Sunday market at Goodlands (20 min east) offers authentic local market experience.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>When is the best time to visit Cap Malheureux?</h3>
+      <p>May to November is the dry season and generally most comfortable — calmer seas, better snorkelling visibility, and settled weather. The north coast faces north-west, giving it calmer conditions than the east coast during July and August trade winds. December to March brings heat, humidity, and cyclone risk; rates typically drop. The Coin de Mire view is clearest in dry-season months.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
     <h2>More Mauritius Hotel Guides</h2>
     <div class="related-grid">
-      <a href="/grand-baie-mauritius/" class="related-card">Grand Baie Hotels Guide</a>
-      <a href="/balaclava-mauritius-hotels/" class="related-card">Balaclava Hotels Guide</a>
-      <a href="/adults-only-resorts-mauritius/" class="related-card">Adults-Only Resorts</a>
-      <a href="/best-honeymoon-hotels-mauritius/" class="related-card">Best Honeymoon Hotels</a>
-      <a href="/best-luxury-hotels-mauritius/" class="related-card">Best Luxury Hotels</a>
-      <a href="/where-to-stay-in-mauritius/" class="related-card">Where to Stay in Mauritius</a>
+      <a href="/grand-baie-mauritius/" class="related-card"><span class="related-card__title">Grand Baie Hotels Guide</span></a>
+      <a href="/balaclava-mauritius-hotels/" class="related-card"><span class="related-card__title">Balaclava Hotels Guide</span></a>
+      <a href="/adults-only-resorts-mauritius/" class="related-card"><span class="related-card__title">Adults-Only Resorts</span></a>
+      <a href="/best-honeymoon-hotels-mauritius/" class="related-card"><span class="related-card__title">Best Honeymoon Hotels</span></a>
+      <a href="/best-luxury-hotels-mauritius/" class="related-card"><span class="related-card__title">Best Luxury Hotels</span></a>
+      <a href="/where-to-stay-in-mauritius/" class="related-card"><span class="related-card__title">Where to Stay in Mauritius</span></a>
     </div>
-  </div>
-</section>
+  </section>
 
 </main>
 
-<!-- Footer -->
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <p>© 2026 Mauritius Resort Finder &nbsp;·&nbsp; <a href="/methodology/">Methodology</a> &nbsp;·&nbsp; <a href="/rankings/">All Rankings</a> &nbsp;·&nbsp; <a href="/contact/">Contact</a></p>
-    <p class="footer-disclosure">This page contains affiliate links. We earn a small commission if you book through them, at no extra cost to you. Our scores and editorial opinions are independent.</p>
-  </div>
+<footer>
+  <p>&copy; 2026 Mauritius Resort Finder &nbsp;&middot;&nbsp; <a href="/affiliate-disclosure/">Affiliate Disclosure</a> &nbsp;&middot;&nbsp; <a href="/methodology/">Methodology</a> &nbsp;&middot;&nbsp; <a href="/contact/">Contact</a></p>
+  <p style="margin-top:8px;">Independent hotel reviews. No paid placements. No inflated scores.</p>
 </footer>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
-<script src="/assets/js/analytics.js" defer></script>
 
 </body>
 </html>
