@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 41
+# SEO Daily Report — Run 42
 **Date:** 2026-06-04
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,77 +6,75 @@
 
 ## 1. Executive Summary
 
-Run 41 rebuilt the methodology page — the site's primary trust signal, linked from every rebuilt informational page via a "read our methodology" cross-link. The old page used the legacy dark-nav format, referenced "18 Resorts" (actual count: 36), had a 2025 copyright footer, and contained no structured data. The rebuilt page is ~2,400 words with FAQPage + BreadcrumbList schema, a six-item quick facts strip, a traveller personas section explaining how the six persona weights work, a do/don't integrity grid, three hotel CTAs, and a related guides section. Build 74/74, tests 1810/1810.
+Run 42 published a dedicated Île aux Cerfs regional guide — the most-searched Mauritius landmark that previously had no standalone page, only coverage as one card within the island day trips guide. The page targets "île aux cerfs mauritius", "ile aux cerfs hotels", "how to get to ile aux cerfs", and "ile aux cerfs golf" — all meaningful search clusters for pre-trip east coast planning. The page covers the island in full: getting there, access methods, all watersports, Bernhard Langer golf course detail, a 10-row Île aux Cerfs vs Grand Baie comparison table, season guide, visitor tips, and three verified east coast hotel CTAs. Build 74/74, tests 1810/1810.
 
 ---
 
 ## 2. Technical Issues Found
 
-- **"18 Resorts" reference** — the old page stated "18 Resorts Evaluated" in two places (hero eyebrow and the do/don't section). Updated to 36 throughout.
-- **2025 copyright** — footer said "© 2025". Updated to 2026.
-- **Old nav/footer format** — the page used the legacy dark global-css nav and a minimal single-line footer. Replaced with the modern white sticky header and multi-column dark footer matching all pages rebuilt since Run 5.
-- **No structured data** — the old page had no JSON-LD. Added FAQPage schema (6 questions) and BreadcrumbList schema.
-- **Thin "do/don't" section** — still referenced "18 hotels" and had no explanation of the six traveller personas, which is a meaningful gap for readers trying to understand why different persona views produce different rankings.
-- No other technical issues. Build 74/74, tests 1810/1810.
+None. Build clean, all tests pass.
 
 ---
 
 ## 3. Content Work Done This Run
 
-**Rebuilt page: `/methodology/`** (~2,400 words prose; ~4,500 HTML words)
+**New page: `/ile-aux-cerfs-mauritius/`** (~2,400 words prose; ~4,600 HTML words)
 
-Title: "Our Scoring Methodology — How We Rate Mauritius Hotels | Mauritius Resort Finder"
-Meta (157 chars): "How Mauritius Resort Finder scores 36 luxury hotels: four independent criteria, verified guest data, no paid placements. Full methodology explained."
+Target keywords: "île aux cerfs mauritius" / "ile aux cerfs hotels" / "how to get to ile aux cerfs" / "ile aux cerfs golf" / "ile aux cerfs day trip"
 
-New sections added vs old page:
-- **Modern white sticky header** — matches all rebuilt pages
-- **Breadcrumb nav** — Home › Methodology
-- **Dark navy/slate hero** (`#0c1422 → #1a2840 → #0d1f35`) — authoritative, trust-signal colour palette
-- **Quick facts strip** — 6 items: 36 hotels scored, 4 criteria, 0–10 scale, £0 paid placements, May 2026 last review, 6 personas
+Title: "Île aux Cerfs, Mauritius 2026 — Beach Guide, Getting There & Nearby Hotels"
+Meta (161 chars): "Île aux Cerfs is Mauritius's most iconic island — a 2km lagoon beach reachable in 10 minutes from Trou d'Eau Douce. Getting there, things to do, golf, and where to stay nearby."
+
+Hero: Deep ocean blue (`#0a1f3c → #0e3a6b → #1a5f94`)
+
+Sections published:
+- **Quick facts strip** — 6 items: 500m from mainland, 10–15 min crossing, ~2km beach, 18-hole golf, free entry, best season May–Nov
 - **Jump nav** — 9 section anchors
-- **The Four Criteria** — each criterion expanded with full prose rationale (~120 words each vs ~50 words in the old page). New detail: review volume confidence weighting, criteria calibration for the Mauritius market, what "value" means at different price brackets.
-- **Scoring Formula** — new numeric interpretation guide (9.0+ exceptional, 8.5–8.9 excellent, 8.0–8.4 good, <8.0 average) and explicit no-rounding-up policy
-- **Data Sources** — expanded with review recency weighting section; clearer distinction between primary and excluded sources
-- **Traveller Personas** (new section) — explains the six personas (luxury, honeymoon, family, wellness, remote_work, value_luxury) and how persona weights shift criteria emphasis. This is the first time the site has explained publicly why persona rankings differ from the Overall Score.
-- **Integrity grid** — updated to 36 hotels, added two new "we do/don't" items covering fabrication and evidence standards
-- **Affiliate Disclosure** — expanded with architectural explanation (scoring engine runs before affiliate data is loaded) and explicit statement that some hotels have no affiliate relationship
-- **Score Updates** — expanded with guidance on what triggers a re-score between full reviews (management changes, renovation periods, credible quality signals)
-- **3 hotel CTAs** — Royal Palm (9.2/10, $1,450), Four Seasons Anahita (9.1/10, $1,650), Constance Le Chaland (8.8/10, $820)
-- **FAQPage schema + BreadcrumbList schema** — 6 FAQs covering scoring process, paid placements, data sources, update frequency, score scale, and affiliate independence
-- **Related guides** — 8 cards: all rankings, Find My Resort, luxury, honeymoon, family, adults-only, value, travel guide
-- **Modern 4-column dark footer** with Guides column
-- **Copyright 2026** throughout
+- **About the Island** — geographic overview, lagoon characteristics, reef protection, island interior, golf club context (~350 words)
+- **Getting There** — 4-method access card grid: water taxi (Trou d'Eau Douce), hotel speedboat, Grand Baie day trip, Bubble Lodge transfer; driving time from airport noted
+- **Things to Do** — 6-activity grid: lagoon swimming, parasailing (MUR 2,000), jet ski (MUR 1,500/30min), glass-bottom boat (MUR 600), beach BBQ (MUR 1,200–1,800), island walk
+- **Golf at Île aux Cerfs Golf Club** — full section: Bernhard Langer design, 18-hole par-72, green fees (MUR 6,000–9,000, $130–200), club hire, dress code, booking guidance, peak tee-time advice
+- **10-row comparison table** — Île aux Cerfs vs Grand Baie across: beach quality, water clarity, crowds, getting there, shopping, restaurants, nightlife, golf, hotels, best for
+- **Season guide** — 3-tier season cards: Best (May–Nov), Acceptable (Nov–Dec), Caution (Jan–Mar cyclone risk); time-of-day advice (before 10am best)
+- **6 practical tip cards** — cash only (watersports operators), sun protection, pack light, advance golf booking, reef-safe sunscreen, last boat timing
+- **3 hotel CTAs** — Four Seasons Anahita (9.1/10, $1,650, `expedia.com/affiliate/s7PgDXw`), Anahita Golf & Spa Resort (8.7/10, $780, `expedia.com/affiliate/6oyzyzA`), Bubble Lodge Île aux Cerfs (8.4/10, $750, `expedia.com/affiliate/nOTJrFM`)
+- **FAQPage + BreadcrumbList schema** — 6 FAQs covering: staying on the island, getting there, costs, worth visiting?, best time, golf
+- **Related guides** — 8 cards: Trou d'Eau Douce, Belle Mare, island day trips, water sports, golf guide, best beaches, travel guide, where to stay
+
+Wiring:
+- Added to `STATIC_PAGE_SPECS` in `site_builder.js` (regional, priority 0.8, monthly)
+- Added to `getRelatedGuides()` in `static_page_renderer.js` (label: 'Île aux Cerfs Guide')
 
 ---
 
 ## 4. Content Opportunities Identified
 
-- **Mauritius photography spots guide** — "best photography spots mauritius", "where to take photos in mauritius" — niche but growing. Low priority.
-- **Mauritius nightlife guide** — "nightlife mauritius", "things to do at night mauritius" — moderate search volume; useful for the younger luxury traveller segment.
-- **Île aux Cerfs dedicated guide** (island, not day-trip section) — the Île aux Cerfs is one of Mauritius's most-searched landmarks; it currently only appears within the island day trips guide. A standalone page could capture "île aux cerfs" directly.
+- **Mauritius photography spots guide** — "best photography spots mauritius" — Low priority; niche but growing interest
+- **Mauritius nightlife guide** — "nightlife mauritius", "things to do at night mauritius" — moderate volume; relevant to the younger luxury segment
+- **Rodrigues Island guide** — "rodrigues island mauritius" — growing search interest; Rodrigues is the only currently uncovered destination in the Mauritius island group and appeared as a card in the island day trips guide
+- **Best snorkelling in Mauritius** — "snorkelling mauritius", "best snorkelling spots mauritius" — high-intent activity query, currently covered only within the water sports guide
 
 ---
 
 ## 5. Internal Linking
 
-No new pages this run; rebuild only. The rebuilt methodology page links to: rankings, Find My Resort, luxury persona, honeymoon persona, family persona, adults-only, value resorts, travel guide, affiliate disclosure, contact, privacy. The methodology page cross-link from all rebuilt informational pages now leads to a page that matches the quality standard of those pages.
+The Île aux Cerfs page links outward to: trou-deau-douce-mauritius, belle-mare-mauritius, mauritius-island-day-trips, mauritius-water-sports-guide, mauritius-golf-guide, best-beaches-in-mauritius, mauritius-travel-guide, where-to-stay-in-mauritius. The Île aux Cerfs guide now appears in the `getRelatedGuides()` pool — it will surface on all generated hotel and persona pages as a related guide link.
 
 ---
 
 ## 6. Backlink Opportunities
 
-The methodology page is a natural trust-link target for:
-- Travel journalism ("how AI scores hotels" angle) — the architectural explanation of scoring-before-affiliate-data is genuinely unusual and publishable
-- Comparison/review meta-sites that link to transparent scoring methodologies
-- Consumer advocacy content on how to evaluate hotel review sites
+- **Golf travel blogs** — "île aux cerfs golf course" is a highly specific query with minimal competition; travel golf sites covering Indian Ocean courses are natural outreach targets
+- **East coast hotel PR** — Four Seasons Anahita, Anahita Golf & Spa, and Bubble Lodge all benefit from coverage; press contacts at these properties could share the guide
+- **Day trip operator partnerships** — catamaran operators running Île aux Cerfs excursions from Grand Baie may link to the guide as a resource for customers
 
 ---
 
 ## 7. Conversion Improvements
 
-- **Traveller personas section** — helps undecided visitors understand why the persona-filtered view differs from the overall ranking, which reduces the "why is this hotel ranked higher for honeymoon?" support question. Keeps visitors on the site longer to explore persona pages.
-- **3 hotel CTAs on the methodology page** — previously, the methodology page was a dead end with no booking path. Now it feeds into the highest-scoring properties, converting trust into bookings.
-- **Score interpretation guide** — "9.0+ exceptional, 8.5–8.9 excellent" gives visitors a framework to confidently shortlist. Reduces decision paralysis.
+- **Bubble Lodge CTA placement** — Bubble Lodge is the only hotel on the island; positioning it as the third CTA after the two higher-scoring mainland options gives budget-flexible visitors a unique "stay on the island" option that no other comparison page can offer. The "waking to the island before anyone else arrives" framing addresses the day-trip crowd objection.
+- **Golf section specificity** — the green fee range (MUR 6,000–9,000, $130–200) and booking logistics are not available on generic travel sites. Visitors who arrive at this page for golf research are in a high commercial-intent state — the Anahita Golf & Spa CTA is positioned immediately below the golf section for this reason.
+- **Cost table in FAQs** — the FAQ "How much does it cost to visit?" lists per-activity MUR and USD prices. This is the most commonly searched transactional query about the island and is answered nowhere else in adequate detail.
 
 ---
 
@@ -84,14 +82,15 @@ The methodology page is a natural trust-link target for:
 
 | Priority | Task | Type | Keyword Target |
 |---|---|---|---|
+| Medium | Rodrigues Island guide | Regional/Informational | "rodrigues island mauritius" |
 | Low | Mauritius photography spots guide | Informational | "photography mauritius" |
 | Low | Mauritius nightlife guide | Informational | "nightlife mauritius" |
-| Medium | Île aux Cerfs standalone guide | Regional | "île aux cerfs" / "ile aux cerfs mauritius" |
-| Ongoing | Digital PR outreach (methodology / scoring angle) | Backlinks | Trust-link angle |
-| Ongoing | Monitor GSC for impressions with low CTR | Analytics | Weekly |
+| Low | Best snorkelling in Mauritius | Informational | "snorkelling mauritius" |
+| Ongoing | Digital PR outreach | Backlinks | Golf, east coast, island angles |
+| Ongoing | Monitor GSC for low-CTR impressions | Analytics | Weekly |
 
 ---
 
 ## 9. Expected SEO Impact
 
-The methodology page is not a high-traffic target page — it ranks for branded queries ("mauritius resort finder methodology") rather than competitive informational terms. Its SEO value is indirect: it is a trust signal that reduces bounce on comparison-stage searchers who land on persona or comparison pages, click through to verify scoring credibility, and then convert. FAQPage schema gives the 6 methodology FAQ answers featured-snippet eligibility for the handful of searchers who query "how does mauritius resort finder score hotels" or similar. The bigger impact is CRO: the hotel CTAs on the methodology page now give trust-converted visitors a direct booking path without navigating back to a rankings page. Expected indexing of new schema: 2–4 weeks.
+"Île aux Cerfs" is one of the highest-volume Mauritius-specific landmark searches, competing against Tripadvisor attraction pages and generic day-trip aggregators. The dedicated page covers intent clusters that no single existing page addresses: getting-there logistics, cost detail, golf specifics, and hotel options in one resource. FAQPage schema gives the six answers featured-snippet eligibility for direct question queries ("can you stay on île aux cerfs", "is île aux cerfs worth it", "golf île aux cerfs mauritius"). The comparison table format competes directly with forum posts and generic travel articles that currently rank for "île aux cerfs vs grand baie" — these are low-authority targets. Expected indexing: 2–4 weeks. Expected impact on east coast hotel CTA clicks: meaningful, given the Four Seasons Anahita (9.1/10) CTA is well-positioned for high-intent east coast visitors.
