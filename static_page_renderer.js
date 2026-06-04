@@ -440,6 +440,7 @@ function getRelatedGuides(persona) {
     { label: 'Water Sports Guide',                     slug: 'mauritius-water-sports-guide',            persona: null           },
     { label: 'Car Hire & Getting Around',              slug: 'mauritius-car-hire-guide',                persona: null           },
     { label: 'Golf Guide',                             slug: 'mauritius-golf-guide',                    persona: null           },
+    { label: 'Island Day Trips',                       slug: 'mauritius-island-day-trips',              persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }

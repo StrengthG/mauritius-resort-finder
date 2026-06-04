@@ -551,6 +551,7 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'mauritius-water-sports-guide',       page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'mauritius-car-hire-guide',           page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'mauritius-golf-guide',               page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'mauritius-island-day-trips',         page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'contact',                            page_type: 'other',          priority: '0.5', changefreq: 'yearly'  },
   { slug: 'rankings',                            page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
   { slug: 'methodology',                         page_type: 'informational', priority: '0.5', changefreq: 'monthly' },
