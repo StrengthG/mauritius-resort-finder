@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 39
+# SEO Daily Report — Run 40
 **Date:** 2026-06-04
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,79 +6,74 @@
 
 ## 1. Executive Summary
 
-Run 39 rebuilt `/best-resort-mauritius/` — the "Find My Resort" pillar page and the site's primary nav CTA. The old page had six persona cards with brief copy, a dark global-css layout, no structured data, an outdated "18 Resorts" count (now 36), a 2025 copyright year, and a reference to Shangri-La Le Touessrok which is not in the verified hotel dataset. The rebuilt page is the modern 2,000+ word standard with FAQPage schema, BreadcrumbList schema, an 8-row resort×traveller-type matrix table, an expanded 5-step "How to Choose" guide, and three hotel CTAs. Build 74/74, tests 1810/1810.
+Run 40 published the Mauritius currency & money guide — a high-priority informational gap identified in Runs 38 and 39. The page covers the Mauritian Rupee, six methods for obtaining local currency ranked by cost-efficiency (ATM best, hotel exchange worst), card acceptance realities, a 10-row price comparison table, an 8-row tipping guide, three budget-tier cost breakdowns, six practical money tips, and three hotel CTAs. Build 74/74, tests 1810/1810.
 
 ---
 
 ## 2. Technical Issues Found
 
-- **`best-resort-mauritius.html` contained a fabricated hotel reference** — "Shangri-La Le Touessrok" appeared as the top spa/wellness pick with a score chip of 8.9, but this property is not in the verified hotel dataset (`data/hotels.json`). Removed and replaced with Shanti Maurice Resort & Spa (8.8/10, verified, Chemin Grenier), which IS in the dataset.
-- **Outdated resort count** — page said "18 Resorts Evaluated" in the hero eyebrow and a CTA block. Updated to 36.
-- **2025 copyright** — updated to 2026 in the footer.
-- **Old dark-nav layout** — replaced with modern light header matching all pages published since Run 5.
-- No other issues. Build 74/74, tests 1810/1810.
+None. Build clean, all tests pass.
 
 ---
 
 ## 3. Content Work Done This Run
 
-**Rebuilt page: `/best-resort-mauritius/`** (~2,200 words prose; ~4,000 HTML words)
+**New page: `/mauritius-currency-money-guide/`** (~2,300 words prose; ~4,200 HTML words)
 
-Target keywords: "best resort mauritius" / "which mauritius resort is right for me" / "find my mauritius resort" / "best resort mauritius for honeymoon" / "best resort mauritius for families"
+Target keywords: "mauritius currency" / "how much money mauritius" / "mauritius budget tips" / "mauritius rupee" / "cash or card mauritius"
 
-Title: "Which Mauritius Resort Is Right for You? — Find Your Perfect Match 2026"
-Meta (157 chars): "Not every Mauritius resort suits every traveller. Match your travel style to the right resort: honeymoon, family, adults-only, value, water sports, or wellness. 36 resorts evaluated."
+Title: "Mauritius Currency & Money Guide 2026 — ATMs, Budgets & Tipping Tips"
+Meta: "Mauritius uses the Mauritian Rupee (MUR). Get local cash from ATMs on arrival — best rates. Covers tipping, typical costs, card acceptance, and budget planning for 2026."
 
-New sections added vs old page:
-- **Modern header** — light white nav; "View Rankings" CTA button
-- **Hero** — deep purple/navy gradient; updated eyebrow (36 resorts, 6 profiles); updated subtitle
-- **Quick facts strip** — 6 facts: highest score, adults-only count, top family pick, cheapest 5-star, coasts covered, total scored
-- **Jump nav** — 10 section anchors incl. individual persona sections
-- **6 persona cards** — significantly expanded with richer prose rationale for winner and runners-up:
-  - Honeymooners → Royal Palm (9.2)
-  - Families → Four Seasons Anahita (9.1)
-  - Adults-only → Paradise Cove (9.0)
-  - Value seekers → Constance Le Chaland (8.8)
-  - Water sports → One&Only Le Saint Géran (9.0)
-  - Wellness → Shanti Maurice Resort & Spa (8.8) ← replaced fabricated Shangri-La reference
-- **5-step "How to Choose" guide** (~650 words) — fix region first, binary adults/family decision, real vs stated budget, calendar check, how to read reviews
-- **4-column quick comparison grid** — privacy, family, ocean/sports, value
-- **8-row resort × traveller-type matrix table** — 8 resorts × 7 attributes (honeymoon, family, adults-only, value, diving, score, from-price)
-- **3 hotel CTAs** — Royal Palm (9.2, $1,450), Four Seasons Anahita (9.1, $1,650), Constance Le Chaland (8.8, $820)
+Sections published:
+- **Green/emerald hero** (`#052e16 → #14532d → #065f46`) — currency-appropriate colour palette
+- **Quick facts strip** — 6 items: currency name, ISO code, approx USD rate, ATM availability, card acceptance, tipping norm
+- **Jump nav** — 9 section anchors
+- **The Mauritian Rupee** — background, denominations, coins vs notes
+- **6-method card grid** — ATM (Best), Bank exchange (Good), Travel money card (Good), Hotel exchange (Avoid), Airport bureau (Avoid), Foreign cash (Limited use); each rated with colour-coded badge
+- **Card acceptance & cash reality** — prose covering which venues are card-friendly, why cash is essential for local restaurants/markets/taxis, and dynamic currency conversion warning
+- **10-row typical cost table** — street food MUR 60–120 through scuba diving MUR 2,500+; USD equivalents included
+- **8-row tipping guide** — restaurants, hotel staff, taxi, tour guides, spa, drivers, room service, optional contexts
+- **3-tier budget breakdown cards** — Budget ($150–250/day), Mid-range ($400–700/day), Luxury ($1,200–3,500/day); each with 4 example line items
+- **6 practical money tip cards** — notify your bank, withdraw on arrival, small notes for taxis, duty-free MRU limit, no Uber so budget for taxis, keep receipts for reconversion
+- **3 hotel CTAs** — Lagoon Attitude (8.7/10, $520, `expedia.com/affiliate/4toq7Ie`), Lux* Grand Gaube (8.7/10, $680, `expedia.com/affiliate/usEpyj6`), Constance Le Chaland (8.8/10, $820, `expedia.com/affiliate/a1VWvT2`)
 - **FAQPage schema + BreadcrumbList schema**
-- **6 FAQs** — best overall, best honeymoon, best family, best adults-only, east vs west coast, when to book
-- **Related guides** — 8 cards: rankings, adults-only, value, honeymoon guide, family guide, wellness, where-to-stay, methodology
+- **6 FAQs** — official currency, best way to get cash, credit cards accepted, tipping etiquette, how much money needed, airport exchange or ATM
+- **Related guides** — travel guide, budget travel guide, visa & entry, car hire, best time to visit, best value resorts, island day trips, packing list
+
+Wiring:
+- Added to `STATIC_PAGE_SPECS` in `site_builder.js` (priority 0.8, monthly)
+- Added to `getRelatedGuides()` in `static_page_renderer.js` (label: 'Currency & Money Guide')
 
 ---
 
 ## 4. Content Opportunities Identified
 
-- **Mauritius currency & money guide** — "mauritius currency", "how much money mauritius holiday", "mauritius budget tips" — a practical planning gap. High-intent for pre-trip planners.
-- **Mauritius photography guide** — "best photography spots mauritius" — lower priority, niche but growing.
-- **Methodology page** — currently thin (~1,500 words HTML) and old-format. The "read our methodology" link appears on multiple pages. Rebuilding it to modern standard would improve trust signals.
+- **Mauritius photography spots guide** — "best photography spots mauritius" — niche but growing. Lower priority.
+- **Rebuild methodology page** — currently thin and old-format. Cross-linked from rebuilt pages ("read our methodology"). Rebuilding improves trust signals for comparison-stage searchers.
 
 ---
 
 ## 5. Internal Linking
 
-No new pages this run; rebuild only. The rebuilt page now links to: rankings, adults-only, value resorts, honeymoon guide, family holiday guide, wellness retreat guide, where-to-stay, methodology. The methodology page cross-link (new) is important for trust — searchers comparing sources often click "how did you score this."
+The currency guide links outward to: mauritius-travel-guide, mauritius-budget-travel-guide, mauritius-visa-entry-guide, mauritius-car-hire-guide, best-time-to-visit-mauritius, best-value-resorts-mauritius, mauritius-island-day-trips, mauritius-packing-list.
+
+The currency guide now appears in the `getRelatedGuides()` pool, so it will surface as a related guide link on all dynamically generated pages (persona, hotel, region, comparison pages).
 
 ---
 
 ## 6. Backlink Opportunities
 
-No new outreach this run. The "Find My Resort" page is a natural target for:
-- Honeymoon planning blogs — "which mauritius resort for honeymoon" decision content
-- Family travel sites — family resort comparison angle
-- Travel deal sites — value resort angle (Lagoon Attitude, Constance Le Chaland)
+- **Budget travel blogs** — "mauritius on a budget" content naturally references currency and money guides
+- **Honeymoon planning sites** — cost planning is a top pre-trip query; currency guide is a natural link target
+- **Expat / digital nomad communities** — "how much does it cost to live in Mauritius" adjacent content
 
 ---
 
 ## 7. Conversion Improvements
 
-- **Matrix table** — the 8-row attribute grid gives undecided travellers a concrete comparison tool without reading all 6 persona sections. Reduces bounce by providing quick answers.
-- **Fabricated hotel removed** — Shangri-La Le Touessrok was not in the dataset. Its presence undermined site credibility; now replaced with a verified property.
-- **"View Rankings" header CTA** — old page linked to itself in the nav CTA. New page links the nav CTA to `/rankings/` which is the correct destination for undecided visitors.
+- **Budget tier cards** are segmented by traveller type, nudging readers toward the hotel CTA that matches their budget tier. The budget tier card sits directly above the hotel CTAs.
+- **ATM-best framing** reduces anxiety around cash access, which is a common pre-trip concern — reduces the "maybe I shouldn't go" friction for budget-conscious travellers.
 
 ---
 
@@ -86,14 +81,13 @@ No new outreach this run. The "Find My Resort" page is a natural target for:
 
 | Priority | Task | Type | Keyword Target |
 |---|---|---|---|
-| High | Mauritius currency & money guide | Informational | "mauritius currency" / "mauritius budget" |
 | Medium | Rebuild methodology page to modern standard | Technical/Trust | — |
 | Low | Mauritius photography spots guide | Informational | "photography mauritius" |
-| Ongoing | Digital PR outreach (honeymoon, family angles) | Backlinks | Multiple |
+| Ongoing | Digital PR outreach (honeymoon, family, budget angles) | Backlinks | Multiple |
 | Ongoing | Monitor GSC for impressions with low CTR | Analytics | Weekly |
 
 ---
 
 ## 9. Expected SEO Impact
 
-The "Find My Resort" page is the site's highest-funnel landing page — it's linked from every generated page's nav CTA and from multiple static pages. The old page had no structured data, which meant no rich snippet eligibility. The rebuilt page with FAQPage schema can now rank for featured snippets on the six FAQ questions, several of which ("best resort mauritius for honeymoon", "best resort mauritius for families") have meaningful search volume. The comparison matrix table provides a unique, scannable format that should improve dwell time and reduce bounce versus the old card-only layout. Expected indexing of new schema: 2–4 weeks.
+"Mauritius currency" is a pre-trip planning query with consistent search volume year-round — it peaks in the 6–8 weeks before peak travel season (November–April). The page targets three keyword clusters: currency basics ("mauritius rupee", "mauritius currency"), practical logistics ("cash or card mauritius", "ATM mauritius"), and budget planning ("how much money mauritius", "mauritius budget tips"). FAQPage schema gives the 6 FAQ answers featured-snippet eligibility. The cost table provides a scannable comparison format that competes directly with generic travel forum posts that currently rank for these queries. Expected indexing: 2–4 weeks.
