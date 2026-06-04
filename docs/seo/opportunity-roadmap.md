@@ -79,8 +79,8 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Mauritius golf guide~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-05-27 (Run 36, ~2,300 words, 6 courses, season grid, 9-row fees table, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
 | ~~Homepage golf guide card~~ | ~~Internal linking~~ | ~~Low~~ | ✅ Done Run 36 (golf card on homepage planning guides grid) |
 | ~~Mauritius island day trips guide~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-06-04 (Run 37, ~2,300 words, 6 excursions, decision table, 8-row cost table, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
-| Rebuild `best-value-resorts-mauritius.html` to modern standard | Content | High | "best value resorts mauritius" — old format, no schema |
-| Rebuild `best-resort-mauritius.html` to modern standard | Content | Medium | "best resort mauritius" — pillar page, needs depth |
+| ~~Rebuild `best-value-resorts-mauritius.html` to modern standard~~ | ~~Content~~ | ~~High~~ | ✅ Done 2026-06-04 (Run 38, ~2,300 words, FAQPage + BreadcrumbList schema, score grids, region analysis, comparison table) |
+| Rebuild `best-resort-mauritius.html` to modern standard | Content | High | "best resort mauritius" — pillar page, old format, no schema |
 | Mauritius currency &amp; money guide | Informational | Medium | "mauritius currency" / "mauritius money tips" |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |

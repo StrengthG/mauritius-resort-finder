@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 37
+# SEO Daily Report — Run 38
 **Date:** 2026-06-04
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,81 +6,73 @@
 
 ## 1. Executive Summary
 
-Run 37 published the Mauritius Island Day Trips guide (~2,300 words) and wired it into the sitemap and all 74 generated pages. The page targets "day trips mauritius", "ile aux cerfs day trip", "island hopping mauritius", and "coin de mire snorkelling" — a high-traffic content gap with strong conversion potential (three hotel CTAs covering the island's best day-trip bases). Build 74/74, tests 1810/1810, zero errors. The site now has 42 static/informational pages.
+Run 38 rebuilt `/best-value-resorts-mauritius/` from its old thin format (~500 words prose, no structured data) to the current 2,000+ word modern standard. The page now has FAQPage schema, BreadcrumbList schema, a modern light-theme layout, expanded hotel cards with score grids, a value-by-region editorial section, full comparison table, and 6 FAQs. Build 74/74, tests 1810/1810. The page targets "best value resorts mauritius" / "value for money hotels mauritius" — high commercial-intent keywords at the bottom of the booking funnel.
 
 ---
 
 ## 2. Technical Issues Found
 
-None. Build clean. Tests all passing.
+- **`best-value-resorts-mauritius.html` was thin and unstructured** — confirmed and fixed this run. The old page had five brief hotel cards (~90 words each) with no FAQPage schema, no BreadcrumbList, no prose depth, and an old dark-nav layout rather than the modern format used on all pages published since Run 5.
+- No other issues. Build 74/74, tests 1810/1810.
 
 ---
 
 ## 3. Content Work Done This Run
 
-**New page: `/mauritius-island-day-trips/`** (~2,300 words)
+**Rebuilt page: `/best-value-resorts-mauritius/`** (~2,300 words prose; 4,700 HTML words)
 
-Target keywords: "day trips mauritius" / "île aux cerfs day trip" / "island day trips mauritius" / "coin de mire snorkelling" / "dolphins mauritius day trip" / "blue bay marine park snorkelling"
+Target keywords: "best value resorts mauritius" / "value for money hotels mauritius" / "cheap luxury hotels mauritius" / "affordable luxury mauritius"
 
-Title: "Island Day Trips from Mauritius 2026 — Île aux Cerfs, Coin de Mire & Beyond"
-Meta (155 chars): "Best island day trips from Mauritius: Île aux Cerfs lagoon island, Coin de Mire snorkelling, Île aux Bénitiers dolphins, Blue Bay Marine Park. Prices, logistics and hotel picks."
+Title: "Best Value Luxury Resorts in Mauritius 2026 — Independent Value Rankings"
+Meta (158 chars): "The best value luxury resorts in Mauritius ranked by amenity score vs price. Independent data. Lagoon Attitude, Constance Le Chaland, Lux* Grand Gaube — no paid placements."
 
-Page sections:
-- **Quick facts strip** — 5+ islands, 10-min boat to Île aux Cerfs, year-round dolphins, Blue Bay best snorkelling, May–Oct calmest seas, Rodrigues 570km
-- **Jump nav** — 11 section anchors
-- **Why island excursions matter** — geography, lagoon system context, planning overview
-- **6 island/excursion cards** — each with numbered badge, location/departure/timing metadata, coast/type/crowd/boat badges, and prose:
-  1. Île aux Cerfs — full treatment with private vs group boat decision
-  2. Coin de Mire — north coast reef snorkelling
-  3. Île aux Bénitiers — spinner dolphins, west coast
-  4. Flat Island + Gabriel Island — full sailing day
-  5. Blue Bay Marine Park — best snorkelling, no boat needed
-  6. Rodrigues Island — longer trip framing
-- **Decision table** — 7 rows: "If you want X, choose Y, notes"
-- **6 practical tip cards** — early departure, wind direction, sunscreen, cash, own snorkel gear, wildlife ethics
-- **8-row cost comparison table** — private speedboat vs group catamaran pricing across all excursions
-- **3 hotel CTAs**:
-  - Four Seasons Anahita (9.1/10, $1,650) — best east-coast base, private water taxi to Île aux Cerfs
-  - Bubble Lodge Île aux Cerfs (8.4/10, $750) — literally on the island, unique proposition
-  - Constance Le Chaland Iko Mauritius (8.8/10, $820) — Blue Bay Marine Park at doorstep
-- **6 FAQs** with FAQPage schema + BreadcrumbList schema
-
-**Wiring:** Added to `STATIC_PAGE_SPECS` (sitemap, priority 0.8, changefreq monthly). Added to `getRelatedGuides()` — now linked from all 74 generated pages. Related section on the page links back to: travel guide, water sports, things to do, best beaches, Trou d'Eau Douce guide, east vs west coast, best time to visit, best luxury hotels.
+New sections added vs old page:
+- **Modern header** — light white nav (old page used dark global.css nav)
+- **Hero** — navy/gold gradient, updated eyebrow, subtitle, word-count metadata
+- **Quick facts strip** — 6 facts: #1 value score, from-price, score range, zero paid placements, 4 coasts covered, 36 resorts evaluated
+- **Jump nav** — 7 section anchors
+- **Methodology section** (~400 words) — explains what value means, how the score is composed, editorial independence statement
+- **Expanded hotel cards** — each card now has: score grid (location/amenities/overall/value), 200–250 words of detailed prose rationale (vs old ~90 words), badges (score/value/region/type)
+- **Value by region** — north coast vs south-east vs east coast vs west coast analysis (~350 words)
+- **Full comparison table** — 5 hotels across overall score, value score, from-price, key advantage
+- **6 practical tips cards** — shoulder season booking, all-in cost comparison, north-coast first, all-inclusive evaluation, score methodology, boutique vs chain
+- **3 hotel CTAs** (Lagoon Attitude 8.7/10, Constance Le Chaland 8.8/10, Lux* Grand Gaube 8.7/10) — with disclosure
+- **6 FAQs** — what is best value, how is value defined, sub-$500 options, couples picks, all-inclusive comparison, cheapest season
+- **FAQPage schema + BreadcrumbList schema**
+- **Related guides section** — 8 cards linking to rankings, adults-only, boutique, all-inclusive, where-to-stay, travel guide, best-time, methodology
 
 ---
 
 ## 4. Content Opportunities Identified
 
-- **`best-value-resorts-mauritius.html`** — confirmed thin (old format, ~500 words prose, no FAQPage schema, no BreadcrumbList, no comparison table). Rebuild to 2,000+ word modern standard is high-priority next run.
-- **`best-resort-mauritius.html`** ("Which resort is right for you") — also old format, thin prose, no structured data. Rebuilding this page would improve the main "Find My Resort" pillar page.
-- **Mauritius currency & money guide** — "mauritius currency", "how much money mauritius holiday" — a practical planning gap not yet covered.
+- **`best-resort-mauritius.html`** — the "Find My Resort" pillar page is still the old format (thin prose, dark nav, no schema). This should be the next rebuild. It is linked prominently from the nav ("Find My Resort") and is the site's highest-traffic entry point for undecided travellers.
+- **Mauritius currency & money guide** — "mauritius currency", "mauritius money tips", "how much to budget mauritius" — a practical planning gap not yet covered.
+- **Mauritius photography guide** — lower priority; "best photography spots mauritius" is a growing niche with decent search volume.
 
 ---
 
 ## 5. Internal Linking
 
-Island day trips guide added to `getRelatedGuides()` — linked from all 74 generated pages. The guide's related section links to: travel guide, water sports, things to do, best beaches, Trou d'Eau Douce guide, east vs west coast, best time to visit, best luxury hotels. The Trou d'Eau Douce regional guide cross-references Île aux Cerfs naturally.
+No new pages added; rebuild only. The rebuilt page's related guides section links to: rankings, adults-only, boutique hotels, all-inclusive, where-to-stay, travel guide, best-time, methodology. The methodology page cross-link is new and adds a useful trust signal — readers can verify the scoring approach directly.
 
 ---
 
 ## 6. Backlink Opportunities
 
-No new outreach work this run. Day-trip content angle for outreach:
-- Travel blogs covering Indian Ocean destinations — "complete guide to Île aux Cerfs" data hook
-- Family travel publications — dolphin watching + Île aux Bénitiers angle (family-friendly excursion)
-- Scuba/snorkelling specialist sites — Blue Bay Marine Park coral data angle
-- Standing targets: Condé Nast Traveller (hotel ranking data), The Points Guy (comparison pages)
+No new outreach work this run. Value-content specific angles:
+- Personal finance travel blogs — "how to do luxury Mauritius for under $700/night" data angle
+- Points/miles travel sites (The Points Guy, One Mile at a Time) — award redemption value comparison
+- Standing targets: Condé Nast Traveller (hotel ranking data), digital PR
 
 ---
 
 ## 7. Conversion Improvements
 
-Three hotel CTAs serve different conversion segments:
-- Four Seasons Anahita ($1,650) — high-value luxury booker wanting premium east-coast access
-- Bubble Lodge ($750) — unique-experience seeker willing to pay for novelty
-- Constance Le Chaland ($820) — value-conscious luxury buyer wanting marine park access
-
-The Blue Bay framing for Le Chaland is the strongest commercial angle on the page — "snorkel from your hotel beach into Mauritius's best marine park" is a concrete, verifiable, differentiated proposition.
+The rebuilt page improves conversion through:
+- **Clearer value framing** — the methodology section removes doubt about whether the value ranking is independent (a common objection on travel sites)
+- **Score grids on each card** — travellers can evaluate location vs amenity vs value trade-offs without reading all prose
+- **3 streamlined hotel CTAs** at page end — vs the old page's 5 inline CTAs scattered through the content
+- **Shoulder-season tip** in the tips cards — directly actionable for value-seekers, reduces barrier to booking
 
 ---
 
@@ -88,14 +80,14 @@ The Blue Bay framing for Le Chaland is the strongest commercial angle on the pag
 
 | Priority | Task | Type | Keyword Target |
 |---|---|---|---|
-| High | Rebuild `best-value-resorts-mauritius.html` to modern standard | Content | "best value resorts mauritius" |
-| Medium | Rebuild `best-resort-mauritius.html` (old format, thin) | Content | "best resort mauritius" |
-| Medium | Mauritius currency & money guide | Informational | "mauritius currency" / "mauritius money" |
-| Ongoing | Digital PR outreach (Golf Monthly, Condé Nast, TPG, family travel) | Backlinks | Multiple angles |
+| High | Rebuild `best-resort-mauritius.html` to modern standard | Content | "best resort mauritius" / "find my resort mauritius" |
+| Medium | Mauritius currency & money guide | Informational | "mauritius currency" / "mauritius budget tips" |
+| Low | Mauritius photography spots guide | Informational | "photography spots mauritius" |
+| Ongoing | Digital PR outreach (value angle: personal finance, points blogs) | Backlinks | "under $700/night luxury mauritius" |
 | Ongoing | Monitor GSC for impressions with low CTR | Analytics | Weekly check |
 
 ---
 
 ## 9. Expected SEO Impact
 
-"Île aux Cerfs day trip" is one of the most commonly searched Mauritius activity queries — estimated 1,500–3,000 monthly searches globally, with strong commercial intent (people planning trips are actively choosing excursions and hotels). The page's unique angle is the decision framework: rather than a generic "here are the islands" listicle, it gives travellers a clear which-trip-for-which-traveller table and honest cost data. The Bubble Lodge CTA ($750/night, literally on Île aux Cerfs) is the highest-novelty conversion on the page. Expected ranking: position 15–30 within 60 days, top 10 within 4 months for "île aux cerfs day trip" and related variants.
+"Best value resorts mauritius" and related queries sit at the bottom of the booking funnel — travellers searching these terms are comparing options before committing. The rebuilt page now answers the primary objections (what does value mean? is this independent?) with substantive editorial content rather than a bare hotel list. The value-by-region section targets long-tail queries like "best value north coast mauritius" and "blue bay mauritius value." FAQPage schema targets featured snippet capture on the six FAQ questions. Expected ranking improvement: current position unknown (GSC data unavailable), but the move from thin content to 2,000+ word editorial with structured data should unlock indexing and ranking within 30–60 days.
