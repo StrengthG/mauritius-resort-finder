@@ -1,77 +1,86 @@
-# SEO Daily Report — Run 36
-**Date:** 2026-05-27
+# SEO Daily Report — Run 37
+**Date:** 2026-06-04
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
 ---
 
 ## 1. Executive Summary
 
-Run 36 confirmed zero technical issues (74/74 build, 1810/1810 tests), published the Mauritius Golf Guide (~2,300 words), and added the car hire guide card to the homepage planning guides grid (the Run 35 page had been published but was not yet surfaced on the homepage). The golf guide targets "golf mauritius", "golf courses mauritius", and "golf resorts mauritius" — a high-commercial-intent niche with strong affiliate CTA opportunities (three of the five hotels with on-site golf score 8.4–9.1/10). The site now has 41 static/informational pages in the sitemap.
+Run 37 published the Mauritius Island Day Trips guide (~2,300 words) and wired it into the sitemap and all 74 generated pages. The page targets "day trips mauritius", "ile aux cerfs day trip", "island hopping mauritius", and "coin de mire snorkelling" — a high-traffic content gap with strong conversion potential (three hotel CTAs covering the island's best day-trip bases). Build 74/74, tests 1810/1810, zero errors. The site now has 42 static/informational pages.
 
 ---
 
 ## 2. Technical Issues Found
 
-- **Car hire guide missing from homepage grid** — fixed this run. The page was published in Run 35 and wired into the sitemap and `getRelatedGuides()` but had not been added to the homepage Planning Guides section. Now corrected.
-- No other issues. Build 74/74, tests 1810/1810, zero errors/warnings.
+None. Build clean. Tests all passing.
 
 ---
 
 ## 3. Content Work Done This Run
 
-**New page: `/mauritius-golf-guide/`** (~2,300 words)
+**New page: `/mauritius-island-day-trips/`** (~2,300 words)
 
-Target keywords: "golf mauritius" / "golf courses mauritius" / "golf resorts mauritius" / "best golf mauritius" / "anahita golf mauritius"
+Target keywords: "day trips mauritius" / "île aux cerfs day trip" / "island day trips mauritius" / "coin de mire snorkelling" / "dolphins mauritius day trip" / "blue bay marine park snorkelling"
 
-Title: "Golf in Mauritius 2026 — Best Courses, Golf Resorts & Green Fees"
-Meta (155 chars): "Golf in Mauritius 2026: best courses, green fees, when to play, and the top golf resorts. Ernie Els at Anahita, Heritage 36-hole estate, Constance two-course complex."
+Title: "Island Day Trips from Mauritius 2026 — Île aux Cerfs, Coin de Mire & Beyond"
+Meta (155 chars): "Best island day trips from Mauritius: Île aux Cerfs lagoon island, Coin de Mire snorkelling, Île aux Bénitiers dolphins, Blue Bay Marine Park. Prices, logistics and hotel picks."
 
 Page sections:
-- **Quick facts strip** — 6 courses, May–Oct best season, €80–€180 green fees, Ernie Els (Anahita designer), ocean views, handicap required
-- **Why Mauritius for golf?** — climate advantage, resort integration, Indian Ocean context
-- **6 course cards** — numbered, with coast/holes/style/access badges and detailed descriptions:
-  1. Constance Belle Mare Plage (The Links + The Legend, 36 holes, east coast)
-  2. Anahita Golf Club — Ernie Els design (18 holes, lagoon-side, east coast)
-  3. Heritage Golf Club (36 holes, tropical parkland, south coast)
-  4. Tamarina Golf Club (18 holes, mountain/valley, west coast)
-  5. Mont Choisy Le Golf (18 holes, oceanfront, north coast)
-  6. Avalon Golf Estate (18 holes, south-west)
-- **Season grid** — peak (May–Oct), shoulder (Nov + Apr), low (Dec–Mar); trade wind tee-time strategy
-- **Practical information** — handicap requirements, equipment hire, 6 tip cards
-- **9-row green fees table** — guest vs non-resident rates by course
-- **3 hotel CTAs** — Constance Belle Mare Plage (8.9/10, $920), Heritage Awali (8.4/10, $640), Four Seasons Anahita (9.1/10, $1,650)
+- **Quick facts strip** — 5+ islands, 10-min boat to Île aux Cerfs, year-round dolphins, Blue Bay best snorkelling, May–Oct calmest seas, Rodrigues 570km
+- **Jump nav** — 11 section anchors
+- **Why island excursions matter** — geography, lagoon system context, planning overview
+- **6 island/excursion cards** — each with numbered badge, location/departure/timing metadata, coast/type/crowd/boat badges, and prose:
+  1. Île aux Cerfs — full treatment with private vs group boat decision
+  2. Coin de Mire — north coast reef snorkelling
+  3. Île aux Bénitiers — spinner dolphins, west coast
+  4. Flat Island + Gabriel Island — full sailing day
+  5. Blue Bay Marine Park — best snorkelling, no boat needed
+  6. Rodrigues Island — longer trip framing
+- **Decision table** — 7 rows: "If you want X, choose Y, notes"
+- **6 practical tip cards** — early departure, wind direction, sunscreen, cash, own snorkel gear, wildlife ethics
+- **8-row cost comparison table** — private speedboat vs group catamaran pricing across all excursions
+- **3 hotel CTAs**:
+  - Four Seasons Anahita (9.1/10, $1,650) — best east-coast base, private water taxi to Île aux Cerfs
+  - Bubble Lodge Île aux Cerfs (8.4/10, $750) — literally on the island, unique proposition
+  - Constance Le Chaland Iko Mauritius (8.8/10, $820) — Blue Bay Marine Park at doorstep
 - **6 FAQs** with FAQPage schema + BreadcrumbList schema
 
-**Homepage fix:** Added car hire guide card to Planning Guides grid (19 cards now, was 18).
+**Wiring:** Added to `STATIC_PAGE_SPECS` (sitemap, priority 0.8, changefreq monthly). Added to `getRelatedGuides()` — now linked from all 74 generated pages. Related section on the page links back to: travel guide, water sports, things to do, best beaches, Trou d'Eau Douce guide, east vs west coast, best time to visit, best luxury hotels.
 
 ---
 
 ## 4. Content Opportunities Identified
 
-- **Homepage golf guide card** — golf guide is now published and wired into sitemap/related-guides but not yet on the homepage planning grid. Add next run.
-- **Mauritius island day trips guide** — "ile aux cerfs day trip" / "rodrigues island mauritius" — frequently searched, partially covered in multiple pages but no dedicated standalone.
-- **Adults-only hotels standalone page** — the `/adults-only-resorts-mauritius/` page exists but is thin by current standards (~600 words vs the site's 2,000+ word standard for informational guides). Consider expanding.
+- **`best-value-resorts-mauritius.html`** — confirmed thin (old format, ~500 words prose, no FAQPage schema, no BreadcrumbList, no comparison table). Rebuild to 2,000+ word modern standard is high-priority next run.
+- **`best-resort-mauritius.html`** ("Which resort is right for you") — also old format, thin prose, no structured data. Rebuilding this page would improve the main "Find My Resort" pillar page.
+- **Mauritius currency & money guide** — "mauritius currency", "how much money mauritius holiday" — a practical planning gap not yet covered.
 
 ---
 
 ## 5. Internal Linking
 
-Golf guide added to `getRelatedGuides()` — now linked from all 74 generated pages. The golf guide's related section links back to: travel guide, water sports, things to do, best time to visit, car hire guide, east vs west coast, best luxury hotels, wellness retreats. Golf is also referenced on multiple hotel detail pages for Constance Belle Mare Plage, Heritage Awali, and Four Seasons Anahita.
+Island day trips guide added to `getRelatedGuides()` — linked from all 74 generated pages. The guide's related section links to: travel guide, water sports, things to do, best beaches, Trou d'Eau Douce guide, east vs west coast, best time to visit, best luxury hotels. The Trou d'Eau Douce regional guide cross-references Île aux Cerfs naturally.
 
 ---
 
 ## 6. Backlink Opportunities
 
-No new outreach work this run. Golf-specific opportunities identified:
-- Golf travel publications (Today's Golfer, Golf Monthly, Golf Digest) — "we reviewed every golf resort in Mauritius" data angle
-- Indian Ocean travel blogs — Anahita Ernie Els course angle (newsworthy course design)
+No new outreach work this run. Day-trip content angle for outreach:
+- Travel blogs covering Indian Ocean destinations — "complete guide to Île aux Cerfs" data hook
+- Family travel publications — dolphin watching + Île aux Bénitiers angle (family-friendly excursion)
+- Scuba/snorkelling specialist sites — Blue Bay Marine Park coral data angle
 - Standing targets: Condé Nast Traveller (hotel ranking data), The Points Guy (comparison pages)
 
 ---
 
 ## 7. Conversion Improvements
 
-No CTA copy changes this run. The golf guide's three hotel CTAs represent the site's strongest commercial opportunity per page — Constance Belle Mare Plage ($920/night), Heritage Awali ($640/night), and Four Seasons Anahita ($1,650/night) are the three highest-value golf-hotel CTAs available in the dataset.
+Three hotel CTAs serve different conversion segments:
+- Four Seasons Anahita ($1,650) — high-value luxury booker wanting premium east-coast access
+- Bubble Lodge ($750) — unique-experience seeker willing to pay for novelty
+- Constance Le Chaland ($820) — value-conscious luxury buyer wanting marine park access
+
+The Blue Bay framing for Le Chaland is the strongest commercial angle on the page — "snorkel from your hotel beach into Mauritius's best marine park" is a concrete, verifiable, differentiated proposition.
 
 ---
 
@@ -79,14 +88,14 @@ No CTA copy changes this run. The golf guide's three hotel CTAs represent the si
 
 | Priority | Task | Type | Keyword Target |
 |---|---|---|---|
-| High | Add golf guide card to homepage planning grid | Internal linking | Surface new page on homepage |
-| Medium | Expand adults-only resorts page (~600 words → 2,000+) | Content | "adults only resorts mauritius" |
-| Medium | Mauritius island day trips guide | Informational | "ile aux cerfs day trip" / "rodrigues mauritius" |
-| Ongoing | Digital PR outreach (Golf Monthly, Condé Nast, TPG) | Backlinks | Golf + hotel ranking data angles |
+| High | Rebuild `best-value-resorts-mauritius.html` to modern standard | Content | "best value resorts mauritius" |
+| Medium | Rebuild `best-resort-mauritius.html` (old format, thin) | Content | "best resort mauritius" |
+| Medium | Mauritius currency & money guide | Informational | "mauritius currency" / "mauritius money" |
+| Ongoing | Digital PR outreach (Golf Monthly, Condé Nast, TPG, family travel) | Backlinks | Multiple angles |
 | Ongoing | Monitor GSC for impressions with low CTR | Analytics | Weekly check |
 
 ---
 
 ## 9. Expected SEO Impact
 
-The golf guide targets a niche with clear commercial intent — golfers booking Mauritius trips spend significantly more per night than average visitors and have strong conversion likelihood on the hotel CTAs featured. "Golf mauritius" searches are lower volume (~400/mo estimated) but higher intent than general travel searches. The Anahita/Ernie Els angle provides a distinct editorial hook absent from competitor pages. Expected ranking: position 10–25 within 60 days, top 5 within 4 months. The Constance Belle Mare Plage CTA ($920/night, 8.9/10) is the highest-probability conversion given the course quality narrative.
+"Île aux Cerfs day trip" is one of the most commonly searched Mauritius activity queries — estimated 1,500–3,000 monthly searches globally, with strong commercial intent (people planning trips are actively choosing excursions and hotels). The page's unique angle is the decision framework: rather than a generic "here are the islands" listicle, it gives travellers a clear which-trip-for-which-traveller table and honest cost data. The Bubble Lodge CTA ($750/night, literally on Île aux Cerfs) is the highest-novelty conversion on the page. Expected ranking: position 15–30 within 60 days, top 10 within 4 months for "île aux cerfs day trip" and related variants.
