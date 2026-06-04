@@ -82,7 +82,7 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Rebuild `best-value-resorts-mauritius.html` to modern standard~~ | ~~Content~~ | ~~High~~ | ✅ Done 2026-06-04 (Run 38, ~2,300 words, FAQPage + BreadcrumbList schema, score grids, region analysis, comparison table) |
 | ~~Rebuild `best-resort-mauritius.html` to modern standard~~ | ~~Content~~ | ~~High~~ | ✅ Done 2026-06-04 (Run 39, ~2,200 words, FAQPage + BreadcrumbList schema, 8-row matrix, 5-step guide, fixed fabricated hotel ref) |
 | ~~Mauritius currency &amp; money guide~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-06-04 (Run 40, ~2,300 words, 6-method card grid, cost table, tipping table, 3-tier budgets, 6 FAQs, FAQPage schema) |
-| Rebuild methodology page to modern standard | Technical/Trust | Medium | Trust signal; linked from all rebuilt pages |
+| ~~Rebuild methodology page to modern standard~~ | ~~Technical/Trust~~ | ~~Medium~~ | ✅ Done 2026-06-04 (Run 41, ~2,400 words, personas section, FAQPage + BreadcrumbList schema, 3 hotel CTAs, 36-hotel count, 2026 copyright) |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
 | Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
