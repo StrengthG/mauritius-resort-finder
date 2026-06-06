@@ -1,12 +1,12 @@
-# SEO Daily Report — Run 42
-**Date:** 2026-06-04
+# SEO Daily Report — Run 43
+**Date:** 2026-06-06
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
 ---
 
 ## 1. Executive Summary
 
-Run 42 published a dedicated Île aux Cerfs regional guide — the most-searched Mauritius landmark that previously had no standalone page, only coverage as one card within the island day trips guide. The page targets "île aux cerfs mauritius", "ile aux cerfs hotels", "how to get to ile aux cerfs", and "ile aux cerfs golf" — all meaningful search clusters for pre-trip east coast planning. The page covers the island in full: getting there, access methods, all watersports, Bernhard Langer golf course detail, a 10-row Île aux Cerfs vs Grand Baie comparison table, season guide, visitor tips, and three verified east coast hotel CTAs. Build 74/74, tests 1810/1810.
+Run 43 published a dedicated snorkelling guide — a high-intent activity query currently covered only as a section within the water sports guide. The Rodrigues Island guide (next item on roadmap) was deferred: no Rodrigues hotels exist in the dataset, making meaningful hotel CTAs impossible without fabricating data. The snorkelling guide fills a genuine content gap with six ranked snorkel zones, an 8-creature marine life grid, a snorkelling vs. diving comparison table, seasonal visibility guidance, and three hotel CTAs covering the island's three top snorkelling zones. Build 74/74, tests 1810/1810.
 
 ---
 
@@ -18,63 +18,67 @@ None. Build clean, all tests pass.
 
 ## 3. Content Work Done This Run
 
-**New page: `/ile-aux-cerfs-mauritius/`** (~2,400 words prose; ~4,600 HTML words)
+**New page: `/best-snorkelling-mauritius/`** (~2,500 words prose; ~4,800 HTML words)
 
-Target keywords: "île aux cerfs mauritius" / "ile aux cerfs hotels" / "how to get to ile aux cerfs" / "ile aux cerfs golf" / "ile aux cerfs day trip"
+Target keywords: "best snorkelling mauritius" / "snorkelling mauritius" / "blue bay marine park snorkelling" / "snorkelling spots mauritius" / "where to snorkel mauritius"
 
-Title: "Île aux Cerfs, Mauritius 2026 — Beach Guide, Getting There & Nearby Hotels"
-Meta (161 chars): "Île aux Cerfs is Mauritius's most iconic island — a 2km lagoon beach reachable in 10 minutes from Trou d'Eau Douce. Getting there, things to do, golf, and where to stay nearby."
+Title: "Best Snorkelling in Mauritius 2026 — Top Spots, Marine Life & Where to Stay"
+Meta (159 chars): "The best snorkelling in Mauritius: Blue Bay Marine Park leads for coral diversity, with five more world-class zones around the island. Spots, seasons, marine life, and where to stay."
 
-Hero: Deep ocean blue (`#0a1f3c → #0e3a6b → #1a5f94`)
+Hero: Deep ocean/teal (`#0c2a4a → #0a4d6e → #0d7a8a`)
 
 Sections published:
-- **Quick facts strip** — 6 items: 500m from mainland, 10–15 min crossing, ~2km beach, 18-hole golf, free entry, best season May–Nov
-- **Jump nav** — 9 section anchors
-- **About the Island** — geographic overview, lagoon characteristics, reef protection, island interior, golf club context (~350 words)
-- **Getting There** — 4-method access card grid: water taxi (Trou d'Eau Douce), hotel speedboat, Grand Baie day trip, Bubble Lodge transfer; driving time from airport noted
-- **Things to Do** — 6-activity grid: lagoon swimming, parasailing (MUR 2,000), jet ski (MUR 1,500/30min), glass-bottom boat (MUR 600), beach BBQ (MUR 1,200–1,800), island walk
-- **Golf at Île aux Cerfs Golf Club** — full section: Bernhard Langer design, 18-hole par-72, green fees (MUR 6,000–9,000, $130–200), club hire, dress code, booking guidance, peak tee-time advice
-- **10-row comparison table** — Île aux Cerfs vs Grand Baie across: beach quality, water clarity, crowds, getting there, shopping, restaurants, nightlife, golf, hotels, best for
-- **Season guide** — 3-tier season cards: Best (May–Nov), Acceptable (Nov–Dec), Caution (Jan–Mar cyclone risk); time-of-day advice (before 10am best)
-- **6 practical tip cards** — cash only (watersports operators), sun protection, pack light, advance golf booking, reef-safe sunscreen, last boat timing
-- **3 hotel CTAs** — Four Seasons Anahita (9.1/10, $1,650, `expedia.com/affiliate/s7PgDXw`), Anahita Golf & Spa Resort (8.7/10, $780, `expedia.com/affiliate/6oyzyzA`), Bubble Lodge Île aux Cerfs (8.4/10, $750, `expedia.com/affiliate/nOTJrFM`)
-- **FAQPage + BreadcrumbList schema** — 6 FAQs covering: staying on the island, getting there, costs, worth visiting?, best time, golf
-- **Related guides** — 8 cards: Trou d'Eau Douce, Belle Mare, island day trips, water sports, golf guide, best beaches, travel guide, where to stay
+- **Quick facts strip** — 6 items: 6 snorkel zones, 22–28°C water temp, best May–Nov, top site Blue Bay, 1–15m depth range, gear hire from MUR 300
+- **Jump nav** — 8 section anchors
+- **Top 6 Snorkel Sites** — ranked spot cards with level, access type, and ~120-word prose each:
+  1. Blue Bay Marine Park (best overall, beach + boat, all levels)
+  2. Coin de Mire (best clarity, boat only, confident swimmers)
+  3. Balaclava Marine Park (best fish variety, beach + boat, all levels)
+  4. Île aux Cerfs Lagoon (most accessible, beach, beginners)
+  5. Belle Mare Reef (best for hotel guests, beach, all levels)
+  6. Le Morne Lagoon (best for turtles, beach + boat, beginners)
+- **8-species marine life grid** — sea turtles, parrotfish, blacktip reef sharks, octopus, pufferfish, spinner dolphins, lionfish, moray eels; with honest habitat notes and coral health status
+- **3-tier season cards** — Best (May–Oct), Good (Nov–Dec), Reduced Visibility (Jan–Apr); includes plankton bloom / cyclone context
+- **8-row snorkelling vs. scuba diving comparison table** — certification, depth, what you see, cost, duration, physical demand, child suitability
+- **Gear & operators section** — hire vs. bring breakdown, typical costs (MUR 300–600 gear hire, MUR 1,200–2,000 guided boat tours)
+- **6 safety & tips cards** — check conditions, reef-safe sunscreen, don't touch coral, go early, defog your mask, stay hydrated
+- **3 hotel CTAs** — One&Only Le Saint Géran (9.0/10, $940, Belle Mare reef, `expedia.com/affiliate/61eoozV`), Constance Le Chaland (8.8/10, $820, Blue Bay Marine Park, `expedia.com/affiliate/a1VWvT2`), Westin Turtle Bay (8.6/10, $650, Balaclava Marine Park, `expedia.com/affiliate/PJytcSS`)
+- **FAQPage + BreadcrumbList schema** — 6 FAQs covering best site, swimming ability needed, year-round availability, sharks, beach vs boat, Blue Bay entry fee
+- **Related guides** — 8 cards: water sports, best beaches, island day trips, Île aux Cerfs, Belle Mare, Balaclava, things to do, travel guide
 
 Wiring:
-- Added to `STATIC_PAGE_SPECS` in `site_builder.js` (regional, priority 0.8, monthly)
-- Added to `getRelatedGuides()` in `static_page_renderer.js` (label: 'Île aux Cerfs Guide')
+- Added to `STATIC_PAGE_SPECS` in `site_builder.js` (informational, priority 0.8, monthly)
+- Added to `getRelatedGuides()` in `static_page_renderer.js`
 
 ---
 
 ## 4. Content Opportunities Identified
 
-- **Mauritius photography spots guide** — "best photography spots mauritius" — Low priority; niche but growing interest
-- **Mauritius nightlife guide** — "nightlife mauritius", "things to do at night mauritius" — moderate volume; relevant to the younger luxury segment
-- **Rodrigues Island guide** — "rodrigues island mauritius" — growing search interest; Rodrigues is the only currently uncovered destination in the Mauritius island group and appeared as a card in the island day trips guide
-- **Best snorkelling in Mauritius** — "snorkelling mauritius", "best snorkelling spots mauritius" — high-intent activity query, currently covered only within the water sports guide
+- **Rodrigues Island guide** — deferred this run (no dataset hotels). Could be built as a purely informational page with CTA framing of "best mainland hotels before flying to Rodrigues" — requires careful framing to avoid CTA irrelevance
+- **Mauritius wildlife guide** — "wildlife mauritius", "animals in mauritius" — covers the Casela Nature Parks, the pink pigeon, fruit bats, giant tortoises. Medium intent, good topical authority signal
+- **Mauritius nightlife guide** — "nightlife mauritius" — moderate search volume
+- **Mauritius photography spots guide** — "photography mauritius" — lower priority, niche
 
 ---
 
 ## 5. Internal Linking
 
-The Île aux Cerfs page links outward to: trou-deau-douce-mauritius, belle-mare-mauritius, mauritius-island-day-trips, mauritius-water-sports-guide, mauritius-golf-guide, best-beaches-in-mauritius, mauritius-travel-guide, where-to-stay-in-mauritius. The Île aux Cerfs guide now appears in the `getRelatedGuides()` pool — it will surface on all generated hotel and persona pages as a related guide link.
+The snorkelling guide links to: water sports, best beaches, island day trips, Île aux Cerfs, Belle Mare, Balaclava, things to do, travel guide. It now appears in the `getRelatedGuides()` pool — will surface on all generated hotel and persona pages. The three hotel CTAs create conversion pathways from activity research into accommodation booking for three distinct coastal zones.
 
 ---
 
 ## 6. Backlink Opportunities
 
-- **Golf travel blogs** — "île aux cerfs golf course" is a highly specific query with minimal competition; travel golf sites covering Indian Ocean courses are natural outreach targets
-- **East coast hotel PR** — Four Seasons Anahita, Anahita Golf & Spa, and Bubble Lodge all benefit from coverage; press contacts at these properties could share the guide
-- **Day trip operator partnerships** — catamaran operators running Île aux Cerfs excursions from Grand Baie may link to the guide as a resource for customers
+- **Scuba diving forums and sites** — "snorkelling vs. diving mauritius" content is natural link bait for dive-focused publications; the comparison table is a uniquely structured resource
+- **Family travel sites** — "snorkelling mauritius with kids" angle; the beginner-friendly framing of Blue Bay and Île aux Cerfs is explicitly targeted at families
+- **Blue Bay Marine Park conservation organisations** — the reef-safe sunscreen and no-touch-coral sections align with conservation messaging; park-adjacent NGOs sometimes share resources that promote responsible visiting
 
 ---
 
 ## 7. Conversion Improvements
 
-- **Bubble Lodge CTA placement** — Bubble Lodge is the only hotel on the island; positioning it as the third CTA after the two higher-scoring mainland options gives budget-flexible visitors a unique "stay on the island" option that no other comparison page can offer. The "waking to the island before anyone else arrives" framing addresses the day-trip crowd objection.
-- **Golf section specificity** — the green fee range (MUR 6,000–9,000, $130–200) and booking logistics are not available on generic travel sites. Visitors who arrive at this page for golf research are in a high commercial-intent state — the Anahita Golf & Spa CTA is positioned immediately below the golf section for this reason.
-- **Cost table in FAQs** — the FAQ "How much does it cost to visit?" lists per-activity MUR and USD prices. This is the most commonly searched transactional query about the island and is answered nowhere else in adequate detail.
+- **Zone-matched CTAs** — each of the three hotel CTAs is explicitly positioned as adjacent to one of the top three snorkel zones (Belle Mare, Blue Bay, Balaclava). A visitor researching "snorkelling near blue bay mauritius" lands on the Constance Le Chaland CTA — which sits directly adjacent to that marine park. This is a tighter intent match than the generic "top picks" approach used on some earlier pages.
+- **Gear hire cost table** — MUR and USD pricing for hire and guided tours gives visitors a realistic budget expectation. Visitors who feel informed about costs convert more readily than visitors who feel uncertain.
 
 ---
 
@@ -82,15 +86,15 @@ The Île aux Cerfs page links outward to: trou-deau-douce-mauritius, belle-mare-
 
 | Priority | Task | Type | Keyword Target |
 |---|---|---|---|
-| Medium | Rodrigues Island guide | Regional/Informational | "rodrigues island mauritius" |
-| Low | Mauritius photography spots guide | Informational | "photography mauritius" |
+| Medium | Mauritius wildlife guide | Informational | "wildlife mauritius" / "animals mauritius" |
 | Low | Mauritius nightlife guide | Informational | "nightlife mauritius" |
-| Low | Best snorkelling in Mauritius | Informational | "snorkelling mauritius" |
-| Ongoing | Digital PR outreach | Backlinks | Golf, east coast, island angles |
+| Low | Mauritius photography spots guide | Informational | "photography mauritius" |
+| Low | Rodrigues Island guide (informational only) | Informational | "rodrigues island mauritius" |
+| Ongoing | Digital PR outreach | Backlinks | Snorkelling / conservation angle |
 | Ongoing | Monitor GSC for low-CTR impressions | Analytics | Weekly |
 
 ---
 
 ## 9. Expected SEO Impact
 
-"Île aux Cerfs" is one of the highest-volume Mauritius-specific landmark searches, competing against Tripadvisor attraction pages and generic day-trip aggregators. The dedicated page covers intent clusters that no single existing page addresses: getting-there logistics, cost detail, golf specifics, and hotel options in one resource. FAQPage schema gives the six answers featured-snippet eligibility for direct question queries ("can you stay on île aux cerfs", "is île aux cerfs worth it", "golf île aux cerfs mauritius"). The comparison table format competes directly with forum posts and generic travel articles that currently rank for "île aux cerfs vs grand baie" — these are low-authority targets. Expected indexing: 2–4 weeks. Expected impact on east coast hotel CTA clicks: meaningful, given the Four Seasons Anahita (9.1/10) CTA is well-positioned for high-intent east coast visitors.
+"Best snorkelling in Mauritius" is searched year-round with a seasonal peak during the booking window before peak travel season (April–June for Nov–Jan travel). The existing competition is primarily generic travel aggregators (Tripadvisor activity pages, Lonely Planet) with limited site-specific depth. The six-ranked-spots format with per-site accessibility, level, and access-type labels directly answers the intent better than any single current ranking result. FAQPage schema targets the "is there sharks", "year-round?" and "Blue Bay entry fee" queries, all of which are currently answered in forum posts rather than structured schema. The Coin de Mire section specifically targets "coin de mire snorkelling" — a long-tail query with almost no dedicated page competition. Expected indexing: 2–4 weeks.

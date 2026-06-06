@@ -443,6 +443,7 @@ function getRelatedGuides(persona) {
     { label: 'Island Day Trips',                       slug: 'mauritius-island-day-trips',              persona: null           },
     { label: 'Currency & Money Guide',                 slug: 'mauritius-currency-money-guide',          persona: null           },
     { label: 'Île aux Cerfs Guide',                    slug: 'ile-aux-cerfs-mauritius',                 persona: null           },
+    { label: 'Best Snorkelling in Mauritius',          slug: 'best-snorkelling-mauritius',              persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
 }

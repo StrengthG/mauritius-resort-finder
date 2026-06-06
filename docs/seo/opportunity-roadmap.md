@@ -84,7 +84,9 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Mauritius currency &amp; money guide~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-06-04 (Run 40, ~2,300 words, 6-method card grid, cost table, tipping table, 3-tier budgets, 6 FAQs, FAQPage schema) |
 | ~~Rebuild methodology page to modern standard~~ | ~~Technical/Trust~~ | ~~Medium~~ | ✅ Done 2026-06-04 (Run 41, ~2,400 words, personas section, FAQPage + BreadcrumbList schema, 3 hotel CTAs, 36-hotel count, 2026 copyright) |
 | ~~Île aux Cerfs standalone guide~~ | ~~Regional~~ | ~~Medium~~ | ✅ Done 2026-06-04 (Run 42, ~2,400 words, 4-method access grid, 6-activity grid, golf section, 10-row vs Grand Baie table, season guide, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
-| Rodrigues Island guide | Regional/Informational | Medium | "rodrigues island mauritius" |
+| ~~Best snorkelling in Mauritius~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-06-06 (Run 43, ~2,500 words, 6 ranked spots, marine life grid, snorkel vs diving table, season guide, 3 zone-matched hotel CTAs, 6 FAQs, FAQPage schema) |
+| Rodrigues Island guide | Informational | Low | "rodrigues island mauritius" — no dataset hotels; informational-only approach required |
+| Mauritius wildlife guide | Informational | Medium | "wildlife mauritius" / "animals mauritius" |
 | Mauritius photography spots guide | Informational | Low | "best photography spots mauritius" |
 | Mauritius nightlife guide | Informational | Low | "nightlife mauritius" |
 | Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
