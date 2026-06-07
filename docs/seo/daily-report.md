@@ -1,14 +1,14 @@
-# SEO Daily Report — Run 48
-**Date:** 2026-06-07
+# SEO Daily Report — Run 49
+**Date:** 2026-06-08
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
 ---
 
 ## 1. Executive Summary
 
-Run 48 delivered the **Mauritius Destination Weddings guide** at `/mauritius-destination-weddings/` — a 2,400-word, schema-rich informational page targeting "destination wedding mauritius", "getting married in Mauritius", and "wedding venues Mauritius". The page fills a high-commercial-intent keyword gap not covered by the existing honeymoon guide, provides 5 hotel CTAs (affiliate), and serves as a high-relevance target page for the 7 honeymoon/wedding-focused prospects added to the backlink discovery database in Run 48's earlier session (Junebug Weddings, Green Wedding Shoes, Brides Magazine, Destination Wedding Details, Honeyfund, Martha Stewart Weddings, One Honeymoon).
+Run 49 delivered the **Mauritius Overwater Villas guide** at `/mauritius-overwater-villas/` — a 2,400-word, schema-rich informational page targeting "overwater villas mauritius", "overwater bungalows mauritius", and "overwater accommodation mauritius". The page addresses the highest remaining commercial-intent keyword gap: luxury couples searching for Maldives-style over-water stays in Mauritius. It handles the nuance honestly (Mauritius lacks true ocean OWBs), positions Constance Prince Maurice's freshwater lake villas, Four Seasons lagoon suites, One&Only Le Saint Géran overwater hammocks, and Bubble Lodge dome as the genuine local equivalents, and provides a Mauritius vs Maldives decision table that serves as a natural anchor for search intent.
 
-Also committed in this session: the full **SEO Backlink Acquisition Machine** (4 modules, 82-prospect discovery DB, 108 tests).
+Also completed this session: homepage ranking cards upgraded to photo layout (`.hotel-card--photo`), and the rankings page at `/rankings/` completely redesigned as an Airbnb-style 4-column photo card grid.
 
 Build: 74/74 pages, 2,237 tests across 16 suites — all passing.
 
@@ -24,67 +24,63 @@ None. Build clean. All tests pass.
 
 ### New page
 
-**`pages/mauritius-destination-weddings.html`** — `/mauritius-destination-weddings/`
-- **Primary keyword:** destination wedding mauritius
-- **Secondary keywords:** getting married in mauritius, wedding venues mauritius, mauritius wedding packages, mauritius wedding legal requirements
+**`pages/mauritius-overwater-villas.html`** — `/mauritius-overwater-villas/`
+- **Primary keyword:** overwater villas mauritius
+- **Secondary keywords:** overwater bungalows mauritius, overwater accommodation mauritius, mauritius overwater suites, constance prince maurice lake villas
 - **Word count:** ~2,400 words
 - **Schema:** Article, BreadcrumbList, FAQPage (6 questions)
-- **Sections:** Why Mauritius, Legal requirements (5-step process + docs table), Ceremony styles (beach/overwater/garden), 5 hotel CTAs, Costs & planning timeline (5-tier budget table), Best months (4 season cards), 6 FAQs
-- **CTAs:** 5 affiliate-linked hotels — Royal Palm (9.2), Four Seasons Anahita (9.1), Constance Prince Maurice (9.0), Constance Belle Mare Plage (8.9), Shanti Maurice (8.8)
+- **Sections:** Reality of overwater in Mauritius (honest framing), Top 5 properties (hotel CTAs), Property comparison table (7 properties × 7 attributes), Cost breakdown (5-tier table $750–$3,200+/night), Best seasons (4 season cards), Mauritius vs Maldives decision table (8 factors), 6 FAQs
+- **CTAs:** 5 affiliate-linked hotels — Constance Prince Maurice (9.0), Four Seasons Anahita (9.1), One&Only Le Saint Géran (9.0), Bubble Lodge Île aux Cerfs (8.4), Royal Palm Beachcomber (9.2)
 - **Affiliate disclosure:** present on each CTA card
 - **Internal links:** Related guides section (6 links); footer planning guides updated
 
 ### Build pipeline changes
-- `site_builder.js` — `mauritius-destination-weddings` added to `STATIC_PAGE_SPECS` (priority 0.8, monthly)
-- `static_page_renderer.js` — wedding guide added to `getRelatedGuides()` (excluded from honeymoon persona pages to avoid duplication)
+- `site_builder.js` — `mauritius-overwater-villas` added to `STATIC_PAGE_SPECS` (priority 0.8, monthly)
+- `static_page_renderer.js` — overwater villas guide added to `getRelatedGuides()` (excluded from honeymoon persona pages to avoid duplication)
 
-### Backlink Machine (committed earlier this session)
-- `seo_prospect_discovery.js` — 82 curated prospects across 7 categories
-- `seo_prospect_scorer.js` — 0–100 scoring engine (DA 40%, relevance 30%, traffic 20%, link likelihood 10%)
-- `seo_outreach_queue.js` — 13-week prioritised queue + follow-up schedule
-- `seo_campaign_dashboard.js` — 90-day dashboard (terminal + HTML export)
-- `seo_outreach.test.js` — extended from 36 to 108 tests
+### Homepage & rankings UX (committed earlier this session)
+- **`index.html`** — 5 top-ranked cards upgraded to `.hotel-card--photo` layout (260px left photo column, rank badge overlay, hover zoom); Four Seasons (#2) retains text-only layout (no photo available)
+- **`pages/rankings.html`** — complete rewrite: `<table>` replaced with `.rk-grid` 4-column responsive photo card grid showing all 36 hotels; 29 hotels with photos, 7 with gold-letter placeholders; hover zoom, score badge, affiliate CTAs
 
 ---
 
 ## 4. Internal Linking
 
-The destination weddings page links to:
-- `/mauritius-honeymoon-guide/` — natural companion
+The overwater villas page links to:
+- `/mauritius-honeymoon-guide/` — primary companion
+- `/mauritius-destination-weddings/` — wedding/couples context
 - `/mauritius-honeymoon-itinerary/` — practical next step
-- `/adults-only-resorts-mauritius/` — couples resort list
-- `/best-resort-mauritius/` — top-rated anchor
 - `/best-time-to-visit-mauritius/` — seasonal planning
+- `/adults-only-resorts-mauritius/` — couples resort list
 - `/mauritius-luxury-travel-guide/` — broader context
 
-The page is linked from `getRelatedGuides()` in the generated page footer across the site.
+The page is linked from `getRelatedGuides()` in the generated page footer across the site (excluded from honeymoon persona pages to avoid duplication).
 
 ---
 
 ## 5. Backlink Opportunities
 
-The destination weddings guide directly targets the 7 honeymoon/wedding prospects in the discovery database:
+The overwater villas guide targets luxury travel and honeymoon prospects already in the discovery database:
 
 | Prospect | DA | Type | Target page |
 |---|---|---|---|
-| Junebug Weddings | 68 | guest_post | `/mauritius-destination-weddings/` |
-| Green Wedding Shoes | 65 | guest_post | `/mauritius-destination-weddings/` |
-| Brides Magazine | 79 | guest_post | `/mauritius-destination-weddings/` |
-| Destination Wedding Details | 45 | guest_post | `/mauritius-destination-weddings/` |
-| Honeyfund Blog | 55 | resource_link | `/mauritius-destination-weddings/` |
-| Martha Stewart Weddings | 85 | resource_link | `/mauritius-destination-weddings/` |
-| One Honeymoon | 35 | guest_post | `/mauritius-destination-weddings/` |
+| Honeymoon Dreams | 42 | resource_link | `/mauritius-overwater-villas/` |
+| Two Monkeys Travel | 48 | guest_post | `/mauritius-overwater-villas/` |
+| Luxury Travel Advisor | 61 | resource_link | `/mauritius-overwater-villas/` |
+| Junebug Weddings | 68 | guest_post | `/mauritius-overwater-villas/` |
+| Green Wedding Shoes | 65 | guest_post | `/mauritius-overwater-villas/` |
 
-The legal requirements section (factual, well-structured) is particularly well-suited as a citation target for wedding planning content.
+The Mauritius vs Maldives comparison table is particularly suited as a citation target for honeymoon planning content.
 
 ---
 
 ## 6. Conversion Improvements
 
 - 5 hotel CTAs with `rel="noopener sponsored"` and per-card affiliate disclosure
-- CTAs matched to wedding context (ceremony style, location, price tier)
-- Budget planning table gives couples a clear framework → reduces bounce
-- Planning timeline gives structured next steps → deepens engagement
+- Honest OWB framing reduces pogo-stick risk — searchers understand what to expect before clicking through
+- Cost table ($750–$3,200+) gives concrete price anchors for luxury budget planning
+- Maldives comparison table serves dual role: conversion aid + featured snippet candidate
+- Quick-pick sidebar and "couples" quick links reduce time-to-CTA for returning visitors
 
 ---
 
@@ -94,7 +90,6 @@ The legal requirements section (factual, well-structured) is particularly well-s
 |---|---|---|---|
 | High | Begin backlink outreach — Week 1 batch | Backlinks | `node seo_outreach_queue.js` |
 | Medium | Rodrigues Island guide | Informational | "rodrigues island mauritius" |
-| Medium | Mauritius overwater villas guide | Informational | "overwater villas mauritius" |
 | Low | Mauritius photography spots guide | Informational | "photography spots mauritius" |
 | Low | Mauritius nightlife guide | Informational | "nightlife mauritius" |
 | Ongoing | Monitor GSC for low-CTR impressions | Analytics | Weekly |
@@ -106,7 +101,8 @@ The legal requirements section (factual, well-structured) is particularly well-s
 
 | Action | Expected impact |
 |---|---|
-| Destination weddings guide | Rankings for "destination wedding mauritius", "getting married in mauritius"; new backlink anchor for 7 wedding prospects |
-| Backlink machine launch | First live links within 4–6 weeks if outreach begins this week |
-| Legal requirements section | Featured snippet candidate for "how to get married in mauritius" |
-| Budget table | Featured snippet candidate for "mauritius wedding cost" |
+| Overwater villas guide | Rankings for "overwater villas mauritius", "overwater bungalows mauritius"; captures luxury intent not covered by honeymoon guide |
+| Mauritius vs Maldives table | Featured snippet candidate for "mauritius vs maldives overwater" |
+| Cost breakdown table | Featured snippet candidate for "overwater villa mauritius price" |
+| Homepage photo cards | Reduced bounce rate — visual scan faster than reading card text |
+| Rankings photo grid | Higher engagement, lower bounce, more affiliate clicks vs. old table format |

@@ -448,6 +448,7 @@ function getRelatedGuides(persona) {
     { label: 'Best Snorkelling in Mauritius',          slug: 'best-snorkelling-mauritius',              persona: null           },
     { label: 'Mauritius Wildlife Guide',               slug: 'mauritius-wildlife-guide',                persona: null           },
     { label: 'Destination Weddings in Mauritius',      slug: 'mauritius-destination-weddings',          persona: 'honeymoon'    },
+    { label: 'Overwater Villas in Mauritius',          slug: 'mauritius-overwater-villas',              persona: 'honeymoon'    },
     { label: 'Resort Discovery Map',                   slug: 'map',                                     persona: null           },
   ];
   return persona ? all.filter(g => g.persona !== persona) : all;
