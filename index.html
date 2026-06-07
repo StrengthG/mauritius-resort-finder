@@ -36,7 +36,10 @@
     "description": "Independent luxury hotel reviews and rankings for Mauritius",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://mauritiusresortfinder.com/search?q={search_term_string}",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://mauritiusresortfinder.com/search/?q={search_term_string}"
+      },
       "query-input": "required name=search_term_string"
     }
   }

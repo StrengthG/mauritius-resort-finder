@@ -28,6 +28,7 @@ const SUITES = [
   'seo_outreach.test.js',
   'contact_api.test.js',
   'security.test.js',
+  'search.test.js',
 ];
 
 const WIDTH = 64;
@@ -92,6 +93,6 @@ if (failedSuites.length > 0) {
   process.exit(1);
 } else {
   console.log(`\n  ✓  All ${SUITES.length} suites passed.\n`);
-  // SUITES count: 11 engine suites + 1 security suite = 12 total
+  // SUITES count: 11 engine suites + 1 security suite + 1 search suite = 13 total
   process.exit(0);
 }

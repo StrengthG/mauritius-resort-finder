@@ -33,6 +33,7 @@
 
 const fs   = require('fs');
 const path = require('path');
+const { generateSearchIndex } = require('./search_engine_client.js');
 
 // ─────────────────────────────────────────────────────────────────────────────
 // VERSION
@@ -555,6 +556,7 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'mauritius-currency-money-guide',     page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'ile-aux-cerfs-mauritius',            page_type: 'regional',      priority: '0.8', changefreq: 'monthly' },
   { slug: 'best-snorkelling-mauritius',         page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'search',                             page_type: 'other',          priority: '0.6', changefreq: 'weekly'  },
   { slug: 'contact',                            page_type: 'other',          priority: '0.5', changefreq: 'yearly'  },
   { slug: 'rankings',                            page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
   { slug: 'methodology',                         page_type: 'informational', priority: '0.5', changefreq: 'monthly' },
@@ -1100,6 +1102,11 @@ async function buildSite(options = {}) {
     fs.writeFileSync(path.join(absOut, 'robots.txt'),  robotsContent,  'utf8');
     fs.writeFileSync(path.join(absOut, 'feed.xml'),    feedContent,    'utf8');
 
+    // Generate search index for client-side search
+    const searchIdx  = generateSearchIndex(hotelObjects, sitemapSpecs, baseUrl);
+    fs.writeFileSync(path.join(absOut, 'search-index.json'), JSON.stringify(searchIdx), 'utf8');
+    _log(`      ✓ search-index.json (${searchIdx.count} items)`);
+
     // Copy homepage (index.html at project root) into dist/
     const homepageSrc  = path.join(__dirname, 'index.html');
     const homepageDest = path.join(absOut, 'index.html');
@@ -1304,6 +1311,7 @@ module.exports = {
   generateSitemap,
   generateRobots,
   generateFeed,
+  generateSearchIndex,
   saveBuildReport,
 
   // Internals (exported for testing)
