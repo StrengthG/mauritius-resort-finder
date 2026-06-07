@@ -61,6 +61,7 @@
 const fs          = require('fs');
 const path        = require('path');
 const imageEngine = require('./hotel_image_engine.js');
+const { socialCardUrl } = require('./social_card_engine.js');
 
 // ─────────────────────────────────────────────────────────────────────────────
 // VERSION
@@ -1277,7 +1278,13 @@ function extractPageMeta(pageObject, options = {}) {
   }
   if (description.length > 160) description = description.slice(0, 157) + '...';
 
-  return { title, description, slug, persona, keyword, pageType };
+  // hotel_id for social card URL (hotel detail pages only)
+  const hotelCard = blocks.find(b => b.block_type === 'hotel_card');
+  const hotelId = (pageType === 'hotel_detail' || pageType === 'hotel')
+    ? (payload.hotel_id || (hotelCard && hotelCard.payload && hotelCard.payload.hotel_id) || null)
+    : null;
+
+  return { title, description, slug, persona, keyword, pageType, hotelId };
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1354,7 +1361,8 @@ function generateStructuredData(pageObject, meta, baseUrl) {
  * @returns {string}
  */
 function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
-  const canonUrl = (`${baseUrl}/${meta.slug}`.replace(/\/+$/, '')) + '/';
+  const canonUrl  = (`${baseUrl}/${meta.slug}`.replace(/\/+$/, '')) + '/';
+  const ogImgUrl  = socialCardUrl(meta.hotelId || null, baseUrl);
 
   const lines = [
     `  <meta charset="UTF-8">`,
@@ -1375,11 +1383,18 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `  <meta property="og:url"         content="${esc(canonUrl)}">`,
     `  <meta property="og:type"        content="article">`,
     `  <meta property="og:site_name"   content="${esc(siteName)}">`,
+    `  <meta property="og:image"       content="${esc(ogImgUrl)}">`,
+    `  <meta property="og:image:type"  content="image/svg+xml">`,
+    `  <meta property="og:image:width" content="1200">`,
+    `  <meta property="og:image:height" content="630">`,
+    `  <meta property="og:image:alt"   content="${esc(meta.title)}">`,
     ``,
     `  <!-- Twitter Card -->`,
-    `  <meta name="twitter:card"        content="summary">`,
+    `  <meta name="twitter:card"        content="summary_large_image">`,
     `  <meta name="twitter:title"       content="${esc(meta.title)}">`,
     `  <meta name="twitter:description" content="${esc(meta.description)}">`,
+    `  <meta name="twitter:image"       content="${esc(ogImgUrl)}">`,
+    `  <meta name="twitter:image:alt"   content="${esc(meta.title)}">`,
     ``,
     `  <!-- Structured Data -->`,
     ...schemaScripts.map(s =>

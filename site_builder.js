@@ -35,6 +35,7 @@ const fs   = require('fs');
 const path = require('path');
 const { generateSearchIndex }   = require('./search_engine_client.js');
 const { generateImageSitemap }  = require('./hotel_image_engine.js');
+const { generateSocialCards }   = require('./social_card_engine.js');
 
 // ─────────────────────────────────────────────────────────────────────────────
 // VERSION
@@ -1115,6 +1116,10 @@ async function buildSite(options = {}) {
     const imageSitemapXml = generateImageSitemap(hotelObjects, baseUrl);
     fs.writeFileSync(path.join(absOut, 'image-sitemap.xml'), imageSitemapXml, 'utf8');
     _log(`      ✓ image-sitemap.xml (${hotelObjects.length} hotels)`);
+
+    // Generate social card SVGs (og:image / twitter:image) for all hotels
+    const cardStats = generateSocialCards(hotelObjects, absOut);
+    _log(`      ✓ social cards: ${cardStats.generated} generated, ${cardStats.cached} cached (${cardStats.total} total)`);
 
     // Copy homepage (index.html at project root) into dist/
     const homepageSrc  = path.join(__dirname, 'index.html');

@@ -30,6 +30,7 @@ const SUITES = [
   'security.test.js',
   'search.test.js',
   'hotel_image_engine.test.js',
+  'social_card_engine.test.js',
 ];
 
 const WIDTH = 64;
@@ -94,6 +95,6 @@ if (failedSuites.length > 0) {
   process.exit(1);
 } else {
   console.log(`\n  ✓  All ${SUITES.length} suites passed.\n`);
-  // SUITES count: 11 engine suites + 1 security suite + 1 search suite + 1 image engine suite = 14 total
+  // SUITES count: 11 engine suites + 1 security suite + 1 search suite + 1 image engine suite + 1 social card suite = 15 total
   process.exit(0);
 }
