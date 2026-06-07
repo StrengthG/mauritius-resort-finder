@@ -16,28 +16,96 @@
     body { padding-top: 72px; }
     .page-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
     .page-hero__eyebrow { display:inline-block; font-size:0.66rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); background:var(--gold-glow); border:1px solid var(--border-gold); border-radius:var(--radius-pill); padding:5px 14px; margin-bottom:18px; }
-    .rank-table { width:100%; border-collapse:collapse; margin-top:32px; }
-    .rank-table th { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); padding:10px 16px; text-align:left; border-bottom:1px solid var(--border); }
-    .rank-table td { padding:16px; border-bottom:1px solid var(--border); vertical-align:middle; }
-    .rank-table tr:hover td { background:var(--midnight); }
-    .rank-num { font-size:1.1rem; font-weight:800; color:var(--gold); width:48px; }
-    .rank-name a { font-size:0.95rem; font-weight:600; color:var(--text); transition:color .15s; }
-    .rank-name a:hover { color:var(--gold); }
-    .rank-region { font-size:0.78rem; color:var(--muted); margin-top:3px; }
-    .rank-score { font-size:1rem; font-weight:800; color:var(--gold); text-align:right; white-space:nowrap; }
-    .rank-bar-wrap { width:100px; }
-    .rank-bar { height:5px; background:var(--surface); border-radius:3px; overflow:hidden; margin-top:6px; }
-    .rank-bar__fill { height:100%; border-radius:3px; background:var(--gold); }
-    .rank-stars { font-size:0.72rem; color:var(--gold); }
-    .rank-cta a { font-size:0.78rem; font-weight:700; background:var(--gold); color:var(--deep-navy); padding:7px 14px; border-radius:6px; white-space:nowrap; transition:opacity .15s; display:inline-block; }
-    .rank-cta a:hover { opacity:.85; }
-    .rank-cta--no { font-size:0.78rem; color:var(--muted); }
-    .rank-amenities { display:flex; flex-wrap:wrap; gap:5px; margin-top:6px; }
-    .rank-amenity { font-size:0.62rem; background:var(--surface); border:1px solid var(--border); border-radius:100px; padding:2px 8px; color:var(--muted); }
-    @media(max-width:768px){
-      .rank-bar-wrap,.rank-stars,.rank-amenities{display:none;}
-      .rank-table td{padding:12px 10px;}
+
+    /* Card grid */
+    .rk-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 40px;
     }
+    @media (max-width: 1100px) { .rk-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 720px)  { .rk-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+    @media (max-width: 480px)  { .rk-grid { grid-template-columns: 1fr; } }
+
+    .rk-card {
+      border-radius: 14px; overflow: hidden;
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      transition: transform 0.28s var(--ease-out), box-shadow 0.28s, border-color 0.28s;
+      position: relative;
+    }
+    .rk-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.45);
+      border-color: var(--border-gold);
+    }
+
+    /* Photo area */
+    .rk-card__photo {
+      position: relative;
+      padding-top: 68%;
+      overflow: hidden;
+      background: var(--deep-navy);
+    }
+    .rk-card__photo img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.5s var(--ease-out);
+    }
+    .rk-card:hover .rk-card__photo img { transform: scale(1.06); }
+    .rk-card__photo-placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--midnight) 0%, var(--deep-navy) 100%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem; font-weight: 800; color: rgba(201,168,76,0.18);
+      letter-spacing: -0.02em;
+    }
+
+    /* Overlays on photo */
+    .rk-card__rank {
+      position: absolute; top: 11px; left: 11px; z-index: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 800; color: #fff; line-height: 1;
+      background: rgba(8,15,35,0.72);
+      border-radius: 7px; padding: 4px 10px;
+      backdrop-filter: blur(4px);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    }
+    .rk-card__score {
+      position: absolute; top: 11px; right: 11px; z-index: 1;
+      background: rgba(8,15,35,0.82); border: 1px solid var(--border-gold);
+      color: var(--gold); font-size: 0.78rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 6px; backdrop-filter: blur(4px);
+      letter-spacing: 0.02em;
+    }
+
+    /* Card body */
+    .rk-card__body { padding: 15px 16px 17px; }
+    .rk-card__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 700; color: var(--champagne);
+      margin: 0 0 3px; line-height: 1.25;
+    }
+    .rk-card__name a { color: inherit; text-decoration: none; transition: color 0.15s; }
+    .rk-card__name a:hover { color: var(--gold); }
+    .rk-card__region { font-size: 0.72rem; color: var(--muted); margin: 0 0 12px; }
+    .rk-card__actions { display: flex; gap: 7px; flex-wrap: wrap; }
+    .rk-card__book {
+      font-size: 0.73rem; font-weight: 700; color: var(--deep-navy);
+      background: var(--gold); padding: 5px 13px; border-radius: var(--radius-pill);
+      text-decoration: none; white-space: nowrap; transition: opacity 0.15s;
+    }
+    .rk-card__book:hover { opacity: 0.85; }
+    .rk-card__review {
+      font-size: 0.71rem; font-weight: 600; color: var(--gold);
+      border: 1px solid var(--border-gold); padding: 4px 11px;
+      border-radius: var(--radius-pill); text-decoration: none; white-space: nowrap;
+      background: var(--gold-glow); transition: background 0.15s;
+    }
+    .rk-card__review:hover { background: rgba(201,168,76,0.12); }
   </style>
 </head>
 <body>
@@ -81,532 +149,625 @@
   </div>
 
   <div class="container" style="padding-top:48px;padding-bottom:80px;">
-    <div style="overflow-x:auto;">
-      <table class="rank-table" aria-label="Hotel rankings">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Hotel</th>
-            <th>Score</th>
-            <th>Track</th>
-            <th>Stars</th>
-            <th>Reviews</th>
-            <th>Book</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div class="rk-grid">
 
-          <tr>
-            <td class="rank-num">1</td>
-            <td class="rank-name">
-              <a href="/hotels/royal-palm-beachcomber-luxury/">Royal Palm Beachcomber Luxury</a>
-              <div class="rank-region">&#128205; Grand Baie</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">9.2</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:92%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>1,340</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/LLPswc1" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #1 Royal Palm Beachcomber Luxury -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Royal%20Palm%20Beachcomber%20Luxury.png" alt="Royal Palm Beachcomber Luxury" loading="lazy">
+          <div class="rk-card__rank">#1</div>
+          <div class="rk-card__score">9.2 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/royal-palm-beachcomber-luxury/">Royal Palm Beachcomber Luxury</a></p>
+          <p class="rk-card__region">&#128205; Grand Baie</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/LLPswc1" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/royal-palm-beachcomber-luxury/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">2</td>
-            <td class="rank-name">
-              <a href="/hotels/four-seasons-resort-mauritius-at-anahita/">Four Seasons Resort Mauritius at Anahita</a>
-              <div class="rank-region">&#128205; Beau Champ</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">9.1</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:91%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>1,120</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/s7PgDXw" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #2 Four Seasons (no photo) -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <div class="rk-card__photo-placeholder">FS</div>
+          <div class="rk-card__rank">#2</div>
+          <div class="rk-card__score">9.1 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/four-seasons-resort-mauritius-at-anahita/">Four Seasons Resort Mauritius at Anahita</a></p>
+          <p class="rk-card__region">&#128205; Beau Champ</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/s7PgDXw" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/four-seasons-resort-mauritius-at-anahita/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">3</td>
-            <td class="rank-name">
-              <a href="/hotels/oneandonly-le-saint-geran/">One&amp;Only Le Saint G&eacute;ran</a>
-              <div class="rank-region">&#128205; Belle Mare</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">9.0</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:90%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>980</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/61eoozV" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #3 One&Only Le Saint Géran -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/OneandOnly%20Le%20Saint%20G%C3%A9ran.png" alt="One&amp;Only Le Saint G&eacute;ran" loading="lazy">
+          <div class="rk-card__rank">#3</div>
+          <div class="rk-card__score">9.0 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/oneandonly-le-saint-geran/">One&amp;Only Le Saint G&eacute;ran</a></p>
+          <p class="rk-card__region">&#128205; Belle Mare</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/61eoozV" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/oneandonly-le-saint-geran/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">4</td>
-            <td class="rank-name">
-              <a href="/hotels/constance-prince-maurice/">Constance Prince Maurice</a>
-              <div class="rank-region">&#128205; Poste de Flacq</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">9.0</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:90%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>890</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/WmRuuHu" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #4 Constance Prince Maurice -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Constance%20Prince%20Maurice.png" alt="Constance Prince Maurice" loading="lazy">
+          <div class="rk-card__rank">#4</div>
+          <div class="rk-card__score">9.0 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/constance-prince-maurice/">Constance Prince Maurice</a></p>
+          <p class="rk-card__region">&#128205; Poste de Flacq</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/WmRuuHu" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/constance-prince-maurice/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">5</td>
-            <td class="rank-name">
-              <a href="/hotels/paradise-cove-boutique-hotel-adults-only/">Paradise Cove Boutique Hotel &ndash; Adults Only</a>
-              <div class="rank-region">&#128205; Cap Malheureux</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Adults Only</span></div>
-            </td>
-            <td class="rank-score">9.0</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:90%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>194</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/KYUg6DO" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #5 Paradise Cove Boutique Hotel -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Paradise%20Cove%20Boutique%20Hotel%20-%20Adults%20Only.png" alt="Paradise Cove Boutique Hotel" loading="lazy">
+          <div class="rk-card__rank">#5</div>
+          <div class="rk-card__score">9.0 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/paradise-cove-boutique-hotel-adults-only/">Paradise Cove Boutique Hotel</a></p>
+          <p class="rk-card__region">&#128205; Cap Malheureux &middot; Adults Only</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/KYUg6DO" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/paradise-cove-boutique-hotel-adults-only/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">6</td>
-            <td class="rank-name">
-              <a href="/hotels/constance-belle-mare-plage/">Constance Belle Mare Plage</a>
-              <div class="rank-region">&#128205; Belle Mare</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Golf</span></div>
-            </td>
-            <td class="rank-score">8.9</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:89%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>950</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/joE5IeP" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #6 Constance Belle Mare Plage (no photo) -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <div class="rk-card__photo-placeholder">CB</div>
+          <div class="rk-card__rank">#6</div>
+          <div class="rk-card__score">8.9 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/constance-belle-mare-plage/">Constance Belle Mare Plage</a></p>
+          <p class="rk-card__region">&#128205; Belle Mare</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/joE5IeP" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/constance-belle-mare-plage/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">7</td>
-            <td class="rank-name">
-              <a href="/hotels/constance-le-chaland-iko-mauritius/">Constance Le Chaland Iko Mauritius</a>
-              <div class="rank-region">&#128205; Blue Bay</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Golf</span></div>
-            </td>
-            <td class="rank-score">8.8</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:88%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>1,560</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/a1VWvT2" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #7 Constance Le Chaland (no photo) -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <div class="rk-card__photo-placeholder">CL</div>
+          <div class="rk-card__rank">#7</div>
+          <div class="rk-card__score">8.8 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/constance-le-chaland-iko-mauritius/">Constance Le Chaland Iko Mauritius</a></p>
+          <p class="rk-card__region">&#128205; Blue Bay</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/a1VWvT2" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/constance-le-chaland-iko-mauritius/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">8</td>
-            <td class="rank-name">
-              <a href="/hotels/oberoi-beach-resort-mauritius/">Oberoi Beach Resort Mauritius</a>
-              <div class="rank-region">&#128205; Grand Baie</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.8</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:88%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>760</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/o4m2Ako" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #8 Oberoi Beach Resort Mauritius -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Oberoi%20Beach%20Resort%20Mauritius.png" alt="Oberoi Beach Resort Mauritius" loading="lazy">
+          <div class="rk-card__rank">#8</div>
+          <div class="rk-card__score">8.8 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/oberoi-beach-resort-mauritius/">Oberoi Beach Resort Mauritius</a></p>
+          <p class="rk-card__region">&#128205; Grand Baie</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/o4m2Ako" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/oberoi-beach-resort-mauritius/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">9</td>
-            <td class="rank-name">
-              <a href="/hotels/shanti-maurice-resort-and-spa/">Shanti Maurice Resort &amp; Spa</a>
-              <div class="rank-region">&#128205; Chemin Grenier</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.8</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:88%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>580</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/AMUhp0j" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #9 Shanti Maurice (no photo) -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <div class="rk-card__photo-placeholder">SM</div>
+          <div class="rk-card__rank">#9</div>
+          <div class="rk-card__score">8.8 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/shanti-maurice-resort-and-spa/">Shanti Maurice Resort &amp; Spa</a></p>
+          <p class="rk-card__region">&#128205; Chemin Grenier</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/AMUhp0j" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/shanti-maurice-resort-and-spa/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">10</td>
-            <td class="rank-name">
-              <a href="/hotels/lux-grand-gaube-resort-and-villas/">Lux* Grand Gaube Resort &amp; Villas</a>
-              <div class="rank-region">&#128205; Grand Gaube</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.7</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:87%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>1,430</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/usEpyj6" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #10 Lux* Grand Gaube Resort & Villas -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Lux%20Grand%20Gaube%20Resort%20and%20Villas.png" alt="Lux Grand Gaube Resort and Villas" loading="lazy">
+          <div class="rk-card__rank">#10</div>
+          <div class="rk-card__score">8.7 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/lux-grand-gaube-resort-and-villas/">Lux* Grand Gaube Resort &amp; Villas</a></p>
+          <p class="rk-card__region">&#128205; Grand Gaube</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/usEpyj6" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/lux-grand-gaube-resort-and-villas/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">11</td>
-            <td class="rank-name">
-              <a href="/hotels/lagoon-attitude-adults-only/">Lagoon Attitude &ndash; Adults Only</a>
-              <div class="rank-region">&#128205; Cap Malheureux</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Adults Only</span></div>
-            </td>
-            <td class="rank-score">8.7</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:87%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>81</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/4toq7Ie" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #11 Lagoon Attitude – Adults Only -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Lagoon%20Attitude%20-%20Adults%20Only.png" alt="Lagoon Attitude Adults Only" loading="lazy">
+          <div class="rk-card__rank">#11</div>
+          <div class="rk-card__score">8.7 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/lagoon-attitude-adults-only/">Lagoon Attitude &ndash; Adults Only</a></p>
+          <p class="rk-card__region">&#128205; Cap Malheureux &middot; Adults Only</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/4toq7Ie" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/lagoon-attitude-adults-only/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">12</td>
-            <td class="rank-name">
-              <a href="/hotels/hilton-mauritius-resort-and-spa/">Hilton Mauritius Resort &amp; Spa</a>
-              <div class="rank-region">&#128205; Flic En Flac</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Kids Club</span></div>
-            </td>
-            <td class="rank-score">8.7</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:87%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>1,180</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/lb9Yl8f" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #12 Hilton Mauritius Resort & Spa -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Hilton%20Mauritius%20Resort%20and%20Spa.png" alt="Hilton Mauritius Resort and Spa" loading="lazy">
+          <div class="rk-card__rank">#12</div>
+          <div class="rk-card__score">8.7 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/hilton-mauritius-resort-and-spa/">Hilton Mauritius Resort &amp; Spa</a></p>
+          <p class="rk-card__region">&#128205; Flic En Flac</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/lb9Yl8f" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/hilton-mauritius-resort-and-spa/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">13</td>
-            <td class="rank-name">
-              <a href="/hotels/anahita-golf-and-spa-resort/">Anahita Golf &amp; Spa Resort</a>
-              <div class="rank-region">&#128205; Grand River South East</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.7</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:87%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>700</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/6oyzyzA" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #13 Anahita Golf & Spa Resort -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Anahita%20Golf%20and%20Spa%20Resort.png" alt="Anahita Golf and Spa Resort" loading="lazy">
+          <div class="rk-card__rank">#13</div>
+          <div class="rk-card__score">8.7 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/anahita-golf-and-spa-resort/">Anahita Golf &amp; Spa Resort</a></p>
+          <p class="rk-card__region">&#128205; Grand River South East</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/6oyzyzA" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/anahita-golf-and-spa-resort/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">14</td>
-            <td class="rank-name">
-              <a href="/hotels/lux-belle-mare/">LUX* Belle Mare</a>
-              <div class="rank-region">&#128205; Belle Mare</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.6</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:86%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>1,050</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/FfYvZuT" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #14 LUX* Belle Mare -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/LUX%20Belle%20Mare.png" alt="LUX Belle Mare" loading="lazy">
+          <div class="rk-card__rank">#14</div>
+          <div class="rk-card__score">8.6 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/lux-belle-mare/">LUX* Belle Mare</a></p>
+          <p class="rk-card__region">&#128205; Belle Mare</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/FfYvZuT" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/lux-belle-mare/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">15</td>
-            <td class="rank-name">
-              <a href="/hotels/the-westin-turtle-bay-resort-and-spa-mauritius/">The Westin Turtle Bay Resort &amp; Spa</a>
-              <div class="rank-region">&#128205; Balaclava</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.6</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:86%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>840</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/PJytcSS" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #15 The Westin Turtle Bay Resort & Spa -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/The%20Westin%20Turtle%20Bay%20Resort%20and%20Spa.png" alt="The Westin Turtle Bay Resort and Spa" loading="lazy">
+          <div class="rk-card__rank">#15</div>
+          <div class="rk-card__score">8.6 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/the-westin-turtle-bay-resort-and-spa-mauritius/">The Westin Turtle Bay Resort &amp; Spa</a></p>
+          <p class="rk-card__region">&#128205; Balaclava</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/PJytcSS" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/the-westin-turtle-bay-resort-and-spa-mauritius/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">16</td>
-            <td class="rank-name">
-              <a href="/hotels/sea-diamond-boutique-hotel-and-spa-by-sea-resorts/">Sea Diamond Boutique Hotel &amp; Spa</a>
-              <div class="rank-region">&#128205; Cap Malheureux</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.5</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:85%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>&mdash;</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/FA2X6xD" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #16 Sea Diamond Boutique Hotel & Spa -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Sea%20Diamond%20Boutique%20Hotel%20and%20Spa.png" alt="Sea Diamond Boutique Hotel and Spa" loading="lazy">
+          <div class="rk-card__rank">#16</div>
+          <div class="rk-card__score">8.5 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/sea-diamond-boutique-hotel-and-spa-by-sea-resorts/">Sea Diamond Boutique Hotel &amp; Spa</a></p>
+          <p class="rk-card__region">&#128205; Cap Malheureux</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/FA2X6xD" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/sea-diamond-boutique-hotel-and-spa-by-sea-resorts/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">17</td>
-            <td class="rank-name">
-              <a href="/hotels/le-meridien-ile-maurice/">Le M&eacute;ridien Ile Maurice</a>
-              <div class="rank-region">&#128205; Pointe Aux Piments</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Kids Club</span></div>
-            </td>
-            <td class="rank-score">8.5</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:85%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>890</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/8C3UdBg" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #17 Le Méridien Ile Maurice -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Le%20M%C3%A9ridien%20Ile%20Maurice.png" alt="Le M&eacute;ridien Ile Maurice" loading="lazy">
+          <div class="rk-card__rank">#17</div>
+          <div class="rk-card__score">8.5 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/le-meridien-ile-maurice/">Le M&eacute;ridien Ile Maurice</a></p>
+          <p class="rk-card__region">&#128205; Pointe Aux Piments</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/8C3UdBg" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/le-meridien-ile-maurice/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">18</td>
-            <td class="rank-name">
-              <a href="/hotels/jacaranda-luxury-villas-by-maritim/">Jacaranda Luxury Villas by Maritim</a>
-              <div class="rank-region">&#128205; Balaclava</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Butler</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.5</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:85%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>380</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/uzq9Zlu" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #18 Jacaranda Luxury Villas by Maritim -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Jacaranda%20Luxury%20Villas%20by%20Maritim.png" alt="Jacaranda Luxury Villas by Maritim" loading="lazy">
+          <div class="rk-card__rank">#18</div>
+          <div class="rk-card__score">8.5 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/jacaranda-luxury-villas-by-maritim/">Jacaranda Luxury Villas by Maritim</a></p>
+          <p class="rk-card__region">&#128205; Balaclava</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/uzq9Zlu" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/jacaranda-luxury-villas-by-maritim/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">19</td>
-            <td class="rank-name">
-              <a href="/hotels/the-residence-mauritius/">The Residence Mauritius</a>
-              <div class="rank-region">&#128205; Belle Mare</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Kids Club</span></div>
-            </td>
-            <td class="rank-score">8.4</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:84%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>&mdash;</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/DSfJton" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #19 The Residence Mauritius -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/The%20Residence%20Mauritius.png" alt="The Residence Mauritius" loading="lazy">
+          <div class="rk-card__rank">#19</div>
+          <div class="rk-card__score">8.4 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/the-residence-mauritius/">The Residence Mauritius</a></p>
+          <p class="rk-card__region">&#128205; Belle Mare</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/DSfJton" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/the-residence-mauritius/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">20</td>
-            <td class="rank-name">
-              <a href="/hotels/mythic-suites-and-villas-by-mj-holidays/">Mythic Suites &amp; Villas by MJ Holidays</a>
-              <div class="rank-region">&#128205; Grand Gaube</div>
-              <div class="rank-amenities"><span class="rank-amenity">Pool</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.4</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:84%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>8</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/c9Mfa5v" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #20 Mythic Suites & Villas by MJ Holidays -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Mythic%20Suites%20and%20Villas%20by%20MJ%20Holidays.png" alt="Mythic Suites and Villas by MJ Holidays" loading="lazy">
+          <div class="rk-card__rank">#20</div>
+          <div class="rk-card__score">8.4 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/mythic-suites-and-villas-by-mj-holidays/">Mythic Suites &amp; Villas by MJ Holidays</a></p>
+          <p class="rk-card__region">&#128205; Grand Gaube</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/c9Mfa5v" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/mythic-suites-and-villas-by-mj-holidays/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">21</td>
-            <td class="rank-name">
-              <a href="/hotels/heritage-awali-golf-and-spa-resort/">Heritage Awali Golf &amp; Spa Resort</a>
-              <div class="rank-region">&#128205; Bel Ombre</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Golf</span></div>
-            </td>
-            <td class="rank-score">8.4</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:84%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
-            <td>890</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/TzDUcJc" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #21 Heritage Awali Golf & Spa Resort -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Heritage%20Awali%20Golf%20and%20Spa%20Resort.png" alt="Heritage Awali Golf and Spa Resort" loading="lazy">
+          <div class="rk-card__rank">#21</div>
+          <div class="rk-card__score">8.4 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/heritage-awali-golf-and-spa-resort/">Heritage Awali Golf &amp; Spa Resort</a></p>
+          <p class="rk-card__region">&#128205; Bel Ombre</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/TzDUcJc" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/heritage-awali-golf-and-spa-resort/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">22</td>
-            <td class="rank-name">
-              <a href="/hotels/bubble-lodge-ile-aux-cerfs/">Bubble Lodge Ile Aux Cerfs</a>
-              <div class="rank-region">&#128205; Trou d&rsquo;Eau Douce</div>
-              <div class="rank-amenities"><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.4</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:84%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>140</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/nOTJrFM" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #22 Bubble Lodge Ile Aux Cerfs -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Bubble%20Lodge%20Ile%20Aux%20Cerfs.png" alt="Bubble Lodge Ile Aux Cerfs" loading="lazy">
+          <div class="rk-card__rank">#22</div>
+          <div class="rk-card__score">8.4 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/bubble-lodge-ile-aux-cerfs/">Bubble Lodge Ile Aux Cerfs</a></p>
+          <p class="rk-card__region">&#128205; Trou d&rsquo;Eau Douce</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/nOTJrFM" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/bubble-lodge-ile-aux-cerfs/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">23</td>
-            <td class="rank-name">
-              <a href="/hotels/villa-alizee/">Villa Aliz&eacute;e</a>
-              <div class="rank-region">&#128205; Port Louis</div>
-              <div class="rank-amenities"><span class="rank-amenity">Pool</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.3</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:83%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>12</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/FyoIgaK" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #23 Villa Alizée -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Villa%20Aliz%C3%A9e.png" alt="Villa Aliz&eacute;e" loading="lazy">
+          <div class="rk-card__rank">#23</div>
+          <div class="rk-card__score">8.3 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/villa-alizee/">Villa Aliz&eacute;e</a></p>
+          <p class="rk-card__region">&#128205; Port Louis</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/FyoIgaK" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/villa-alizee/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">24</td>
-            <td class="rank-name">
-              <a href="/hotels/salt-of-palmar/">SALT of Palmar</a>
-              <div class="rank-region">&#128205; Palmar</div>
-              <div class="rank-amenities"><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.3</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:83%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>270</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/rHzTaO0" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #24 SALT of Palmar -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/SALT%20of%20Palmar.png" alt="SALT of Palmar" loading="lazy">
+          <div class="rk-card__rank">#24</div>
+          <div class="rk-card__score">8.3 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/salt-of-palmar/">SALT of Palmar</a></p>
+          <p class="rk-card__region">&#128205; Palmar</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/rHzTaO0" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/salt-of-palmar/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">25</td>
-            <td class="rank-name">
-              <a href="/hotels/zilwa-attitude/">Zilwa Attitude</a>
-              <div class="rank-region">&#128205; Cap Malheureux</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Kids Club</span></div>
-            </td>
-            <td class="rank-score">8.2</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:82%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>1,320</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/yLn0geY" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #25 Zilwa Attitude -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Zilwa%20Attitude.png" alt="Zilwa Attitude" loading="lazy">
+          <div class="rk-card__rank">#25</div>
+          <div class="rk-card__score">8.2 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/zilwa-attitude/">Zilwa Attitude</a></p>
+          <p class="rk-card__region">&#128205; Cap Malheureux</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/yLn0geY" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/zilwa-attitude/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">26</td>
-            <td class="rank-name">
-              <a href="/hotels/20-degres-sud/">20 Degres Sud</a>
-              <div class="rank-region">&#128205; Grand Baie</div>
-              <div class="rank-amenities"><span class="rank-amenity">Pool</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">8.2</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:82%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>320</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/2VMyMj0" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #26 20 Degres Sud -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/20%20Degres%20Sud.png" alt="20 Degres Sud" loading="lazy">
+          <div class="rk-card__rank">#26</div>
+          <div class="rk-card__score">8.2 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/20-degres-sud/">20 Degres Sud</a></p>
+          <p class="rk-card__region">&#128205; Grand Baie</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/2VMyMj0" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/20-degres-sud/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">27</td>
-            <td class="rank-name">
-              <a href="/hotels/the-bay-club-at-anahita/">The Bay Club at Anahita</a>
-              <div class="rank-region">&#128205; Grand River South East</div>
-              <div class="rank-amenities"><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Golf</span></div>
-            </td>
-            <td class="rank-score">8.1</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:81%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>&mdash;</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/LQBTEyZ" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #27 The Bay Club at Anahita -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/The%20Bay%20Club%20at%20Anahita.png" alt="The Bay Club at Anahita" loading="lazy">
+          <div class="rk-card__rank">#27</div>
+          <div class="rk-card__score">8.1 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/the-bay-club-at-anahita/">The Bay Club at Anahita</a></p>
+          <p class="rk-card__region">&#128205; Grand River South East</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/LQBTEyZ" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/the-bay-club-at-anahita/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">28</td>
-            <td class="rank-name">
-              <a href="/hotels/the-ravenala-attitude/">The Ravenala Attitude</a>
-              <div class="rank-region">&#128205; Balaclava</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Kids Club</span></div>
-            </td>
-            <td class="rank-score">8.1</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:81%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>1,080</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/k1alVSX" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #28 The Ravenala Attitude -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/The%20Ravenala%20Attitude.png" alt="The Ravenala Attitude" loading="lazy">
+          <div class="rk-card__rank">#28</div>
+          <div class="rk-card__score">8.1 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/the-ravenala-attitude/">The Ravenala Attitude</a></p>
+          <p class="rk-card__region">&#128205; Balaclava</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/k1alVSX" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/the-ravenala-attitude/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">29</td>
-            <td class="rank-name">
-              <a href="/hotels/veranda-palmar-beach-hotel/">Veranda Palmar Beach Hotel</a>
-              <div class="rank-region">&#128205; Belle Mare</div>
-              <div class="rank-amenities"><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Kids Club</span></div>
-            </td>
-            <td class="rank-score">7.9</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:79%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>&mdash;</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/gPf7jwH" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #29 Veranda Palmar Beach Hotel -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Veranda%20Palmar%20Beach%20Hotel.png" alt="Veranda Palmar Beach Hotel" loading="lazy">
+          <div class="rk-card__rank">#29</div>
+          <div class="rk-card__score">7.9 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/veranda-palmar-beach-hotel/">Veranda Palmar Beach Hotel</a></p>
+          <p class="rk-card__region">&#128205; Belle Mare</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/gPf7jwH" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/veranda-palmar-beach-hotel/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">30</td>
-            <td class="rank-name">
-              <a href="/hotels/sands-suites-resort-and-spa/">Sands Suites Resort &amp; Spa</a>
-              <div class="rank-region">&#128205; Flic En Flac</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">7.9</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:79%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>760</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/jJkyMlG" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #30 Sands Suites Resort & Spa -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Sands%20Suites%20Resort%20and%20Spa.png" alt="Sands Suites Resort and Spa" loading="lazy">
+          <div class="rk-card__rank">#30</div>
+          <div class="rk-card__score">7.9 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/sands-suites-resort-and-spa/">Sands Suites Resort &amp; Spa</a></p>
+          <p class="rk-card__region">&#128205; Flic En Flac</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/jJkyMlG" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/sands-suites-resort-and-spa/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">31</td>
-            <td class="rank-name">
-              <a href="/hotels/tamassa-resort/">Tamassa Resort</a>
-              <div class="rank-region">&#128205; Bel Ombre</div>
-              <div class="rank-amenities"><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Kids Club</span></div>
-            </td>
-            <td class="rank-score">7.9</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:79%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>1,020</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/oSrAbiY" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #31 Tamassa Resort (no photo) -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <div class="rk-card__photo-placeholder">TR</div>
+          <div class="rk-card__rank">#31</div>
+          <div class="rk-card__score">7.9 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/tamassa-resort/">Tamassa Resort</a></p>
+          <p class="rk-card__region">&#128205; Bel Ombre</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/oSrAbiY" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/tamassa-resort/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">32</td>
-            <td class="rank-name">
-              <a href="/hotels/palmar-hotels-seasense-boutique-hotel-spa/">Palmar Hotels Seasense Boutique Hotel Spa</a>
-              <div class="rank-region">&#128205; Belle Mare</div>
-              <div class="rank-amenities"><span class="rank-amenity">Spa</span><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">7.8</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:78%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>&mdash;</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/wjJUel4" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #32 Palmar Hotels Seasense Boutique Hotel Spa (no photo) -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <div class="rk-card__photo-placeholder">PS</div>
+          <div class="rk-card__rank">#32</div>
+          <div class="rk-card__score">7.8 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/palmar-hotels-seasense-boutique-hotel-spa/">Palmar Hotels Seasense Boutique Hotel Spa</a></p>
+          <p class="rk-card__region">&#128205; Belle Mare</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/wjJUel4" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/palmar-hotels-seasense-boutique-hotel-spa/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">33</td>
-            <td class="rank-name">
-              <a href="/hotels/crystals-beach-hotel-mauritius/">Crystals Beach Hotel Mauritius</a>
-              <div class="rank-region">&#128205; Belle Mare</div>
-              <div class="rank-amenities"><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">7.8</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:78%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>&mdash;</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/d8XZBKn" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #33 Crystals Beach Hotel Mauritius (no photo) -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <div class="rk-card__photo-placeholder">CB</div>
+          <div class="rk-card__rank">#33</div>
+          <div class="rk-card__score">7.8 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/crystals-beach-hotel-mauritius/">Crystals Beach Hotel Mauritius</a></p>
+          <p class="rk-card__region">&#128205; Belle Mare</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/d8XZBKn" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/crystals-beach-hotel-mauritius/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">34</td>
-            <td class="rank-name">
-              <a href="/hotels/holiday-inn-mauritius-mon-tresor/">Holiday Inn Mauritius Mon Tresor</a>
-              <div class="rank-region">&#128205; Plaine Magnien</div>
-              <div class="rank-amenities"><span class="rank-amenity">Pool</span><span class="rank-amenity">Fine Dining</span><span class="rank-amenity">Kids Club</span></div>
-            </td>
-            <td class="rank-score">7.8</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:78%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;&#9733;</td>
-            <td>620</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/KrkFlUB" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #34 Holiday Inn Mauritius Mon Tresor -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Holiday%20Inn%20Mauritius%20Mon%20Tresor.png" alt="Holiday Inn Mauritius Mon Tresor" loading="lazy">
+          <div class="rk-card__rank">#34</div>
+          <div class="rk-card__score">7.8 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/holiday-inn-mauritius-mon-tresor/">Holiday Inn Mauritius Mon Tresor</a></p>
+          <p class="rk-card__region">&#128205; Plaine Magnien</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/KrkFlUB" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/holiday-inn-mauritius-mon-tresor/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">35</td>
-            <td class="rank-name">
-              <a href="/hotels/sunrise-attitude/">Sunrise Attitude</a>
-              <div class="rank-region">&#128205; Belle Mare</div>
-              <div class="rank-amenities"><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">7.6</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:76%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;</td>
-            <td>&mdash;</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/AAJZi3E" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #35 Sunrise Attitude -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Sunrise%20Attitude.png" alt="Sunrise Attitude" loading="lazy">
+          <div class="rk-card__rank">#35</div>
+          <div class="rk-card__score">7.6 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/sunrise-attitude/">Sunrise Attitude</a></p>
+          <p class="rk-card__region">&#128205; Belle Mare</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/AAJZi3E" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/sunrise-attitude/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td class="rank-num">36</td>
-            <td class="rank-name">
-              <a href="/hotels/solana-beach-hotel/">Solana Beach Hotel</a>
-              <div class="rank-region">&#128205; Belle Mare</div>
-              <div class="rank-amenities"><span class="rank-amenity">Private Beach</span><span class="rank-amenity">Fine Dining</span></div>
-            </td>
-            <td class="rank-score">7.5</td>
-            <td class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar__fill" style="width:75%"></div></div></td>
-            <td class="rank-stars">&#9733;&#9733;&#9733;</td>
-            <td>&mdash;</td>
-            <td class="rank-cta"><a href="https://expedia.com/affiliate/ujHIqvk" rel="noopener sponsored">Check availability &rarr;</a></td>
-          </tr>
+      <!-- #36 Solana Beach Hotel -->
+      <article class="rk-card">
+        <div class="rk-card__photo">
+          <img src="/assets/images/hotels/Solana%20Beach%20Hotel.png" alt="Solana Beach Hotel" loading="lazy">
+          <div class="rk-card__rank">#36</div>
+          <div class="rk-card__score">7.5 &#9733;</div>
+        </div>
+        <div class="rk-card__body">
+          <p class="rk-card__name"><a href="/hotels/solana-beach-hotel/">Solana Beach Hotel</a></p>
+          <p class="rk-card__region">&#128205; Belle Mare</p>
+          <div class="rk-card__actions">
+            <a href="https://expedia.com/affiliate/ujHIqvk" rel="noopener sponsored" class="rk-card__book">Book &rarr;</a>
+            <a href="/hotels/solana-beach-hotel/" class="rk-card__review">Full review</a>
+          </div>
+        </div>
+      </article>
 
-        </tbody>
-      </table>
-    </div>
+    </div><!-- /rk-grid -->
 
-    <p style="margin-top:28px;font-size:0.75rem;color:var(--muted);line-height:1.6;">
+    <p style="margin-top:36px;font-size:0.75rem;color:var(--muted);line-height:1.6;">
       Scores are composite ratings across four independently weighted criteria: Location, Amenities, Brand Credibility, and Value.
-      &ldquo;Check availability &rarr;&rdquo; links are Expedia affiliate links &mdash; we may earn a commission at no extra cost to you. Rankings are not influenced by commercial arrangements.
+      &ldquo;Book &rarr;&rdquo; links are Expedia affiliate links &mdash; we may earn a commission at no extra cost to you. Rankings are not influenced by commercial arrangements.
       <a href="/methodology/" style="color:var(--gold);">Read our full methodology &rarr;</a>
     </p>
   </div>
