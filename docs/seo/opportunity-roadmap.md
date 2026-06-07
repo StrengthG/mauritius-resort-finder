@@ -42,7 +42,7 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Build "Best beach resorts in Mauritius" guide~~ | ~~Informational~~ | ~~"best beach resorts mauritius"~~ | ✅ Done 2026-05-18 (Run 12, ~2,400 words, 7 hotels, coast comparison, FAQPage schema) |
 | ~~Fix 6 over-length meta descriptions~~ | ~~Technical/On-page~~ | — | ✅ Done 2026-05-18 (Run 13) — all pages now ≤160 chars |
 | ~~Build "Best boutique hotels in Mauritius" guide~~ | ~~Informational~~ | ~~"best boutique hotels mauritius"~~ | ✅ Done 2026-05-18 (Run 13, ~2,400 words, 5 hotels, boutique vs resort framework, FAQPage) |
-| Build hotel photo/gallery pages | UX/engagement | — | Improves time-on-site |
+| ~~Build hotel photo/gallery pages~~ | ~~UX/engagement~~ | — | ✅ Done 2026-06-07 — CSS gradient placeholders for all 36 hotels, lightbox, gallery strip, card thumbnails, ImageObject schema, image sitemap; auto-upgrades to real WebP when photos added |
 
 ## Tier 4 — Next Runs
 
