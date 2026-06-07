@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-05-26 (Run 34)
+Last updated: 2026-06-07 (Run 48)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -88,10 +88,12 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Mauritius wildlife guide~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-06-07 (Run 44, ~2,500 words, 6 endemic birds, 4 reptiles/mammals, 4 marine species, 6-site table, season guide, 3 zone-matched CTAs, 6 FAQs, FAQPage schema) |
 | ~~Social cards (og:image / twitter:image) for all resorts~~ | ~~UX/Social~~ | ~~High~~ | ✅ Done 2026-06-07 (Run 46) — 37 unique SVG cards (36 hotels + generic), cached, content-hash rebuild, summary_large_image Twitter card, og:image updated on all generated pages |
 | ~~Resort discovery map~~ | ~~UX/SEO~~ | ~~High~~ | ✅ Done 2026-06-07 (Run 47) — Leaflet/OSM map, 36 hotel markers, region + category filters, compare from map, wishlist, search, dark mode, GA4 events, noscript fallback, map-hotels.json build step |
+| ~~Scalable backlink acquisition machine~~ | ~~Backlinks~~ | ~~High~~ | ✅ Done 2026-06-07 (Run 48) — 82-prospect discovery DB, scorer, 13-week queue, 90-day dashboard, 108 tests; 112 total prospects |
+| ~~Mauritius destination weddings guide~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-06-07 (Run 48, ~2,400 words, legal requirements, 5-tier budget table, 5 hotel CTAs, 4 season cards, 6 FAQs, FAQPage + BreadcrumbList + Article schema) |
 | Rodrigues Island guide | Informational | Low | "rodrigues island mauritius" — no dataset hotels; informational-only approach required |
+| Mauritius overwater villas guide | Informational | Medium | "overwater villas mauritius" — high commercial intent, specific luxury product |
 | Mauritius photography spots guide | Informational | Low | "best photography spots mauritius" |
 | Mauritius nightlife guide | Informational | Low | "nightlife mauritius" |
-| Digital PR outreach (Condé Nast, TPG) | Backlinks | Ongoing | Data-driven "we ranked every hotel" angle |
-| Guest posts on honeymoon travel blogs | Backlinks | Ongoing | Target anchor: "best honeymoon hotels mauritius" |
+| Begin backlink outreach — Week 1 batch | Backlinks | High | `node seo_outreach_queue.js` — 1 broken link target (Rough Guides DA 83) |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
 | Update hotel data quarterly | Content freshness | Ongoing | Scores decay; fresh data = ranking signal |
