@@ -328,6 +328,82 @@
       .contact-cta-card { padding: 36px 24px; }
       .region-card--persona .region-card__img-wrap { height: 150px; }
     }
+
+    /* ── Hotel Photo Gallery (Airbnb-style) ─────────────────────────────── */
+    #hotel-gallery { background: var(--midnight); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .hg-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 1100px) { .hg-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 720px)  { .hg-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+    @media (max-width: 480px)  { .hg-grid { grid-template-columns: 1fr; } }
+    .hg-card {
+      border-radius: 14px; overflow: hidden;
+      background: var(--navy-card);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.35);
+      transition: transform 0.28s var(--ease-out), box-shadow 0.28s;
+      position: relative;
+    }
+    .hg-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.5), 0 0 0 1px var(--border-gold);
+    }
+    .hg-card__img-wrap {
+      position: relative; padding-top: 75%; overflow: hidden;
+      background: var(--deep-navy);
+    }
+    .hg-card__img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.5s var(--ease-out);
+    }
+    .hg-card:hover .hg-card__img { transform: scale(1.06); }
+    .hg-card__rating {
+      position: absolute; top: 12px; right: 12px; z-index: 1;
+      background: rgba(8,15,35,0.82); border: 1px solid var(--border-gold);
+      color: var(--gold); font-size: 0.72rem; font-weight: 700;
+      padding: 3px 9px; border-radius: 6px; backdrop-filter: blur(4px);
+      letter-spacing: 0.02em;
+    }
+    .hg-card__wish {
+      position: absolute; top: 11px; left: 12px; z-index: 2;
+      background: rgba(8,15,35,0.70); color: rgba(255,255,255,0.80);
+      font-size: 1rem; width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.12);
+      user-select: none; pointer-events: none;
+    }
+    .hg-card__body { padding: 14px 16px 18px; }
+    .hg-card__name-link {
+      display: block; text-decoration: none; color: inherit;
+      position: static;
+    }
+    .hg-card__name-link::after {
+      content: ''; position: absolute; inset: 0; z-index: 1; border-radius: 14px;
+    }
+    .hg-card__name {
+      font-size: 0.88rem; font-weight: 700; color: var(--champagne);
+      margin: 0 0 3px; line-height: 1.3;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .hg-card__name-link:hover .hg-card__name { color: var(--gold); }
+    .hg-card__region { font-size: 0.75rem; color: var(--muted); margin: 0 0 10px; }
+    .hg-card__footer {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .hg-card__price { font-size: 0.82rem; color: var(--text-dim); }
+    .hg-card__price strong { color: var(--champagne); font-weight: 700; }
+    .hg-card__book {
+      font-size: 0.73rem; font-weight: 700; color: var(--gold);
+      padding: 4px 12px; border: 1px solid var(--border-gold);
+      border-radius: var(--radius-pill); background: var(--gold-glow);
+      text-decoration: none; white-space: nowrap;
+      position: relative; z-index: 2;
+      transition: background 0.2s;
+    }
+    .hg-card__book:hover { background: rgba(201,168,76,0.15); }
   </style>
 </head>
 
@@ -587,6 +663,576 @@
     <div style="margin-top:40px;text-align:center;" class="reveal">
       <a href="/rankings/" class="btn btn--ghost">See all 36 hotels &rarr;</a>
     </div>
+  </div>
+</section>
+
+<!-- HOTEL PHOTO GALLERY ════════════════════════════════════════════════════ -->
+<section class="section" id="hotel-gallery" aria-labelledby="gallery-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-header__label">Browse Hotels</span>
+      <h2 id="gallery-heading">Explore resorts by photo</h2>
+      <p>29 properties with verified photos — click any card to check live rates on Expedia.</p>
+    </div>
+
+    <div class="hg-grid stagger-children">
+
+      <!-- Royal Palm Beachcomber Luxury -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Royal%20Palm%20Beachcomber%20Luxury.png" alt="Royal Palm Beachcomber Luxury" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">9.2 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/royal-palm-beachcomber-luxury/" class="hg-card__name-link">
+            <p class="hg-card__name">Royal Palm Beachcomber Luxury</p>
+          </a>
+          <p class="hg-card__region">Grand Baie</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$1,450</strong>/night</span>
+            <a href="https://expedia.com/affiliate/LLPswc1" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- One&Only Le Saint Géran -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/OneandOnly%20Le%20Saint%20G%C3%A9ran.png" alt="One&amp;Only Le Saint G&eacute;ran" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">9.0 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/oneandonly-le-saint-geran/" class="hg-card__name-link">
+            <p class="hg-card__name">One&amp;Only Le Saint G&eacute;ran</p>
+          </a>
+          <p class="hg-card__region">Belle Mare</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$940</strong>/night</span>
+            <a href="https://expedia.com/affiliate/jJhAhIn" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Constance Prince Maurice -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Constance%20Prince%20Maurice.png" alt="Constance Prince Maurice" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">9.0 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/constance-prince-maurice/" class="hg-card__name-link">
+            <p class="hg-card__name">Constance Prince Maurice</p>
+          </a>
+          <p class="hg-card__region">Poste de Flacq</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$1,250</strong>/night</span>
+            <a href="https://expedia.com/affiliate/WmRuuHu" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Paradise Cove Boutique Hotel - Adults Only -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Paradise%20Cove%20Boutique%20Hotel%20-%20Adults%20Only.png" alt="Paradise Cove Boutique Hotel" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">9.0 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/paradise-cove-boutique-hotel---adults-only/" class="hg-card__name-link">
+            <p class="hg-card__name">Paradise Cove Boutique Hotel</p>
+          </a>
+          <p class="hg-card__region">Cap Malheureux &middot; Adults Only</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$890</strong>/night</span>
+            <a href="https://expedia.com/affiliate/KYUg6DO" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Oberoi Beach Resort Mauritius -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Oberoi%20Beach%20Resort%20Mauritius.png" alt="Oberoi Beach Resort Mauritius" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.8 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/oberoi-beach-resort-mauritius/" class="hg-card__name-link">
+            <p class="hg-card__name">Oberoi Beach Resort Mauritius</p>
+          </a>
+          <p class="hg-card__region">Grand Baie</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$1,050</strong>/night</span>
+            <a href="https://expedia.com/affiliate/o4m2Ako" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Lux* Grand Gaube Resort & Villas -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Lux%20Grand%20Gaube%20Resort%20and%20Villas.png" alt="Lux Grand Gaube Resort and Villas" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.7 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/lux-grand-gaube-resort-villas/" class="hg-card__name-link">
+            <p class="hg-card__name">Lux* Grand Gaube Resort &amp; Villas</p>
+          </a>
+          <p class="hg-card__region">Grand Gaube</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$680</strong>/night</span>
+            <a href="https://expedia.com/affiliate/usEpyj6" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Lagoon Attitude - Adults Only -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Lagoon%20Attitude%20-%20Adults%20Only.png" alt="Lagoon Attitude Adults Only" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.7 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/lagoon-attitude---adults-only/" class="hg-card__name-link">
+            <p class="hg-card__name">Lagoon Attitude</p>
+          </a>
+          <p class="hg-card__region">Cap Malheureux &middot; Adults Only</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$520</strong>/night</span>
+            <a href="https://expedia.com/affiliate/4toq7Ie" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Hilton Mauritius Resort & Spa -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Hilton%20Mauritius%20Resort%20and%20Spa.png" alt="Hilton Mauritius Resort and Spa" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.7 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/hilton-mauritius-resort-spa/" class="hg-card__name-link">
+            <p class="hg-card__name">Hilton Mauritius Resort &amp; Spa</p>
+          </a>
+          <p class="hg-card__region">Flic En Flac</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$530</strong>/night</span>
+            <a href="https://expedia.com/affiliate/lb9Yl8f" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Anahita Golf & Spa Resort -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Anahita%20Golf%20and%20Spa%20Resort.png" alt="Anahita Golf and Spa Resort" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.7 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/anahita-golf-spa-resort/" class="hg-card__name-link">
+            <p class="hg-card__name">Anahita Golf &amp; Spa Resort</p>
+          </a>
+          <p class="hg-card__region">Grand River South East</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$780</strong>/night</span>
+            <a href="https://expedia.com/affiliate/6oyzyzA" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- LUX* Belle Mare -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/LUX%20Belle%20Mare.png" alt="LUX Belle Mare" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.6 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/lux-belle-mare/" class="hg-card__name-link">
+            <p class="hg-card__name">LUX* Belle Mare</p>
+          </a>
+          <p class="hg-card__region">Belle Mare</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$730</strong>/night</span>
+            <a href="https://expedia.com/affiliate/FfYvZuT" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- The Westin Turtle Bay Resort & Spa -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/The%20Westin%20Turtle%20Bay%20Resort%20and%20Spa.png" alt="The Westin Turtle Bay Resort and Spa" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.6 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/the-westin-turtle-bay-resort-spa-mauritius/" class="hg-card__name-link">
+            <p class="hg-card__name">The Westin Turtle Bay Resort &amp; Spa</p>
+          </a>
+          <p class="hg-card__region">Balaclava</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$650</strong>/night</span>
+            <a href="https://expedia.com/affiliate/PJytcSS" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sea Diamond Boutique Hotel & Spa -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Sea%20Diamond%20Boutique%20Hotel%20and%20Spa.png" alt="Sea Diamond Boutique Hotel and Spa" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.5 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/sea-diamond-boutique-hotel-spa-by-sea-resorts/" class="hg-card__name-link">
+            <p class="hg-card__name">Sea Diamond Boutique Hotel &amp; Spa</p>
+          </a>
+          <p class="hg-card__region">Cap Malheureux</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$680</strong>/night</span>
+            <a href="https://expedia.com/affiliate/FA2X6xD" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Le Méridien Ile Maurice -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Le%20M%C3%A9ridien%20Ile%20Maurice.png" alt="Le M&eacute;ridien Ile Maurice" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.5 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/le-meridien-ile-maurice/" class="hg-card__name-link">
+            <p class="hg-card__name">Le M&eacute;ridien Ile Maurice</p>
+          </a>
+          <p class="hg-card__region">Pointe Aux Piments</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$560</strong>/night</span>
+            <a href="https://expedia.com/affiliate/8C3UdBg" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Jacaranda Luxury Villas by Maritim -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Jacaranda%20Luxury%20Villas%20by%20Maritim.png" alt="Jacaranda Luxury Villas by Maritim" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.5 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/jacaranda-luxury-villas-by-maritim/" class="hg-card__name-link">
+            <p class="hg-card__name">Jacaranda Luxury Villas by Maritim</p>
+          </a>
+          <p class="hg-card__region">Balaclava</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$620</strong>/night</span>
+            <a href="https://expedia.com/affiliate/uzq9Zlu" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Mythic Suites & Villas by MJ Holidays -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Mythic%20Suites%20and%20Villas%20by%20MJ%20Holidays.png" alt="Mythic Suites and Villas by MJ Holidays" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.4 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/mythic-suites-villas-by-mj-holidays/" class="hg-card__name-link">
+            <p class="hg-card__name">Mythic Suites &amp; Villas by MJ Holidays</p>
+          </a>
+          <p class="hg-card__region">Grand Gaube</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$500</strong>/night</span>
+            <a href="https://expedia.com/affiliate/c9Mfa5v" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Heritage Awali Golf & Spa Resort -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Heritage%20Awali%20Golf%20and%20Spa%20Resort.png" alt="Heritage Awali Golf and Spa Resort" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.4 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/heritage-awali-golf-spa-resort/" class="hg-card__name-link">
+            <p class="hg-card__name">Heritage Awali Golf &amp; Spa Resort</p>
+          </a>
+          <p class="hg-card__region">Bel Ombre</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$640</strong>/night</span>
+            <a href="https://expedia.com/affiliate/TzDUcJc" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Bubble Lodge Ile Aux Cerfs -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Bubble%20Lodge%20Ile%20Aux%20Cerfs.png" alt="Bubble Lodge Ile Aux Cerfs" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.4 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/bubble-lodge-ile-aux-cerfs/" class="hg-card__name-link">
+            <p class="hg-card__name">Bubble Lodge Ile Aux Cerfs</p>
+          </a>
+          <p class="hg-card__region">Trou d&rsquo;Eau Douce</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$750</strong>/night</span>
+            <a href="https://expedia.com/affiliate/nOTJrFM" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- The Residence Mauritius -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/The%20Residence%20Mauritius.png" alt="The Residence Mauritius" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.4 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/the-residence-mauritius/" class="hg-card__name-link">
+            <p class="hg-card__name">The Residence Mauritius</p>
+          </a>
+          <p class="hg-card__region">Belle Mare</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$350</strong>/night</span>
+            <a href="https://expedia.com/affiliate/DSfJton" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Villa Alizée -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Villa%20Aliz%C3%A9e.png" alt="Villa Aliz&eacute;e" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.3 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/villa-alizee/" class="hg-card__name-link">
+            <p class="hg-card__name">Villa Aliz&eacute;e</p>
+          </a>
+          <p class="hg-card__region">Port Louis</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$415</strong>/night</span>
+            <a href="https://expedia.com/affiliate/FyoIgaK" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SALT of Palmar -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/SALT%20of%20Palmar.png" alt="SALT of Palmar" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.3 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/salt-of-palmar/" class="hg-card__name-link">
+            <p class="hg-card__name">SALT of Palmar</p>
+          </a>
+          <p class="hg-card__region">Palmar</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$350</strong>/night</span>
+            <a href="https://expedia.com/affiliate/rHzTaO0" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Zilwa Attitude -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Zilwa%20Attitude.png" alt="Zilwa Attitude" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.2 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/zilwa-attitude/" class="hg-card__name-link">
+            <p class="hg-card__name">Zilwa Attitude</p>
+          </a>
+          <p class="hg-card__region">Cap Malheureux</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$340</strong>/night</span>
+            <a href="https://expedia.com/affiliate/yLn0geY" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 20 Degres Sud -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/20%20Degres%20Sud.png" alt="20 Degres Sud" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.2 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/20-degres-sud/" class="hg-card__name-link">
+            <p class="hg-card__name">20 Degres Sud</p>
+          </a>
+          <p class="hg-card__region">Grand Baie</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$280</strong>/night</span>
+            <a href="https://expedia.com/affiliate/2VMyMj0" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- The Ravenala Attitude -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/The%20Ravenala%20Attitude.png" alt="The Ravenala Attitude" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.1 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/the-ravenala-attitude/" class="hg-card__name-link">
+            <p class="hg-card__name">The Ravenala Attitude</p>
+          </a>
+          <p class="hg-card__region">Balaclava</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$290</strong>/night</span>
+            <a href="https://expedia.com/affiliate/k1alVSX" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- The Bay Club at Anahita -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/The%20Bay%20Club%20at%20Anahita.png" alt="The Bay Club at Anahita" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">8.1 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/the-bay-club-at-anahita/" class="hg-card__name-link">
+            <p class="hg-card__name">The Bay Club at Anahita</p>
+          </a>
+          <p class="hg-card__region">Grand River South East</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$440</strong>/night</span>
+            <a href="https://expedia.com/affiliate/LQBTEyZ" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sands Suites Resort & Spa -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Sands%20Suites%20Resort%20and%20Spa.png" alt="Sands Suites Resort and Spa" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">7.9 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/sands-suites-resort-spa/" class="hg-card__name-link">
+            <p class="hg-card__name">Sands Suites Resort &amp; Spa</p>
+          </a>
+          <p class="hg-card__region">Flic En Flac</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$210</strong>/night</span>
+            <a href="https://expedia.com/affiliate/jJkyMlG" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Veranda Palmar Beach Hotel -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Veranda%20Palmar%20Beach%20Hotel.png" alt="Veranda Palmar Beach Hotel" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">7.9 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/veranda-palmar-beach-hotel/" class="hg-card__name-link">
+            <p class="hg-card__name">Veranda Palmar Beach Hotel</p>
+          </a>
+          <p class="hg-card__region">Belle Mare</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$210</strong>/night</span>
+            <a href="https://expedia.com/affiliate/gPf7jwH" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Holiday Inn Mauritius Mon Tresor -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Holiday%20Inn%20Mauritius%20Mon%20Tresor.png" alt="Holiday Inn Mauritius Mon Tresor" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">7.8 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/holiday-inn-mauritius-mon-tresor/" class="hg-card__name-link">
+            <p class="hg-card__name">Holiday Inn Mauritius Mon Tresor</p>
+          </a>
+          <p class="hg-card__region">Plaine Magnien</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$190</strong>/night</span>
+            <a href="https://expedia.com/affiliate/KrkFlUB" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sunrise Attitude -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Sunrise%20Attitude.png" alt="Sunrise Attitude" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">7.6 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/sunrise-attitude/" class="hg-card__name-link">
+            <p class="hg-card__name">Sunrise Attitude</p>
+          </a>
+          <p class="hg-card__region">Belle Mare</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$160</strong>/night</span>
+            <a href="https://expedia.com/affiliate/AAJZi3E" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Solana Beach Hotel -->
+      <article class="hg-card">
+        <div class="hg-card__img-wrap">
+          <img src="/assets/images/hotels/Solana%20Beach%20Hotel.png" alt="Solana Beach Hotel" class="hg-card__img" loading="lazy" width="400" height="300">
+          <span class="hg-card__rating">7.5 &#9733;</span>
+          <span class="hg-card__wish" aria-hidden="true">&#9825;</span>
+        </div>
+        <div class="hg-card__body">
+          <a href="/hotels/solana-beach-hotel/" class="hg-card__name-link">
+            <p class="hg-card__name">Solana Beach Hotel</p>
+          </a>
+          <p class="hg-card__region">Belle Mare</p>
+          <div class="hg-card__footer">
+            <span class="hg-card__price">from <strong>$160</strong>/night</span>
+            <a href="https://expedia.com/affiliate/ujHIqvk" rel="noopener sponsored" class="hg-card__book">Book &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /hg-grid -->
+
+    <p class="affiliate-disclosure reveal" style="margin-top:32px;font-size:0.75rem;color:var(--muted);text-align:center;line-height:1.6;">
+      Affiliate disclosure: &ldquo;Book&rdquo; links are sponsored Expedia affiliate links. We may earn a commission at no extra cost to you.
+    </p>
   </div>
 </section>
 
