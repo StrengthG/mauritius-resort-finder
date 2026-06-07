@@ -1,0 +1,407 @@
+{
+  "_comment": "Image metadata for all 36 active hotels. When real photos are added to assets/images/hotels/{hotel_id}/, the build pipeline automatically uses them instead of gradient placeholders.",
+  "_image_convention": {
+    "hero":    "assets/images/hotels/{hotel_id}/hero.webp   — 1200×800 (3:2)",
+    "gallery": "assets/images/hotels/{hotel_id}/gallery-{1..4}.webp — 800×600",
+    "thumb":   "assets/images/hotels/{hotel_id}/thumb.webp — 400×300"
+  },
+  "version": "1",
+  "hotels": {
+    "MQ001": {
+      "hero":    { "alt": "Royal Palm Beachcomber Luxury resort infinity pool facing Grand Baie lagoon, Mauritius", "caption": "Beachfront infinity pool with direct access to Grand Baie's sheltered lagoon" },
+      "gallery": [
+        { "alt": "Royal Palm Beachcomber Luxury private beach at sunset, Grand Baie", "caption": "Private beach at golden hour" },
+        { "alt": "Royal Palm Beachcomber Luxury colonial-style suite interior with ocean view", "caption": "Ocean-view suite with colonial-era furnishings" },
+        { "alt": "Royal Palm Beachcomber Luxury fine dining restaurant, Grand Baie", "caption": "Le Cap restaurant, beachfront fine dining" },
+        { "alt": "Royal Palm Beachcomber Luxury spa treatment room, Grand Baie", "caption": "Spa by Sisley treatment suite" }
+      ],
+      "thumb":  { "alt": "Royal Palm Beachcomber Luxury hotel, Grand Baie, Mauritius" },
+      "theme":  { "hue": 205, "label": "Grand Baie · 9.2/10" }
+    },
+    "MQ002": {
+      "hero":    { "alt": "Four Seasons Resort Mauritius at Anahita overwater villa and turquoise lagoon, east coast", "caption": "Overwater villas on the east coast lagoon at Beau Champ" },
+      "gallery": [
+        { "alt": "Four Seasons Anahita private plunge pool terrace over the lagoon, Mauritius", "caption": "Private plunge pool overwater terrace" },
+        { "alt": "Four Seasons Anahita beachfront at dusk, Beau Champ, Mauritius", "caption": "Beachfront at dusk on the east coast" },
+        { "alt": "Four Seasons Anahita spa sanctuary exterior, Mauritius", "caption": "The island spa sanctuary" },
+        { "alt": "Four Seasons Anahita golf course at Ile aux Cerfs, Mauritius", "caption": "Bernhard Langer-designed golf course on Île aux Cerfs" }
+      ],
+      "thumb":  { "alt": "Four Seasons Resort Mauritius at Anahita, Beau Champ" },
+      "theme":  { "hue": 185, "label": "Beau Champ · 9.1/10" }
+    },
+    "MQ003": {
+      "hero":    { "alt": "One&Only Le Saint Géran resort pool and beachfront, Belle Mare, Mauritius", "caption": "Infinity pool at Belle Mare facing the Indian Ocean" },
+      "gallery": [
+        { "alt": "One&Only Le Saint Géran private beach with turquoise lagoon, Belle Mare", "caption": "Private beach on the east coast reef lagoon" },
+        { "alt": "One&Only Le Saint Géran luxury junior suite interior, Mauritius", "caption": "Junior suite with direct beach access" },
+        { "alt": "One&Only Le Saint Géran ESPA spa exterior, Belle Mare, Mauritius", "caption": "ESPA spa surrounded by tropical gardens" },
+        { "alt": "One&Only Le Saint Géran restaurant terrace overlooking the sea, Mauritius", "caption": "The restaurant terrace at sunset" }
+      ],
+      "thumb":  { "alt": "One&Only Le Saint Géran hotel, Belle Mare, Mauritius" },
+      "theme":  { "hue": 178, "label": "Belle Mare · 9.0/10" }
+    },
+    "MQ004": {
+      "hero":    { "alt": "Constance Le Chaland resort beachfront and lagoon pool, Blue Bay, Mauritius", "caption": "Adjacent to Blue Bay Marine Park on Mauritius's south-east coast" },
+      "gallery": [
+        { "alt": "Constance Le Chaland Blue Bay Marine Park snorkelling, Mauritius", "caption": "Blue Bay Marine Park reef — steps from the hotel beach" },
+        { "alt": "Constance Le Chaland pool and garden at sunset, Blue Bay", "caption": "Garden pool at golden hour" },
+        { "alt": "Constance Le Chaland overwater restaurant terrace, Blue Bay, Mauritius", "caption": "Overwater dining terrace" },
+        { "alt": "Constance Le Chaland deluxe beach suite interior, Mauritius", "caption": "Deluxe beach suite with garden terrace" }
+      ],
+      "thumb":  { "alt": "Constance Le Chaland Iko Mauritius, Blue Bay" },
+      "theme":  { "hue": 170, "label": "Blue Bay · 8.8/10" }
+    },
+    "MQ006": {
+      "hero":    { "alt": "Lux Grand Gaube Resort panoramic ocean view terrace and pool, north Mauritius", "caption": "Panoramic ocean views from the cliff-top setting at Grand Gaube" },
+      "gallery": [
+        { "alt": "Lux Grand Gaube beach at dawn, Grand Gaube, north Mauritius", "caption": "Private beach at dawn — three beaches on site" },
+        { "alt": "Lux Grand Gaube overwater restaurant at sunset, Mauritius", "caption": "The Lighthouse restaurant at sunset" },
+        { "alt": "Lux Grand Gaube villa terrace with ocean view, Grand Gaube", "caption": "Beach villa terrace overlooking the sea" },
+        { "alt": "Lux Grand Gaube spa infinity pool, north Mauritius", "caption": "Cliff-edge infinity pool" }
+      ],
+      "thumb":  { "alt": "Lux Grand Gaube Resort & Villas, Grand Gaube, Mauritius" },
+      "theme":  { "hue": 200, "label": "Grand Gaube · 8.7/10" }
+    },
+    "MQ007": {
+      "hero":    { "alt": "Constance Prince Maurice private island resort pool and garden, east coast Mauritius", "caption": "Set on a private reserve on the east coast — all villas face the lagoon" },
+      "gallery": [
+        { "alt": "Constance Prince Maurice overwater villa on the lagoon, Mauritius", "caption": "Overwater villa on the estate lagoon" },
+        { "alt": "Constance Prince Maurice private beach and lagoon, Poste de Flacq", "caption": "Private beach on the east coast lagoon" },
+        { "alt": "Constance Prince Maurice Le Prince Maurice restaurant overwater, Mauritius", "caption": "Le Prince Maurice overwater restaurant — one of Mauritius's finest" },
+        { "alt": "Constance Prince Maurice spa garden, east coast Mauritius", "caption": "Garden spa in the mangrove reserve" }
+      ],
+      "thumb":  { "alt": "Constance Prince Maurice, Poste de Flacq, Mauritius" },
+      "theme":  { "hue": 190, "label": "Poste de Flacq · 9.0/10" }
+    },
+    "MQ008": {
+      "hero":    { "alt": "Paradise Cove Boutique Hotel adults-only pool and cliff garden, Cap Malheureux, Mauritius", "caption": "Adults-only cliff-edge pool on Mauritius's northernmost headland" },
+      "gallery": [
+        { "alt": "Paradise Cove adults-only cove beach, Cap Malheureux, north Mauritius", "caption": "Private coral cove — secluded beach for guests only" },
+        { "alt": "Paradise Cove rooftop pool overlooking Coin de Mire island, Mauritius", "caption": "Rooftop pool with Coin de Mire island view" },
+        { "alt": "Paradise Cove boutique suite interior, Cap Malheureux, Mauritius", "caption": "Boutique suite with sea-view terrace" },
+        { "alt": "Paradise Cove spa and wellness area, Cap Malheureux", "caption": "Spa treatment pavilion in the cliff garden" }
+      ],
+      "thumb":  { "alt": "Paradise Cove Boutique Hotel Adults Only, Cap Malheureux, Mauritius" },
+      "theme":  { "hue": 210, "label": "Cap Malheureux · 9.0/10" }
+    },
+    "MQ009": {
+      "hero":    { "alt": "Lagoon Attitude adults-only hotel and lagoon pool, Cap Malheureux, north Mauritius", "caption": "Adults-only hotel on Mauritius's north coast with lagoon access" },
+      "gallery": [
+        { "alt": "Lagoon Attitude private beach and turquoise water, Cap Malheureux", "caption": "Private beach on the north coast lagoon" },
+        { "alt": "Lagoon Attitude pool terrace at golden hour, north Mauritius", "caption": "Pool terrace at sunset" },
+        { "alt": "Lagoon Attitude junior suite with balcony, Cap Malheureux, Mauritius", "caption": "Junior suite with garden balcony" },
+        { "alt": "Lagoon Attitude restaurant and bar, Cap Malheureux, Mauritius", "caption": "Beach bar and restaurant" }
+      ],
+      "thumb":  { "alt": "Lagoon Attitude Adults Only, Cap Malheureux, Mauritius" },
+      "theme":  { "hue": 215, "label": "Cap Malheureux · 8.7/10" }
+    },
+    "MQ010": {
+      "hero":    { "alt": "Mythic Suites and Villas boutique hotel pool and gardens, Grand Gaube, Mauritius", "caption": "Intimate boutique villa hotel on Mauritius's north coast" },
+      "gallery": [
+        { "alt": "Mythic Suites and Villas villa terrace with ocean views, Grand Gaube", "caption": "Villa terrace overlooking the north coast" },
+        { "alt": "Mythic Suites Grand Gaube pool and tropical gardens, Mauritius", "caption": "Private pool surrounded by tropical gardens" },
+        { "alt": "Mythic Suites and Villas luxury suite interior, Grand Gaube, Mauritius", "caption": "Boutique suite with handcrafted furnishings" },
+        { "alt": "Mythic Suites and Villas beach access, Grand Gaube, Mauritius", "caption": "Steps to the north coast beach" }
+      ],
+      "thumb":  { "alt": "Mythic Suites & Villas by MJ Holidays, Grand Gaube, Mauritius" },
+      "theme":  { "hue": 198, "label": "Grand Gaube · 8.4/10" }
+    },
+    "MQ011": {
+      "hero":    { "alt": "Sea Diamond Boutique Hotel and Spa pool terrace, Cap Malheureux, north Mauritius", "caption": "Boutique spa hotel on Mauritius's northernmost coast" },
+      "gallery": [
+        { "alt": "Sea Diamond Boutique Hotel private beach, Cap Malheureux, Mauritius", "caption": "Private beach with views of Coin de Mire island" },
+        { "alt": "Sea Diamond Boutique Hotel spa treatment area, north Mauritius", "caption": "Spa and wellness centre" },
+        { "alt": "Sea Diamond Boutique Hotel suite interior with ocean view, Mauritius", "caption": "Ocean-view suite with private balcony" },
+        { "alt": "Sea Diamond Boutique Hotel pool at sunset, Cap Malheureux", "caption": "Infinity pool at sunset" }
+      ],
+      "thumb":  { "alt": "Sea Diamond Boutique Hotel & Spa by Sea Resorts, Cap Malheureux" },
+      "theme":  { "hue": 208, "label": "Cap Malheureux · 8.5/10" }
+    },
+    "MQ012": {
+      "hero":    { "alt": "Villa Alizee boutique hotel terrace and gardens, Port Louis, Mauritius", "caption": "Elegant boutique guesthouse in the hills above Port Louis" },
+      "gallery": [
+        { "alt": "Villa Alizee garden pool and terrace with Port Louis views, Mauritius", "caption": "Garden pool with panoramic views over Port Louis" },
+        { "alt": "Villa Alizee boutique suite interior, Port Louis, Mauritius", "caption": "Boutique suite with antique furnishings" },
+        { "alt": "Villa Alizee colonial architecture and garden, Port Louis, Mauritius", "caption": "Colonial-era architecture set in manicured gardens" },
+        { "alt": "Villa Alizee breakfast terrace with city views, Port Louis", "caption": "Breakfast terrace overlooking the capital" }
+      ],
+      "thumb":  { "alt": "Villa Alizée, Port Louis, Mauritius" },
+      "theme":  { "hue": 42, "label": "Port Louis · 8.3/10" }
+    },
+    "MQ013": {
+      "hero":    { "alt": "Heritage Awali Golf and Spa Resort beachfront and pool, Bel Ombre, south Mauritius", "caption": "Set within the 2,500-hectare Domaine de Bel Ombre estate on the south coast" },
+      "gallery": [
+        { "alt": "Heritage Awali private beach and lagoon, Bel Ombre, south Mauritius", "caption": "Private beach on the south coast lagoon" },
+        { "alt": "Heritage Awali golf course, Bel Ombre, Mauritius", "caption": "18-hole championship golf course in the estate" },
+        { "alt": "Heritage Awali spa exterior and pool, Bel Ombre, Mauritius", "caption": "Heritage Spa surrounded by tropical forest" },
+        { "alt": "Heritage Awali resort suite interior, Bel Ombre, Mauritius", "caption": "Junior suite with golf course or ocean views" }
+      ],
+      "thumb":  { "alt": "Heritage Awali Golf & Spa Resort, Bel Ombre, Mauritius" },
+      "theme":  { "hue": 155, "label": "Bel Ombre · 8.4/10" }
+    },
+    "MQ014": {
+      "hero":    { "alt": "LUX Belle Mare resort pool and beachfront, Belle Mare, east coast Mauritius", "caption": "Beachfront resort on Belle Mare's famous east coast reef lagoon" },
+      "gallery": [
+        { "alt": "LUX Belle Mare beach and lagoon, Belle Mare, Mauritius", "caption": "The longest stretch of private beach on the east coast" },
+        { "alt": "LUX Belle Mare overwater bungalow pool, east coast Mauritius", "caption": "Overwater bungalow with plunge pool" },
+        { "alt": "LUX Belle Mare BEACH Rouge restaurant, Mauritius", "caption": "BEACH Rouge restaurant right on the sand" },
+        { "alt": "LUX Belle Mare spa and wellness centre, Belle Mare", "caption": "LUX ME Spa and fitness centre" }
+      ],
+      "thumb":  { "alt": "LUX Belle Mare, Belle Mare, Mauritius" },
+      "theme":  { "hue": 182, "label": "Belle Mare · 8.6/10" }
+    },
+    "MQ015": {
+      "hero":    { "alt": "Oberoi Beach Resort Mauritius palm-fringed beachfront and villas, Grand Baie", "caption": "The Oberoi's pavilion villas and private beach at Grand Baie" },
+      "gallery": [
+        { "alt": "Oberoi Beach Resort Mauritius villa with private pool, Grand Baie", "caption": "Luxury pavilion villa with private plunge pool" },
+        { "alt": "Oberoi Mauritius private beach at sunset, Grand Baie", "caption": "Private beach at sunset, Grand Baie" },
+        { "alt": "Oberoi Mauritius spa and garden courtyard, Grand Baie, Mauritius", "caption": "Ayurvedic spa in a tropical garden courtyard" },
+        { "alt": "Oberoi Mauritius restaurant on the beach, Grand Baie", "caption": "Balinese-inspired open-air dining on the beach" }
+      ],
+      "thumb":  { "alt": "Oberoi Beach Resort Mauritius, Grand Baie" },
+      "theme":  { "hue": 202, "label": "Grand Baie · 8.8/10" }
+    },
+    "MQ016": {
+      "hero":    { "alt": "Zilwa Attitude hotel colourful facade and lagoon pool, Cap Malheureux, north Mauritius", "caption": "Mauritius-inspired colourful character hotel on the north coast" },
+      "gallery": [
+        { "alt": "Zilwa Attitude private beach and lagoon, Cap Malheureux, Mauritius", "caption": "Lagoon beach on the north coast" },
+        { "alt": "Zilwa Attitude pool and colourful bar area, north Mauritius", "caption": "The lively pool bar and terrace" },
+        { "alt": "Zilwa Attitude bungalow room with garden terrace, Mauritius", "caption": "Creole-inspired garden bungalow" },
+        { "alt": "Zilwa Attitude water sports centre, Cap Malheureux, Mauritius", "caption": "Water sports centre on the lagoon" }
+      ],
+      "thumb":  { "alt": "Zilwa Attitude, Cap Malheureux, Mauritius" },
+      "theme":  { "hue": 193, "label": "Cap Malheureux · 8.2/10" }
+    },
+    "MQ021": {
+      "hero":    { "alt": "The Westin Turtle Bay Resort and Spa pool and beachfront, Balaclava, north-west Mauritius", "caption": "Adjacent to Balaclava Marine Park on the north-west coast" },
+      "gallery": [
+        { "alt": "Westin Turtle Bay private beach and marine park access, Balaclava, Mauritius", "caption": "Balaclava Marine Park reef starts at the hotel beach" },
+        { "alt": "Westin Turtle Bay infinity pool overlooking the lagoon, Balaclava", "caption": "Infinity pool facing the Balaclava lagoon" },
+        { "alt": "Westin Turtle Bay Heavenly Spa exterior, Balaclava, Mauritius", "caption": "Heavenly Spa by Westin" },
+        { "alt": "Westin Turtle Bay suite interior with ocean view, Balaclava", "caption": "Guest suite with ocean-view terrace" }
+      ],
+      "thumb":  { "alt": "The Westin Turtle Bay Resort & Spa, Balaclava, Mauritius" },
+      "theme":  { "hue": 194, "label": "Balaclava · 8.6/10" }
+    },
+    "MQ022": {
+      "hero":    { "alt": "Constance Belle Mare Plage resort beachfront and pool, Belle Mare, Mauritius", "caption": "The flagship Constance resort on Belle Mare's white sand beach" },
+      "gallery": [
+        { "alt": "Constance Belle Mare Plage private beach and lagoon, east coast Mauritius", "caption": "Private white sand beach on the east coast reef lagoon" },
+        { "alt": "Constance Belle Mare Plage Deer Hunter golf course, Mauritius", "caption": "One of two championship golf courses on site" },
+        { "alt": "Constance Belle Mare Plage U Spa treatment room, Mauritius", "caption": "U Spa — one of the Indian Ocean's top spa experiences" },
+        { "alt": "Constance Belle Mare Plage junior suite interior, Belle Mare", "caption": "Junior suite with private garden terrace" }
+      ],
+      "thumb":  { "alt": "Constance Belle Mare Plage, Belle Mare, Mauritius" },
+      "theme":  { "hue": 176, "label": "Belle Mare · 8.9/10" }
+    },
+    "MQ023": {
+      "hero":    { "alt": "The Ravenala Attitude hotel pool and tropical gardens, Balaclava, Mauritius", "caption": "Lifestyle hotel on the Balaclava beach with family facilities" },
+      "gallery": [
+        { "alt": "Ravenala Attitude beach and lagoon, Balaclava, north-west Mauritius", "caption": "Beach on Balaclava's sheltered north-west lagoon" },
+        { "alt": "Ravenala Attitude family pool and aqua park, Balaclava, Mauritius", "caption": "Family pool and slides — one of Mauritius's best for families" },
+        { "alt": "Ravenala Attitude beachfront restaurant, Balaclava, Mauritius", "caption": "Beachfront restaurant and bar" },
+        { "alt": "Ravenala Attitude superior room interior, Balaclava", "caption": "Superior room with garden or sea-view balcony" }
+      ],
+      "thumb":  { "alt": "The Ravenala Attitude, Balaclava, Mauritius" },
+      "theme":  { "hue": 196, "label": "Balaclava · 8.1/10" }
+    },
+    "MQ024": {
+      "hero":    { "alt": "20 Degres Sud boutique hotel pool terrace, Grand Baie, north Mauritius", "caption": "Boutique adults-only hotel in the heart of Grand Baie" },
+      "gallery": [
+        { "alt": "20 Degres Sud pool and terrace with Grand Baie views, Mauritius", "caption": "Adults-only pool terrace steps from Grand Baie beach" },
+        { "alt": "20 Degres Sud boutique suite interior, Grand Baie, Mauritius", "caption": "Design-forward boutique suite interior" },
+        { "alt": "20 Degres Sud garden and pool area, Grand Baie, Mauritius", "caption": "Tropical garden pool" },
+        { "alt": "20 Degres Sud Grand Baie beach access, north Mauritius", "caption": "Direct access to Grand Baie public beach" }
+      ],
+      "thumb":  { "alt": "20 Degres Sud, Grand Baie, Mauritius" },
+      "theme":  { "hue": 207, "label": "Grand Baie · 8.2/10" }
+    },
+    "MQ025": {
+      "hero":    { "alt": "Shanti Maurice Resort and Spa beachfront and infinity pool, south Mauritius", "caption": "Ayurvedic wellness resort on the south coast with private beach" },
+      "gallery": [
+        { "alt": "Shanti Maurice private beach on the south coast, Chemin Grenier, Mauritius", "caption": "Secluded south coast beach with calm lagoon" },
+        { "alt": "Shanti Maurice Nira Spa Ayurvedic treatment room, Mauritius", "caption": "Nira Spa — authentic Ayurvedic treatments" },
+        { "alt": "Shanti Maurice beachfront villa with private pool, south Mauritius", "caption": "Beachfront villa with private plunge pool" },
+        { "alt": "Shanti Maurice resort pool and tropical garden, Chemin Grenier", "caption": "Main pool surrounded by tropical gardens" }
+      ],
+      "thumb":  { "alt": "Shanti Maurice Resort & Spa, Chemin Grenier, Mauritius" },
+      "theme":  { "hue": 163, "label": "Chemin Grenier · 8.8/10" }
+    },
+    "MQ026": {
+      "hero":    { "alt": "SALT of Palmar eco hotel terrace and beach, Palmar, east coast Mauritius", "caption": "Eco-conscious boutique hotel on Palmar beach, east coast" },
+      "gallery": [
+        { "alt": "SALT of Palmar hotel beach and lagoon, Palmar, Mauritius", "caption": "Palmar beach on the east coast reef lagoon" },
+        { "alt": "SALT of Palmar eco-design suite interior, Mauritius", "caption": "Sustainably designed suite with local materials" },
+        { "alt": "SALT of Palmar rooftop pool and bar, east coast Mauritius", "caption": "Rooftop pool with panoramic lagoon views" },
+        { "alt": "SALT of Palmar restaurant and terrace, Palmar, Mauritius", "caption": "Restaurant showcasing local Mauritian produce" }
+      ],
+      "thumb":  { "alt": "SALT of Palmar, Palmar, Mauritius" },
+      "theme":  { "hue": 175, "label": "Palmar · 8.3/10" }
+    },
+    "MQ027": {
+      "hero":    { "alt": "Holiday Inn Mauritius Mon Tresor hotel pool and garden, Plaine Magnien, south Mauritius", "caption": "Convenient airport-adjacent hotel on the south-east coast" },
+      "gallery": [
+        { "alt": "Holiday Inn Mauritius Mon Tresor pool and tropical garden, Plaine Magnien", "caption": "Pool and tropical garden" },
+        { "alt": "Holiday Inn Mauritius Mon Tresor guest room interior, Mauritius", "caption": "Contemporary guest room" },
+        { "alt": "Holiday Inn Mauritius Mon Tresor restaurant, Plaine Magnien", "caption": "Restaurant with garden views" },
+        { "alt": "Holiday Inn Mauritius Mon Tresor fitness centre, Mauritius", "caption": "Fitness centre and pool area" }
+      ],
+      "thumb":  { "alt": "Holiday Inn Mauritius Mon Tresor, Plaine Magnien, Mauritius" },
+      "theme":  { "hue": 168, "label": "Plaine Magnien · 7.8/10" }
+    },
+    "MQ028": {
+      "hero":    { "alt": "Sands Suites Resort and Spa beachfront and pool, Flic en Flac, west coast Mauritius", "caption": "All-suite resort on Flic en Flac beach, west coast" },
+      "gallery": [
+        { "alt": "Sands Suites Flic en Flac beach at sunset, west Mauritius", "caption": "Flic en Flac beach — famous for its west coast sunsets" },
+        { "alt": "Sands Suites Resort spa and pool area, Flic en Flac, Mauritius", "caption": "Spa and main pool" },
+        { "alt": "Sands Suites junior suite interior, Flic en Flac, Mauritius", "caption": "Junior suite interior" },
+        { "alt": "Sands Suites Restaurant terrace overlooking the beach, Mauritius", "caption": "Restaurant terrace on the beach" }
+      ],
+      "thumb":  { "alt": "Sands Suites Resort & Spa, Flic En Flac, Mauritius" },
+      "theme":  { "hue": 232, "label": "Flic En Flac · 7.9/10" }
+    },
+    "MQ029": {
+      "hero":    { "alt": "Le Meridien Ile Maurice hotel pool and beachfront, Pointe aux Piments, north-west Mauritius", "caption": "Expansive resort on the north-west coast with snorkelling access" },
+      "gallery": [
+        { "alt": "Le Meridien Ile Maurice private beach, Pointe aux Piments, Mauritius", "caption": "Private beach on the north-west coast" },
+        { "alt": "Le Meridien Ile Maurice pool complex and gardens, Mauritius", "caption": "Multi-pool complex and tropical gardens" },
+        { "alt": "Le Meridien Ile Maurice suite interior with ocean views, Mauritius", "caption": "Superior suite with ocean-view terrace" },
+        { "alt": "Le Meridien Ile Maurice spa and wellness centre, Mauritius", "caption": "Retreat spa and wellness facilities" }
+      ],
+      "thumb":  { "alt": "Le Meridien Ile Maurice, Pointe Aux Piments, Mauritius" },
+      "theme":  { "hue": 218, "label": "Pointe Aux Piments · 8.5/10" }
+    },
+    "MQ030": {
+      "hero":    { "alt": "Jacaranda Luxury Villas by Maritim pool and garden, Balaclava, north-west Mauritius", "caption": "Private luxury villas in the marine park zone at Balaclava" },
+      "gallery": [
+        { "alt": "Jacaranda Luxury Villas private villa pool, Balaclava, Mauritius", "caption": "Private villa with plunge pool in tropical garden" },
+        { "alt": "Jacaranda Luxury Villas beach access, Balaclava Marine Park, Mauritius", "caption": "Direct beach and marine park access" },
+        { "alt": "Jacaranda Luxury Villas villa interior, Balaclava, Mauritius", "caption": "Spacious villa living area with garden views" },
+        { "alt": "Jacaranda Luxury Villas tropical garden and pathway, Mauritius", "caption": "Manicured tropical garden pathways" }
+      ],
+      "thumb":  { "alt": "Jacaranda Luxury Villas by Maritim, Balaclava, Mauritius" },
+      "theme":  { "hue": 191, "label": "Balaclava · 8.5/10" }
+    },
+    "MQ031": {
+      "hero":    { "alt": "Tamassa Resort pool and beachfront, Bel Ombre, south Mauritius", "caption": "All-inclusive resort on the south coast in the Bel Ombre estate" },
+      "gallery": [
+        { "alt": "Tamassa Resort beach and lagoon, Bel Ombre, south Mauritius", "caption": "South coast beach in the Bel Ombre estate" },
+        { "alt": "Tamassa Resort pool complex and bar, Bel Ombre, Mauritius", "caption": "Pool and swim-up bar" },
+        { "alt": "Tamassa Resort room interior, Bel Ombre, Mauritius", "caption": "Contemporary room with terrace" },
+        { "alt": "Tamassa Resort restaurant, Bel Ombre, south Mauritius", "caption": "Beachfront restaurant" }
+      ],
+      "thumb":  { "alt": "Tamassa Resort, Bel Ombre, Mauritius" },
+      "theme":  { "hue": 158, "label": "Bel Ombre · 7.9/10" }
+    },
+    "MQ032": {
+      "hero":    { "alt": "Bubble Lodge Ile aux Cerfs eco-bubble over the forest, Trou d'Eau Douce, Mauritius", "caption": "Transparent eco-bubbles in the forest canopy on Île aux Cerfs" },
+      "gallery": [
+        { "alt": "Bubble Lodge transparent eco-bubble interior at night, Ile aux Cerfs, Mauritius", "caption": "Stargazing from your transparent bubble at night" },
+        { "alt": "Bubble Lodge Ile aux Cerfs beach access, east coast Mauritius", "caption": "Private beach on Île aux Cerfs lagoon" },
+        { "alt": "Bubble Lodge forest setting and pathway, Ile aux Cerfs, Mauritius", "caption": "Jungle pathway between bubbles" },
+        { "alt": "Bubble Lodge eco-bubble exterior surrounded by trees, Mauritius", "caption": "Eco-bubbles nestled in the tropical canopy" }
+      ],
+      "thumb":  { "alt": "Bubble Lodge Ile Aux Cerfs, Trou d'Eau Douce, Mauritius" },
+      "theme":  { "hue": 148, "label": "Trou d'Eau Douce · 8.4/10" }
+    },
+    "MQ033": {
+      "hero":    { "alt": "Hilton Mauritius Resort and Spa beachfront and infinity pool, Flic en Flac, west coast", "caption": "Beachfront Hilton on Flic en Flac's long west coast beach" },
+      "gallery": [
+        { "alt": "Hilton Mauritius Flic en Flac beach at sunset, west coast", "caption": "Flic en Flac beach — renowned for west coast sunsets" },
+        { "alt": "Hilton Mauritius Resort infinity pool overlooking the Indian Ocean, Flic en Flac", "caption": "Infinity pool overlooking the Indian Ocean" },
+        { "alt": "Hilton Mauritius spa and wellness facilities, Flic en Flac, Mauritius", "caption": "eForea Spa and wellness centre" },
+        { "alt": "Hilton Mauritius resort room with sea view, Flic en Flac", "caption": "Ocean-view guest room" }
+      ],
+      "thumb":  { "alt": "Hilton Mauritius Resort & Spa, Flic En Flac, Mauritius" },
+      "theme":  { "hue": 225, "label": "Flic En Flac · 8.7/10" }
+    },
+    "MQ034": {
+      "hero":    { "alt": "Anahita Golf and Spa Resort beachfront and lagoon, Grand River South East, Mauritius", "caption": "Lagoon-front resort adjacent to Île aux Cerfs golf course, east coast" },
+      "gallery": [
+        { "alt": "Anahita Golf and Spa Resort beach and turquoise lagoon, east Mauritius", "caption": "Private beach on the east coast lagoon" },
+        { "alt": "Anahita Golf and Spa Resort pool and villa garden, Mauritius", "caption": "Lagoon-view pool and villa garden" },
+        { "alt": "Anahita Golf and Spa Spa exterior, Grand River South East, Mauritius", "caption": "The spa set in tropical gardens" },
+        { "alt": "Anahita Golf and Spa resort suite interior, east coast Mauritius", "caption": "Premium suite with lagoon views" }
+      ],
+      "thumb":  { "alt": "Anahita Golf & Spa Resort, Grand River South East, Mauritius" },
+      "theme":  { "hue": 183, "label": "Grand River South East · 8.7/10" }
+    },
+    "ADM059": {
+      "hero":    { "alt": "The Residence Mauritius beachfront resort and pool, Belle Mare, east coast", "caption": "Colonial-era elegance on Belle Mare's east coast beach" },
+      "gallery": [
+        { "alt": "The Residence Mauritius private beach and lagoon, Belle Mare", "caption": "Private beach on Belle Mare reef lagoon" },
+        { "alt": "The Residence Mauritius grand colonial pool, Belle Mare, Mauritius", "caption": "The grand colonial-era pool" },
+        { "alt": "The Residence Mauritius spa and wellness suite, Belle Mare", "caption": "The Spa at The Residence" },
+        { "alt": "The Residence Mauritius colonial suite interior, Belle Mare", "caption": "Colonial suite with period furnishings" }
+      ],
+      "thumb":  { "alt": "The Residence Mauritius, Belle Mare, Mauritius" },
+      "theme":  { "hue": 180, "label": "Belle Mare · 8.4/10" }
+    },
+    "ADM060": {
+      "hero":    { "alt": "The Bay Club at Anahita beachfront villas and lagoon, Grand River South East, Mauritius", "caption": "Private beach club villas on the east coast lagoon" },
+      "gallery": [
+        { "alt": "The Bay Club Anahita beach villa terrace, Grand River South East, Mauritius", "caption": "Beachfront villa terrace on the lagoon" },
+        { "alt": "The Bay Club Anahita pool and lagoon, east coast Mauritius", "caption": "Villa pool with lagoon access" },
+        { "alt": "The Bay Club Anahita villa interior, Mauritius", "caption": "Open-plan villa living area" },
+        { "alt": "The Bay Club at Anahita beach and ocean view, Mauritius", "caption": "Direct beach access on the east coast" }
+      ],
+      "thumb":  { "alt": "The Bay Club at Anahita, Grand River South East, Mauritius" },
+      "theme":  { "hue": 186, "label": "Grand River South East · 8.1/10" }
+    },
+    "ADM061": {
+      "hero":    { "alt": "Palmar Hotels Seasense Boutique Hotel and Spa pool and beach, Belle Mare, Mauritius", "caption": "Boutique spa hotel on Belle Mare beach, east coast" },
+      "gallery": [
+        { "alt": "Seasense Boutique Hotel beach and pool, Belle Mare, east Mauritius", "caption": "Beach and pool on the east coast lagoon" },
+        { "alt": "Seasense Boutique Hotel spa treatment area, Belle Mare, Mauritius", "caption": "Boutique spa and treatment facilities" },
+        { "alt": "Seasense Boutique Hotel room interior, Belle Mare, Mauritius", "caption": "Contemporary room with balcony" },
+        { "alt": "Seasense Boutique Hotel garden and pool area, Mauritius", "caption": "Tropical garden and pool" }
+      ],
+      "thumb":  { "alt": "Palmar Hotels Seasense Boutique Hotel Spa, Belle Mare, Mauritius" },
+      "theme":  { "hue": 177, "label": "Belle Mare · 7.8/10" }
+    },
+    "ADM062": {
+      "hero":    { "alt": "Crystals Beach Hotel Mauritius pool and beachfront, Belle Mare, east coast", "caption": "Casual beach hotel on the east coast reef lagoon" },
+      "gallery": [
+        { "alt": "Crystals Beach Hotel beach and lagoon, Belle Mare, Mauritius", "caption": "East coast beach with reef lagoon access" },
+        { "alt": "Crystals Beach Hotel pool area, Belle Mare, Mauritius", "caption": "Pool and sun terrace" },
+        { "alt": "Crystals Beach Hotel room interior, Belle Mare, Mauritius", "caption": "Guest room with garden or sea view" },
+        { "alt": "Crystals Beach Hotel restaurant, Belle Mare, east Mauritius", "caption": "Beachside restaurant and bar" }
+      ],
+      "thumb":  { "alt": "Crystals Beach Hotel Mauritius, Belle Mare" },
+      "theme":  { "hue": 173, "label": "Belle Mare · 7.8/10" }
+    },
+    "ADM063": {
+      "hero":    { "alt": "Sunrise Attitude hotel pool and beach, Belle Mare, east coast Mauritius", "caption": "Lifestyle hotel for couples and active travellers on Belle Mare" },
+      "gallery": [
+        { "alt": "Sunrise Attitude beach and lagoon, Belle Mare, Mauritius", "caption": "Beach on the east coast reef lagoon" },
+        { "alt": "Sunrise Attitude pool and activities, Belle Mare, Mauritius", "caption": "Active pool area and watersports" },
+        { "alt": "Sunrise Attitude room with balcony, Belle Mare, Mauritius", "caption": "Guest room with balcony" },
+        { "alt": "Sunrise Attitude restaurant and bar, Belle Mare, Mauritius", "caption": "Restaurant and beach bar" }
+      ],
+      "thumb":  { "alt": "Sunrise Attitude, Belle Mare, Mauritius" },
+      "theme":  { "hue": 179, "label": "Belle Mare · 7.6/10" }
+    },
+    "ADM064": {
+      "hero":    { "alt": "Veranda Palmar Beach Hotel pool and beachfront, Belle Mare, east coast Mauritius", "caption": "Relaxed beach hotel on Belle Mare's east coast lagoon" },
+      "gallery": [
+        { "alt": "Veranda Palmar Beach Hotel lagoon and beach, Belle Mare, Mauritius", "caption": "East coast beach and lagoon" },
+        { "alt": "Veranda Palmar Beach Hotel pool and garden, Mauritius", "caption": "Pool and tropical garden" },
+        { "alt": "Veranda Palmar Beach Hotel room interior, Belle Mare", "caption": "Bright guest room with terrace" },
+        { "alt": "Veranda Palmar Beach Hotel restaurant, east coast Mauritius", "caption": "Beachfront restaurant" }
+      ],
+      "thumb":  { "alt": "Veranda Palmar Beach Hotel, Belle Mare, Mauritius" },
+      "theme":  { "hue": 174, "label": "Belle Mare · 7.9/10" }
+    },
+    "ADM065": {
+      "hero":    { "alt": "Solana Beach Hotel pool and beachfront, Belle Mare, east coast Mauritius", "caption": "Boutique beach hotel on the sheltered east coast lagoon" },
+      "gallery": [
+        { "alt": "Solana Beach Hotel private beach and turquoise lagoon, Belle Mare", "caption": "Beach on Belle Mare's sheltered lagoon" },
+        { "alt": "Solana Beach Hotel pool and terrace, Belle Mare, Mauritius", "caption": "Pool and sun terrace" },
+        { "alt": "Solana Beach Hotel room with garden view, Belle Mare, Mauritius", "caption": "Garden-view room with terrace" },
+        { "alt": "Solana Beach Hotel restaurant and dining area, Mauritius", "caption": "Restaurant and dining terrace" }
+      ],
+      "thumb":  { "alt": "Solana Beach Hotel, Belle Mare, Mauritius" },
+      "theme":  { "hue": 171, "label": "Belle Mare · 7.5/10" }
+    }
+  }
+}

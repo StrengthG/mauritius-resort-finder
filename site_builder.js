@@ -33,7 +33,8 @@
 
 const fs   = require('fs');
 const path = require('path');
-const { generateSearchIndex } = require('./search_engine_client.js');
+const { generateSearchIndex }   = require('./search_engine_client.js');
+const { generateImageSitemap }  = require('./hotel_image_engine.js');
 
 // ─────────────────────────────────────────────────────────────────────────────
 // VERSION
@@ -685,6 +686,7 @@ function generateRobots(baseUrl, sitemapUrl) {
     'Allow: /',
     '',
     `Sitemap: ${sitemap}`,
+    `Sitemap: ${base}/image-sitemap.xml`,
     '',
   ].join('\n');
 }
@@ -1107,6 +1109,12 @@ async function buildSite(options = {}) {
     const searchIdx  = generateSearchIndex(hotelObjects, sitemapSpecs, baseUrl);
     fs.writeFileSync(path.join(absOut, 'search-index.json'), JSON.stringify(searchIdx), 'utf8');
     _log(`      ✓ search-index.json (${searchIdx.count} items)`);
+
+    // Generate image sitemap — forward-looking; lists all planned hotel image URLs
+    // (no outDir: includes all 36×5 images regardless of whether real files exist yet)
+    const imageSitemapXml = generateImageSitemap(hotelObjects, baseUrl);
+    fs.writeFileSync(path.join(absOut, 'image-sitemap.xml'), imageSitemapXml, 'utf8');
+    _log(`      ✓ image-sitemap.xml (${hotelObjects.length} hotels)`);
 
     // Copy homepage (index.html at project root) into dist/
     const homepageSrc  = path.join(__dirname, 'index.html');

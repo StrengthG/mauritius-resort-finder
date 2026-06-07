@@ -58,8 +58,9 @@
 
 'use strict';
 
-const fs   = require('fs');
-const path = require('path');
+const fs          = require('fs');
+const path        = require('path');
+const imageEngine = require('./hotel_image_engine.js');
 
 // ─────────────────────────────────────────────────────────────────────────────
 // VERSION
@@ -677,11 +678,17 @@ function renderHotelCard(block) {
     ].filter(Boolean).join('\n');
   }
 
+  // ── Card thumbnail image ─────────────────────────────────────────────────
+  const thumbHtml = imageEngine.renderCardThumbnail(hotel_id, hotelName, region || '');
+
   // ── Hotel JSON-LD schema ─────────────────────────────────────────────────
+  const imageObjects = imageEngine.buildImageObjectSchema(hotel_id, hotelName, region || '', DEFAULT_BASE_URL);
+
   const schemaObj = {
     '@context': 'https://schema.org',
     '@type':    'Hotel',
     name:       hotelName,
+    ...(imageObjects.length ? { image: imageObjects } : {}),
     ...(region ? { address: { '@type': 'PostalAddress', addressLocality: region, addressCountry: 'MU' } } : {}),
     ...(starRating ? { starRating: { '@type': 'Rating', ratingValue: String(starRating), bestRating: '5' } } : {}),
     ...(reviewCount ? {
@@ -741,6 +748,7 @@ function renderHotelCard(block) {
     `<article class="hotel-card hotel-card--${esc(variant)}" id="hotel-${esc(hotel_id)}"`,
     `         aria-label="Ranked ${rankOrdinal}: ${esc(hotelName)}">`,
     `  ${schemaTag}`,
+    thumbHtml ? `<div class="hotel-card__thumb">${thumbHtml}</div>` : '',
     `  <header class="hotel-card__header">`,
     `    <span class="hotel-card__rank-badge" aria-label="Rank ${rank}">#${rank}</span>`,
     `    <h2 class="hotel-card__name">${esc(hotelName)}</h2>`,
@@ -1472,6 +1480,10 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `    @media(max-width:640px){.container{padding:0 16px}.hotel-card{padding:20px 16px}.hotel-card__score-label{width:56px}.hotel-card__score-value{width:48px;font-size:.72rem}.hotel-card__footer{gap:8px}.hotel-editorial__intro,.hotel-editorial__why,.hotel-editorial__pros-cons,.hotel-editorial__best-for,.hotel-editorial__nearby,.hotel-editorial__comparison,.hotel-editorial__faqs{padding:20px 16px}.ranking-summary{padding:20px 16px}.methodology{padding:24px 16px}.affiliate-cta{flex-direction:column;align-items:flex-start;padding:18px 16px}.affiliate-cta__disclosure{min-width:unset;width:100%}.site-footer{margin-top:32px;padding:24px 16px}}`,
     `  </style>`,
     ``,
+    `  <!-- Gallery & lightbox -->`,
+    `  <link rel="stylesheet" href="/assets/css/hotel-gallery.css">`,
+    `  <script src="/assets/js/hotel-gallery.js" defer></script>`,
+    ``,
     `  <!-- Renderer metadata (non-displayed) -->`,
     `  <meta name="generator" content="Mauritius Resort Finder Renderer v${RENDERER_VERSION}">`,
   ].filter(l => l !== null && l !== undefined);
@@ -1652,11 +1664,32 @@ function renderPage(pageObject, options = {}) {
   const siteHeader    = generateSiteHeader(siteName, baseUrl);
   const siteFooter    = generateSiteFooter(siteName, baseUrl);
 
+  // For hotel detail pages: resolve hero image and gallery strip using first hotel_card
+  let _heroImageHtml   = '';
+  let _galleryHtml     = '';
+  if (meta.pageType === 'hotel_detail' || meta.pageType === 'hotel') {
+    const cardBlock = pageObject.blocks.find(b => b.block_type === 'hotel_card');
+    if (cardBlock && cardBlock.payload) {
+      const { hotel_id, hotel_data } = cardBlock.payload;
+      const _hName   = (hotel_data && hotel_data.hotel_name) || hotel_id;
+      const _hRegion = (hotel_data && hotel_data.region) || '';
+      _heroImageHtml = imageEngine.renderHeroImage(hotel_id, _hName, _hRegion, options.outDir);
+      _galleryHtml   = imageEngine.renderGalleryStrip(hotel_id, _hName, _hRegion, options.outDir);
+    }
+  }
+
   // Render all blocks in order (block order is preserved exactly as received)
+  // On hotel detail pages, inject hero image + gallery before the first hotel_card block.
+  let _heroInjected = false;
   const renderedBlocks = pageObject.blocks.map((block, index) => {
     try {
-      return `<!-- block:${block.block_type} position:${block.position || index + 1} -->\n` +
-             renderBlock(block);
+      let html = `<!-- block:${block.block_type} position:${block.position || index + 1} -->\n` +
+                 renderBlock(block);
+      if (!_heroInjected && block.block_type === 'hotel_card' && (_heroImageHtml || _galleryHtml)) {
+        _heroInjected = true;
+        html = _heroImageHtml + (_galleryHtml ? '\n' + _galleryHtml : '') + '\n\n' + html;
+      }
+      return html;
     } catch (err) {
       // Re-throw with block context
       if (err instanceof RendererError) throw err;
