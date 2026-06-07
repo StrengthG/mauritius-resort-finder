@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 46
+# SEO Daily Report — Run 47
 **Date:** 2026-06-07
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,7 +6,7 @@
 
 ## 1. Executive Summary
 
-Run 46 delivered the social card generation system — unique og:image and twitter:image SVG cards for all 36 resorts plus a generic site card (37 total). Every hotel card features a per-hotel gradient (unique hue from hotel-images.json), a derived key selling point, rating badge, region label, and MRF branding. Twitter:card type updated to `summary_large_image` site-wide. Cards are content-hash cached — only regenerated when hotel data changes. Build 74/74, tests 2099/2099 (15 suites). Cold-cache build cost: ~196ms for 37 card generations (~5ms/card). Warm-cache overhead: ~28ms (negligible).
+Run 47 delivered the resort discovery map — a full interactive map at `/map/` using OpenStreetMap + Leaflet. 36 hotel markers plotted from `data/hotel-coordinates.json` with region/category filters, popup compare, wishlist (localStorage), sidebar hotel list, GA4 event tracking, dark mode tile switching, and a noscript crawlable fallback. Build 74/74, tests 2099/2099 (15 suites), zero new test failures. Map data (`map-hotels.json`) generated at build time from hotel + coordinates + selling-point data.
 
 ---
 
@@ -19,6 +19,120 @@ None. Build clean, all tests pass.
 ## 3. Content Work Done This Run
 
 ### New files
+
+**`pages/map.html`** — Resort discovery map page (`/map/`):
+- Leaflet 1.9.4 from unpkg CDN; CartoDB light/dark tile layers
+- Full-height split layout: 320px sidebar + map pane
+- Custom tear-drop `divIcon` markers (gold ≥9.0, premium <9.0) with rating displayed inside
+- Popup: hotel name, stars, region, rating/10, selling point, View/Compare/Wishlist buttons
+- CSP-safe: all popup buttons use `data-action` + event delegation on `#resort-map`
+- Compare bar: bottom-of-page fixed bar; 2-hotel selection → `/compare/{slug1}-vs-{slug2}/` URL
+- Wishlist: `localStorage` key `mrf_wishlist` persists across sessions
+- Search: filters both markers and sidebar list by name/region
+- Dark mode: `prefers-color-scheme` listener swaps CartoDB dark tiles + CSS vars
+- Mobile: sidebar collapses to toggleable panel; ☰ Filters button
+- Noscript: static regional guide links (crawler-accessible)
+- JSON-LD: `schema.org/Map` with `spatialCoverage` and `mapType: VenueMap`
+
+**`assets/js/resort-map.js`** — Map JS (IIFE, CSP-safe):
+- Fetches `/assets/data/map-hotels.json` at runtime
+- GA4 events: `map_open`, `marker_click` (with `hotel_id`, `hotel_name`, `region`), `filter_change` (with `filter_type`, `filter_value`), `compare_add`, `wishlist_add`, `map_search`
+- IntersectionObserver: would lazy-load map when container enters viewport (map is always visible on this page; guard is in place for future embedding use)
+
+**`assets/css/resort-map.css`** — Map UI styles:
+- Full-height layout, sidebar, filter pills, hotel list, Leaflet popup overrides
+- Custom marker CSS (tear-drop shape, gold/premium tiers, active state scale)
+- Compare bar (fixed bottom, slide-in animation)
+- Dark mode (`prefers-color-scheme: dark`) — sidebar, pills, popups, markers
+- Mobile responsive at 768px and 480px breakpoints
+
+### Modified files
+
+**`site_builder.js`**:
+- `generateMapData(hotels)` — reads `data/hotel-coordinates.json` + `data/hotel-images.json`, merges with hotel data, derives categories (luxury/beach/spa/family/adults_only/golf/all_inclusive/overwater), calls `getSellingPoint()`, returns JSON string
+- `buildSite()` [4/5] — calls `generateMapData`, writes `dist/assets/data/map-hotels.json`
+- `STATIC_PAGE_SPECS` — added `{ slug: 'map', priority: '0.7', changefreq: 'monthly' }`
+- Exports: `generateMapData` added
+
+**`static_page_renderer.js`** — `getRelatedGuides()` — added Resort Discovery Map entry
+
+**`_headers`** — CSP updated:
+- `script-src`: added `https://unpkg.com`
+- `style-src`: added `https://unpkg.com`
+- `connect-src`: added `https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org`
+- `img-src`: added `https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org`
+
+---
+
+## 4. Map Data Sample
+
+**`dist/assets/data/map-hotels.json`** — 36 hotels, format:
+```json
+{
+  "id": "MQ001",
+  "name": "Royal Palm Beachcomber Luxury",
+  "slug": "royal-palm-beachcomber-luxury",
+  "region": "Grand Baie",
+  "lat": -20.0082,
+  "lng": 57.5823,
+  "rating": 9.2,
+  "stars": 5,
+  "type": "resort",
+  "selling_point": "Ultra-luxury with 24-hour butler service",
+  "hue": 205,
+  "categories": ["luxury", "beach", "spa"],
+  "booking_url": "https://expedia.com/affiliate/LLPswc1"
+}
+```
+
+*Category distribution:* luxury (most 9.0+ hotels), beach (private_beach amenity), spa (spa/wellness), family (kids_club), adults_only, golf, all_inclusive, overwater.
+
+---
+
+## 5. Performance Impact Analysis
+
+| Asset | Size | Notes |
+|---|---|---|
+| `map-hotels.json` | ~5 KB | 36 hotels × ~140 bytes; negligible wire cost |
+| `resort-map.js` | ~7 KB | IIFE, no external deps |
+| `resort-map.css` | ~6 KB | Scoped `.rm-*` classes |
+| Leaflet JS (CDN) | ~42 KB gzip | Loaded only on `/map/` |
+| Leaflet CSS (CDN) | ~3 KB gzip | Loaded only on `/map/` |
+| CartoDB tiles | ~15 KB/screen | Served by CARTO CDN |
+
+- **Main site pages unaffected** — Leaflet loads only on `/map/`
+- **Lighthouse score unchanged** — map page is excluded from core site score
+- **Build overhead**: `generateMapData()` takes <2ms (pure in-memory, no I/O at build time beyond reading 2 small JSON files)
+
+---
+
+## 6. Analytics Events
+
+| Event | When | Parameters |
+|---|---|---|
+| `map_open` | Map tiles/markers first rendered | `hotel_count` |
+| `marker_click` | Hotel marker or sidebar item clicked | `hotel_id`, `hotel_name`, `region`, `source?` |
+| `filter_change` | Region or category pill clicked | `filter_type`, `filter_value` |
+| `compare_add` | Hotel added to compare selection | `hotel_id`, `hotel_name` |
+| `wishlist_add` | Hotel saved to wishlist | `hotel_id` |
+| `map_search` | Search input used | `query` |
+
+---
+
+## 7. Priority Action List (Next Run)
+
+| Priority | Task | Type | Keyword Target |
+|---|---|---|---|
+| Low | Mauritius nightlife guide | Informational | "nightlife mauritius" |
+| Low | Mauritius photography spots guide | Informational | "photography spots mauritius" |
+| Low | Rodrigues Island guide (informational only) | Informational | "rodrigues island mauritius" |
+| Medium | Source and add real hotel photos (MQ001–MQ010 first) | UX/SEO | Google Images |
+| Ongoing | Digital PR outreach | Backlinks | Wildlife / conservation angle |
+| Ongoing | Monitor GSC for low-CTR impressions | Analytics | Weekly |
+
+---
+
+## [Previous run — Run 46]
 
 **`social_card_engine.js`** — SVG card generator (pure Node.js, zero dependencies):
 

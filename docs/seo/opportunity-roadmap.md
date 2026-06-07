@@ -87,6 +87,7 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Best snorkelling in Mauritius~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-06-06 (Run 43, ~2,500 words, 6 ranked spots, marine life grid, snorkel vs diving table, season guide, 3 zone-matched hotel CTAs, 6 FAQs, FAQPage schema) |
 | ~~Mauritius wildlife guide~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-06-07 (Run 44, ~2,500 words, 6 endemic birds, 4 reptiles/mammals, 4 marine species, 6-site table, season guide, 3 zone-matched CTAs, 6 FAQs, FAQPage schema) |
 | ~~Social cards (og:image / twitter:image) for all resorts~~ | ~~UX/Social~~ | ~~High~~ | ✅ Done 2026-06-07 (Run 46) — 37 unique SVG cards (36 hotels + generic), cached, content-hash rebuild, summary_large_image Twitter card, og:image updated on all generated pages |
+| ~~Resort discovery map~~ | ~~UX/SEO~~ | ~~High~~ | ✅ Done 2026-06-07 (Run 47) — Leaflet/OSM map, 36 hotel markers, region + category filters, compare from map, wishlist, search, dark mode, GA4 events, noscript fallback, map-hotels.json build step |
 | Rodrigues Island guide | Informational | Low | "rodrigues island mauritius" — no dataset hotels; informational-only approach required |
 | Mauritius photography spots guide | Informational | Low | "best photography spots mauritius" |
 | Mauritius nightlife guide | Informational | Low | "nightlife mauritius" |

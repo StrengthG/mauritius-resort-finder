@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mauritius Resort Map — Find &amp; Compare 36 Luxury Hotels</title>
+  <meta name="description" content="Interactive map of 36 luxury resorts in Mauritius. Filter by region, category and rating. Compare hotels side-by-side or save to your wishlist.">
+  <link rel="canonical" href="https://mauritiusresortfinder.com/map/">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/assets/css/resort-map.css">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TN713HPVCQ"></script>
+  <script src="/assets/js/analytics.js" defer></script>
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Mauritius Resort Map — 36 Luxury Hotels">
+  <meta property="og:description" content="Explore every luxury resort in Mauritius on an interactive map. Filter by region, compare side-by-side, save to wishlist.">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://mauritiusresortfinder.com/map/">
+  <meta property="og:image"       content="https://mauritiusresortfinder.com/assets/social/generic.svg">
+  <meta property="og:image:type"  content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:image"      content="https://mauritiusresortfinder.com/assets/social/generic.svg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Map",
+    "name": "Mauritius Luxury Resort Map",
+    "description": "Interactive map of 36 independently scored luxury resorts in Mauritius, covering Grand Baie, Belle Mare, Le Morne, Bel Ombre and all major resort regions.",
+    "url": "https://mauritiusresortfinder.com/map/",
+    "mapType": "https://schema.org/VenueMap",
+    "spatialCoverage": {
+      "@type": "Place",
+      "name": "Mauritius",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -20.25,
+        "longitude": 57.55
+      }
+    }
+  }
+  </script>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a2e;background:#f8f8fd;line-height:1.6;overflow:hidden}
+    a{color:#0066cc;text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .site-header{background:#fff;border-bottom:1px solid #e8e8f0;padding:0 1.5rem;position:sticky;top:0;z-index:300;height:60px;display:flex;align-items:center}
+    .site-header__inner{max-width:100%;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    .site-header__logo{font-size:1.05rem;font-weight:700;color:#1a1a2e;text-decoration:none}
+    .site-header__logo span{color:#e25822}
+    .site-header__nav{display:flex;gap:1.5rem;list-style:none}
+    .site-header__nav a{font-size:.9rem;color:#555;text-decoration:none}
+    .site-header__nav a:hover{color:#1a1a2e}
+    .site-header__cta{background:#e25822;color:#fff;padding:.45rem 1.1rem;border-radius:8px;font-size:.88rem;font-weight:700;text-decoration:none}
+    .site-header__cta:hover{background:#c94a18;text-decoration:none;color:#fff}
+
+    @media(max-width:640px){
+      .site-header__nav{display:none}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Site Header ──────────────────────────────────────────────────────────── -->
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a href="/" class="site-header__logo">Mauritius<span>Resort</span>Finder</a>
+    <nav aria-label="Main navigation">
+      <ul class="site-header__nav">
+        <li><a href="/best-luxury-hotels-mauritius/">Top Hotels</a></li>
+        <li><a href="/where-to-stay-in-mauritius/">Where to Stay</a></li>
+        <li><a href="/mauritius-travel-guide/">Travel Guide</a></li>
+        <li><a href="/map/" aria-current="page">Map</a></li>
+      </ul>
+    </nav>
+    <a href="/best-luxury-hotels-mauritius/" class="site-header__cta">Find a Resort</a>
+  </div>
+</header>
+
+<!-- ── Map Layout ───────────────────────────────────────────────────────────── -->
+<div class="rm-page" role="main">
+  <div class="rm-body">
+
+    <!-- Sidebar -->
+    <aside class="rm-sidebar" id="rm-sidebar" aria-label="Resort filters and list">
+
+      <div class="rm-sidebar__header">
+        <div class="rm-sidebar__title">Resort Discovery Map</div>
+        <div class="rm-search" role="search">
+          <span class="rm-search__icon" aria-hidden="true">&#128269;</span>
+          <input
+            type="search"
+            id="rm-search-input"
+            class="rm-search__input"
+            placeholder="Search by name or region&hellip;"
+            aria-label="Search resorts"
+            autocomplete="off"
+          >
+          <button id="rm-search-clear" class="rm-search__clear" aria-label="Clear search">&#10005;</button>
+        </div>
+      </div>
+
+      <div class="rm-filters">
+        <div class="rm-filter-group">
+          <div class="rm-filter-label">Region</div>
+          <div class="rm-pills" id="rm-filter-region" role="group" aria-label="Filter by region">
+            <button class="rm-pill active" data-filter="region" data-value="all">All Regions</button>
+          </div>
+        </div>
+        <div class="rm-filter-group">
+          <div class="rm-filter-label">Type</div>
+          <div class="rm-pills" id="rm-filter-category" role="group" aria-label="Filter by category">
+            <button class="rm-pill active" data-filter="category" data-value="all">All Types</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-list-header">
+        <span class="rm-count" id="rm-count">Loading&hellip;</span>
+      </div>
+
+      <div class="rm-hotel-list" id="rm-hotel-list" role="list" aria-label="Filtered resort list">
+        <!-- Populated by resort-map.js -->
+      </div>
+    </aside>
+
+    <!-- Map -->
+    <div class="rm-map-wrap" id="rm-map-wrap">
+      <button
+        class="rm-toggle"
+        id="rm-toggle"
+        aria-controls="rm-sidebar"
+        aria-expanded="false"
+        aria-label="Toggle filters panel"
+      >&#9776; Filters</button>
+
+      <div id="resort-map" aria-label="Interactive resort location map" role="application">
+        <!-- Loading indicator -->
+        <div id="rm-loading" class="rm-loading" aria-live="polite">
+          <div class="rm-spinner" aria-hidden="true"></div>
+          <span>Loading resort locations&hellip;</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Compare Bar ───────────────────────────────────────────────────────────── -->
+<div class="rm-compare-bar" id="rm-compare-bar" role="region" aria-label="Compare resorts" aria-live="polite">
+  <span class="rm-compare-bar__label">Comparing</span>
+  <div class="rm-compare-bar__items">
+    <!-- Populated by resort-map.js -->
+  </div>
+  <a class="rm-compare-bar__go" aria-disabled="true" aria-label="Compare selected resorts">Compare &rarr;</a>
+  <button class="rm-compare-bar__clear" data-action="clear-compare" aria-label="Clear comparison">Clear</button>
+</div>
+
+<!-- ── No-JS / Crawler Fallback ─────────────────────────────────────────────── -->
+<noscript>
+  <div style="max-width:900px;margin:2rem auto;padding:0 1.5rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+    <h1 style="font-size:1.8rem;font-weight:800;color:#1a1a2e;margin-bottom:0.5rem">Mauritius Resort Map</h1>
+    <p style="color:#555;margin-bottom:1.5rem">Browse resorts by region. JavaScript is required for the interactive map.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+      <div style="background:#fff;border:1px solid #e8e8f0;border-radius:12px;padding:1.25rem">
+        <strong style="display:block;color:#1a1a2e;margin-bottom:0.5rem">North Coast</strong>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li style="margin-bottom:0.3rem"><a href="/grand-baie-mauritius/" style="color:#0066cc">Grand Baie hotels</a></li>
+          <li style="margin-bottom:0.3rem"><a href="/cap-malheureux-mauritius/" style="color:#0066cc">Cap Malheureux hotels</a></li>
+          <li style="margin-bottom:0.3rem"><a href="/balaclava-mauritius-hotels/" style="color:#0066cc">Balaclava hotels</a></li>
+          <li style="margin-bottom:0.3rem"><a href="/grand-gaube-mauritius/" style="color:#0066cc">Grand Gaube hotels</a></li>
+        </ul>
+      </div>
+      <div style="background:#fff;border:1px solid #e8e8f0;border-radius:12px;padding:1.25rem">
+        <strong style="display:block;color:#1a1a2e;margin-bottom:0.5rem">East Coast</strong>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li style="margin-bottom:0.3rem"><a href="/belle-mare-mauritius/" style="color:#0066cc">Belle Mare hotels</a></li>
+          <li style="margin-bottom:0.3rem"><a href="/trou-deau-douce-mauritius/" style="color:#0066cc">Trou d&apos;Eau Douce hotels</a></li>
+        </ul>
+      </div>
+      <div style="background:#fff;border:1px solid #e8e8f0;border-radius:12px;padding:1.25rem">
+        <strong style="display:block;color:#1a1a2e;margin-bottom:0.5rem">West Coast</strong>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li style="margin-bottom:0.3rem"><a href="/flic-en-flac-mauritius/" style="color:#0066cc">Flic en Flac hotels</a></li>
+          <li style="margin-bottom:0.3rem"><a href="/le-morne-hotels-mauritius/" style="color:#0066cc">Le Morne hotels</a></li>
+        </ul>
+      </div>
+      <div style="background:#fff;border:1px solid #e8e8f0;border-radius:12px;padding:1.25rem">
+        <strong style="display:block;color:#1a1a2e;margin-bottom:0.5rem">South Coast</strong>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li style="margin-bottom:0.3rem"><a href="/bel-ombre-mauritius/" style="color:#0066cc">Bel Ombre hotels</a></li>
+        </ul>
+      </div>
+      <div style="background:#fff;border:1px solid #e8e8f0;border-radius:12px;padding:1.25rem">
+        <strong style="display:block;color:#1a1a2e;margin-bottom:0.5rem">All Rankings</strong>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li style="margin-bottom:0.3rem"><a href="/best-luxury-hotels-mauritius/" style="color:#0066cc">Best luxury hotels</a></li>
+          <li style="margin-bottom:0.3rem"><a href="/best-honeymoon-hotels-mauritius/" style="color:#0066cc">Best honeymoon hotels</a></li>
+          <li style="margin-bottom:0.3rem"><a href="/best-family-hotels-mauritius/" style="color:#0066cc">Best family hotels</a></li>
+          <li style="margin-bottom:0.3rem"><a href="/best-wellness-resorts-mauritius/" style="color:#0066cc">Best wellness resorts</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</noscript>
+
+<!-- Leaflet JS — required before resort-map.js -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/assets/js/resort-map.js" defer></script>
+
+</body>
+</html>

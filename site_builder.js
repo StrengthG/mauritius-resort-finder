@@ -35,7 +35,7 @@ const fs   = require('fs');
 const path = require('path');
 const { generateSearchIndex }   = require('./search_engine_client.js');
 const { generateImageSitemap }  = require('./hotel_image_engine.js');
-const { generateSocialCards }   = require('./social_card_engine.js');
+const { generateSocialCards, getSellingPoint } = require('./social_card_engine.js');
 
 // ─────────────────────────────────────────────────────────────────────────────
 // VERSION
@@ -559,6 +559,7 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'ile-aux-cerfs-mauritius',            page_type: 'regional',      priority: '0.8', changefreq: 'monthly' },
   { slug: 'best-snorkelling-mauritius',         page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'mauritius-wildlife-guide',           page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'map',                                page_type: 'other',          priority: '0.7', changefreq: 'monthly' },
   { slug: 'search',                             page_type: 'other',          priority: '0.6', changefreq: 'weekly'  },
   { slug: 'contact',                            page_type: 'other',          priority: '0.5', changefreq: 'yearly'  },
   { slug: 'rankings',                            page_type: 'informational', priority: '0.6', changefreq: 'monthly' },
@@ -676,6 +677,71 @@ function generateSitemap(pages, baseUrl) {
  * @param  {string} [sitemapUrl]  defaults to baseUrl/sitemap.xml
  * @returns {string}
  */
+/**
+ * Generate map-hotels.json — compact hotel records for the resort discovery map.
+ * Merges hotels.json data with hotel-coordinates.json and hotel-images.json hue data.
+ *
+ * @param  {Object[]} hotels   — raw hotel objects from harness/Airtable
+ * @returns {string}           — JSON string
+ */
+function generateMapData(hotels) {
+  const coordsPath  = path.join(__dirname, 'data', 'hotel-coordinates.json');
+  const imagesPath  = path.join(__dirname, 'data', 'hotel-images.json');
+
+  let coords  = {};
+  let images  = {};
+
+  if (fs.existsSync(coordsPath)) {
+    try { coords = JSON.parse(fs.readFileSync(coordsPath, 'utf8')).hotels || {}; } catch (_) {}
+  }
+  if (fs.existsSync(imagesPath)) {
+    try { images = JSON.parse(fs.readFileSync(imagesPath, 'utf8')); } catch (_) {}
+  }
+
+  const active = hotels.filter(h => h._status !== 'inactive' && coords[h.hotel_id]);
+
+  const records = active.map(h => {
+    const coord     = coords[h.hotel_id];
+    const imgData   = images[h.hotel_id] || {};
+    const theme     = imgData.theme || {};
+    const amenities = h.amenities || {};
+
+    const cats = [];
+    if ((h.overall_rating || 0) >= 9.0)     cats.push('luxury');
+    if (amenities.private_beach)             cats.push('beach');
+    if (amenities.spa || amenities.wellness_programmes) cats.push('spa');
+    if (amenities.kids_club)                 cats.push('family');
+    if (amenities.adults_only)               cats.push('adults_only');
+    if (amenities.golf)                      cats.push('golf');
+    if (amenities.all_inclusive)             cats.push('all_inclusive');
+    if (amenities.overwater_villa)           cats.push('overwater');
+
+    const affLink = Array.isArray(h._affiliate_links) && h._affiliate_links[0]
+      ? (h._affiliate_links[0].booking_url || null)
+      : null;
+
+    const slug = _slugify(h.hotel_name);
+
+    return {
+      id:            h.hotel_id,
+      name:          h.hotel_name,
+      slug,
+      region:        h.region || '',
+      lat:           coord.lat,
+      lng:           coord.lng,
+      rating:        h.overall_rating || null,
+      stars:         h.star_rating    || null,
+      type:          h.property_type  || 'resort',
+      selling_point: getSellingPoint(h),
+      hue:           theme.hue || 205,
+      categories:    cats,
+      booking_url:   affLink,
+    };
+  });
+
+  return JSON.stringify(records);
+}
+
 function generateRobots(baseUrl, sitemapUrl) {
   if (!baseUrl || typeof baseUrl !== 'string') {
     throw new TypeError('generateRobots: baseUrl must be a non-empty string');
@@ -1121,6 +1187,13 @@ async function buildSite(options = {}) {
     const cardStats = generateSocialCards(hotelObjects, absOut);
     _log(`      ✓ social cards: ${cardStats.generated} generated, ${cardStats.cached} cached (${cardStats.total} total)`);
 
+    // Generate map-hotels.json for the resort discovery map
+    const mapDataDir = path.join(absOut, 'assets', 'data');
+    fs.mkdirSync(mapDataDir, { recursive: true });
+    const mapJson = generateMapData(hotelObjects);
+    fs.writeFileSync(path.join(mapDataDir, 'map-hotels.json'), mapJson, 'utf8');
+    _log(`      ✓ map-hotels.json (${hotelObjects.filter(h => h._status !== 'inactive').length} active hotels)`);
+
     // Copy homepage (index.html at project root) into dist/
     const homepageSrc  = path.join(__dirname, 'index.html');
     const homepageDest = path.join(absOut, 'index.html');
@@ -1326,6 +1399,7 @@ module.exports = {
   generateRobots,
   generateFeed,
   generateSearchIndex,
+  generateMapData,
   saveBuildReport,
 
   // Internals (exported for testing)
