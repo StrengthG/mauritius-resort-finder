@@ -36,6 +36,7 @@ const path = require('path');
 const { generateSearchIndex }   = require('./search_engine_client.js');
 const { generateImageSitemap }  = require('./hotel_image_engine.js');
 const { generateSocialCards, getSellingPoint } = require('./social_card_engine.js');
+const { generateTrendingData }                = require('./ga4_trending_engine.js');
 
 // ─────────────────────────────────────────────────────────────────────────────
 // VERSION
@@ -1194,6 +1195,20 @@ async function buildSite(options = {}) {
     fs.writeFileSync(path.join(mapDataDir, 'map-hotels.json'), mapJson, 'utf8');
     _log(`      ✓ map-hotels.json (${hotelObjects.filter(h => h._status !== 'inactive').length} active hotels)`);
 
+    // Generate trending.json — reads GA4 if credentials set, else cache or default
+    try {
+      const trendingData = await generateTrendingData(hotelObjects);
+      fs.writeFileSync(
+        path.join(mapDataDir, 'trending.json'),
+        JSON.stringify(trendingData),
+        'utf8'
+      );
+      _log(`      ✓ trending.json (source: ${trendingData.source}, ${(trendingData.trending || []).length} trending hotels)`);
+    } catch (tErr) {
+      warnings.push(`trending.json generation failed: ${tErr.message}`);
+      _log(`      ⚠ trending.json skipped: ${tErr.message}`);
+    }
+
     // Copy homepage (index.html at project root) into dist/
     const homepageSrc  = path.join(__dirname, 'index.html');
     const homepageDest = path.join(absOut, 'index.html');
@@ -1400,6 +1415,7 @@ module.exports = {
   generateFeed,
   generateSearchIndex,
   generateMapData,
+  generateTrendingData,
   saveBuildReport,
 
   // Internals (exported for testing)

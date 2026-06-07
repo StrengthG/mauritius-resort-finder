@@ -1498,6 +1498,7 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     ``,
     `  <!-- Gallery & lightbox -->`,
     `  <link rel="stylesheet" href="/assets/css/hotel-gallery.css">`,
+    `  <link rel="stylesheet" href="/assets/css/trending-widget.css">`,
     `  <script src="/assets/js/hotel-gallery.js" defer></script>`,
     ``,
     `  <!-- Renderer metadata (non-displayed) -->`,
@@ -1743,8 +1744,25 @@ function renderPage(pageObject, options = {}) {
       ].join('\n')
     : '';
 
-  // Inline scroll-reveal + score-bar animation (no external file dependency for generated pages)
-  const inlineScript = `<script src="/assets/js/hotel-page.js" defer></script>`;
+  // Trending widget placeholder — data-tw-page / data-tw-region / data-tw-exclude set per page type
+  const trendingAttrs = (() => {
+    if (meta.pageType === 'hotel_detail' || meta.pageType === 'hotel') {
+      const excludeId = meta.hotelId || '';
+      return `data-tw-widget data-tw-page="hotel" data-tw-exclude="${esc(excludeId)}"`;
+    }
+    if (meta.pageType === 'region') {
+      return `data-tw-widget data-tw-page="region" data-tw-region="${esc(meta.persona || '')}"`;
+    }
+    return `data-tw-widget data-tw-page="ranking"`;
+  })();
+  const trendingWidget = `<div ${trendingAttrs} aria-live="polite"></div>`;
+
+  // Scripts (defer = non-blocking)
+  const inlineScript = [
+    `<script src="/assets/js/hotel-page.js"      defer></script>`,
+    `<script src="/assets/js/hotel-tracking.js"  defer></script>`,
+    `<script src="/assets/js/trending-widget.js" defer></script>`,
+  ].join('\n');
 
   return [
     `<!DOCTYPE html>`,
@@ -1755,6 +1773,7 @@ function renderPage(pageObject, options = {}) {
     `<a href="#main-content" class="skip-link">Skip to main content</a>`,
     `<main id="main-content" role="main">`,
     mainContent,
+    trendingWidget,
     `</main>`,
     siteFooter,
     stickyCta,
