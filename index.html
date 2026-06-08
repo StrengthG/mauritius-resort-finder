@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Anti-FOUC: set theme before paint -->
+  <script>!function(){var t=localStorage.getItem('mrf-theme')||(matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t)}()</script>
   <title>Mauritius Resort Finder — Independent Luxury Hotel Reviews</title>
   <meta name="description" content="Independent, data-backed hotel reviews for Mauritius. 36 hotels scored across 40+ criteria. No sponsored placements. No marketing copy. Just honest rankings." />
   <meta name="robots" content="index, follow" />
@@ -416,6 +418,10 @@
       <li><a href="/contact/">Contact</a></li>
     </ul>
     <a href="#rankings" class="nav__cta" aria-label="View hotel rankings">View Rankings</a>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
     <button class="nav__hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
       <span></span><span></span><span></span>
     </button>
@@ -429,6 +435,13 @@
   <a href="#regions">By Region</a>
   <a href="#methodology">Methodology</a>
   <a href="/contact/">Contact</a>
+  <div class="nav__mobile-theme">
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <span>Toggle theme</span>
+  </div>
   <a href="#rankings" class="btn btn--primary" style="margin-top:28px;justify-content:center;">View Rankings &rarr;</a>
 </nav>
 
@@ -1315,6 +1328,8 @@
 })();
 </script>
 
+<!-- Theme Manager -->
+<script src="/assets/js/theme.js" defer></script>
 <!-- Scripts (defer = non-blocking) -->
 <script src="/assets/js/animations.js"      defer></script>
 <script src="/assets/js/interactions.js"    defer></script>

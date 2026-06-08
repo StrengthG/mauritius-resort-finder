@@ -798,6 +798,158 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   THEME SYSTEM
+   Dark is default (`:root` values above).
+   Light overrides applied via `[data-theme="light"]` on <html>.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Light theme variable overrides ────────────────────────────────────── */
+[data-theme="light"] {
+  --navy-card:          #ffffff;
+  --navy-raised:        #f5f1e8;
+  --midnight:           #f0ece2;
+  --champagne:          #1a1108;
+  --text:               #2d2010;
+  --text-dim:           #4a3929;
+  --muted:              #70655a;
+  --gold:               #b8902d;
+  --gold-dim:           #966a1a;
+  --gold-bright:        #c9a84c;
+  --gold-glow:          rgba(184,144,45,0.10);
+  --gold-glow-lg:       rgba(184,144,45,0.05);
+  --border:             rgba(0,0,0,0.08);
+  --border-light:       rgba(0,0,0,0.13);
+  --border-gold:        rgba(184,144,45,0.35);
+  --border-gold-strong: rgba(184,144,45,0.55);
+  --shadow-gold:        0 0 40px rgba(184,144,45,0.12);
+  --shadow-card:        0 2px 20px rgba(0,0,0,0.07);
+  --shadow-hover:       0 8px 40px rgba(0,0,0,0.12);
+}
+
+/* Page background — separate from --deep-navy so CTA button text stays dark */
+[data-theme="light"] body { background: #faf8f4; color: var(--text); }
+
+/* Hero section background */
+[data-theme="light"] .hero { background: #faf8f4; }
+[data-theme="light"] .hero::before {
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(184,144,45,0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 65% at 95% 55%, rgba(184,144,45,0.04) 0%, transparent 55%);
+}
+[data-theme="light"] .hero__subtitle { color: var(--text-dim); }
+
+/* Navigation — override hardcoded rgba dark values */
+[data-theme="light"] .nav.nav--scrolled {
+  background: rgba(250,248,244,0.97);
+}
+[data-theme="light"] .nav__mobile-menu {
+  background: rgba(250,248,244,0.99);
+  backdrop-filter: blur(24px);
+}
+[data-theme="light"] .nav__mobile-menu a { color: var(--text-dim); }
+[data-theme="light"] .nav__mobile-menu a:hover { color: var(--gold); }
+[data-theme="light"] .nav__hamburger span { background: var(--text-dim); }
+
+/* Score bar track — uses hardcoded rgba(255,255,255,…) */
+[data-theme="light"] .score-bar__track { background: rgba(0,0,0,0.08); }
+
+/* Score pillars */
+[data-theme="light"] .pillar { background: rgba(0,0,0,0.03); }
+[data-theme="light"] .pillar:hover { background: rgba(184,144,45,0.06); }
+
+/* Don't list */
+[data-theme="light"] .dont-item { background: rgba(0,0,0,0.02); }
+
+/* Badge alt bg */
+[data-theme="light"] .badge--review { background: rgba(0,0,0,0.04); }
+
+/* Footer */
+[data-theme="light"] .footer { background: #f0ece2; }
+
+/* Trust bar hover */
+[data-theme="light"] .trust-stat:hover { background: rgba(184,144,45,0.04); }
+
+/* Transition the whole page for smooth theme switching */
+body,
+.nav, .nav__mobile-menu,
+.hotel-card, .region-card, .trust-bar,
+.quote-card, .method, .footer {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  body, .nav, .hotel-card, .region-card { transition: none; }
+}
+
+/* ── Theme Toggle Button ─────────────────────────────────────────────────── */
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border-gold);
+  background: var(--gold-glow);
+  cursor: pointer;
+  padding: 0;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.25s var(--ease-spring),
+    color 0.2s ease;
+}
+.theme-toggle:hover {
+  background: rgba(201,168,76,0.18);
+  border-color: var(--border-gold-strong);
+}
+[data-theme="light"] .theme-toggle:hover { background: rgba(184,144,45,0.15); }
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.theme-toggle--pressed { transform: scale(0.88) !important; }
+
+/* Icons inside toggle */
+.theme-toggle__icon {
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.4s var(--ease-spring);
+}
+/* Dark mode: sun visible (click to go light) */
+[data-theme="dark"] .theme-toggle__icon--sun  { opacity: 1; transform: rotate(0deg)   scale(1); }
+[data-theme="dark"] .theme-toggle__icon--moon { opacity: 0; transform: rotate(-30deg) scale(0.4); pointer-events: none; }
+/* Light mode: moon visible (click to go dark) */
+[data-theme="light"] .theme-toggle__icon--moon { opacity: 1; transform: rotate(0deg)  scale(1); }
+[data-theme="light"] .theme-toggle__icon--sun  { opacity: 0; transform: rotate(45deg)  scale(0.4); pointer-events: none; }
+/* Default before JS sets data-theme (dark assumed) */
+:not([data-theme]) .theme-toggle__icon--sun  { opacity: 1; }
+:not([data-theme]) .theme-toggle__icon--moon { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__icon { transition: opacity 0.15s ease; }
+}
+
+/* Mobile: theme toggle inside drawer */
+.nav__mobile-theme {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  margin-top: 8px;
+}
+.nav__mobile-theme span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    Ambient Visuals — Hero Slideshow · Cinematic Strip · Floating Panels
    ═══════════════════════════════════════════════════════════════════════════ */
 
