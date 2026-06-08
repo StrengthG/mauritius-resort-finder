@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-06-07 (Run 48)
+Last updated: 2026-06-08 (Run 50)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -91,7 +91,8 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Scalable backlink acquisition machine~~ | ~~Backlinks~~ | ~~High~~ | ✅ Done 2026-06-07 (Run 48) — 82-prospect discovery DB, scorer, 13-week queue, 90-day dashboard, 108 tests; 112 total prospects |
 | ~~Mauritius destination weddings guide~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-06-07 (Run 48, ~2,400 words, legal requirements, 5-tier budget table, 5 hotel CTAs, 4 season cards, 6 FAQs, FAQPage + BreadcrumbList + Article schema) |
 | ~~Mauritius overwater villas guide~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-06-08 (Run 49, ~2,400 words, 5-tier cost table, Mauritius vs Maldives table, 5 hotel CTAs, 4 season cards, 6 FAQs, FAQPage + BreadcrumbList + Article schema) |
-| Rodrigues Island guide | Informational | Low | "rodrigues island mauritius" — no dataset hotels; informational-only approach required |
+| ~~Rodrigues Island guide~~ | ~~Informational~~ | ~~Low~~ | ✅ Done 2026-06-08 (Run 50, ~2,400 words, 6 activities, Rodrigues vs Mauritius table, 7-day itinerary, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
+| Mauritius scuba diving guide | Informational | Medium | "scuba diving mauritius", "best dive sites mauritius" — distinct from snorkelling guide |
 | Mauritius photography spots guide | Informational | Low | "best photography spots mauritius" |
 | Mauritius nightlife guide | Informational | Low | "nightlife mauritius" |
 | Begin backlink outreach — Week 1 batch | Backlinks | High | `node seo_outreach_queue.js` — 1 broken link target (Rough Guides DA 83) |

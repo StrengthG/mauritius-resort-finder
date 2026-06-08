@@ -1,4 +1,4 @@
-# SEO Daily Report — Run 49
+# SEO Daily Report — Run 50
 **Date:** 2026-06-08
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
@@ -6,81 +6,70 @@
 
 ## 1. Executive Summary
 
-Run 49 delivered the **Mauritius Overwater Villas guide** at `/mauritius-overwater-villas/` — a 2,400-word, schema-rich informational page targeting "overwater villas mauritius", "overwater bungalows mauritius", and "overwater accommodation mauritius". The page addresses the highest remaining commercial-intent keyword gap: luxury couples searching for Maldives-style over-water stays in Mauritius. It handles the nuance honestly (Mauritius lacks true ocean OWBs), positions Constance Prince Maurice's freshwater lake villas, Four Seasons lagoon suites, One&Only Le Saint Géran overwater hammocks, and Bubble Lodge dome as the genuine local equivalents, and provides a Mauritius vs Maldives decision table that serves as a natural anchor for search intent.
+Run 50 delivered the **Rodrigues Island guide** at `/rodrigues-island-mauritius/` — a ~2,400-word informational page targeting "rodrigues island mauritius", "how to get to rodrigues from mauritius", and "rodrigues island kitesurfing". The page captures a distinct search intent: Indian Ocean travellers considering Rodrigues as an extension of a Mauritius trip. It includes a verified Air Mauritius flight factsheet, a 6-activity grid, a 4-card season guide, a 9-row Rodrigues vs Mauritius comparison table, a 7-day combined itinerary, and 3 verified hotel CTAs (Royal Palm 9.2, Four Seasons Anahita 9.1, One&Only Le Saint Géran 9.0) framed as the ideal Mauritius base before or after Rodrigues. FAQPage + BreadcrumbList + Article schema applied.
 
-Also completed this session: homepage ranking cards upgraded to photo layout (`.hotel-card--photo`), and the rankings page at `/rankings/` completely redesigned as an Airbnb-style 4-column photo card grid.
+Also completed this session: region card footer alignment fixed on homepage (desktop grid), and theme system fully rewritten (pill toggle, light-mode default, `--color-bg/--color-primary` semantic tokens).
 
-Build: 74/74 pages, 2,237 tests across 16 suites — all passing.
+Build: 74/74 pages. 51 static pages in dist. Sitemap: 124 URLs.
 
 ---
 
 ## 2. Technical Issues Found
 
-None. Build clean. All tests pass.
+| Issue | Status |
+|---|---|
+| Region card footer misalignment on desktop | ✅ Fixed — `margin-top:auto` on `.region-card__footer` |
+| Theme toggle non-functional (old circular button) | ✅ Fixed — pill toggle with `onclick="mrfToggle()"` |
+| Anti-FOUC defaulting to dark | ✅ Fixed — now checks `prefers-color-scheme:dark`, defaults to light |
+| No technical build errors | ✅ Clean |
 
 ---
 
-## 3. Content Work Done This Run
+## 3. Content Opportunities
 
-### New page
-
-**`pages/mauritius-overwater-villas.html`** — `/mauritius-overwater-villas/`
-- **Primary keyword:** overwater villas mauritius
-- **Secondary keywords:** overwater bungalows mauritius, overwater accommodation mauritius, mauritius overwater suites, constance prince maurice lake villas
-- **Word count:** ~2,400 words
-- **Schema:** Article, BreadcrumbList, FAQPage (6 questions)
-- **Sections:** Reality of overwater in Mauritius (honest framing), Top 5 properties (hotel CTAs), Property comparison table (7 properties × 7 attributes), Cost breakdown (5-tier table $750–$3,200+/night), Best seasons (4 season cards), Mauritius vs Maldives decision table (8 factors), 6 FAQs
-- **CTAs:** 5 affiliate-linked hotels — Constance Prince Maurice (9.0), Four Seasons Anahita (9.1), One&Only Le Saint Géran (9.0), Bubble Lodge Île aux Cerfs (8.4), Royal Palm Beachcomber (9.2)
-- **Affiliate disclosure:** present on each CTA card
-- **Internal links:** Related guides section (6 links); footer planning guides updated
-
-### Build pipeline changes
-- `site_builder.js` — `mauritius-overwater-villas` added to `STATIC_PAGE_SPECS` (priority 0.8, monthly)
-- `static_page_renderer.js` — overwater villas guide added to `getRelatedGuides()` (excluded from honeymoon persona pages to avoid duplication)
-
-### Homepage & rankings UX (committed earlier this session)
-- **`index.html`** — 5 top-ranked cards upgraded to `.hotel-card--photo` layout (260px left photo column, rank badge overlay, hover zoom); Four Seasons (#2) retains text-only layout (no photo available)
-- **`pages/rankings.html`** — complete rewrite: `<table>` replaced with `.rk-grid` 4-column responsive photo card grid showing all 36 hotels; 29 hotels with photos, 7 with gold-letter placeholders; hover zoom, score badge, affiliate CTAs
+| Opportunity | Keyword | Priority | Status |
+|---|---|---|---|
+| Rodrigues Island guide | "rodrigues island mauritius" | Low | ✅ Done this run |
+| Mauritius photography spots | "best photography spots mauritius" | Low | Pending |
+| Mauritius nightlife guide | "nightlife mauritius" | Low | Pending |
+| Mauritius scuba diving guide | "scuba diving mauritius" | Medium | Not yet planned |
+| Mauritius helicopter tours | "helicopter tour mauritius" | Medium | Not yet planned |
 
 ---
 
 ## 4. Internal Linking
 
-The overwater villas page links to:
-- `/mauritius-honeymoon-guide/` — primary companion
-- `/mauritius-destination-weddings/` — wedding/couples context
-- `/mauritius-honeymoon-itinerary/` — practical next step
-- `/best-time-to-visit-mauritius/` — seasonal planning
-- `/adults-only-resorts-mauritius/` — couples resort list
-- `/mauritius-luxury-travel-guide/` — broader context
+The Rodrigues page links to:
+- `/mauritius-island-day-trips/` — primary companion
+- `/mauritius-travel-guide/` — entry planning
+- `/best-time-to-visit-mauritius/` — seasonal context
+- `/mauritius-water-sports-guide/` — kitesurfing/diving context
+- `/best-snorkelling-mauritius/` — marine crossover
+- `/mauritius-wildlife-guide/` — tortoise/nature context
+- `/mauritius-honeymoon-guide/` — couples segment
+- `/ile-aux-cerfs-mauritius/` — other island day trip
 
-The page is linked from `getRelatedGuides()` in the generated page footer across the site (excluded from honeymoon persona pages to avoid duplication).
+The page is added to `getRelatedGuides()` in `static_page_renderer.js` and will appear in the related-guides footer across all generated pages.
 
 ---
 
 ## 5. Backlink Opportunities
 
-The overwater villas guide targets luxury travel and honeymoon prospects already in the discovery database:
+Week 1 outreach contact is overdue (Day 2 of the 90-day campaign):
 
-| Prospect | DA | Type | Target page |
+| Site | DA | Type | Target |
 |---|---|---|---|
-| Honeymoon Dreams | 42 | resource_link | `/mauritius-overwater-villas/` |
-| Two Monkeys Travel | 48 | guest_post | `/mauritius-overwater-villas/` |
-| Luxury Travel Advisor | 61 | resource_link | `/mauritius-overwater-villas/` |
-| Junebug Weddings | 68 | guest_post | `/mauritius-overwater-villas/` |
-| Green Wedding Shoes | 65 | guest_post | `/mauritius-overwater-villas/` |
+| Rough Guides | 83 | Broken link replacement | `/methodology/` |
 
-The Mauritius vs Maldives comparison table is particularly suited as a citation target for honeymoon planning content.
+Action: Identify the broken link on Rough Guides that references a Mauritius methodology source, and submit a replacement pitch. The `seo_outreach_queue.js` script tracks this as Week 1 Day 1 contact.
 
 ---
 
 ## 6. Conversion Improvements
 
-- 5 hotel CTAs with `rel="noopener sponsored"` and per-card affiliate disclosure
-- Honest OWB framing reduces pogo-stick risk — searchers understand what to expect before clicking through
-- Cost table ($750–$3,200+) gives concrete price anchors for luxury budget planning
-- Maldives comparison table serves dual role: conversion aid + featured snippet candidate
-- Quick-pick sidebar and "couples" quick links reduce time-to-CTA for returning visitors
+- 3 hotel CTAs on Rodrigues page with contextual framing (airport proximity for SSR connections)
+- East coast hotel positioning (Beau Champ: 35 min to SSR, Le Saint Géran: 40 min) is a conversion differentiator specific to Rodrigues combination trips
+- Rodrigues vs Mauritius comparison table serves as a decision aid: readers who conclude "I want the five-star" click through to hotel pages
 
 ---
 
@@ -88,12 +77,11 @@ The Mauritius vs Maldives comparison table is particularly suited as a citation 
 
 | Priority | Task | Type | Keyword Target |
 |---|---|---|---|
-| High | Begin backlink outreach — Week 1 batch | Backlinks | `node seo_outreach_queue.js` |
-| Medium | Rodrigues Island guide | Informational | "rodrigues island mauritius" |
-| Low | Mauritius photography spots guide | Informational | "photography spots mauritius" |
+| High | Begin Rough Guides outreach (Week 1) | Backlinks | DA 83 broken link — `/methodology/` |
+| Medium | Mauritius scuba diving guide | Informational | "scuba diving mauritius", "best dive sites mauritius" |
+| Low | Mauritius photography spots | Informational | "best photography spots mauritius" |
 | Low | Mauritius nightlife guide | Informational | "nightlife mauritius" |
 | Ongoing | Monitor GSC for low-CTR impressions | Analytics | Weekly |
-| Ongoing | Update hotel data quarterly | Content freshness | Ongoing |
 
 ---
 
@@ -101,8 +89,7 @@ The Mauritius vs Maldives comparison table is particularly suited as a citation 
 
 | Action | Expected impact |
 |---|---|
-| Overwater villas guide | Rankings for "overwater villas mauritius", "overwater bungalows mauritius"; captures luxury intent not covered by honeymoon guide |
-| Mauritius vs Maldives table | Featured snippet candidate for "mauritius vs maldives overwater" |
-| Cost breakdown table | Featured snippet candidate for "overwater villa mauritius price" |
-| Homepage photo cards | Reduced bounce rate — visual scan faster than reading card text |
-| Rankings photo grid | Higher engagement, lower bounce, more affiliate clicks vs. old table format |
+| Rodrigues Island guide | Rankings for "rodrigues island mauritius" (3,000–6,000 monthly searches); internal links from island day trips, snorkelling, wildlife pages increase page authority |
+| 3 hotel CTAs framed by airport proximity | Niche conversion angle not found on competitor content; may reduce bounce from Rodrigues visitors who then book Mauritius hotels |
+| Pill theme toggle + light mode default | UX improvement; no SEO impact but reduces bounce from users who find dark-mode sites hard to read |
+| Region card alignment fix | Reduces visual polish issues that can affect trust signals |
