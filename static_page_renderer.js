@@ -779,6 +779,41 @@ function renderHotelCard(block) {
 }
 
 /**
+ * Renders a compact photo card for persona ranking pages.
+ * Used instead of the full editorial renderHotelCard on persona pages.
+ */
+function renderHotelPhotoCard(block) {
+  requirePayloadFields('hotel_card', block.payload, ['rank', 'hotel_id', 'hotel_data']);
+  const { rank, hotel_id, hotel_data, booking_url, cta_eligible } = block.payload;
+  const hotelName  = hotel_data.hotel_name || hotel_data.name || hotel_id;
+  const region     = hotel_data.region || '';
+  const scores     = hotel_data.score_breakdown || {};
+  const overall    = scores.overall_score != null ? Number(scores.overall_score).toFixed(1) : null;
+  const hotelSlug  = _slugify(hotelName);
+  const photoUrl   = `/assets/images/hotels/${encodeURIComponent(hotel_id)}/photo_01.png`;
+  const bookingHtml = (cta_eligible && booking_url)
+    ? `    <a href="${esc(_safeUrl(booking_url))}" rel="noopener sponsored" class="persona-photo-card__book">Book &rarr;</a>`
+    : '';
+  return [
+    `<article class="persona-photo-card" id="hotel-${esc(hotel_id)}">`,
+    `  <div class="persona-photo-card__photo">`,
+    `    <img src="${photoUrl}" alt="${esc(hotelName)}" loading="lazy" decoding="async">`,
+    `    <div class="persona-photo-card__rank">#${rank}</div>`,
+    overall ? `    <div class="persona-photo-card__score">${overall} &#9733;</div>` : '',
+    `  </div>`,
+    `  <div class="persona-photo-card__body">`,
+    `    <p class="persona-photo-card__name"><a href="/hotels/${esc(hotelSlug)}/">${esc(hotelName)}</a></p>`,
+    region ? `    <p class="persona-photo-card__region">&#128205; ${esc(region)}</p>` : '',
+    `    <div class="persona-photo-card__actions">`,
+    bookingHtml,
+    `      <a href="/hotels/${esc(hotelSlug)}/" class="persona-photo-card__review">Full review</a>`,
+    `    </div>`,
+    `  </div>`,
+    `</article>`,
+  ].filter(Boolean).join('\n');
+}
+
+/**
  * Renders an affiliate CTA block — booking link with mandatory disclosure note.
  * Always renders affiliate disclosure adjacent to the CTA as required by policy.
  *
@@ -1496,6 +1531,27 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `    .site-footer__copy{font-size:.75rem;color:var(--muted)}.site-footer__nav ul{list-style:none;display:flex;gap:20px;flex-wrap:wrap}.site-footer__nav a{font-size:.75rem;color:var(--muted);transition:color .2s}.site-footer__nav a:hover{color:var(--champagne)}`,
     `    @media(max-width:900px){.site-nav__list{display:none}}`,
     `    @media(max-width:640px){.container{padding:0 16px}.hotel-card{padding:20px 16px}.hotel-card__score-label{width:56px}.hotel-card__score-value{width:48px;font-size:.72rem}.hotel-card__footer{gap:8px}.hotel-editorial__intro,.hotel-editorial__why,.hotel-editorial__pros-cons,.hotel-editorial__best-for,.hotel-editorial__nearby,.hotel-editorial__comparison,.hotel-editorial__faqs{padding:20px 16px}.ranking-summary{padding:20px 16px}.methodology{padding:24px 16px}.affiliate-cta{flex-direction:column;align-items:flex-start;padding:18px 16px}.affiliate-cta__disclosure{min-width:unset;width:100%}.site-footer{margin-top:32px;padding:24px 16px}}`,
+    `    .persona-photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:40px auto;max-width:1200px;padding:0 24px}`,
+    `    @media(max-width:1100px){.persona-photo-grid{grid-template-columns:repeat(3,1fr)}}`,
+    `    @media(max-width:720px){.persona-photo-grid{grid-template-columns:repeat(2,1fr);gap:14px}}`,
+    `    @media(max-width:480px){.persona-photo-grid{grid-template-columns:1fr}}`,
+    `    .persona-photo-card{border-radius:14px;overflow:hidden;background:var(--navy-card);border:1px solid var(--border);transition:transform .28s var(--ease-out),box-shadow .28s,border-color .28s;position:relative;display:flex;flex-direction:column}`,
+    `    .persona-photo-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(0,0,0,.45);border-color:var(--border-gold)}`,
+    `    .persona-photo-card__photo{position:relative;padding-top:68%;overflow:hidden;background:var(--deep-navy)}`,
+    `    .persona-photo-card__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease-out)}`,
+    `    .persona-photo-card:hover .persona-photo-card__photo img{transform:scale(1.06)}`,
+    `    .persona-photo-card__rank{position:absolute;top:11px;left:11px;z-index:1;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:800;color:#fff;background:rgba(8,15,35,.72);border-radius:7px;padding:4px 10px;backdrop-filter:blur(4px);text-shadow:0 1px 4px rgba(0,0,0,.6)}`,
+    `    .persona-photo-card__score{position:absolute;top:11px;right:11px;z-index:1;background:rgba(8,15,35,.82);border:1px solid var(--border-gold);color:var(--gold);font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:6px;backdrop-filter:blur(4px)}`,
+    `    .persona-photo-card__body{padding:15px 16px 17px;display:flex;flex-direction:column;flex:1}`,
+    `    .persona-photo-card__name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--champagne);margin:0 0 3px;line-height:1.25}`,
+    `    .persona-photo-card__name a{color:inherit;text-decoration:none;transition:color .15s}`,
+    `    .persona-photo-card__name a:hover{color:var(--gold)}`,
+    `    .persona-photo-card__region{font-size:.72rem;color:var(--muted);margin:0 0 12px}`,
+    `    .persona-photo-card__actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto}`,
+    `    .persona-photo-card__book{font-size:.73rem;font-weight:700;color:var(--deep-navy);background:var(--gold);padding:5px 13px;border-radius:var(--radius-pill);text-decoration:none;white-space:nowrap;transition:opacity .15s}`,
+    `    .persona-photo-card__book:hover{opacity:.85}`,
+    `    .persona-photo-card__review{font-size:.71rem;font-weight:600;color:var(--gold);border:1px solid var(--border-gold);padding:4px 11px;border-radius:var(--radius-pill);text-decoration:none;white-space:nowrap;background:var(--gold-glow);transition:background .15s}`,
+    `    .persona-photo-card__review:hover{background:rgba(201,168,76,.12)}`,
     `  </style>`,
     ``,
     `  <!-- Gallery & lightbox -->`,
@@ -1699,27 +1755,55 @@ function renderPage(pageObject, options = {}) {
 
   // Render all blocks in order (block order is preserved exactly as received)
   // On hotel detail pages, inject hero image + gallery before the first hotel_card block.
+  // On persona pages, wrap hotel_card blocks in a photo grid and skip standalone affiliate_cta blocks.
+  const isPersonaPage = options.page_type === 'persona' || options.page_type === 'pillar';
   let _heroInjected = false;
-  const renderedBlocks = pageObject.blocks.map((block, index) => {
+  let _gridOpen = false;
+  const renderedParts = [];
+
+  for (let index = 0; index < pageObject.blocks.length; index++) {
+    const block = pageObject.blocks[index];
     try {
+      if (isPersonaPage) {
+        if (block.block_type === 'hotel_card') {
+          if (!_gridOpen) {
+            renderedParts.push('<div class="persona-photo-grid">');
+            _gridOpen = true;
+          }
+          renderedParts.push(
+            `<!-- block:hotel_card position:${block.position || index + 1} -->\n` +
+            renderHotelPhotoCard(block),
+          );
+          continue;
+        }
+        // Skip standalone affiliate_cta on persona pages — CTA is embedded in each card
+        if (block.block_type === 'affiliate_cta') continue;
+        // Close grid before any other non-hotel_card block
+        if (_gridOpen) {
+          renderedParts.push('</div>');
+          _gridOpen = false;
+        }
+      }
+
       let html = `<!-- block:${block.block_type} position:${block.position || index + 1} -->\n` +
                  renderBlock(block);
       if (!_heroInjected && block.block_type === 'hotel_card' && (_heroImageHtml || _galleryHtml)) {
         _heroInjected = true;
         html = _heroImageHtml + (_galleryHtml ? '\n' + _galleryHtml : '') + '\n\n' + html;
       }
-      return html;
+      renderedParts.push(html);
     } catch (err) {
-      // Re-throw with block context
       if (err instanceof RendererError) throw err;
       throw new RendererError(
         `Failed to render block type "${block.block_type}" at position ${block.position || index + 1}: ${err.message}`,
         { block_type: block.block_type, position: block.position || index + 1, cause: err },
       );
     }
-  });
+  }
+  // Close grid if the page ended while still inside it
+  if (_gridOpen) renderedParts.push('</div>');
 
-  const mainContent = renderedBlocks.join('\n\n');
+  const mainContent = renderedParts.join('\n\n');
 
   // Sticky CTA for hotel detail pages — floats at bottom when main CTA scrolls out of view
   const ctaBlock = (meta.pageType === 'hotel_detail' || meta.pageType === 'hotel')

@@ -954,7 +954,7 @@ async function _buildPage(spec, deps = {}, buildOptions = {}) {
     );
 
     // ── Render ──────────────────────────────────────────────────────────────
-    const html = renderFn(assembly, { baseUrl, slug: spec.slug });
+    const html = renderFn(assembly, { baseUrl, slug: spec.slug, page_type: spec.page_type });
 
     // ── Write ───────────────────────────────────────────────────────────────
     mkdirFn(path.dirname(outputPath), { recursive: true });
