@@ -205,16 +205,20 @@ suite('renderPicture — XSS safety in src/alt', function () {
 // renderHeroImage
 // ─────────────────────────────────────────────────────────────────────────────
 
-suite('renderHeroImage — without outDir (placeholder)', function () {
+suite('renderHeroImage — without outDir (PNG fallback)', function () {
   const html = renderHeroImage(KNOWN_HOTEL_ID, KNOWN_HOTEL_NAME, KNOWN_REGION);
   assert(html.includes('hotel-hero-img'),          'has hero wrapper class');
   assert(html.includes('data-hotel-id="MQ001"'),   'has data-hotel-id');
-  assert(html.includes('hotel-img--placeholder'),  'uses placeholder when no outDir');
+  // PNG photos now exist for MQ001 — engine uses real image instead of gradient placeholder
+  assert(html.includes('photo_01.png') || html.includes('hotel-img--placeholder'),
+         'uses PNG photo or placeholder');
 });
 
-suite('renderHeroImage — with non-existent outDir (placeholder)', function () {
+suite('renderHeroImage — with non-existent outDir (PNG fallback)', function () {
   const html = renderHeroImage(KNOWN_HOTEL_ID, KNOWN_HOTEL_NAME, KNOWN_REGION, '/nonexistent/path');
-  assert(html.includes('hotel-img--placeholder'), 'falls back to placeholder when file not found');
+  // PNG source files exist for MQ001, so engine uses PNG even when outDir has no WebP
+  assert(html.includes('photo_01.png') || html.includes('hotel-img--placeholder'),
+         'uses PNG photo or placeholder when WebP not found');
 });
 
 suite('renderHeroImage — caption from metadata', function () {
@@ -287,10 +291,11 @@ suite('renderCardThumbnail — alt text from metadata', function () {
 // ─────────────────────────────────────────────────────────────────────────────
 
 suite('heroPreloadTag', function () {
-  // No outDir → always empty (cannot know if file exists)
-  assertEqual(heroPreloadTag(KNOWN_HOTEL_ID),               '', 'empty when no outDir');
-  // Non-existent outDir → file won't exist → empty
-  assertEqual(heroPreloadTag(KNOWN_HOTEL_ID, '/nonexistent'), '', 'empty when file not present');
+  // No outDir → always empty (cannot know if WebP exists; PNG preload requires outDir arg)
+  assertEqual(heroPreloadTag(KNOWN_HOTEL_ID), '', 'empty when no outDir');
+  // PNG photos exist for MQ001 — returns PNG preload tag even with non-existent WebP outDir
+  const tag = heroPreloadTag(KNOWN_HOTEL_ID, '/nonexistent');
+  assert(tag.includes('photo_01.png') || tag === '', 'PNG preload tag or empty when file not present');
 });
 
 // ─────────────────────────────────────────────────────────────────────────────

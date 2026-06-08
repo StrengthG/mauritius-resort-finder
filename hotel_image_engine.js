@@ -93,6 +93,25 @@ function thumbFsPath(hotelId, outDir) {
   return path.join(outDir, 'assets', 'images', 'hotels', hotelId, 'thumb.webp');
 }
 
+// PNG source paths — checked against assets/ source dir (not dist/) so they're found on first build
+function heroPngFsPath(hotelId) {
+  return path.join(__dirname, 'assets', 'images', 'hotels', hotelId, 'photo_01.png');
+}
+
+function galleryPngFsPath(hotelId, galleryIndex) {
+  const num = String(galleryIndex + 1).padStart(2, '0');
+  return path.join(__dirname, 'assets', 'images', 'hotels', hotelId, `photo_${num}.png`);
+}
+
+function heroPngWebPath(hotelId) {
+  return `/assets/images/hotels/${hotelId}/photo_01.png`;
+}
+
+function galleryPngWebPath(hotelId, galleryIndex) {
+  const num = String(galleryIndex + 1).padStart(2, '0');
+  return `/assets/images/hotels/${hotelId}/photo_${num}.png`;
+}
+
 function fileExists(fsPath) {
   try { return fs.existsSync(fsPath); } catch (_) { return false; }
 }
@@ -182,6 +201,21 @@ function renderPicture(webPath, altText, width, height, loading, extraClass) {
   ].join('\n');
 }
 
+function renderPngImage(webPath, altText, width, height, loading, extraClass) {
+  return [
+    `<figure class="hotel-img${extraClass ? ' ' + extraClass : ''}">`,
+    `  <img`,
+    `    src="${esc(webPath)}"`,
+    `    alt="${esc(altText)}"`,
+    `    width="${width}"`,
+    `    height="${height}"`,
+    `    loading="${loading}"`,
+    `    decoding="async"`,
+    `    class="hotel-img__real">`,
+    `</figure>`,
+  ].join('\n');
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Public rendering API
 // ─────────────────────────────────────────────────────────────────────────────
@@ -204,10 +238,13 @@ function renderHeroImage(hotelId, hotelName, region, outDir) {
 
   const fsPath  = outDir ? heroFsPath(hotelId, outDir) : null;
   const hasReal = fsPath && fileExists(fsPath);
+  const hasPng  = fileExists(heroPngFsPath(hotelId));
 
   let figureHtml;
   if (hasReal) {
     figureHtml = renderPicture(heroWebPath(hotelId), altText, HERO_W, HERO_H, 'eager', 'hotel-img--hero');
+  } else if (hasPng) {
+    figureHtml = renderPngImage(heroPngWebPath(hotelId), altText, HERO_W, HERO_H, 'eager', 'hotel-img--hero');
   } else {
     figureHtml = renderPlaceholder(hotelId, hotelName, region, 'hero', altText);
   }
@@ -234,9 +271,10 @@ function renderHeroImage(hotelId, hotelName, region, outDir) {
  */
 function renderGalleryStrip(hotelId, hotelName, region, outDir) {
   const imageData = getHotelImages(hotelId);
-  if (!imageData) return '';
+  const hasPngFiles = fileExists(galleryPngFsPath(hotelId, 1));
+  if (!imageData && !hasPngFiles) return '';
 
-  const gallery = imageData.gallery || [];
+  const gallery = imageData ? (imageData.gallery || []) : [];
   const thumbItems = [];
 
   for (let i = 1; i <= GALLERY_COUNT; i++) {
@@ -246,10 +284,13 @@ function renderGalleryStrip(hotelId, hotelName, region, outDir) {
 
     const fsPath  = outDir ? galleryFsPath(hotelId, i, outDir) : null;
     const hasReal = fsPath && fileExists(fsPath);
+    const hasPng  = fileExists(galleryPngFsPath(hotelId, i));
 
     let figHtml;
     if (hasReal) {
       figHtml = renderPicture(galleryWebPath(hotelId, i), altText, GALLERY_W, GALLERY_H, 'lazy', 'hotel-img--gallery');
+    } else if (hasPng) {
+      figHtml = renderPngImage(galleryPngWebPath(hotelId, i), altText, GALLERY_W, GALLERY_H, 'lazy', 'hotel-img--gallery');
     } else {
       figHtml = renderPlaceholder(hotelId, hotelName, region, 'gallery', altText);
     }
@@ -292,9 +333,13 @@ function renderCardThumbnail(hotelId, hotelName, region, outDir) {
 
   const fsPath  = outDir ? thumbFsPath(hotelId, outDir) : null;
   const hasReal = fsPath && fileExists(fsPath);
+  const hasPng  = fileExists(heroPngFsPath(hotelId));
 
   if (hasReal) {
     return renderPicture(thumbWebPath(hotelId), altText, THUMB_W, THUMB_H, 'lazy', 'hotel-img--thumb');
+  }
+  if (hasPng) {
+    return renderPngImage(heroPngWebPath(hotelId), altText, THUMB_W, THUMB_H, 'lazy', 'hotel-img--thumb');
   }
   return renderPlaceholder(hotelId, hotelName, region, 'thumb', altText);
 }
@@ -313,8 +358,13 @@ function renderCardThumbnail(hotelId, hotelName, region, outDir) {
  */
 function heroPreloadTag(hotelId, outDir) {
   if (!outDir) return '';
-  if (!fileExists(heroFsPath(hotelId, outDir))) return '';
-  return `  <link rel="preload" as="image" href="${esc(heroWebPath(hotelId))}" type="image/webp">`;
+  if (fileExists(heroFsPath(hotelId, outDir))) {
+    return `  <link rel="preload" as="image" href="${esc(heroWebPath(hotelId))}" type="image/webp">`;
+  }
+  if (fileExists(heroPngFsPath(hotelId))) {
+    return `  <link rel="preload" as="image" href="${esc(heroPngWebPath(hotelId))}" type="image/png">`;
+  }
+  return '';
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
