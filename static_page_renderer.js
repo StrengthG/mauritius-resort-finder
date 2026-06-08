@@ -1776,8 +1776,8 @@ function renderPage(pageObject, options = {}) {
           );
           continue;
         }
-        // Skip standalone affiliate_cta on persona pages — CTA is embedded in each card
-        if (block.block_type === 'affiliate_cta') continue;
+        // Skip blocks that duplicate the photo grid on persona pages
+        if (block.block_type === 'affiliate_cta' || block.block_type === 'ranking_summary') continue;
         // Close grid before any other non-hotel_card block
         if (_gridOpen) {
           renderedParts.push('</div>');
