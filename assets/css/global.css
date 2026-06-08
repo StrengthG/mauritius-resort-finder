@@ -566,11 +566,12 @@ img { max-width: 100%; height: auto; display: block; }
 .region-card__desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
 .region-card__link {
   font-size: 0.77rem; color: var(--gold); font-weight: 600;
-  margin-top: auto; display: flex; align-items: center; gap: 5px;
+  display: flex; align-items: center; gap: 5px;
   transition: gap var(--duration);
 }
 .region-card:hover .region-card__link { gap: 9px; }
 .region-card__count { font-size: 0.72rem; color: var(--muted); }
+.region-card__footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
 .region-card__photo {
   margin: -26px -26px 16px -26px;
   border-radius: var(--radius) var(--radius) 0 0;
