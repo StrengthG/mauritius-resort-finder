@@ -571,6 +571,19 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .region-card:hover .region-card__link { gap: 9px; }
 .region-card__count { font-size: 0.72rem; color: var(--muted); }
+.region-card__photo {
+  margin: -26px -26px 16px -26px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  overflow: hidden;
+  height: 160px;
+  flex-shrink: 0;
+}
+.region-card__photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.5s var(--ease-out);
+}
+.region-card:hover .region-card__photo img { transform: scale(1.06); }
 
 /* ── Methodology ───────────────────────────────────────────────────────── */
 .method {
