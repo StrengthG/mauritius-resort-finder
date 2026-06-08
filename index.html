@@ -329,62 +329,71 @@
       .region-card--persona .region-card__img-wrap { height: 150px; }
     }
 
-    /* ── Rankings photo variant ──────────────────────────────────────────── */
-    .hotel-card--photo {
-      padding: 0;
-      grid-template-columns: 260px 1fr auto;
-      align-items: stretch;
+    /* ── Top-ranked photo card grid (matches /rankings/ style) ─────────── */
+    .hp-rk-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 22px;
+      margin-top: 40px;
     }
-    .hotel-card--photo::before { display: none; }
-    .hotel-card__photo-col {
-      position: relative;
-      overflow: hidden;
-      min-height: 180px;
+    @media (max-width: 1200px) { .hp-rk-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 720px)  { .hp-rk-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+    @media (max-width: 480px)  { .hp-rk-grid { grid-template-columns: 1fr; } }
+    .hp-rk-card {
+      border-radius: 14px; overflow: hidden;
+      background: var(--navy-card); border: 1px solid var(--border);
+      transition: transform 0.28s var(--ease-out), box-shadow 0.28s, border-color 0.28s;
+      position: relative; display: flex; flex-direction: column;
     }
-    .hotel-card__photo-col img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-      transition: transform 0.5s var(--ease-out);
+    .hp-rk-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.45);
+      border-color: var(--border-gold);
     }
-    .hotel-card--photo:hover .hotel-card__photo-col img { transform: scale(1.06); }
-    .hotel-card__photo-col::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(8,15,35,0.45) 0%, transparent 60%);
-      pointer-events: none;
+    .hp-rk-card__photo {
+      position: relative; padding-top: 68%; overflow: hidden; background: var(--deep-navy);
     }
-    .hotel-card__photo-rank {
-      position: absolute; top: 16px; left: 18px; z-index: 1;
+    .hp-rk-card__photo img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; display: block; transition: transform 0.5s var(--ease-out);
+    }
+    .hp-rk-card:hover .hp-rk-card__photo img { transform: scale(1.06); }
+    .hp-rk-card__rank {
+      position: absolute; top: 11px; left: 11px; z-index: 1;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.6rem; font-weight: 800; color: #fff; line-height: 1;
-      text-shadow: 0 2px 14px rgba(0,0,0,0.9);
-      display: flex; flex-direction: column; align-items: flex-start;
+      font-size: 1.15rem; font-weight: 800; color: #fff;
+      background: rgba(8,15,35,0.72); border-radius: 7px; padding: 4px 10px;
+      backdrop-filter: blur(4px); text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     }
-    .hotel-card__photo-rank span {
-      font-size: 0.60rem; font-family: 'DM Sans', sans-serif;
-      font-weight: 400; color: rgba(255,255,255,0.78);
-      text-shadow: 0 1px 4px rgba(0,0,0,0.8); margin-top: 3px;
+    .hp-rk-card__score {
+      position: absolute; top: 11px; right: 11px; z-index: 1;
+      background: rgba(8,15,35,0.82); border: 1px solid var(--border-gold);
+      color: var(--gold); font-size: 0.78rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 6px; backdrop-filter: blur(4px);
     }
-    .hotel-card--photo .hotel-card__body { padding: 26px 16px 26px 22px; }
-    .hotel-card--photo .hotel-card__actions { padding: 26px 28px 26px 0; }
-    @media (max-width: 900px) {
-      .hotel-card--photo {
-        grid-template-columns: 1fr auto;
-        grid-template-rows: 190px auto;
-      }
-      .hotel-card__photo-col { grid-column: 1 / -1; min-height: 0; }
-      .hotel-card--photo .hotel-card__body { padding: 16px 12px 16px 16px; }
-      .hotel-card--photo .hotel-card__actions {
-        padding: 16px 16px 16px 0;
-        flex-direction: row; align-items: center;
-      }
+    .hp-rk-card__body { padding: 15px 16px 17px; display: flex; flex-direction: column; flex: 1; }
+    .hp-rk-card__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 700; color: var(--champagne);
+      margin: 0 0 3px; line-height: 1.25;
     }
-    @media (max-width: 640px) {
-      .hotel-card--photo { padding: 0; }
-      .hotel-card--photo .hotel-card__body { padding: 14px 12px 6px; }
-      .hotel-card--photo .hotel-card__actions { padding: 0 12px 14px; grid-column: 1 / -1; }
+    .hp-rk-card__name a { color: inherit; text-decoration: none; transition: color 0.15s; }
+    .hp-rk-card__name a:hover { color: var(--gold); }
+    .hp-rk-card__region { font-size: 0.72rem; color: var(--muted); margin: 0 0 12px; }
+    .hp-rk-card__actions { display: flex; gap: 7px; flex-wrap: wrap; margin-top: auto; }
+    .hp-rk-card__book {
+      font-size: 0.73rem; font-weight: 700; color: var(--deep-navy);
+      background: var(--gold); padding: 5px 13px; border-radius: var(--radius-pill);
+      text-decoration: none; white-space: nowrap; transition: opacity 0.15s;
     }
+    .hp-rk-card__book:hover { opacity: 0.85; }
+    .hp-rk-card__review {
+      font-size: 0.71rem; font-weight: 600; color: var(--gold);
+      border: 1px solid var(--border-gold); padding: 4px 11px;
+      border-radius: var(--radius-pill); text-decoration: none; white-space: nowrap;
+      background: var(--gold-glow); transition: background 0.15s;
+    }
+    .hp-rk-card__review:hover { background: rgba(201,168,76,0.12); }
   </style>
 </head>
 
@@ -497,164 +506,94 @@
       <p>Ranked by composite score across four independently weighted criteria. Scores update as new guest data is collected.</p>
     </div>
 
-    <div class="rankings stagger-children" role="list">
+    <div class="hp-rk-grid stagger-children" role="list">
 
       <!-- #1 Royal Palm -->
-      <article class="hotel-card hotel-card--featured hotel-card--photo" role="listitem" aria-label="Ranked 1 of 36">
-        <div class="hotel-card__photo-col">
-          <img src="/assets/images/hotels/Royal%20Palm%20Beachcomber%20Luxury.png" alt="Royal Palm Beachcomber Luxury resort" loading="lazy" width="260" height="200">
-          <div class="hotel-card__photo-rank" aria-hidden="true">1 <span>of 36</span></div>
+      <article class="hp-rk-card" role="listitem">
+        <div class="hp-rk-card__photo">
+          <img src="/assets/images/hotels/Royal%20Palm%20Beachcomber%20Luxury.png" alt="Royal Palm Beachcomber Luxury" loading="lazy">
+          <div class="hp-rk-card__rank">#1</div>
+          <div class="hp-rk-card__score">9.2 &#9733;</div>
         </div>
-        <div class="hotel-card__body">
-          <h3>Royal Palm Beachcomber Luxury</h3>
-          <div class="hotel-card__meta">
-            <span class="hotel-card__region">Grand Baie</span>
-            <span class="badge badge--stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="badge badge--review">1,340 reviews</span>
+        <div class="hp-rk-card__body">
+          <p class="hp-rk-card__name"><a href="/hotels/royal-palm-beachcomber-luxury/">Royal Palm Beachcomber Luxury</a></p>
+          <p class="hp-rk-card__region">&#128205; Grand Baie</p>
+          <div class="hp-rk-card__actions">
+            <a href="https://expedia.com/affiliate/LLPswc1" rel="noopener sponsored" class="hp-rk-card__book">Book &rarr;</a>
+            <a href="/hotels/royal-palm-beachcomber-luxury/" class="hp-rk-card__review">Full review</a>
           </div>
-          <div class="score-bar" aria-label="Overall score 9.2 out of 10">
-            <div class="score-bar__track"><div class="score-bar__fill" style="width:92%" aria-hidden="true"></div></div>
-            <span class="score-bar__value">9.2 / 10</span>
-          </div>
-          <div class="score-pillars">
-            <div class="pillar"><div class="pillar__label">Location</div><div class="pillar__val">9.4</div></div>
-            <div class="pillar"><div class="pillar__label">Amenities</div><div class="pillar__val">9.1</div></div>
-            <div class="pillar"><div class="pillar__label">Brand</div><div class="pillar__val">9.0</div></div>
-            <div class="pillar"><div class="pillar__label">Value</div><div class="pillar__val">7.2</div></div>
-          </div>
-        </div>
-        <div class="hotel-card__actions">
-          <a href="https://expedia.com/affiliate/LLPswc1" rel="noopener sponsored" class="btn--cta"
-             aria-label="Check availability for Royal Palm Beachcomber Luxury on Expedia">Check availability &rarr;</a>
-          <a href="/hotels/royal-palm-beachcomber-luxury/" class="btn--review">Full review</a>
         </div>
       </article>
 
       <!-- #2 Four Seasons -->
-      <article class="hotel-card hotel-card--photo" role="listitem" aria-label="Ranked 2 of 36">
-        <div class="hotel-card__photo-col">
-          <img src="/assets/images/hotels/Four%20Seasons%20Resort%20Mauritius%20at%20Anahita.png" alt="Four Seasons Resort Mauritius at Anahita resort" loading="lazy" width="260" height="200">
-          <div class="hotel-card__photo-rank" aria-hidden="true">2</div>
+      <article class="hp-rk-card" role="listitem">
+        <div class="hp-rk-card__photo">
+          <img src="/assets/images/hotels/Four%20Seasons%20Resort%20Mauritius%20at%20Anahita.png" alt="Four Seasons Resort Mauritius at Anahita" loading="lazy">
+          <div class="hp-rk-card__rank">#2</div>
+          <div class="hp-rk-card__score">9.1 &#9733;</div>
         </div>
-        <div class="hotel-card__body">
-          <h3>Four Seasons Resort Mauritius at Anahita</h3>
-          <div class="hotel-card__meta">
-            <span class="hotel-card__region">Beau Champ</span>
-            <span class="badge badge--stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="badge badge--review">1,120 reviews</span>
+        <div class="hp-rk-card__body">
+          <p class="hp-rk-card__name"><a href="/hotels/four-seasons-resort-mauritius-at-anahita/">Four Seasons Resort Mauritius at Anahita</a></p>
+          <p class="hp-rk-card__region">&#128205; Beau Champ</p>
+          <div class="hp-rk-card__actions">
+            <a href="https://expedia.com/affiliate/s7PgDXw" rel="noopener sponsored" class="hp-rk-card__book">Book &rarr;</a>
+            <a href="/hotels/four-seasons-resort-mauritius-at-anahita/" class="hp-rk-card__review">Full review</a>
           </div>
-          <div class="score-bar" aria-label="Overall score 9.1 out of 10">
-            <div class="score-bar__track"><div class="score-bar__fill" style="width:91%" aria-hidden="true"></div></div>
-            <span class="score-bar__value">9.1 / 10</span>
-          </div>
-          <div class="score-pillars">
-            <div class="pillar"><div class="pillar__label">Location</div><div class="pillar__val">9.3</div></div>
-            <div class="pillar"><div class="pillar__label">Amenities</div><div class="pillar__val">9.4</div></div>
-            <div class="pillar"><div class="pillar__label">Brand</div><div class="pillar__val">9.5</div></div>
-            <div class="pillar"><div class="pillar__label">Value</div><div class="pillar__val">7.0</div></div>
-          </div>
-        </div>
-        <div class="hotel-card__actions">
-          <a href="https://expedia.com/affiliate/s7PgDXw" rel="noopener sponsored" class="btn--cta"
-             aria-label="Check availability for Four Seasons Resort Mauritius on Expedia">Check availability &rarr;</a>
-          <a href="/hotels/four-seasons-resort-mauritius-at-anahita/" class="btn--review">Full review</a>
         </div>
       </article>
 
       <!-- #3 Constance Prince Maurice -->
-      <article class="hotel-card hotel-card--photo" role="listitem" aria-label="Ranked 3 of 36">
-        <div class="hotel-card__photo-col">
-          <img src="/assets/images/hotels/Constance%20Prince%20Maurice.png" alt="Constance Prince Maurice resort" loading="lazy" width="260" height="200">
-          <div class="hotel-card__photo-rank" aria-hidden="true">3</div>
+      <article class="hp-rk-card" role="listitem">
+        <div class="hp-rk-card__photo">
+          <img src="/assets/images/hotels/Constance%20Prince%20Maurice.png" alt="Constance Prince Maurice" loading="lazy">
+          <div class="hp-rk-card__rank">#3</div>
+          <div class="hp-rk-card__score">9.0 &#9733;</div>
         </div>
-        <div class="hotel-card__body">
-          <h3>Constance Prince Maurice</h3>
-          <div class="hotel-card__meta">
-            <span class="hotel-card__region">Poste de Flacq</span>
-            <span class="badge badge--stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="badge badge--review">890 reviews</span>
+        <div class="hp-rk-card__body">
+          <p class="hp-rk-card__name"><a href="/hotels/constance-prince-maurice/">Constance Prince Maurice</a></p>
+          <p class="hp-rk-card__region">&#128205; Poste de Flacq</p>
+          <div class="hp-rk-card__actions">
+            <a href="https://expedia.com/affiliate/WmRuuHu" rel="noopener sponsored" class="hp-rk-card__book">Book &rarr;</a>
+            <a href="/hotels/constance-prince-maurice/" class="hp-rk-card__review">Full review</a>
           </div>
-          <div class="score-bar" aria-label="Overall score 9.0 out of 10">
-            <div class="score-bar__track"><div class="score-bar__fill" style="width:90%" aria-hidden="true"></div></div>
-            <span class="score-bar__value">9.0 / 10</span>
-          </div>
-          <div class="score-pillars">
-            <div class="pillar"><div class="pillar__label">Location</div><div class="pillar__val">9.2</div></div>
-            <div class="pillar"><div class="pillar__label">Amenities</div><div class="pillar__val">9.1</div></div>
-            <div class="pillar"><div class="pillar__label">Brand</div><div class="pillar__val">9.0</div></div>
-            <div class="pillar"><div class="pillar__label">Value</div><div class="pillar__val">7.0</div></div>
-          </div>
-        </div>
-        <div class="hotel-card__actions">
-          <a href="https://expedia.com/affiliate/WmRuuHu" rel="noopener sponsored" class="btn--cta"
-             aria-label="Check availability for Constance Prince Maurice on Expedia">Check availability &rarr;</a>
-          <a href="/hotels/constance-prince-maurice/" class="btn--review">Full review</a>
         </div>
       </article>
 
       <!-- #4 One&Only Le Saint Géran -->
-      <article class="hotel-card hotel-card--photo" role="listitem" aria-label="Ranked 4 of 36">
-        <div class="hotel-card__photo-col">
-          <img src="/assets/images/hotels/OneandOnly%20Le%20Saint%20G%C3%A9ran.png" alt="One&amp;Only Le Saint G&eacute;ran resort" loading="lazy" width="260" height="200">
-          <div class="hotel-card__photo-rank" aria-hidden="true">4</div>
+      <article class="hp-rk-card" role="listitem">
+        <div class="hp-rk-card__photo">
+          <img src="/assets/images/hotels/OneandOnly%20Le%20Saint%20G%C3%A9ran.png" alt="One&amp;Only Le Saint G&eacute;ran" loading="lazy">
+          <div class="hp-rk-card__rank">#4</div>
+          <div class="hp-rk-card__score">9.0 &#9733;</div>
         </div>
-        <div class="hotel-card__body">
-          <h3>One&amp;Only Le Saint G&eacute;ran</h3>
-          <div class="hotel-card__meta">
-            <span class="hotel-card__region">Belle Mare</span>
-            <span class="badge badge--stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="badge badge--review">980 reviews</span>
+        <div class="hp-rk-card__body">
+          <p class="hp-rk-card__name"><a href="/hotels/oneandonly-le-saint-geran/">One&amp;Only Le Saint G&eacute;ran</a></p>
+          <p class="hp-rk-card__region">&#128205; Belle Mare</p>
+          <div class="hp-rk-card__actions">
+            <a href="https://expedia.com/affiliate/jJhAhIn" rel="noopener sponsored" class="hp-rk-card__book">Book &rarr;</a>
+            <a href="/hotels/oneandonly-le-saint-geran/" class="hp-rk-card__review">Full review</a>
           </div>
-          <div class="score-bar" aria-label="Overall score 9.0 out of 10">
-            <div class="score-bar__track"><div class="score-bar__fill" style="width:90%" aria-hidden="true"></div></div>
-            <span class="score-bar__value">9.0 / 10</span>
-          </div>
-          <div class="score-pillars">
-            <div class="pillar"><div class="pillar__label">Location</div><div class="pillar__val">9.2</div></div>
-            <div class="pillar"><div class="pillar__label">Amenities</div><div class="pillar__val">9.0</div></div>
-            <div class="pillar"><div class="pillar__label">Brand</div><div class="pillar__val">9.3</div></div>
-            <div class="pillar"><div class="pillar__label">Value</div><div class="pillar__val">6.8</div></div>
-          </div>
-        </div>
-        <div class="hotel-card__actions">
-          <a href="https://expedia.com/affiliate/jJhAhIn" rel="noopener sponsored" class="btn--cta"
-             aria-label="Check availability for One&amp;Only Le Saint Géran on Expedia">Check availability &rarr;</a>
-          <a href="/hotels/oneandonly-le-saint-geran/" class="btn--review">Full review</a>
         </div>
       </article>
 
-      <!-- #5 Oberoi Beach Resort Mauritius -->
-      <article class="hotel-card hotel-card--photo" role="listitem" aria-label="Ranked 5 of 36">
-        <div class="hotel-card__photo-col">
-          <img src="/assets/images/hotels/Oberoi%20Beach%20Resort%20Mauritius.png" alt="Oberoi Beach Resort Mauritius" loading="lazy" width="260" height="200">
-          <div class="hotel-card__photo-rank" aria-hidden="true">5</div>
+      <!-- #5 Oberoi Beach Resort -->
+      <article class="hp-rk-card" role="listitem">
+        <div class="hp-rk-card__photo">
+          <img src="/assets/images/hotels/Oberoi%20Beach%20Resort%20Mauritius.png" alt="Oberoi Beach Resort Mauritius" loading="lazy">
+          <div class="hp-rk-card__rank">#5</div>
+          <div class="hp-rk-card__score">8.8 &#9733;</div>
         </div>
-        <div class="hotel-card__body">
-          <h3>Oberoi Beach Resort Mauritius</h3>
-          <div class="hotel-card__meta">
-            <span class="hotel-card__region">Grand Baie</span>
-            <span class="badge badge--stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="badge badge--review">760 reviews</span>
+        <div class="hp-rk-card__body">
+          <p class="hp-rk-card__name"><a href="/hotels/oberoi-beach-resort-mauritius/">Oberoi Beach Resort Mauritius</a></p>
+          <p class="hp-rk-card__region">&#128205; Grand Baie</p>
+          <div class="hp-rk-card__actions">
+            <a href="https://expedia.com/affiliate/o4m2Ako" rel="noopener sponsored" class="hp-rk-card__book">Book &rarr;</a>
+            <a href="/hotels/oberoi-beach-resort-mauritius/" class="hp-rk-card__review">Full review</a>
           </div>
-          <div class="score-bar" aria-label="Overall score 8.8 out of 10">
-            <div class="score-bar__track"><div class="score-bar__fill" style="width:88%" aria-hidden="true"></div></div>
-            <span class="score-bar__value">8.8 / 10</span>
-          </div>
-          <div class="score-pillars">
-            <div class="pillar"><div class="pillar__label">Location</div><div class="pillar__val">9.0</div></div>
-            <div class="pillar"><div class="pillar__label">Amenities</div><div class="pillar__val">8.9</div></div>
-            <div class="pillar"><div class="pillar__label">Brand</div><div class="pillar__val">8.9</div></div>
-            <div class="pillar"><div class="pillar__label">Value</div><div class="pillar__val">7.3</div></div>
-          </div>
-        </div>
-        <div class="hotel-card__actions">
-          <a href="https://expedia.com/affiliate/o4m2Ako" rel="noopener sponsored" class="btn--cta"
-             aria-label="Check availability for Oberoi Beach Resort Mauritius on Expedia">Check availability &rarr;</a>
-          <a href="/hotels/oberoi-beach-resort-mauritius/" class="btn--review">Full review</a>
         </div>
       </article>
 
-    </div><!-- /rankings -->
+    </div><!-- /hp-rk-grid -->
 
     <div style="margin-top:40px;text-align:center;" class="reveal">
       <a href="/rankings/" class="btn btn--ghost">See all 36 hotels &rarr;</a>
