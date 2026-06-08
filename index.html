@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Theme: anti-FOUC + global toggle (runs before paint) -->
-  <script>!function(){var K='mrf-theme',H=document.documentElement;function set(v){H.setAttribute('data-theme',v);try{localStorage.setItem(K,v)}catch(e){}}function toggle(){set(H.getAttribute('data-theme')==='light'?'dark':'light');}var s=localStorage.getItem(K)||(matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');set(s);window.mrfToggle=toggle;}()</script>
+  <script>!function(){var K='mrf-theme',H=document.documentElement;function set(t){H.setAttribute('data-theme',t);try{localStorage.setItem(K,t)}catch(e){}}function toggle(){set(H.getAttribute('data-theme')==='dark'?'light':'dark');}var s=localStorage.getItem(K)||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');H.setAttribute('data-theme',s);window.mrfToggle=toggle;window.mrfSetTheme=set;}()</script>
   <title>Mauritius Resort Finder — Independent Luxury Hotel Reviews</title>
   <meta name="description" content="Independent, data-backed hotel reviews for Mauritius. 36 hotels scored across 40+ criteria. No sponsored placements. No marketing copy. Just honest rankings." />
   <meta name="robots" content="index, follow" />
@@ -418,9 +418,13 @@
       <li><a href="/contact/">Contact</a></li>
     </ul>
     <a href="#rankings" class="nav__cta" aria-label="View hotel rankings">View Rankings</a>
-    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode" onclick="mrfToggle()">
-      <svg class="theme-toggle__icon theme-toggle__icon--sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      <svg class="theme-toggle__icon theme-toggle__icon--moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" onclick="mrfToggle()">
+      <span class="theme-toggle__track" aria-hidden="true">
+        <span class="theme-toggle__thumb">
+          <svg class="theme-toggle__sun" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="theme-toggle__moon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
+      </span>
     </button>
     <button class="nav__hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
       <span></span><span></span><span></span>
@@ -436,9 +440,13 @@
   <a href="#methodology">Methodology</a>
   <a href="/contact/">Contact</a>
   <div class="nav__mobile-theme">
-    <button class="theme-toggle" type="button" aria-label="Switch to light mode" onclick="mrfToggle()">
-      <svg class="theme-toggle__icon theme-toggle__icon--sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      <svg class="theme-toggle__icon theme-toggle__icon--moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" onclick="mrfToggle()">
+      <span class="theme-toggle__track" aria-hidden="true">
+        <span class="theme-toggle__thumb">
+          <svg class="theme-toggle__sun" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="theme-toggle__moon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
+      </span>
     </button>
     <span>Toggle theme</span>
   </div>

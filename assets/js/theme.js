@@ -1,39 +1,36 @@
 /* Mauritius Resort Finder — Theme Manager (supplementary)
    The core toggle is defined inline in <head> via window.mrfToggle.
-   This script handles aria-label sync and OS preference watching. */
+   This script syncs aria-label / aria-pressed on all .theme-toggle buttons
+   and watches OS preference changes when the user has no stored choice. */
 (function () {
   'use strict';
 
   var KEY = 'mrf-theme';
 
-  function syncLabels(theme) {
+  function syncButtons(theme) {
+    var isDark = theme === 'dark';
     document.querySelectorAll('.theme-toggle').forEach(function (btn) {
-      btn.setAttribute(
-        'aria-label',
-        theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
-      );
+      btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
     });
   }
 
-  /* Sync button labels to current theme */
-  syncLabels(document.documentElement.getAttribute('data-theme') || 'dark');
+  syncButtons(document.documentElement.getAttribute('data-theme') || 'light');
 
-  /* Re-sync after toggle via MutationObserver on <html> data-theme */
   try {
     new MutationObserver(function (mutations) {
       mutations.forEach(function (m) {
         if (m.attributeName === 'data-theme') {
-          syncLabels(document.documentElement.getAttribute('data-theme') || 'dark');
+          syncButtons(document.documentElement.getAttribute('data-theme') || 'light');
         }
       });
     }).observe(document.documentElement, { attributes: true });
   } catch (_) {}
 
-  /* Respond to OS preference changes only when user has no stored choice */
   try {
-    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
       if (!localStorage.getItem(KEY) && window.mrfToggle) {
-        var want = e.matches ? 'light' : 'dark';
+        var want = e.matches ? 'dark' : 'light';
         if (document.documentElement.getAttribute('data-theme') !== want) window.mrfToggle();
       }
     });
