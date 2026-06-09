@@ -76,6 +76,14 @@ router.get('/', async (req, res) => {
   delete req.session.flash;
 });
 
+/* ── GET /admin/hotels/export.json ─────────────────────────────────────────── */
+router.get('/export.json', async (req, res) => {
+  const db = await getDb();
+  const rows = await db.all('SELECT * FROM hotels ORDER BY id');
+  res.setHeader('Content-Disposition', 'attachment; filename="hotels-export.json"');
+  res.json(rows);
+});
+
 /* ── GET /admin/hotels/new ─────────────────────────────────────────────────── */
 router.get('/new', (req, res) => {
   res.render('hotels/edit', { hotel: null, images: [], errors: [], csrfToken: res.locals.csrfToken });
