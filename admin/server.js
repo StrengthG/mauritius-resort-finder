@@ -123,13 +123,6 @@ app.use('/admin/users',  userRoutes);
 /* ── Health check (Railway, load balancers) ──────────────────────────────────── */
 app.get('/health', (_req, res) => res.json({ status: 'ok', ts: Date.now() }));
 
-/* ── One-time token export (removed after sync) ──────────────────────────────── */
-app.get('/api/sync-export', async (req, res) => {
-  if (req.query.token !== 'mrf-sync-4x9z') return res.status(403).json({ error: 'forbidden' });
-  const db = await getDb();
-  const rows = await db.all('SELECT * FROM hotels ORDER BY id');
-  res.json(rows);
-});
 
 /* ── Redirect root → admin ───────────────────────────────────────────────────── */
 app.get('/', (_req, res) => res.redirect('/admin'));

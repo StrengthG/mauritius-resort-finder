@@ -377,7 +377,10 @@ function _generateRegionContexts(dataset, options = {}) {
   const specs = [];
   for (const [region, hotels] of regionMap) {
     if (hotels.length < minHotels) continue;
-    const luxuryHotels = hotels.filter(h => (h.overall_rating || 0) >= LUXURY_MIN_OVERALL);
+    const luxuryHotels = hotels.filter(h =>
+      (h.overall_rating || 0) >= LUXURY_MIN_OVERALL &&
+      (h.brand_score    || 0) >= 7.0
+    );
     if (luxuryHotels.length === 0) continue;
     const regionSlug = _slugify(region) + '-luxury-hotels';
     specs.push({

@@ -763,7 +763,7 @@
     "value_score": 8.6,
     "review_count": 620,
     "avg_rating": 4.2,
-    "price_per_night_usd": 190,
+    "price_per_night_usd": 140,
     "star_rating": 4,
     "property_type": "hotel",
     "region": "Plaine Magnien",
@@ -772,7 +772,7 @@
     "_brand_tier": 7,
     "_affiliate_links": [
       {
-        "booking_url": "https://expedia.com/affiliate/KrkFlUB",
+        "booking_url": "https://expedia.com/affiliate/7VlX5sU",
         "provider": "expedia",
         "commission_rate": 0.05,
         "commission_tier": "standard"
@@ -898,7 +898,7 @@
   },
   {
     "hotel_id": "MQ031",
-    "hotel_name": "Tamassa Resort",
+    "hotel_name": "Tamassa Bel Ombre",
     "overall_rating": 7.9,
     "location_score": 8.1,
     "amenity_score": 8,
@@ -906,7 +906,7 @@
     "value_score": 8.7,
     "review_count": 1020,
     "avg_rating": 4.3,
-    "price_per_night_usd": 280,
+    "price_per_night_usd": 140,
     "star_rating": 4,
     "property_type": "resort",
     "region": "Bel Ombre",
@@ -915,7 +915,7 @@
     "_brand_tier": 8,
     "_affiliate_links": [
       {
-        "booking_url": "https://expedia.com/affiliate/oSrAbiY",
+        "booking_url": "https://expedia.com/affiliate/YZ6rzfg",
         "provider": "expedia",
         "commission_rate": 0.05,
         "commission_tier": "standard"
@@ -1312,5 +1312,325 @@
     },
     "_admin_managed": true,
     "_description_override": null
+  },
+  {
+    "hotel_id": "ADM066",
+    "hotel_name": "Hotel Riu Palace Mauritius",
+    "overall_rating": 8.4,
+    "location_score": 9,
+    "amenity_score": 8.3,
+    "brand_score": 7.5,
+    "value_score": 7.5,
+    "review_count": 3200,
+    "avg_rating": 4.5,
+    "price_per_night_usd": 390,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Le Morne",
+    "_status": "active",
+    "_brand_name": "RIU Hotels",
+    "_brand_tier": 7,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/jzk4nAF",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": false,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "private_pool": false,
+      "water_sports": true,
+      "kids_club": false,
+      "wellness_programmes": false
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "ADM067",
+    "hotel_name": "Hotel Riu Turquoise",
+    "overall_rating": 8.1,
+    "location_score": 8.8,
+    "amenity_score": 7.8,
+    "brand_score": 7.5,
+    "value_score": 8.2,
+    "review_count": 2800,
+    "avg_rating": 4.4,
+    "price_per_night_usd": 280,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Le Morne",
+    "_status": "active",
+    "_brand_name": "RIU Hotels",
+    "_brand_tier": 7,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/3k7KMih",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": false,
+      "fine_dining": false,
+      "pool": true,
+      "gym": true,
+      "concierge": false,
+      "private_pool": false,
+      "water_sports": true,
+      "kids_club": true,
+      "wellness_programmes": false
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "ADM068",
+    "hotel_name": "Chalets Chamarel",
+    "overall_rating": 8.8,
+    "location_score": 8,
+    "amenity_score": 7,
+    "brand_score": 5,
+    "value_score": 8.8,
+    "review_count": 380,
+    "avg_rating": 4.8,
+    "price_per_night_usd": 280,
+    "star_rating": 4,
+    "property_type": "boutique",
+    "region": "Chamarel",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/qmPLZn8",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": false,
+      "private_beach": false,
+      "butler_service": false,
+      "fine_dining": false,
+      "pool": true,
+      "gym": false,
+      "concierge": false,
+      "private_pool": false,
+      "water_sports": false,
+      "kids_club": false,
+      "wellness_programmes": false
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "ADM069",
+    "hotel_name": "Sofitel Mauritius",
+    "overall_rating": 8.5,
+    "location_score": 8.2,
+    "amenity_score": 8.5,
+    "brand_score": 8.5,
+    "value_score": 7.8,
+    "review_count": 1850,
+    "avg_rating": 4.5,
+    "price_per_night_usd": 290,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Bel Ombre",
+    "_status": "active",
+    "_brand_name": "Sofitel",
+    "_brand_tier": 8,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/OgH2pMR",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": false,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "private_pool": false,
+      "water_sports": true,
+      "kids_club": false,
+      "wellness_programmes": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "ADM070",
+    "hotel_name": "Sugar Beach Mauritius",
+    "overall_rating": 8.6,
+    "location_score": 8.4,
+    "amenity_score": 8.6,
+    "brand_score": 8,
+    "value_score": 8.5,
+    "review_count": 2400,
+    "avg_rating": 4.6,
+    "price_per_night_usd": 140,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Flic En Flac",
+    "_status": "active",
+    "_brand_name": "Beachcomber Hotels",
+    "_brand_tier": 8,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/cPGtujD",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": false,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "private_pool": false,
+      "water_sports": true,
+      "kids_club": false,
+      "wellness_programmes": false
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "ADM071",
+    "hotel_name": "Black River Hotels Marguery Exclusive Villas",
+    "overall_rating": 8.1,
+    "location_score": 7.8,
+    "amenity_score": 7.2,
+    "brand_score": 4.5,
+    "value_score": 7.8,
+    "review_count": 145,
+    "avg_rating": 4.5,
+    "price_per_night_usd": 330,
+    "star_rating": 4,
+    "property_type": "villa",
+    "region": "Black River",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 4,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/dVj0BGA",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": false,
+      "private_beach": false,
+      "butler_service": false,
+      "fine_dining": false,
+      "pool": true,
+      "gym": false,
+      "concierge": false,
+      "private_pool": true,
+      "water_sports": false,
+      "kids_club": false,
+      "wellness_programmes": false
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "ADM072",
+    "hotel_name": "La Gaulette Hotels Blue Lagoon Villa",
+    "overall_rating": 8.7,
+    "location_score": 9,
+    "amenity_score": 6.5,
+    "brand_score": 4,
+    "value_score": 9.2,
+    "review_count": 85,
+    "avg_rating": 4.8,
+    "price_per_night_usd": 170,
+    "star_rating": 4,
+    "property_type": "villa",
+    "region": "La Gaulette",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 4,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/hahiZOL",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": false,
+      "private_beach": false,
+      "butler_service": false,
+      "fine_dining": false,
+      "pool": true,
+      "gym": false,
+      "concierge": false,
+      "private_pool": false,
+      "water_sports": true,
+      "kids_club": false,
+      "wellness_programmes": false
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "ADM073",
+    "hotel_name": "La Pirogue A Sun Resort",
+    "overall_rating": 8.4,
+    "location_score": 8.3,
+    "amenity_score": 8.2,
+    "brand_score": 7.8,
+    "value_score": 8.6,
+    "review_count": 3100,
+    "avg_rating": 4.4,
+    "price_per_night_usd": 140,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Flic En Flac",
+    "_status": "active",
+    "_brand_name": "Sun Resorts",
+    "_brand_tier": 7,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/zdHqCTJ",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": false,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "private_pool": false,
+      "water_sports": true,
+      "kids_club": false,
+      "wellness_programmes": false
+    },
+    "_admin_managed": true
   }
 ]
