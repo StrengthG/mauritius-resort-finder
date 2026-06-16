@@ -5,13 +5,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm test                          # run all 10 test suites (~1,704 tests)
-node scoring_engine.test.js       # run a single suite (replace filename as needed)
+npm test                          # run all test suites
+npm run test:scoring              # run a named suite (scoring, sync, builder, renderer, assembler, explanation, hallucination, confidence, admin)
+node scoring_engine.test.js       # run a single suite directly
 npm run build                     # generate dist/ from data/hotels.json
 node site_builder.js --verbose    # build with per-page output
+npm run sync                      # pull live data from Airtable → data/hotels.json
+npm run admin                     # start the admin Express server (port 3001)
+node seo_campaign_dashboard.js    # terminal backlink campaign dashboard
+node seo_campaign_dashboard.js --html   # export HTML SEO report
+node agents/run_pipeline.js       # run full Extract→Sort→Upload agent pipeline
+node agents/run_pipeline.js --dry-run   # validate without pushing
 ```
 
-Zero external npm dependencies — no `npm install` needed.
+Zero external npm dependencies for the static site generator — no `npm install` needed for builds. The admin panel (`admin/`) does require `npm install`.
 
 ## Architecture
 
@@ -48,6 +55,72 @@ Adding a new static page requires two steps:
 2. `data/hotels.json` — committed snapshot; used in local dev and CI without secrets
 3. `integration_harness.js` — hardcoded fallback dataset
 
+## Admin Panel (`admin/`)
+
+A separate Express/EJS/SQLite app for hotel CRUD, build triggers, and audit logs. Runs independently of the static site generator.
+
+```bash
+npm run setup-admin    # create the SQLite DB and tables (run once)
+npm run seed-admin     # seed initial hotel records from data/hotels.json
+npm run admin          # start server on ADMIN_PORT (default 3001)
+```
+
+Routes: `auth` (login/logout/CSRF), `hotels` (CRUD), `build` (trigger a site rebuild), `audit` (change log), `users` (user management). Sessions are stored in SQLite via `connect-sqlite3`.
+
+## Cloudflare Pages Functions (`functions/api/`)
+
+Serverless functions deployed alongside the static site:
+
+- `chat.js` — **Big Dodo** AI chat assistant. Uses Cloudflare Workers AI (free tier, no external key). Requires the `AI` binding enabled in the Cloudflare dashboard (Pages → Settings → Functions → AI Bindings → Variable name: `AI`).
+- `contact.js` — Contact form handler; uses `RESEND_API_KEY` (set as a Cloudflare dashboard secret, not in `.env`).
+- `_hotel_data.js` — Static hotel data bundle shared by the above functions.
+
+The functions use ES module syntax (`import`), unlike the rest of the codebase which uses CommonJS (`require`).
+
+## Agent Pipeline (`agents/`)
+
+Three-agent pipeline for adding hotels from raw research to production:
+
+1. **ExtractAgent** (`extract_agent.js`) — reads raw research input, writes `data/Extract.md`
+2. **SortAgent** (`sort_agent.js`) — structures extracted data, writes `data/Sort.md`
+3. **UploadAgent** (`upload_agent.js`) — validates, rebuilds, runs tests, commits, and pushes
+
+Pipeline state is persisted in `data/state.json`. Use `--force` to reprocess from scratch or `--dry-run` to build without pushing.
+
+## Hotel Images
+
+Images live under `dist/assets/images/hotels/{hotel_id}/` and are **not committed** — they must be present before build or the engine renders CSS gradient placeholders. Convention:
+
+```
+hero.webp        1200×800  (required for hotel detail pages)
+gallery-1.webp   800×600
+gallery-2.webp   800×600
+gallery-3.webp   800×600
+gallery-4.webp   800×600
+thumb.webp       400×300   (used on ranking/persona card listings)
+```
+
+Drop WebP files into the correct path and rebuild — placeholders are replaced automatically with no code changes.
+
+## Additional Engines
+
+- **`search_engine_client.js`** — pure search algorithm (no DOM/FS); generates `dist/search-index.json` at build time and is mirrored in `assets/js/search.js` for the browser (no bundler).
+- **`social_card_engine.js`** — generates SVG `og:image`/`twitter:image` cards per hotel. Cache at `data/social-card-cache.json`; cards only regenerate when hotel data changes.
+- **`ga4_trending_engine.js`** — pulls GA4 engagement signals, caches daily to `data/trending-cache.json`, falls back to rating-derived defaults when the API is unavailable.
+- **`hotel_content_engine.js`** — generates long-form hotel content blocks (used within `explanation_engine.js`).
+
+## Environment Variables
+
+| Variable | Where to set | Purpose |
+|---|---|---|
+| `AIRTABLE_API_KEY` | `.env` | Airtable CMS sync |
+| `AIRTABLE_BASE_ID` | `.env` | Airtable CMS sync |
+| `GA4_PROPERTY_ID` | `.env` | GA4 trending engine |
+| `GOOGLE_SERVICE_ACCOUNT_KEY` | `.env` (base64 JSON) | GA4 service account auth |
+| `ADMIN_PORT` | `.env` | Admin server port (default 3001) |
+| `SESSION_SECRET` | `.env` | Admin session signing |
+| `RESEND_API_KEY` | Cloudflare dashboard secret | Contact form email delivery |
+
 ## Key Invariants
 
 - **Never modify `data/hotels.json` without explicit user instruction.** It is the source of truth for all hotel scores and affiliate links.
@@ -73,3 +146,5 @@ All CSS for generated pages lives in `static_page_renderer.js` inside `generateH
 ## Deployment
 
 Push to `main` → Cloudflare Pages auto-deploys within ~90 seconds. Build command: `node site_builder.js`. Output directory: `dist`. No force-push, no `--no-verify`.
+
+The Dodo SEO Agent prompt lives at `docs/agents/dodo-seo-agent.md` — paste its contents into a new Claude conversation to run an SEO build session.

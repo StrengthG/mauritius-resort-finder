@@ -688,11 +688,14 @@ function renderHotelCard(block) {
 
   // ── Hotel JSON-LD schema ─────────────────────────────────────────────────
   const imageObjects = imageEngine.buildImageObjectSchema(hotel_id, hotelName, region || '', DEFAULT_BASE_URL);
+  const schemaDescription = (explanation && explanation.explanation_summary) || '';
 
   const schemaObj = {
     '@context': 'https://schema.org',
     '@type':    'Hotel',
     name:       hotelName,
+    url:        `${DEFAULT_BASE_URL}/hotels/${_slugify(hotelName)}/`,
+    ...(schemaDescription ? { description: schemaDescription } : {}),
     ...(imageObjects.length ? { image: imageObjects } : {}),
     ...(region ? { address: { '@type': 'PostalAddress', addressLocality: region, addressCountry: 'MU' } } : {}),
     ...(starRating ? { starRating: { '@type': 'Rating', ratingValue: String(starRating), bestRating: '5' } } : {}),
@@ -1154,6 +1157,23 @@ function renderHotelEditorial(block) {
     );
   }
 
+  // ── Head-to-Head Comparison Links ─────────────────────────────────────
+  if (Array.isArray(p.comparison_links) && p.comparison_links.length > 0) {
+    lines.push(
+      `  <div class="hotel-editorial__section">`,
+      `    <h2 class="hotel-editorial__heading">Head-to-Head Comparisons</h2>`,
+      `    <ul class="hotel-editorial__comp-list">`,
+    );
+    p.comparison_links.forEach(link => {
+      lines.push(
+        `      <li class="hotel-editorial__comp-item">`,
+        `        <a href="/${esc(link.slug)}/" class="hotel-editorial__comp-link">${esc(link.title)}</a>`,
+        `      </li>`,
+      );
+    });
+    lines.push(`    </ul>`, `  </div>`);
+  }
+
   // ── Hotel FAQs ────────────────────────────────────────────────────────
   if (Array.isArray(p.hotel_faqs) && p.hotel_faqs.length > 0) {
     const faqSchema = {
@@ -1440,10 +1460,11 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
       `  <script type="application/ld+json">\n  ${s.replace(/\n/g, '\n  ')}\n  </script>`
     ),
     ``,
-    `  <!-- Fonts -->`,
+    `  <!-- Fonts (async to avoid render-blocking) -->`,
     `  <link rel="preconnect" href="https://fonts.googleapis.com">`,
     `  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`,
-    `  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">`,
+    `  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">`,
+    `  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>`,
     `  <!-- Luxury Design System -->`,
     `  <style>`,
     `    :root{--deep-navy:#08111f;--midnight:#0d1117;--navy-card:#0e1623;--navy-raised:#111a28;--gold:#c9a84c;--gold-dim:#9b7d35;--gold-bright:#e2bc60;--gold-glow:rgba(201,168,76,.12);--champagne:#f5e6c8;--text:#e8dfc8;--text-dim:#c4bba8;--muted:#8b949e;--border:rgba(255,255,255,.07);--border-light:rgba(255,255,255,.12);--border-gold:rgba(201,168,76,.30);--radius:14px;--radius-sm:9px;--radius-lg:20px;--radius-pill:100px;--shadow-hover:0 12px 40px rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.2);--ease:cubic-bezier(.4,0,.2,1);--ease-out:cubic-bezier(0,0,.2,1)}`,
@@ -1525,6 +1546,7 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `    .hotel-editorial__nearby{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:28px 32px}.hotel-editorial__nearby-heading{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:16px;color:var(--champagne)}.hotel-editorial__nearby-list{list-style:none;display:flex;flex-wrap:wrap;gap:8px}.hotel-editorial__nearby-item{background:var(--navy-deep);border:1px solid var(--border);border-radius:var(--radius-pill);padding:8px 16px;font-size:.82rem;color:var(--muted)}`,
     `    .hotel-editorial__comparison{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:28px 32px}.hotel-editorial__comparison-heading{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:12px;color:var(--champagne)}.hotel-editorial__comparison-text{font-size:.87rem;line-height:1.75;color:var(--text-secondary)}`,
     `    .hotel-editorial__faqs{margin-top:4px}.hotel-editorial__faqs-heading{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:16px;color:var(--champagne)}.hotel-editorial__faq-item{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 24px;margin-bottom:10px}.hotel-editorial__faq-question{font-size:.9rem;font-weight:700;color:var(--champagne);margin-bottom:8px}.hotel-editorial__faq-answer{font-size:.85rem;line-height:1.7;color:var(--text-secondary)}`,
+    `    .hotel-editorial__comp-list{list-style:none;display:flex;flex-direction:column;gap:8px}.hotel-editorial__comp-item{display:flex;align-items:center}.hotel-editorial__comp-link{font-size:.87rem;color:var(--gold);border-bottom:1px solid transparent;transition:border-color .15s}.hotel-editorial__comp-link:hover{border-color:var(--gold)}`,
     `    .internal-links{margin:28px auto;max-width:1200px}.internal-links__heading{font-size:.85rem;color:var(--muted);margin-bottom:12px}`,
     `    .internal-links__list{list-style:none;display:flex;flex-wrap:wrap;gap:8px}.internal-links__link{font-size:.8rem;color:var(--gold);transition:text-decoration .15s}.internal-links__link:hover{text-decoration:underline}`,
     `    .site-footer{border-top:1px solid var(--border);padding:40px 28px 28px;max-width:1200px;margin:56px auto 0;display:flex;flex-direction:column;gap:24px}`,
@@ -1555,9 +1577,11 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `    .persona-photo-card__review:hover{background:rgba(201,168,76,.12)}`,
     `  </style>`,
     ``,
-    `  <!-- Gallery & lightbox -->`,
-    `  <link rel="stylesheet" href="/assets/css/hotel-gallery.css">`,
-    `  <link rel="stylesheet" href="/assets/css/trending-widget.css">`,
+    `  <!-- Gallery & lightbox (async to avoid render-blocking) -->`,
+    `  <link rel="stylesheet" href="/assets/css/hotel-gallery.css" media="print" onload="this.media='all'">`,
+    `  <noscript><link rel="stylesheet" href="/assets/css/hotel-gallery.css"></noscript>`,
+    `  <link rel="stylesheet" href="/assets/css/trending-widget.css" media="print" onload="this.media='all'">`,
+    `  <noscript><link rel="stylesheet" href="/assets/css/trending-widget.css"></noscript>`,
     `  <script src="/assets/js/hotel-gallery.js" defer></script>`,
     ``,
     `  <!-- Renderer metadata (non-displayed) -->`,
@@ -1686,7 +1710,8 @@ function _bigDodoWidget(meta) {
 
   return [
     `<!-- Big Dodo widget -->`,
-    `<link rel="stylesheet" href="/assets/css/big_dodo_widget.css">`,
+    `<link rel="stylesheet" href="/assets/css/big_dodo_widget.css" media="print" onload="this.media='all'">`,
+    `<noscript><link rel="stylesheet" href="/assets/css/big_dodo_widget.css"></noscript>`,
     `<script type="application/json" id="big-dodo-config">${config}</script>`,
     `<script src="/assets/js/big_dodo_widget.js" defer></script>`,
   ].join('\n');

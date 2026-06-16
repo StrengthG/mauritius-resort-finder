@@ -578,14 +578,29 @@ function generatePageContexts(dataset, options = {}) {
     throw new TypeError('generatePageContexts: dataset must be an array');
   }
 
-  const specs = [
-    ..._generatePillarContexts(dataset, options),
-    ..._generatePersonaContexts(dataset, options),
-    ..._generateRegionContexts(dataset, options),
-    ..._generateHotelContexts(dataset, options),
-    ..._generateComparisonContexts(dataset, options),
-  ];
+  const pillarSpecs     = _generatePillarContexts(dataset, options);
+  const personaSpecs    = _generatePersonaContexts(dataset, options);
+  const regionSpecs     = _generateRegionContexts(dataset, options);
+  const hotelSpecs      = _generateHotelContexts(dataset, options);
+  const comparisonSpecs = _generateComparisonContexts(dataset, options);
 
+  // Enrich hotel detail specs with links to comparison pages that feature each hotel.
+  // This enables internal linking from hotel pages to their "vs" comparison pages.
+  const compsByHotelId = {};
+  for (const comp of comparisonSpecs) {
+    for (const hotelId of (comp.pageContext.hotels_compared || [])) {
+      if (!compsByHotelId[hotelId]) compsByHotelId[hotelId] = [];
+      compsByHotelId[hotelId].push({ slug: comp.slug, title: comp.title });
+    }
+  }
+  for (const hotelSpec of hotelSpecs) {
+    const comps = compsByHotelId[hotelSpec.hotel_id] || [];
+    if (comps.length > 0) {
+      hotelSpec.pageContext.comparison_links = comps;
+    }
+  }
+
+  const specs = [...pillarSpecs, ...personaSpecs, ...regionSpecs, ...hotelSpecs, ...comparisonSpecs];
   const { duplicates } = _detectDuplicateSlugs(specs);
   return { specs, duplicates };
 }
@@ -796,15 +811,28 @@ function generateFeed(pages, baseUrl, options = {}) {
     })
     .slice(0, maxItems);
 
+  const PERSONA_FEED_DESCRIPTIONS = {
+    luxury:       'Independent rankings of luxury hotels in Mauritius — scored across location, amenities, brand prestige, and value. No paid placements.',
+    honeymoon:    'The best honeymoon hotels in Mauritius. Adults-only retreats, private beach villas, and couples spas — independently scored and ranked.',
+    family:       'Top family-friendly resorts in Mauritius ranked for kids clubs, shallow lagoons, and family suites. Independent reviews, no sponsored placements.',
+    wellness:     "Mauritius's top wellness resorts ranked by spa quality, yoga programmes, and holistic treatments. Independent scores, no paid placements.",
+    remote_work:  'Best hotels for remote work in Mauritius — fast Wi-Fi, quiet workspaces, and reliable connectivity. Independently reviewed and scored.',
+    value_luxury: 'The best-value luxury hotels in Mauritius — five-star quality at smart prices. Independently scored on amenities, location, and value.',
+    budget:       'Best cheap hotels in Mauritius. Budget-friendly accommodation independently scored and ranked. Real guest data, no sponsored listings.',
+  };
+
   const items = sorted.map(page => {
     const url   = `${base}/${page.slug}/`;
     const title = page.title || page.slug;
+    const desc  = page.description
+      || PERSONA_FEED_DESCRIPTIONS[page.persona]
+      || `${title} — independent hotel rankings for Mauritius.`;
     return [
       '    <item>',
       `      <title>${_xmlEsc(title)}</title>`,
       `      <link>${_xmlEsc(url)}</link>`,
       `      <guid isPermaLink="true">${_xmlEsc(url)}</guid>`,
-      `      <description>${_xmlEsc(title)}</description>`,
+      `      <description>${_xmlEsc(desc)}</description>`,
       `      <pubDate>${pubDate}</pubDate>`,
       '    </item>',
     ].join('\n');
@@ -944,6 +972,12 @@ async function _buildPage(spec, deps = {}, buildOptions = {}) {
       if (hasScoreData) {
         const hce = require('./hotel_content_engine.js');
         editorialContent = hce.generateContent(h0, dataset);
+      }
+      // Inject comparison links so the renderer can link to "vs" pages for this hotel.
+      if (editorialContent && spec.pageContext.comparison_links) {
+        editorialContent = Object.assign({}, editorialContent, {
+          comparison_links: spec.pageContext.comparison_links,
+        });
       }
     }
 
