@@ -446,6 +446,7 @@ function getRelatedGuides(persona) {
     { label: 'Currency & Money Guide',                 slug: 'mauritius-currency-money-guide',          persona: null           },
     { label: 'Île aux Cerfs Guide',                    slug: 'ile-aux-cerfs-mauritius',                 persona: null           },
     { label: 'Best Snorkelling in Mauritius',          slug: 'best-snorkelling-mauritius',              persona: null           },
+    { label: 'Scuba Diving in Mauritius',              slug: 'mauritius-scuba-diving-guide',            persona: null           },
     { label: 'Mauritius Wildlife Guide',               slug: 'mauritius-wildlife-guide',                persona: null           },
     { label: 'Destination Weddings in Mauritius',      slug: 'mauritius-destination-weddings',          persona: 'honeymoon'    },
     { label: 'Overwater Villas in Mauritius',          slug: 'mauritius-overwater-villas',              persona: 'honeymoon'    },
@@ -1431,6 +1432,7 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `  <script src="/assets/js/analytics.js" defer></script>`,
     `  <title>${esc(meta.title)}</title>`,
     `  <meta name="description" content="${esc(meta.description)}">`,
+    `  <meta name="robots" content="index, follow">`,
     meta.keyword
       ? `  <meta name="keywords" content="${esc(meta.keyword)}">` : '',
     `  <link rel="canonical" href="${esc(canonUrl)}">`,

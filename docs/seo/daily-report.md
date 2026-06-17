@@ -1,95 +1,99 @@
-# SEO Daily Report — Run 50
-**Date:** 2026-06-08
+# Daily SEO Report — Run 52
+**Date:** 2026-06-17
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
 ---
 
 ## 1. Executive Summary
 
-Run 50 delivered the **Rodrigues Island guide** at `/rodrigues-island-mauritius/` — a ~2,400-word informational page targeting "rodrigues island mauritius", "how to get to rodrigues from mauritius", and "rodrigues island kitesurfing". The page captures a distinct search intent: Indian Ocean travellers considering Rodrigues as an extension of a Mauritius trip. It includes a verified Air Mauritius flight factsheet, a 6-activity grid, a 4-card season guide, a 9-row Rodrigues vs Mauritius comparison table, a 7-day combined itinerary, and 3 verified hotel CTAs (Royal Palm 9.2, Four Seasons Anahita 9.1, One&Only Le Saint Géran 9.0) framed as the ideal Mauritius base before or after Rodrigues. FAQPage + BreadcrumbList + Article schema applied.
-
-Also completed this session: region card footer alignment fixed on homepage (desktop grid), and theme system fully rewritten (pill toggle, light-mode default, `--color-bg/--color-primary` semantic tokens).
-
-Build: 74/74 pages. 51 static pages in dist. Sitemap: 124 URLs.
+Two sessions of work executed. The previous session (Run 51 follow-up, pushed 2026-06-16) corrected the root causes of declining GA4 views: render-blocking CSS degrading Core Web Vitals, empty Hotel structured data descriptions blocking rich result eligibility, and zero internal linking between hotel pages and their comparison pages. This session (Run 52) completed a full technical and on-page audit, shortened 10 over-length page titles to eliminate SERP truncation, added explicit robots meta to all generated pages, and added a new high-intent scuba diving guide (2,136 words) to the sitemap.
 
 ---
 
-## 2. Technical Issues Found
+## 2. Technical Issues Found & Fixed
 
-| Issue | Status |
-|---|---|
-| Region card footer misalignment on desktop | ✅ Fixed — `margin-top:auto` on `.region-card__footer` |
-| Theme toggle non-functional (old circular button) | ✅ Fixed — pill toggle with `onclick="mrfToggle()"` |
-| Anti-FOUC defaulting to dark | ✅ Fixed — now checks `prefers-color-scheme:dark`, defaults to light |
-| No technical build errors | ✅ Clean |
+### Session 1 (Run 51 fixes — pushed 2026-06-16)
+| Issue | Impact | Fix |
+|---|---|---|
+| Hotel schema `description` empty on all 44 hotel pages | Google cannot generate rich snippets | Wired `explanation_summary` into `Hotel` schema description |
+| Hotel schema missing `url` field | Weaker entity resolution | Added canonical URL to all Hotel schemas |
+| 3 render-blocking CSS files (28KB total) | LCP/FCP degraded, CWV penalty | Converted to `media="print" onload` async loading with `<noscript>` fallback |
+| Google Fonts render-blocking | FCP delay on every page | Converted to async load |
+| Hotel pages → comparison pages: 0 links | No link equity flow to compare pages | Injected comparison links into hotel editorial section via pipeline |
+| RSS feed `<description>` = page title | Meaningless for crawlers | Replaced with persona-specific descriptions |
+
+### Session 2 (Run 52 — this session)
+| Issue | Impact | Fix |
+|---|---|---|
+| 10 static page titles >70 chars | Truncated in SERPs, lower CTR | Shortened to ≤66 chars on all 10 pages |
+| No `<meta name="robots">` on generated pages | Missing explicit indexing directive | Added `index, follow` to `generateHead()` |
+| Scuba diving page missing from site | Traffic gap vs snorkelling guide | Created 2,136-word guide with FAQPage + BreadcrumbList + Article schema |
 
 ---
 
 ## 3. Content Opportunities
 
-| Opportunity | Keyword | Priority | Status |
-|---|---|---|---|
-| Rodrigues Island guide | "rodrigues island mauritius" | Low | ✅ Done this run |
-| Mauritius photography spots | "best photography spots mauritius" | Low | Pending |
-| Mauritius nightlife guide | "nightlife mauritius" | Low | Pending |
-| Mauritius scuba diving guide | "scuba diving mauritius" | Medium | Not yet planned |
-| Mauritius helicopter tours | "helicopter tour mauritius" | Medium | Not yet planned |
+### Created This Run
+- **`/mauritius-scuba-diving-guide/`** — 2,136 words. Target keywords: "scuba diving mauritius", "best dive sites mauritius", "PADI mauritius". Covers 6 dive sites, season guide, cost table, marine life, PADI courses, and 3 hotel CTAs (Hilton Mauritius, Heritage Awali, Paradise Cove). FAQPage, BreadcrumbList, Article schema. Added to sitemap (priority 0.8).
+
+### Still Open
+- **Mauritius photography spots guide** — "best photography spots mauritius" — low effort, low competition
+- **Mauritius nightlife guide** — "nightlife mauritius grand baie" — low priority
+- **Persona page intro sections** — Pillar and persona pages average ~1,100 words because photo cards are compact. Adding a 200-word keyword-rich intro per persona would lift content depth without restructuring the pipeline.
 
 ---
 
 ## 4. Internal Linking
 
-The Rodrigues page links to:
-- `/mauritius-island-day-trips/` — primary companion
-- `/mauritius-travel-guide/` — entry planning
-- `/best-time-to-visit-mauritius/` — seasonal context
-- `/mauritius-water-sports-guide/` — kitesurfing/diving context
-- `/best-snorkelling-mauritius/` — marine crossover
-- `/mauritius-wildlife-guide/` — tortoise/nature context
-- `/mauritius-honeymoon-guide/` — couples segment
-- `/ile-aux-cerfs-mauritius/` — other island day trip
+### Completed This Run
+- Scuba diving guide links out to: snorkelling, water sports, wildlife, island day trips, best time to visit, Flic en Flac, Cap Malheureux, travel guide (9 links out)
+- Scuba diving guide registered in renderer's `getRelatedGuides()` → appears in related sections across snorkelling, water sports, and wildlife pages
 
-The page is added to `getRelatedGuides()` in `static_page_renderer.js` and will appear in the related-guides footer across all generated pages.
+### Still Needed
+- Add link from `/flic-en-flac-mauritius/` → `/mauritius-scuba-diving-guide/` (La Cathédrale is the region's headline dive)
+- Add link from `/cap-malheureux-mauritius/` → `/mauritius-scuba-diving-guide/` (Coin de Mire dive zone)
+- Add link from `/mauritius-island-day-trips/` → `/mauritius-scuba-diving-guide/`
 
 ---
 
 ## 5. Backlink Opportunities
 
-Week 1 outreach contact is overdue (Day 2 of the 90-day campaign):
+The outreach queue is ready with 112 prospects. Week 1 batch has not been executed yet. Highest-priority target:
+- **Rough Guides Mauritius activities page** (DA 83) — broken link opportunity; pitch scuba diving guide as replacement.
 
-| Site | DA | Type | Target |
-|---|---|---|---|
-| Rough Guides | 83 | Broken link replacement | `/methodology/` |
-
-Action: Identify the broken link on Rough Guides that references a Mauritius methodology source, and submit a replacement pitch. The `seo_outreach_queue.js` script tracks this as Week 1 Day 1 contact.
+Run: `node seo_outreach_queue.js` to view the batch and generate outreach copy.
 
 ---
 
-## 6. Conversion Improvements
+## 6. Conversion
 
-- 3 hotel CTAs on Rodrigues page with contextual framing (airport proximity for SSR connections)
-- East coast hotel positioning (Beau Champ: 35 min to SSR, Le Saint Géran: 40 min) is a conversion differentiator specific to Rodrigues combination trips
-- Rodrigues vs Mauritius comparison table serves as a decision aid: readers who conclude "I want the five-star" click through to hotel pages
+No CTA changes this run. Outstanding:
+- 12 hotel pages lack `aggregateRating` in schema (hotels missing `review_count`). These are the 8 recently added ADM-series hotels. Adding review count data unlocks the star-rating rich snippet in SERPs.
 
 ---
 
 ## 7. Priority Action List (Next Run)
 
-| Priority | Task | Type | Keyword Target |
-|---|---|---|---|
-| High | Begin Rough Guides outreach (Week 1) | Backlinks | DA 83 broken link — `/methodology/` |
-| Medium | Mauritius scuba diving guide | Informational | "scuba diving mauritius", "best dive sites mauritius" |
-| Low | Mauritius photography spots | Informational | "best photography spots mauritius" |
-| Low | Mauritius nightlife guide | Informational | "nightlife mauritius" |
-| Ongoing | Monitor GSC for low-CTR impressions | Analytics | Weekly |
+| Priority | Action | Type |
+|---|---|---|
+| 🔴 High | Run Week 1 backlink outreach batch (`node seo_outreach_queue.js`) | Backlinks |
+| 🔴 High | Add `review_count` + `avg_rating` for 8 new ADM hotels | Data quality |
+| 🟡 Medium | Add 200-word keyword intro to pillar + 6 persona pages | Content depth |
+| 🟡 Medium | Add scuba diving guide links to Flic en Flac, Cap Malheureux, Island Day Trips pages | Internal linking |
+| 🟢 Low | Mauritius photography spots guide | New content |
 
 ---
 
 ## 8. Expected SEO Impact
 
-| Action | Expected impact |
-|---|---|
-| Rodrigues Island guide | Rankings for "rodrigues island mauritius" (3,000–6,000 monthly searches); internal links from island day trips, snorkelling, wildlife pages increase page authority |
-| 3 hotel CTAs framed by airport proximity | Niche conversion angle not found on competitor content; may reduce bounce from Rodrigues visitors who then book Mauritius hotels |
-| Pill theme toggle + light mode default | UX improvement; no SEO impact but reduces bounce from users who find dark-mode sites hard to read |
-| Region card alignment fix | Reduces visual polish issues that can affect trust signals |
+| Change | Mechanism | Timeline |
+|---|---|---|
+| Async CSS (3 files, 28KB) | Removes render-blocking; improves LCP/FCP | 3–6 weeks (CWV re-evaluation) |
+| Hotel schema descriptions (44 pages) | Enables rich result eligibility | 2–4 weeks |
+| Hotel→comparison links | PageRank to comparison pages | 4–8 weeks |
+| 10 page titles shortened | Better SERP snippets; higher CTR | 2–4 weeks |
+| Scuba diving guide | New keyword rankings | 6–12 weeks |
+
+---
+
+*Report generated: 2026-06-17 · Build: 83 pages, 0 errors · Tests: 2,237 passed, 0 failed*

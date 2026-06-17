@@ -562,6 +562,7 @@ const STATIC_PAGE_SPECS = Object.freeze([
   { slug: 'mauritius-currency-money-guide',     page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'ile-aux-cerfs-mauritius',            page_type: 'regional',      priority: '0.8', changefreq: 'monthly' },
   { slug: 'best-snorkelling-mauritius',         page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
+  { slug: 'mauritius-scuba-diving-guide',       page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'mauritius-wildlife-guide',           page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'mauritius-destination-weddings',    page_type: 'informational', priority: '0.8', changefreq: 'monthly' },
   { slug: 'mauritius-overwater-villas',        page_type: 'informational', priority: '0.8', changefreq: 'monthly' },

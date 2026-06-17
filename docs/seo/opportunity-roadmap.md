@@ -92,9 +92,17 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Mauritius destination weddings guide~~ | ~~Informational~~ | ~~High~~ | ✅ Done 2026-06-07 (Run 48, ~2,400 words, legal requirements, 5-tier budget table, 5 hotel CTAs, 4 season cards, 6 FAQs, FAQPage + BreadcrumbList + Article schema) |
 | ~~Mauritius overwater villas guide~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-06-08 (Run 49, ~2,400 words, 5-tier cost table, Mauritius vs Maldives table, 5 hotel CTAs, 4 season cards, 6 FAQs, FAQPage + BreadcrumbList + Article schema) |
 | ~~Rodrigues Island guide~~ | ~~Informational~~ | ~~Low~~ | ✅ Done 2026-06-08 (Run 50, ~2,400 words, 6 activities, Rodrigues vs Mauritius table, 7-day itinerary, 3 hotel CTAs, 6 FAQs, FAQPage schema) |
-| Mauritius scuba diving guide | Informational | Medium | "scuba diving mauritius", "best dive sites mauritius" — distinct from snorkelling guide |
+| ~~Mauritius scuba diving guide~~ | ~~Informational~~ | ~~Medium~~ | ✅ Done 2026-06-17 (Run 52, 2,136 words, 6 dive sites table, season grid, cost table, PADI guide, 3 hotel CTAs, 6 FAQs, FAQPage + BreadcrumbList + Article schema) |
+| ~~10 over-length page titles (>70 chars)~~ | ~~On-page~~ | ~~High~~ | ✅ Done 2026-06-17 (Run 52) — all 10 shortened to ≤66 chars; removes SERP truncation on methodology, adults-only, boutique, honeymoon itinerary, luxury guide, Port Louis, snorkelling, water sports, things-to-do, island day trips |
+| ~~Hotel schema: empty description + missing url (44 hotel pages)~~ | ~~Structured data~~ | ~~Critical~~ | ✅ Done 2026-06-16 (Run 51) — description wired from explanation_summary; url field added to all Hotel schemas |
+| ~~Render-blocking CSS (hotel-gallery, trending, big_dodo, Google Fonts)~~ | ~~Technical/CWV~~ | ~~Critical~~ | ✅ Done 2026-06-16 (Run 51) — all 4 converted to media=print onload async with noscript fallback |
+| ~~Hotel pages → comparison pages: 0 internal links~~ | ~~Internal linking~~ | ~~High~~ | ✅ Done 2026-06-16 (Run 51) — comparison_links injected into hotel editorial section for all 6 top hotels (5 comparison links each) |
+| ~~robots meta missing from all generated pages~~ | ~~Technical~~ | ~~Medium~~ | ✅ Done 2026-06-17 (Run 52) — added index, follow to generateHead() |
+| Persona page intro content (200 words/page) | Content depth | Medium | Pillar + 6 persona pages average 1,100 words; a short keyword-rich intro per page lifts depth without pipeline changes |
+| Add scuba guide links to Flic en Flac, Cap Malheureux, Island Day Trips pages | Internal linking | Medium | 3 contextual links to new scuba guide for topical authority |
+| Add review_count + avg_rating for 8 new ADM hotels | Data quality | High | Unlocks AggregateRating rich snippet on 8 hotel pages |
+| Begin backlink outreach — Week 1 batch | Backlinks | High | `node seo_outreach_queue.js` — 1 broken link target (Rough Guides DA 83) |
 | Mauritius photography spots guide | Informational | Low | "best photography spots mauritius" |
 | Mauritius nightlife guide | Informational | Low | "nightlife mauritius" |
-| Begin backlink outreach — Week 1 batch | Backlinks | High | `node seo_outreach_queue.js` — 1 broken link target (Rough Guides DA 83) |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |
 | Update hotel data quarterly | Content freshness | Ongoing | Scores decay; fresh data = ranking signal |
