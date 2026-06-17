@@ -1632,5 +1632,1707 @@
       "wellness_programmes": false
     },
     "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ035",
+    "hotel_name": "The St. Regis Le Morne Resort, Mauritius",
+    "overall_rating": 9.0,
+    "location_score": 9.5,
+    "amenity_score": 9.0,
+    "brand_score": 9.5,
+    "value_score": 6.5,
+    "review_count": 420,
+    "avg_rating": 4.8,
+    "price_per_night_usd": 1200,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Le Morne",
+    "_status": "active",
+    "_brand_name": "Marriott / St. Regis",
+    "_brand_tier": 9.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/z8dWy0x",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "gym": true,
+      "concierge": true,
+      "private_pool": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ036",
+    "hotel_name": "Shangri-La Le Touessrok, Mauritius",
+    "overall_rating": 9.0,
+    "location_score": 9.3,
+    "amenity_score": 9.1,
+    "brand_score": 9.2,
+    "value_score": 7.0,
+    "review_count": 1180,
+    "avg_rating": 4.8,
+    "price_per_night_usd": 1100,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Trou d'Eau Douce",
+    "_status": "active",
+    "_brand_name": "Shangri-La",
+    "_brand_tier": 9.2,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/EbwO2Wx",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "gym": true,
+      "concierge": true,
+      "private_pool": true,
+      "water_sports": true,
+      "kids_club": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ037",
+    "hotel_name": "Long Beach Mauritius",
+    "overall_rating": 8.6,
+    "location_score": 8.9,
+    "amenity_score": 8.7,
+    "brand_score": 8.3,
+    "value_score": 7.5,
+    "review_count": 890,
+    "avg_rating": 4.6,
+    "price_per_night_usd": 750,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Belle Mare",
+    "_status": "active",
+    "_brand_name": "Sun Resorts",
+    "_brand_tier": 8.3,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/m1GxkF2",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "kids_club": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ038",
+    "hotel_name": "OUTRIGGER Mauritius Beach Resort",
+    "overall_rating": 8.1,
+    "location_score": 8.4,
+    "amenity_score": 8.2,
+    "brand_score": 7.8,
+    "value_score": 7.8,
+    "review_count": 560,
+    "avg_rating": 4.4,
+    "price_per_night_usd": 450,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Bel Ombre",
+    "_status": "active",
+    "_brand_name": "OUTRIGGER Resorts",
+    "_brand_tier": 7.8,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/KmAiq3o",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ039",
+    "hotel_name": "Paradis Beachcomber Golf Resort & Spa",
+    "overall_rating": 8.6,
+    "location_score": 9.1,
+    "amenity_score": 8.5,
+    "brand_score": 8.5,
+    "value_score": 7.2,
+    "review_count": 1020,
+    "avg_rating": 4.6,
+    "price_per_night_usd": 650,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Le Morne",
+    "_status": "active",
+    "_brand_name": "Beachcomber Hotels",
+    "_brand_tier": 8.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/x2qvJq1",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "gym": true,
+      "concierge": true,
+      "kids_club": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ040",
+    "hotel_name": "Heritage Le Telfair Golf & Wellness Resort",
+    "overall_rating": 8.6,
+    "location_score": 8.8,
+    "amenity_score": 8.8,
+    "brand_score": 8.2,
+    "value_score": 7.4,
+    "review_count": 780,
+    "avg_rating": 4.7,
+    "price_per_night_usd": 700,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Bel Ombre",
+    "_status": "active",
+    "_brand_name": "Heritage Resorts",
+    "_brand_tier": 8.2,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/hyOIwG0",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "gym": true,
+      "concierge": true,
+      "kids_club": true,
+      "water_sports": true,
+      "yoga": true,
+      "wellness_programmes": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ041",
+    "hotel_name": "Shandrani Beachcomber Resort & Spa",
+    "overall_rating": 8.3,
+    "location_score": 8.5,
+    "amenity_score": 8.2,
+    "brand_score": 8.0,
+    "value_score": 7.8,
+    "review_count": 850,
+    "avg_rating": 4.5,
+    "price_per_night_usd": 380,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Blue Bay",
+    "_status": "active",
+    "_brand_name": "Beachcomber Hotels",
+    "_brand_tier": 8.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/3FpBVqI",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "kids_club": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ042",
+    "hotel_name": "Dinarobin Beachcomber Golf Resort & Spa",
+    "overall_rating": 8.7,
+    "location_score": 9.2,
+    "amenity_score": 8.6,
+    "brand_score": 8.5,
+    "value_score": 7.0,
+    "review_count": 680,
+    "avg_rating": 4.7,
+    "price_per_night_usd": 820,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Le Morne",
+    "_status": "active",
+    "_brand_name": "Beachcomber Hotels",
+    "_brand_tier": 8.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/0xD4PI7",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "butler_service": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "gym": true,
+      "concierge": true,
+      "private_pool": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ043",
+    "hotel_name": "SO/ Sofitel Mauritius",
+    "overall_rating": 8.4,
+    "location_score": 8.5,
+    "amenity_score": 8.5,
+    "brand_score": 8.5,
+    "value_score": 7.5,
+    "review_count": 450,
+    "avg_rating": 4.5,
+    "price_per_night_usd": 580,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Bel Ombre",
+    "_status": "active",
+    "_brand_name": "Accor / SO Sofitel",
+    "_brand_tier": 8.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/VXvY71Q",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ044",
+    "hotel_name": "LUX* Grand Baie Resort & Residences",
+    "overall_rating": 8.3,
+    "location_score": 8.3,
+    "amenity_score": 8.4,
+    "brand_score": 8.4,
+    "value_score": 7.5,
+    "review_count": 280,
+    "avg_rating": 4.4,
+    "price_per_night_usd": 520,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Grand Baie",
+    "_status": "active",
+    "_brand_name": "LUX* Resorts & Hotels",
+    "_brand_tier": 8.4,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/4FnC5B8",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ045",
+    "hotel_name": "Maritim Resort & Spa Mauritius",
+    "overall_rating": 8.0,
+    "location_score": 8.2,
+    "amenity_score": 8.0,
+    "brand_score": 7.5,
+    "value_score": 8.0,
+    "review_count": 920,
+    "avg_rating": 4.3,
+    "price_per_night_usd": 280,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Balaclava",
+    "_status": "active",
+    "_brand_name": "Maritim Hotels",
+    "_brand_tier": 7.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/Mw8ClCR",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "gym": true,
+      "concierge": true,
+      "kids_club": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ046",
+    "hotel_name": "Veranda Grand Baie Hotel & Spa",
+    "overall_rating": 7.8,
+    "location_score": 7.8,
+    "amenity_score": 7.7,
+    "brand_score": 7.2,
+    "value_score": 8.3,
+    "review_count": 680,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 220,
+    "star_rating": 4,
+    "property_type": "hotel",
+    "region": "Grand Baie",
+    "_status": "active",
+    "_brand_name": "Attitude Hotels",
+    "_brand_tier": 7.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/S9crVAP",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "pool": true,
+      "gym": true,
+      "fine_dining": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ047",
+    "hotel_name": "Le Peninsula Bay Beach Resort",
+    "overall_rating": 7.9,
+    "location_score": 8.3,
+    "amenity_score": 7.8,
+    "brand_score": 6.5,
+    "value_score": 8.0,
+    "review_count": 380,
+    "avg_rating": 4.3,
+    "price_per_night_usd": 250,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Blue Bay",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 6.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/Lp9J0uW",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ048",
+    "hotel_name": "Veranda Pointe Aux Biches Hotel",
+    "overall_rating": 7.6,
+    "location_score": 7.8,
+    "amenity_score": 7.5,
+    "brand_score": 7.0,
+    "value_score": 8.4,
+    "review_count": 560,
+    "avg_rating": 4.1,
+    "price_per_night_usd": 180,
+    "star_rating": 4,
+    "property_type": "hotel",
+    "region": "Pointe Aux Piments",
+    "_status": "active",
+    "_brand_name": "Attitude Hotels",
+    "_brand_tier": 7.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/7bZADUk",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "pool": true,
+      "fine_dining": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ049",
+    "hotel_name": "LUX* Le Morne",
+    "overall_rating": 8.6,
+    "location_score": 9.2,
+    "amenity_score": 8.5,
+    "brand_score": 8.4,
+    "value_score": 7.2,
+    "review_count": 620,
+    "avg_rating": 4.6,
+    "price_per_night_usd": 680,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Le Morne",
+    "_status": "active",
+    "_brand_name": "LUX* Resorts & Hotels",
+    "_brand_tier": 8.4,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/yzStbv5",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ050",
+    "hotel_name": "InterContinental Mauritius Resort Balaclava Fort",
+    "overall_rating": 8.4,
+    "location_score": 8.5,
+    "amenity_score": 8.4,
+    "brand_score": 8.8,
+    "value_score": 7.8,
+    "review_count": 720,
+    "avg_rating": 4.5,
+    "price_per_night_usd": 420,
+    "star_rating": 5,
+    "property_type": "resort",
+    "region": "Balaclava",
+    "_status": "active",
+    "_brand_name": "IHG / InterContinental",
+    "_brand_tier": 8.8,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/OGontnU",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "gym": true,
+      "concierge": true,
+      "kids_club": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ051",
+    "hotel_name": "Friday Attitude",
+    "overall_rating": 7.9,
+    "location_score": 8.0,
+    "amenity_score": 7.8,
+    "brand_score": 7.5,
+    "value_score": 8.0,
+    "review_count": 340,
+    "avg_rating": 4.3,
+    "price_per_night_usd": 260,
+    "star_rating": 4,
+    "property_type": "hotel",
+    "region": "Trou d'Eau Douce",
+    "_status": "active",
+    "_brand_name": "Attitude Hotels",
+    "_brand_tier": 7.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/5D4vCkr",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "pool": true,
+      "fine_dining": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ052",
+    "hotel_name": "Ambre - Adults Only",
+    "overall_rating": 7.9,
+    "location_score": 8.0,
+    "amenity_score": 7.9,
+    "brand_score": 7.2,
+    "value_score": 8.2,
+    "review_count": 760,
+    "avg_rating": 4.3,
+    "price_per_night_usd": 300,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Palmar",
+    "_status": "active",
+    "_brand_name": "Sun Resorts",
+    "_brand_tier": 7.2,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/o257qtR",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true,
+      "gym": true,
+      "water_sports": true,
+      "adults_only": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ053",
+    "hotel_name": "Ocean Villas",
+    "overall_rating": 7.7,
+    "location_score": 7.8,
+    "amenity_score": 7.6,
+    "brand_score": 6.2,
+    "value_score": 8.2,
+    "review_count": 180,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 280,
+    "star_rating": 4,
+    "property_type": "villas",
+    "region": "Grand Baie",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 6.2,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/rX69v8L",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_pool": true,
+      "concierge": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ054",
+    "hotel_name": "Veranda Paul & Virginie Hotel & Spa - Adults Only",
+    "overall_rating": 7.8,
+    "location_score": 8.0,
+    "amenity_score": 7.7,
+    "brand_score": 7.0,
+    "value_score": 8.1,
+    "review_count": 480,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 250,
+    "star_rating": 4,
+    "property_type": "hotel",
+    "region": "Grand Gaube",
+    "_status": "active",
+    "_brand_name": "Attitude Hotels",
+    "_brand_tier": 7.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/Y7rBQiW",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true,
+      "water_sports": true,
+      "adults_only": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ055",
+    "hotel_name": "Laguna Beach Hotel & Spa",
+    "overall_rating": 7.7,
+    "location_score": 7.8,
+    "amenity_score": 7.6,
+    "brand_score": 6.5,
+    "value_score": 8.1,
+    "review_count": 420,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 220,
+    "star_rating": 4,
+    "property_type": "hotel",
+    "region": "Grand River South East",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 6.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/kLZOTWu",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ056",
+    "hotel_name": "Canonnier Beachcomber Golf Resort & Spa",
+    "overall_rating": 8.2,
+    "location_score": 8.3,
+    "amenity_score": 8.1,
+    "brand_score": 8.0,
+    "value_score": 7.8,
+    "review_count": 1100,
+    "avg_rating": 4.4,
+    "price_per_night_usd": 360,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Grand Baie",
+    "_status": "active",
+    "_brand_name": "Beachcomber Hotels",
+    "_brand_tier": 8.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/JJjzpxP",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "fine_dining": true,
+      "pool": true,
+      "golf": true,
+      "gym": true,
+      "concierge": true,
+      "kids_club": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ057",
+    "hotel_name": "Bon Azur Beachfront Suites & Penthouses with LOV",
+    "overall_rating": 7.6,
+    "location_score": 7.9,
+    "amenity_score": 7.4,
+    "brand_score": 6.5,
+    "value_score": 8.2,
+    "review_count": 220,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 200,
+    "star_rating": 3,
+    "property_type": "hotel",
+    "region": "Pointe Aux Piments",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 6.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/oq3VSqb",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_beach": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ058",
+    "hotel_name": "Constance Sakoa Boutik",
+    "overall_rating": 8.1,
+    "location_score": 8.2,
+    "amenity_score": 8.0,
+    "brand_score": 8.3,
+    "value_score": 7.8,
+    "review_count": 240,
+    "avg_rating": 4.4,
+    "price_per_night_usd": 350,
+    "star_rating": 4,
+    "property_type": "boutique",
+    "region": "Trou Aux Biches",
+    "_status": "active",
+    "_brand_name": "Constance Hotels",
+    "_brand_tier": 9.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/FUPaB2B",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "pool": true,
+      "fine_dining": true,
+      "concierge": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ059",
+    "hotel_name": "Hennessy Park Hotel",
+    "overall_rating": 7.2,
+    "location_score": 6.5,
+    "amenity_score": 7.5,
+    "brand_score": 6.8,
+    "value_score": 8.5,
+    "review_count": 580,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 130,
+    "star_rating": 4,
+    "property_type": "hotel",
+    "region": "Ebene",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 6.8,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/PXYURrz",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "gym": true,
+      "fine_dining": true,
+      "high_speed_wifi": true,
+      "business_centre": true,
+      "concierge": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ060",
+    "hotel_name": "Radisson Blu Poste Lafayette Resort & Spa",
+    "overall_rating": 8.0,
+    "location_score": 8.2,
+    "amenity_score": 8.0,
+    "brand_score": 8.2,
+    "value_score": 8.0,
+    "review_count": 520,
+    "avg_rating": 4.3,
+    "price_per_night_usd": 320,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Poste Lafayette",
+    "_status": "active",
+    "_brand_name": "Radisson Blu",
+    "_brand_tier": 8.2,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/sykgzxQ",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true,
+      "gym": true,
+      "concierge": true,
+      "kids_club": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ061",
+    "hotel_name": "Radisson Blu Azuri Resort & Spa",
+    "overall_rating": 8.1,
+    "location_score": 8.2,
+    "amenity_score": 8.1,
+    "brand_score": 8.2,
+    "value_score": 7.9,
+    "review_count": 680,
+    "avg_rating": 4.4,
+    "price_per_night_usd": 350,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Roches Noires",
+    "_status": "active",
+    "_brand_name": "Radisson Blu",
+    "_brand_tier": 8.2,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/UtuviAA",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true,
+      "gym": true,
+      "concierge": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ062",
+    "hotel_name": "Astroea Beach Hotel",
+    "overall_rating": 7.8,
+    "location_score": 8.1,
+    "amenity_score": 7.6,
+    "brand_score": 6.5,
+    "value_score": 8.2,
+    "review_count": 280,
+    "avg_rating": 4.3,
+    "price_per_night_usd": 220,
+    "star_rating": 3,
+    "property_type": "hotel",
+    "region": "Pointe Desny",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 6.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/uVaYLVg",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ063",
+    "hotel_name": "VillaSun",
+    "overall_rating": 7.0,
+    "location_score": 7.5,
+    "amenity_score": 6.5,
+    "brand_score": 4.5,
+    "value_score": 9.0,
+    "review_count": 120,
+    "avg_rating": 4.0,
+    "price_per_night_usd": 85,
+    "star_rating": 3,
+    "property_type": "villa",
+    "region": "Flic En Flac",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 4.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/2xgNOed",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ064",
+    "hotel_name": "Voile Bleue Boutique Hotel",
+    "overall_rating": 7.4,
+    "location_score": 7.8,
+    "amenity_score": 7.2,
+    "brand_score": 5.5,
+    "value_score": 8.5,
+    "review_count": 180,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 150,
+    "star_rating": 3,
+    "property_type": "boutique",
+    "region": "Pointe Aux Piments",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 5.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/QW3SkRN",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_beach": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ065",
+    "hotel_name": "Riu Le Morne - All Inclusive - Adults Only",
+    "overall_rating": 7.9,
+    "location_score": 8.5,
+    "amenity_score": 7.8,
+    "brand_score": 7.5,
+    "value_score": 8.8,
+    "review_count": 1420,
+    "avg_rating": 4.3,
+    "price_per_night_usd": 290,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Le Morne",
+    "_status": "active",
+    "_brand_name": "RIU Hotels & Resorts",
+    "_brand_tier": 7.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/cso1zx2",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true,
+      "gym": true,
+      "water_sports": true,
+      "adults_only": true,
+      "all_inclusive": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ066",
+    "hotel_name": "Riu Creole - All Inclusive",
+    "overall_rating": 7.7,
+    "location_score": 8.4,
+    "amenity_score": 7.7,
+    "brand_score": 7.5,
+    "value_score": 8.7,
+    "review_count": 1680,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 250,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Le Morne",
+    "_status": "active",
+    "_brand_name": "RIU Hotels & Resorts",
+    "_brand_tier": 7.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/GGjrxUO",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true,
+      "gym": true,
+      "kids_club": true,
+      "water_sports": true,
+      "all_inclusive": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ067",
+    "hotel_name": "Paradya Beach Apartments",
+    "overall_rating": 7.1,
+    "location_score": 7.5,
+    "amenity_score": 6.8,
+    "brand_score": 4.0,
+    "value_score": 8.8,
+    "review_count": 160,
+    "avg_rating": 4.1,
+    "price_per_night_usd": 95,
+    "star_rating": 3,
+    "property_type": "hotel",
+    "region": "Flic En Flac",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 4.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/CMRpW2G",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ068",
+    "hotel_name": "Tekoma Boutik Hotel Rodrigues",
+    "overall_rating": 8.0,
+    "location_score": 8.5,
+    "amenity_score": 7.8,
+    "brand_score": 6.5,
+    "value_score": 8.5,
+    "review_count": 280,
+    "avg_rating": 4.4,
+    "price_per_night_usd": 280,
+    "star_rating": 4,
+    "property_type": "boutique",
+    "region": "Rodrigues",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 6.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/5re9hnq",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_beach": true,
+      "fine_dining": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ069",
+    "hotel_name": "Villa Anakao",
+    "overall_rating": 7.3,
+    "location_score": 6.8,
+    "amenity_score": 7.2,
+    "brand_score": 5.8,
+    "value_score": 8.5,
+    "review_count": 150,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 140,
+    "star_rating": 3,
+    "property_type": "boutique",
+    "region": "Port Louis",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 5.8,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/Zr5VwHi",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "fine_dining": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ070",
+    "hotel_name": "C Mauritius - All Inclusive",
+    "overall_rating": 7.8,
+    "location_score": 8.0,
+    "amenity_score": 7.8,
+    "brand_score": 7.0,
+    "value_score": 9.0,
+    "review_count": 860,
+    "avg_rating": 4.3,
+    "price_per_night_usd": 260,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Palmar",
+    "_status": "active",
+    "_brand_name": "C Resorts",
+    "_brand_tier": 7.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/ZxjCV8n",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true,
+      "gym": true,
+      "kids_club": true,
+      "water_sports": true,
+      "all_inclusive": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ071",
+    "hotel_name": "Veranda Tamarin Hotel & Spa",
+    "overall_rating": 7.8,
+    "location_score": 7.9,
+    "amenity_score": 7.7,
+    "brand_score": 7.0,
+    "value_score": 8.2,
+    "review_count": 440,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 240,
+    "star_rating": 4,
+    "property_type": "hotel",
+    "region": "Tamarin",
+    "_status": "active",
+    "_brand_name": "Attitude Hotels",
+    "_brand_tier": 7.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/r4HUQai",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "pool": true,
+      "fine_dining": true,
+      "water_sports": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ072",
+    "hotel_name": "La Mariposa",
+    "overall_rating": 7.2,
+    "location_score": 7.6,
+    "amenity_score": 6.8,
+    "brand_score": 4.5,
+    "value_score": 8.8,
+    "review_count": 120,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 110,
+    "star_rating": 3,
+    "property_type": "boutique",
+    "region": "Black River",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 4.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/haoiw4l",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ073",
+    "hotel_name": "Bel Azur Beach Residence with LOV",
+    "overall_rating": 7.5,
+    "location_score": 7.8,
+    "amenity_score": 7.2,
+    "brand_score": 5.5,
+    "value_score": 8.6,
+    "review_count": 190,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 170,
+    "star_rating": 3,
+    "property_type": "hotel",
+    "region": "Pointe Aux Piments",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 5.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/K3vfecl",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_beach": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ074",
+    "hotel_name": "Residence Les Bambous",
+    "overall_rating": 6.8,
+    "location_score": 7.0,
+    "amenity_score": 6.2,
+    "brand_score": 3.5,
+    "value_score": 9.2,
+    "review_count": 80,
+    "avg_rating": 4.0,
+    "price_per_night_usd": 65,
+    "star_rating": 2,
+    "property_type": "hotel",
+    "region": "Mahebourg",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 3.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/C2C8zEm",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ075",
+    "hotel_name": "Toparadis Guest House",
+    "overall_rating": 6.5,
+    "location_score": 7.2,
+    "amenity_score": 5.8,
+    "brand_score": 3.0,
+    "value_score": 9.0,
+    "review_count": 60,
+    "avg_rating": 4.1,
+    "price_per_night_usd": 45,
+    "star_rating": 2,
+    "property_type": "hotel",
+    "region": "Grand Baie",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 3.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/4zbtwrS",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ076",
+    "hotel_name": "Residence Thalassa",
+    "overall_rating": 7.3,
+    "location_score": 7.8,
+    "amenity_score": 7.0,
+    "brand_score": 5.0,
+    "value_score": 8.5,
+    "review_count": 140,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 150,
+    "star_rating": 3,
+    "property_type": "hotel",
+    "region": "Belle Mare",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 5.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/oxfpqlx",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_beach": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ077",
+    "hotel_name": "Preskil Island Resort",
+    "overall_rating": 7.9,
+    "location_score": 8.2,
+    "amenity_score": 7.7,
+    "brand_score": 7.0,
+    "value_score": 8.1,
+    "review_count": 520,
+    "avg_rating": 4.3,
+    "price_per_night_usd": 280,
+    "star_rating": 4,
+    "property_type": "resort",
+    "region": "Mahebourg",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 7.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/zdh1uKa",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "private_beach": true,
+      "pool": true,
+      "fine_dining": true,
+      "water_sports": true,
+      "kids_club": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ078",
+    "hotel_name": "Ocean V Hotel",
+    "overall_rating": 7.6,
+    "location_score": 7.7,
+    "amenity_score": 7.5,
+    "brand_score": 6.0,
+    "value_score": 8.3,
+    "review_count": 240,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 180,
+    "star_rating": 4,
+    "property_type": "boutique",
+    "region": "Grand Baie",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 6.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/8skpg9m",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "spa": true,
+      "fine_dining": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ079",
+    "hotel_name": "La Maison d'Ete",
+    "overall_rating": 7.2,
+    "location_score": 7.5,
+    "amenity_score": 6.8,
+    "brand_score": 4.5,
+    "value_score": 9.0,
+    "review_count": 100,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 110,
+    "star_rating": 3,
+    "property_type": "boutique",
+    "region": "Poste Lafayette",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 4.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/bVR1nxa",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ080",
+    "hotel_name": "Karats Boutique Hotel & Spa",
+    "overall_rating": 7.7,
+    "location_score": 7.9,
+    "amenity_score": 7.6,
+    "brand_score": 6.0,
+    "value_score": 8.3,
+    "review_count": 160,
+    "avg_rating": 4.3,
+    "price_per_night_usd": 190,
+    "star_rating": 4,
+    "property_type": "boutique",
+    "region": "Calodyne",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 6.0,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/S2eGrVJ",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "spa": true,
+      "pool": true,
+      "fine_dining": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ081",
+    "hotel_name": "Wonders Beach Boutique Hotel",
+    "overall_rating": 7.5,
+    "location_score": 7.8,
+    "amenity_score": 7.3,
+    "brand_score": 5.5,
+    "value_score": 8.5,
+    "review_count": 120,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 160,
+    "star_rating": 3,
+    "property_type": "boutique",
+    "region": "Mont Choisy",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 5.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/DIaKcQR",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_beach": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ082",
+    "hotel_name": "Ocean's Creek Beach Hotel Mauritius",
+    "overall_rating": 7.5,
+    "location_score": 7.7,
+    "amenity_score": 7.3,
+    "brand_score": 5.5,
+    "value_score": 8.5,
+    "review_count": 140,
+    "avg_rating": 4.1,
+    "price_per_night_usd": 160,
+    "star_rating": 3,
+    "property_type": "hotel",
+    "region": "Port Chambly",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 5.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/VgysVuc",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_beach": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ083",
+    "hotel_name": "Les Estivales Beachfront Suites & Penthouses with LOV",
+    "overall_rating": 7.5,
+    "location_score": 7.8,
+    "amenity_score": 7.3,
+    "brand_score": 5.5,
+    "value_score": 8.5,
+    "review_count": 200,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 180,
+    "star_rating": 3,
+    "property_type": "hotel",
+    "region": "Pointe Aux Piments",
+    "_status": "active",
+    "_brand_name": null,
+    "_brand_tier": 5.5,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/EpvV5Gc",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_beach": true
+    },
+    "_admin_managed": true
+  },
+  {
+    "hotel_id": "MQ084",
+    "hotel_name": "C Rodrigues Mourouk",
+    "overall_rating": 7.6,
+    "location_score": 8.0,
+    "amenity_score": 7.3,
+    "brand_score": 6.2,
+    "value_score": 8.8,
+    "review_count": 180,
+    "avg_rating": 4.2,
+    "price_per_night_usd": 200,
+    "star_rating": 3,
+    "property_type": "resort",
+    "region": "Rodrigues",
+    "_status": "active",
+    "_brand_name": "C Resorts",
+    "_brand_tier": 6.2,
+    "_affiliate_links": [
+      {
+        "booking_url": "https://expedia.com/affiliate/j5diTqo",
+        "provider": "expedia",
+        "commission_rate": 0.05,
+        "commission_tier": "standard"
+      }
+    ],
+    "amenities": {
+      "pool": true,
+      "private_beach": true,
+      "fine_dining": true
+    },
+    "_admin_managed": true
   }
 ]
