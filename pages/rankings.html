@@ -106,6 +106,7 @@
       background: var(--gold-glow); transition: background 0.15s;
     }
     .rk-card__review:hover { background: rgba(201,168,76,0.12); }
+    .rk-card__nophoto { position: absolute; inset: 0; background: linear-gradient(155deg, #0d1a2a 0%, #142235 45%, #0a1420 100%); }
   </style>
 </head>
 <body>
@@ -490,7 +491,7 @@
       <!-- #22 LUX* Le Morne -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ049/photo_01.png" alt="LUX* Le Morne" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#22</div>
           <div class="rk-card__score">8.6 &#9733;</div>
         </div>
@@ -522,7 +523,7 @@
       <!-- #24 Heritage Le Telfair Golf & Wellness Resort -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ040/photo_01.png" alt="Heritage Le Telfair Golf &amp; Wellness Resort" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#24</div>
           <div class="rk-card__score">8.6 &#9733;</div>
         </div>
@@ -858,7 +859,7 @@
       <!-- #45 Constance Sakoa Boutik -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ058/photo_01.png" alt="Constance Sakoa Boutik" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#45</div>
           <div class="rk-card__score">8.1 &#9733;</div>
         </div>
@@ -874,7 +875,7 @@
       <!-- #46 Radisson Blu Azuri Resort & Spa -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ061/photo_01.png" alt="Radisson Blu Azuri Resort &amp; Spa" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#46</div>
           <div class="rk-card__score">8.1 &#9733;</div>
         </div>
@@ -890,7 +891,7 @@
       <!-- #47 OUTRIGGER Mauritius Beach Resort -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ038/photo_01.png" alt="OUTRIGGER Mauritius Beach Resort" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#47</div>
           <div class="rk-card__score">8.1 &#9733;</div>
         </div>
@@ -1002,7 +1003,7 @@
       <!-- #54 Tekoma Boutik Hotel Rodrigues -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ068/photo_01.png" alt="Tekoma Boutik Hotel Rodrigues" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#54</div>
           <div class="rk-card__score">8.0 &#9733;</div>
         </div>
@@ -1114,7 +1115,7 @@
       <!-- #61 Preskil Island Resort -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ077/photo_01.png" alt="Preskil Island Resort" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#61</div>
           <div class="rk-card__score">7.9 &#9733;</div>
         </div>
@@ -1370,7 +1371,7 @@
       <!-- #77 Bon Azur Beachfront Suites & Penthouses with LOV -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ057/photo_01.png" alt="Bon Azur Beachfront Suites &amp; Penthouses with LOV" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#77</div>
           <div class="rk-card__score">7.6 &#9733;</div>
         </div>
@@ -1386,7 +1387,7 @@
       <!-- #78 C Rodrigues Mourouk -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ084/photo_01.png" alt="C Rodrigues Mourouk" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#78</div>
           <div class="rk-card__score">7.6 &#9733;</div>
         </div>
@@ -1482,7 +1483,7 @@
       <!-- #84 Bel Azur Beach Residence with LOV -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ073/photo_01.png" alt="Bel Azur Beach Residence with LOV" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#84</div>
           <div class="rk-card__score">7.5 &#9733;</div>
         </div>
@@ -1546,7 +1547,7 @@
       <!-- #88 Hennessy Park Hotel -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ059/photo_01.png" alt="Hennessy Park Hotel" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#88</div>
           <div class="rk-card__score">7.2 &#9733;</div>
         </div>
@@ -1578,7 +1579,7 @@
       <!-- #90 La Maison d'Ete -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ079/photo_01.png" alt="La Maison d'Ete" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#90</div>
           <div class="rk-card__score">7.2 &#9733;</div>
         </div>
@@ -1594,7 +1595,7 @@
       <!-- #91 Paradya Beach Apartments -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ067/photo_01.png" alt="Paradya Beach Apartments" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#91</div>
           <div class="rk-card__score">7.1 &#9733;</div>
         </div>
@@ -1626,7 +1627,7 @@
       <!-- #93 Residence Les Bambous -->
       <article class="rk-card">
         <div class="rk-card__photo">
-          <img src="/assets/images/hotels/MQ074/photo_01.png" alt="Residence Les Bambous" loading="lazy">
+          <div class="rk-card__nophoto" aria-hidden="true"></div>
           <div class="rk-card__rank">#93</div>
           <div class="rk-card__score">6.8 &#9733;</div>
         </div>

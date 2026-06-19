@@ -796,13 +796,18 @@ function renderHotelPhotoCard(block) {
   const overall    = scores.overall_score != null ? Number(scores.overall_score).toFixed(1) : null;
   const hotelSlug  = _slugify(hotelName);
   const photoUrl   = `/assets/images/hotels/${encodeURIComponent(hotel_id)}/photo_01.png`;
+  const pngFsPath  = path.join(__dirname, 'assets', 'images', 'hotels', hotel_id, 'photo_01.png');
+  const hasPhoto   = fs.existsSync(pngFsPath);
+  const photoHtml  = hasPhoto
+    ? `    <img src="${photoUrl}" alt="${esc(hotelName)}" loading="lazy" decoding="async">`
+    : `    <div class="persona-photo-card__nophoto" aria-hidden="true"></div>`;
   const bookingHtml = (cta_eligible && booking_url)
     ? `    <a href="${esc(_safeUrl(booking_url))}" rel="noopener sponsored" class="persona-photo-card__book">Book &rarr;</a>`
     : '';
   return [
     `<article class="persona-photo-card" id="hotel-${esc(hotel_id)}">`,
     `  <div class="persona-photo-card__photo">`,
-    `    <img src="${photoUrl}" alt="${esc(hotelName)}" loading="lazy" decoding="async">`,
+    photoHtml,
     `    <div class="persona-photo-card__rank">#${rank}</div>`,
     overall ? `    <div class="persona-photo-card__score">${overall} &#9733;</div>` : '',
     `  </div>`,
@@ -1565,6 +1570,7 @@ function generateHead(meta, baseUrl, siteName, lang, schemaScripts) {
     `    .persona-photo-card__photo{position:relative;padding-top:68%;overflow:hidden;background:var(--deep-navy)}`,
     `    .persona-photo-card__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease-out)}`,
     `    .persona-photo-card:hover .persona-photo-card__photo img{transform:scale(1.06)}`,
+    `    .persona-photo-card__nophoto{position:absolute;inset:0;background:linear-gradient(155deg,#0d1a2a 0%,#142235 45%,#0a1420 100%)}`,
     `    .persona-photo-card__rank{position:absolute;top:11px;left:11px;z-index:1;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:800;color:#fff;background:rgba(8,15,35,.72);border-radius:7px;padding:4px 10px;backdrop-filter:blur(4px);text-shadow:0 1px 4px rgba(0,0,0,.6)}`,
     `    .persona-photo-card__score{position:absolute;top:11px;right:11px;z-index:1;background:rgba(8,15,35,.82);border:1px solid var(--border-gold);color:var(--gold);font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:6px;backdrop-filter:blur(4px)}`,
     `    .persona-photo-card__body{padding:15px 16px 17px;display:flex;flex-direction:column;flex:1}`,
