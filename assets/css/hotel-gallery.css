@@ -20,7 +20,7 @@
   transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── Aspect ratios (standalone; overridden inside mosaic cells) ──────────── */
+/* ── Aspect ratios (standalone, outside mosaic) ──────────────────────────── */
 .hotel-img--hero    { aspect-ratio: 3 / 2; }
 .hotel-img--gallery { aspect-ratio: 4 / 3; }
 .hotel-img--thumb   { aspect-ratio: 4 / 3; }
@@ -34,9 +34,9 @@
   background:
     linear-gradient(
       155deg,
-      hsl(var(--hi-hue, 200), 42%, 11%) 0%,
-      hsl(var(--hi-hue, 200), 58%, 17%) 45%,
-      hsl(var(--hi-hue, 200), 35%,  9%) 100%
+      hsl(var(--hi-hue, 210), 42%, 11%) 0%,
+      hsl(var(--hi-hue, 210), 58%, 17%) 45%,
+      hsl(var(--hi-hue, 210), 35%,  9%) 100%
     );
 }
 
@@ -92,26 +92,47 @@
   font-weight: 500;
 }
 
-/* ── Photo Mosaic (hotel detail pages) ──────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ── PHOTO MOSAIC ─────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*
+   Desktop layout:
+   ┌────────────────────────────────┬─────────────┬─────────────┐  ↕ 260px
+   │                                │  photo_02   │  photo_04   │
+   │         photo_01 (hero)        ├─────────────┼─────────────┤  ↕ 260px
+   │                                │  photo_03   │  ⊞ View all │
+   └────────────────────────────────┴─────────────┴─────────────┘
+*/
 
 .hotel-mosaic {
   display: grid;
   grid-template-columns: 56fr 22fr 22fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 260px 260px;       /* fixed px = no fr-unit height hell */
   gap: 8px;
-  height: 520px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 28px;
 }
 
+/* ── Cell (each photo slot) ─────────────────────────────────────────────── */
 .hotel-mosaic__cell {
-  all: unset;
+  /* Targeted button reset — do NOT use all:unset (breaks grid items) */
+  -webkit-appearance: none;
+  appearance: none;
+  background: #0a1520;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  /* Layout */
   display: block;
-  cursor: pointer;
-  position: relative;
+  position: relative;        /* positioned ancestor for absolute children */
   overflow: hidden;
   border-radius: 8px;
+  cursor: pointer;
+  min-width: 0;              /* grid item overflow guard */
+  min-height: 0;             /* grid item overflow guard */
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -121,32 +142,38 @@
   border-radius: 14px;
 }
 
-/* Image / placeholder fill the cell — override standalone aspect-ratio */
-.hotel-mosaic__cell .hotel-img,
-.hotel-mosaic__cell .hotel-img--hero,
-.hotel-mosaic__cell .hotel-img--gallery,
-.hotel-mosaic__cell .hotel-img--placeholder {
+/* ── Figure fills the cell via absolute inset ──────────────────────────── */
+/*   This is the key fix: position:absolute;inset:0 is far more reliable
+     than height:100% which requires a fully resolved height on the parent. */
+.hotel-mosaic__cell figure,
+.hotel-mosaic__cell .hotel-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
+  margin: 0;                 /* override browser figure margin (1em 40px!) */
+  padding: 0;
   aspect-ratio: unset;
-  border-radius: inherit;
+  border-radius: 0;          /* cell's border-radius + overflow:hidden handles it */
+  display: block;
+  overflow: hidden;
+  background: #0a1520;
 }
 
+/* Image covers the figure */
 .hotel-mosaic__cell .hotel-img__real {
-  height: 100%;
+  position: absolute;        /* remove from flow; inset fills parent */
+  inset: 0;
   width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: inherit;
   display: block;
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Hover zoom */
-.hotel-mosaic__cell:hover .hotel-img__real {
-  transform: scale(1.07);
-}
-
-.hotel-mosaic__cell--hero:hover .hotel-img__real {
-  transform: scale(1.04);
-}
+.hotel-mosaic__cell:hover .hotel-img__real      { transform: scale(1.07); }
+.hotel-mosaic__cell--hero:hover .hotel-img__real { transform: scale(1.04); }
 
 /* Focus ring */
 .hotel-mosaic__cell:focus-visible {
@@ -155,7 +182,7 @@
   z-index: 2;
 }
 
-/* Caption overlaid at the bottom of the hero */
+/* ── Caption (overlaid on hero bottom) ──────────────────────────────────── */
 .hotel-mosaic__caption {
   position: absolute;
   bottom: 0;
@@ -168,10 +195,10 @@
   color: rgba(245, 230, 200, 0.85);
   background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
   pointer-events: none;
-  border-radius: 0 0 14px 14px;
+  z-index: 1;                /* above the absolute figure */
 }
 
-/* "View all photos" on the last thumbnail cell */
+/* ── "View all photos" overlay on last thumbnail ────────────────────────── */
 .hotel-mosaic__all-cta {
   position: absolute;
   inset: 0;
@@ -180,7 +207,7 @@
   align-items: center;
   justify-content: center;
   gap: 7px;
-  background: rgba(6, 12, 26, 0.6);
+  background: rgba(6, 12, 26, 0.62);
   color: rgba(245, 230, 200, 0.95);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.68rem;
@@ -189,11 +216,11 @@
   text-transform: uppercase;
   pointer-events: none;
   transition: background 0.22s;
-  border-radius: inherit;
+  z-index: 1;                /* above the absolute figure */
 }
 
 .hotel-mosaic__cell--last:hover .hotel-mosaic__all-cta {
-  background: rgba(6, 12, 26, 0.32);
+  background: rgba(6, 12, 26, 0.3);
 }
 
 .hotel-mosaic__all-cta svg {
@@ -205,12 +232,11 @@
 
 /* ── Mosaic responsive ───────────────────────────────────────────────────── */
 
-/* Tablet: hero takes full width, 4 thumbs fill a 2×2 below */
+/* Tablet (≤900px): hero full-width 16:9, then 2×2 grid below */
 @media (max-width: 900px) {
   .hotel-mosaic {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    height: auto;
     gap: 6px;
     padding: 0 16px;
   }
@@ -219,48 +245,32 @@
     grid-column: 1 / 3;
     grid-row: 1;
     border-radius: 12px;
+    aspect-ratio: 16 / 9;    /* cell sizes itself; figure inside uses absolute */
   }
 
-  /* Hero becomes 16:9 on tablet */
-  .hotel-mosaic__cell--hero .hotel-img,
-  .hotel-mosaic__cell--hero .hotel-img--hero,
-  .hotel-mosaic__cell--hero .hotel-img--placeholder {
-    aspect-ratio: 16 / 9;
-    height: auto;
+  .hotel-mosaic__cell:not(.hotel-mosaic__cell--hero) {
+    aspect-ratio: 4 / 3;     /* each thumbnail self-sizes */
+    border-radius: 8px;
   }
-
-  .hotel-mosaic__caption { border-radius: 0 0 12px 12px; }
-
-  /* Thumbnails become 4:3 tiles */
-  .hotel-mosaic__cell:not(.hotel-mosaic__cell--hero) .hotel-img,
-  .hotel-mosaic__cell:not(.hotel-mosaic__cell--hero) .hotel-img--gallery,
-  .hotel-mosaic__cell:not(.hotel-mosaic__cell--hero) .hotel-img--placeholder {
-    aspect-ratio: 4 / 3;
-    height: auto;
-  }
-
-  /* Hero's real image needs explicit height:auto inside aspect-ratio context */
-  .hotel-mosaic__cell--hero .hotel-img__real { height: 100%; }
-  .hotel-mosaic__cell:not(.hotel-mosaic__cell--hero) .hotel-img__real { height: 100%; }
 }
 
-/* Small mobile */
+/* Mobile (≤560px): tighten spacing */
 @media (max-width: 560px) {
   .hotel-mosaic {
     gap: 4px;
     padding: 0 12px;
   }
 
-  .hotel-mosaic__cell--hero { border-radius: 10px; }
-  .hotel-mosaic__caption    { border-radius: 0 0 10px 10px; }
-
+  .hotel-mosaic__cell--hero   { border-radius: 10px; }
   .hotel-mosaic__cell:not(.hotel-mosaic__cell--hero) { border-radius: 6px; }
 
   .hotel-mosaic__all-cta { font-size: 0.63rem; gap: 5px; }
   .hotel-mosaic__all-cta svg { width: 17px; height: 17px; }
 }
 
-/* ── Hotel card thumbnail (ranking / persona pages) ──────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ── HOTEL CARD THUMBNAIL (ranking / persona pages) ─────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════ */
 
 .hotel-card__thumb {
   margin: -28px -32px 20px;
@@ -279,13 +289,12 @@
 .hotel-card__thumb .hotel-img__real { border-radius: 0; }
 
 @media (max-width: 640px) {
-  .hotel-card__thumb {
-    margin: -20px -16px 16px;
-    height: 160px;
-  }
+  .hotel-card__thumb { margin: -20px -16px 16px; height: 160px; }
 }
 
-/* ── Legacy gallery strip (kept for any pages not yet rebuilt) ───────────── */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ── LEGACY GALLERY STRIP (kept for any cached pages) ───────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════ */
 
 .gallery-strip {
   max-width: 1200px;
@@ -337,7 +346,9 @@
   .gallery-strip__inner { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 }
 
-/* ── Lightbox ────────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ── LIGHTBOX ────────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════ */
 
 .hotel-lightbox {
   position: fixed;
@@ -354,10 +365,7 @@
   transition: opacity 0.25s, visibility 0.25s;
 }
 
-.hotel-lightbox.is-open {
-  opacity: 1;
-  visibility: visible;
-}
+.hotel-lightbox.is-open { opacity: 1; visibility: visible; }
 
 .hotel-lightbox__stage {
   position: relative;
@@ -381,12 +389,21 @@
 }
 
 .hotel-lightbox__frame .hotel-img {
+  position: absolute;
+  inset: 0;
   height: 100%;
   aspect-ratio: unset;
   border-radius: 0;
 }
 
-.hotel-lightbox__frame .hotel-img__real { border-radius: 0; }
+.hotel-lightbox__frame .hotel-img__real {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
 
 .hotel-lightbox__caption {
   font-size: .85rem;
@@ -484,6 +501,7 @@
 }
 
 .hotel-lightbox__thumb-btn .hotel-img {
+  position: static;          /* override mosaic absolute rule for lightbox thumbs */
   border-radius: 0;
   width: 100%;
   height: 100%;
