@@ -53,8 +53,12 @@
   border-radius: 14px 0 0 14px;
   -webkit-tap-highlight-color: transparent;
 }
+.hg[data-count="1"] {
+  grid-template-rows: 480px;
+}
 .hg[data-count="1"] .hg__hero {
   grid-column: 1 / -1;
+  grid-row: 1;
   border-radius: 14px;
 }
 

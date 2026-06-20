@@ -437,89 +437,31 @@ function renderPhotoMosaic(hotelId, hotelName, region, outDir) {  // eslint-disa
   const imageData = getHotelImages(hotelId);
   const photos    = discoverPhotos(hotelId, hotelName, region, imageData);
 
-  // No images → no gallery (hotel page renders without gallery section)
+  // No images → no gallery
   if (photos.length === 0) return '';
 
-  const totalPhotos = photos.length;
   const heroPhoto   = photos[0];
-  const thumbPhotos = photos.slice(1, 5); // up to 4 thumbnails
-  const shownCount  = 1 + thumbPhotos.length;
   const heroCaption = imageData && imageData.hero && imageData.hero.caption;
-
-  // ── Hero button ──────────────────────────────────────────────────────────
   const heroCaptionHtml = heroCaption
     ? `\n  <p class="hg-caption">${esc(heroCaption)}</p>`
     : '';
 
-  const heroBtn = [
-    `<button class="hg__hero" data-idx="0" data-hotel-id="${esc(hotelId)}" type="button"`,
-    `        aria-label="${esc('View photos of ' + hotelName)}">`,
-    `  <figure class="hg-img">`,
-    `    <img src="${esc(heroPhoto.webPath)}"`,
-    `         alt="${esc(heroPhoto.altText)}"`,
-    `         width="${heroPhoto.width}" height="${heroPhoto.height}"`,
-    `         loading="eager" decoding="async" fetchpriority="high"`,
-    `         class="hg-img__pic">`,
-    `  </figure>${heroCaptionHtml}`,
-    `</button>`,
-  ].join('\n');
-
-  // ── Thumbnail buttons ────────────────────────────────────────────────────
-  const thumbBtns = thumbPhotos.map((photo, i) => {
-    const isLast  = i === thumbPhotos.length - 1 && thumbPhotos.length === 4;
-    const classes = `hg__cell${isLast ? ' hg__cell--last' : ''}`;
-    const overlay = isLast
-      ? [
-          `  <span class="hg-more" aria-hidden="true">`,
-          `    ${GRID_SVG}`,
-          `    <span>Show all photos</span>`,
-          `  </span>`,
-        ].join('\n')
-      : '';
-
-    return [
-      `<button class="${classes}" data-idx="${photo.index}" data-hotel-id="${esc(hotelId)}" type="button"`,
-      `        aria-label="${esc('Photo ' + (photo.index + 1) + ' of ' + hotelName)}">`,
-      `  <figure class="hg-img">`,
-      `    <img src="${esc(photo.webPath)}"`,
-      `         alt="${esc(photo.altText)}"`,
-      `         width="${photo.width}" height="${photo.height}"`,
-      `         loading="lazy" decoding="async"`,
-      `         class="hg-img__pic">`,
-      `  </figure>`,
-      overlay,
-      `</button>`,
-    ].filter(Boolean).join('\n');
-  });
-
-  // ── Right-side grid (absent when hero-only) ──────────────────────────────
-  const gridHtml = thumbBtns.length > 0
-    ? [
-        `<div class="hg__grid" data-cells="${thumbBtns.length}">`,
-        thumbBtns.map(b => b.split('\n').map(l => '  ' + l).join('\n')).join('\n'),
-        `</div>`,
-      ].join('\n')
-    : '';
-
-  // ── "Show all photos" floating button (Airbnb-style, desktop only) ───────
-  const showAllBtn = totalPhotos >= 5
-    ? [
-        `<button class="hg__show-all" type="button" aria-label="Show all ${totalPhotos} photos">`,
-        `  ${GRID_SVG}`,
-        `  <span>Show all photos</span>`,
-        `</button>`,
-      ].join('\n')
-    : '';
-
-  // ── Assemble ─────────────────────────────────────────────────────────────
+  // Cover image only — full-width via data-count="1" CSS rule
   return [
-    `<section class="hg" data-hotel-id="${esc(hotelId)}" data-count="${shownCount}" data-total="${totalPhotos}"`,
-    `         aria-label="Photo gallery for ${esc(hotelName)}">`,
-    heroBtn.split('\n').map(l => '  ' + l).join('\n'),
-    gridHtml ? gridHtml.split('\n').map(l => '  ' + l).join('\n') : '',
-    showAllBtn ? showAllBtn.split('\n').map(l => '  ' + l).join('\n') : '',
+    `<section class="hg" data-hotel-id="${esc(hotelId)}" data-count="1" data-total="${photos.length}"`,
+    `         aria-label="Cover photo of ${esc(hotelName)}">`,
+    `  <button class="hg__hero" data-idx="0" data-hotel-id="${esc(hotelId)}" type="button"`,
+    `          aria-label="${esc('View cover photo of ' + hotelName)}">`,
+    `    <figure class="hg-img">`,
+    `      <img src="${esc(heroPhoto.webPath)}"`,
+    `           alt="${esc(heroPhoto.altText)}"`,
+    `           width="${heroPhoto.width}" height="${heroPhoto.height}"`,
+    `           loading="eager" decoding="async" fetchpriority="high"`,
+    `           class="hg-img__pic">`,
+    `    </figure>${heroCaptionHtml}`,
+    `  </button>`,
     `</section>`,
-  ].filter(l => l.trim() !== '').join('\n');
+  ].join('\n');
 }
 
 /**
