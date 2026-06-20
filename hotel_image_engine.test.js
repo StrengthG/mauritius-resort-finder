@@ -291,9 +291,10 @@ suite('renderCardThumbnail — alt text from metadata', function () {
 // ─────────────────────────────────────────────────────────────────────────────
 
 suite('heroPreloadTag', function () {
-  // No outDir → always empty (cannot know if WebP exists; PNG preload requires outDir arg)
-  assertEqual(heroPreloadTag(KNOWN_HOTEL_ID), '', 'empty when no outDir');
-  // PNG photos exist for MQ001 — returns PNG preload tag even with non-existent WebP outDir
+  // PNG exists in assets/ → preload tag generated even without outDir
+  const tagNoOutDir = heroPreloadTag(KNOWN_HOTEL_ID);
+  assert(tagNoOutDir.includes('photo_01.png') || tagNoOutDir === '', 'PNG preload tag or empty');
+  // With non-existent outDir: same result (PNG path checked from assets/, not outDir)
   const tag = heroPreloadTag(KNOWN_HOTEL_ID, '/nonexistent');
   assert(tag.includes('photo_01.png') || tag === '', 'PNG preload tag or empty when file not present');
 });

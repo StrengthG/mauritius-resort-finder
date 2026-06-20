@@ -317,100 +317,204 @@ function renderGalleryStrip(hotelId, hotelName, region, outDir) {
   ].join('\n');
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Photo discovery
+// ─────────────────────────────────────────────────────────────────────────────
+
 /**
- * Render the combined photo mosaic for a hotel detail page.
- * Layout: hero spans left column × full height; 2×2 grid of thumbnails fills the right.
- * Last thumbnail cell carries a "View all photos" overlay.
- * On tablet/mobile the hero becomes full-width and thumbnails drop into a 2×2 grid below.
+ * Discover all available PNG photos for a hotel, in order.
+ * Checks photo_01.png … photo_10.png; stops at first gap.
+ * Also falls back to hero.webp / gallery-N.webp if no PNGs exist.
  *
  * @param  {string} hotelId
  * @param  {string} hotelName
  * @param  {string} region
- * @param  {string} [outDir]
- * @returns {string} HTML
+ * @param  {Object} [imageData]  — from hotel-images.json
+ * @returns {Array<{webPath, altText, loading, index}>}
  */
-function renderPhotoMosaic(hotelId, hotelName, region, outDir) {
-  const imageData = getHotelImages(hotelId);
+function discoverPhotos(hotelId, hotelName, region, imageData) {
+  const photos = [];
+  const gallery = (imageData && imageData.gallery) || [];
 
-  // ── Hero cell (index 0) ──────────────────────────────────────────────────
-  const heroAlt     = (imageData && imageData.hero && imageData.hero.alt) ||
-                      `${hotelName} resort and pool, ${region}, Mauritius`;
-  const heroCaption = imageData && imageData.hero && imageData.hero.caption;
-  const heroFsP     = outDir ? heroFsPath(hotelId, outDir) : null;
-  const hasRealHero = heroFsP && fileExists(heroFsP);
-  const hasPngHero  = fileExists(heroPngFsPath(hotelId));
+  // Primary: photo_01.png … photo_10.png
+  for (let i = 1; i <= 10; i++) {
+    const num    = String(i).padStart(2, '0');
+    const fsPath = path.join(__dirname, 'assets', 'images', 'hotels', hotelId, `photo_${num}.png`);
+    if (!fileExists(fsPath)) break;
 
-  let heroFig;
-  if (hasRealHero) {
-    heroFig = renderPicture(heroWebPath(hotelId), heroAlt, HERO_W, HERO_H, 'eager', 'hotel-img--hero');
-  } else if (hasPngHero) {
-    heroFig = renderPngImage(heroPngWebPath(hotelId), heroAlt, HERO_W, HERO_H, 'eager', 'hotel-img--hero');
-  } else {
-    heroFig = renderPlaceholder(hotelId, hotelName, region, 'hero', heroAlt);
+    const meta    = i === 1
+      ? (imageData && imageData.hero) || {}
+      : gallery[i - 2] || {};
+    const altText = meta.alt ||
+      (i === 1
+        ? `${hotelName} resort, ${region}, Mauritius`
+        : `${hotelName} gallery photo ${i}, ${region}, Mauritius`);
+
+    photos.push({
+      webPath:  `/assets/images/hotels/${hotelId}/photo_${num}.png`,
+      altText,
+      loading:  i === 1 ? 'eager' : 'lazy',
+      width:    i === 1 ? HERO_W : GALLERY_W,
+      height:   i === 1 ? HERO_H : GALLERY_H,
+      index:    i - 1, // 0-based index for lightbox
+    });
   }
 
-  const heroCell = [
-    `<button class="hotel-mosaic__cell hotel-mosaic__cell--hero"`,
-    `        data-gallery-index="0"`,
-    `        data-hotel-id="${esc(hotelId)}"`,
-    `        aria-label="${esc('View photos of ' + hotelName)}"`,
-    `        type="button">`,
-    heroFig.split('\n').map(l => '  ' + l).join('\n'),
-    heroCaption ? `  <p class="hotel-mosaic__caption">${esc(heroCaption)}</p>` : '',
-    `</button>`,
-  ].filter(l => l.trim() !== '').join('\n');
-
-  // ── Gallery cells (indices 1–4) ──────────────────────────────────────────
-  const gallery = imageData ? (imageData.gallery || []) : [];
-  const viewAllSvg =
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">` +
-    `<rect x="1" y="1" width="10" height="10" rx="2"/>` +
-    `<rect x="13" y="1" width="10" height="10" rx="2"/>` +
-    `<rect x="1" y="13" width="10" height="10" rx="2"/>` +
-    `<rect x="13" y="13" width="10" height="10" rx="2"/>` +
-    `</svg>`;
-
-  const galleryCells = [];
-  for (let i = 1; i <= GALLERY_COUNT; i++) {
-    const meta    = gallery[i - 1] || {};
-    const altText = meta.alt || `${hotelName} gallery photo ${i}, ${region}, Mauritius`;
-    const fsP     = outDir ? galleryFsPath(hotelId, i, outDir) : null;
-    const hasReal = fsP && fileExists(fsP);
-    const hasPng  = fileExists(galleryPngFsPath(hotelId, i));
-
-    let figHtml;
-    if (hasReal) {
-      figHtml = renderPicture(galleryWebPath(hotelId, i), altText, GALLERY_W, GALLERY_H, 'lazy', 'hotel-img--gallery');
-    } else if (hasPng) {
-      figHtml = renderPngImage(galleryPngWebPath(hotelId, i), altText, GALLERY_W, GALLERY_H, 'lazy', 'hotel-img--gallery');
-    } else {
-      figHtml = renderPlaceholder(hotelId, hotelName, region, 'gallery', altText);
+  // Fallback: hero.webp / gallery-N.webp
+  if (photos.length === 0) {
+    const heroFsP = path.join(__dirname, 'assets', 'images', 'hotels', hotelId, 'hero.webp');
+    if (fileExists(heroFsP)) {
+      const heroAlt = (imageData && imageData.hero && imageData.hero.alt) ||
+                      `${hotelName} resort, ${region}, Mauritius`;
+      photos.push({
+        webPath: heroWebPath(hotelId),
+        altText: heroAlt,
+        loading: 'eager',
+        width:   HERO_W,
+        height:  HERO_H,
+        index:   0,
+      });
+      for (let i = 1; i <= GALLERY_COUNT; i++) {
+        const fsP = path.join(__dirname, 'assets', 'images', 'hotels', hotelId, `gallery-${i}.webp`);
+        if (!fileExists(fsP)) continue;
+        const meta    = gallery[i - 1] || {};
+        const altText = meta.alt || `${hotelName} gallery photo ${i + 1}, ${region}, Mauritius`;
+        photos.push({
+          webPath: galleryWebPath(hotelId, i),
+          altText,
+          loading: 'lazy',
+          width:   GALLERY_W,
+          height:  GALLERY_H,
+          index:   i,
+        });
+      }
     }
+  }
 
-    const isLast   = (i === GALLERY_COUNT);
-    const btnClass = `hotel-mosaic__cell${isLast ? ' hotel-mosaic__cell--last' : ''}`;
-    const overlay  = isLast
-      ? `  <span class="hotel-mosaic__all-cta" aria-hidden="true">${viewAllSvg} View all photos</span>`
+  return photos;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SVG icons
+// ─────────────────────────────────────────────────────────────────────────────
+
+const GRID_SVG =
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="currentColor" aria-hidden="true">` +
+  `<rect x="1" y="1" width="9" height="9" rx="1.5"/>` +
+  `<rect x="12" y="1" width="9" height="9" rx="1.5"/>` +
+  `<rect x="1" y="12" width="9" height="9" rx="1.5"/>` +
+  `<rect x="12" y="12" width="9" height="9" rx="1.5"/>` +
+  `</svg>`;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Luxury Gallery — Airbnb-style (60 % hero / 40 % 2×2 thumbnails)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Render the premium hotel gallery for a hotel detail page.
+ *
+ * Desktop layout:
+ *   ┌──────────────────────┬──────────┬──────────┐  ↕ 260px
+ *   │                      │  photo2  │  photo3  │
+ *   │      hero (photo1)   ├──────────┼──────────┤  ↕ 260px
+ *   │       60% width      │  photo4  │  photo5⊞ │
+ *   └──────────────────────┴──────────┴──────────┘
+ *
+ * Mobile: swipeable horizontal carousel with snap scrolling.
+ *
+ * @param  {string} hotelId
+ * @param  {string} hotelName
+ * @param  {string} region
+ * @param  {string} [outDir]   — unused (kept for API compat)
+ * @returns {string} HTML (empty string if no images available)
+ */
+function renderPhotoMosaic(hotelId, hotelName, region, outDir) {  // eslint-disable-line no-unused-vars
+  const imageData = getHotelImages(hotelId);
+  const photos    = discoverPhotos(hotelId, hotelName, region, imageData);
+
+  // No images → no gallery (hotel page renders without gallery section)
+  if (photos.length === 0) return '';
+
+  const totalPhotos = photos.length;
+  const heroPhoto   = photos[0];
+  const thumbPhotos = photos.slice(1, 5); // up to 4 thumbnails
+  const shownCount  = 1 + thumbPhotos.length;
+  const heroCaption = imageData && imageData.hero && imageData.hero.caption;
+
+  // ── Hero button ──────────────────────────────────────────────────────────
+  const heroCaptionHtml = heroCaption
+    ? `\n  <p class="hg-caption">${esc(heroCaption)}</p>`
+    : '';
+
+  const heroBtn = [
+    `<button class="hg__hero" data-idx="0" data-hotel-id="${esc(hotelId)}" type="button"`,
+    `        aria-label="${esc('View photos of ' + hotelName)}">`,
+    `  <figure class="hg-img">`,
+    `    <img src="${esc(heroPhoto.webPath)}"`,
+    `         alt="${esc(heroPhoto.altText)}"`,
+    `         width="${heroPhoto.width}" height="${heroPhoto.height}"`,
+    `         loading="eager" decoding="async" fetchpriority="high"`,
+    `         class="hg-img__pic">`,
+    `  </figure>${heroCaptionHtml}`,
+    `</button>`,
+  ].join('\n');
+
+  // ── Thumbnail buttons ────────────────────────────────────────────────────
+  const thumbBtns = thumbPhotos.map((photo, i) => {
+    const isLast  = i === thumbPhotos.length - 1 && thumbPhotos.length === 4;
+    const classes = `hg__cell${isLast ? ' hg__cell--last' : ''}`;
+    const overlay = isLast
+      ? [
+          `  <span class="hg-more" aria-hidden="true">`,
+          `    ${GRID_SVG}`,
+          `    <span>Show all photos</span>`,
+          `  </span>`,
+        ].join('\n')
       : '';
 
-    galleryCells.push([
-      `<button class="${esc(btnClass)}"`,
-      `        data-gallery-index="${i}"`,
-      `        data-hotel-id="${esc(hotelId)}"`,
-      `        aria-label="${esc('View photo: ' + altText)}"`,
-      `        type="button">`,
-      figHtml.split('\n').map(l => '  ' + l).join('\n'),
+    return [
+      `<button class="${classes}" data-idx="${photo.index}" data-hotel-id="${esc(hotelId)}" type="button"`,
+      `        aria-label="${esc('Photo ' + (photo.index + 1) + ' of ' + hotelName)}">`,
+      `  <figure class="hg-img">`,
+      `    <img src="${esc(photo.webPath)}"`,
+      `         alt="${esc(photo.altText)}"`,
+      `         width="${photo.width}" height="${photo.height}"`,
+      `         loading="lazy" decoding="async"`,
+      `         class="hg-img__pic">`,
+      `  </figure>`,
       overlay,
       `</button>`,
-    ].filter(l => l.trim() !== '').join('\n'));
-  }
+    ].filter(Boolean).join('\n');
+  });
 
+  // ── Right-side grid (absent when hero-only) ──────────────────────────────
+  const gridHtml = thumbBtns.length > 0
+    ? [
+        `<div class="hg__grid" data-cells="${thumbBtns.length}">`,
+        thumbBtns.map(b => b.split('\n').map(l => '  ' + l).join('\n')).join('\n'),
+        `</div>`,
+      ].join('\n')
+    : '';
+
+  // ── "Show all photos" floating button (Airbnb-style, desktop only) ───────
+  const showAllBtn = totalPhotos >= 5
+    ? [
+        `<button class="hg__show-all" type="button" aria-label="Show all ${totalPhotos} photos">`,
+        `  ${GRID_SVG}`,
+        `  <span>Show all photos</span>`,
+        `</button>`,
+      ].join('\n')
+    : '';
+
+  // ── Assemble ─────────────────────────────────────────────────────────────
   return [
-    `<div class="hotel-mosaic" data-hotel-id="${esc(hotelId)}" aria-label="Photo gallery for ${esc(hotelName)}">`,
-    heroCell.split('\n').map(l => '  ' + l).join('\n'),
-    galleryCells.map(c => c.split('\n').map(l => '  ' + l).join('\n')).join('\n'),
-    `</div>`,
-  ].join('\n');
+    `<section class="hg" data-hotel-id="${esc(hotelId)}" data-count="${shownCount}" data-total="${totalPhotos}"`,
+    `         aria-label="Photo gallery for ${esc(hotelName)}">`,
+    heroBtn.split('\n').map(l => '  ' + l).join('\n'),
+    gridHtml ? gridHtml.split('\n').map(l => '  ' + l).join('\n') : '',
+    showAllBtn ? showAllBtn.split('\n').map(l => '  ' + l).join('\n') : '',
+    `</section>`,
+  ].filter(l => l.trim() !== '').join('\n');
 }
 
 /**
@@ -453,12 +557,13 @@ function renderCardThumbnail(hotelId, hotelName, region, outDir) {
  * @returns {string} HTML or empty string
  */
 function heroPreloadTag(hotelId, outDir) {
-  if (!outDir) return '';
-  if (fileExists(heroFsPath(hotelId, outDir))) {
-    return `  <link rel="preload" as="image" href="${esc(heroWebPath(hotelId))}" type="image/webp">`;
-  }
+  // PNG-first (photo_01.png is the primary hero source)
   if (fileExists(heroPngFsPath(hotelId))) {
     return `  <link rel="preload" as="image" href="${esc(heroPngWebPath(hotelId))}" type="image/png">`;
+  }
+  // WebP fallback
+  if (outDir && fileExists(heroFsPath(hotelId, outDir))) {
+    return `  <link rel="preload" as="image" href="${esc(heroWebPath(hotelId))}" type="image/webp">`;
   }
   return '';
 }
