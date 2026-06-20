@@ -32,8 +32,6 @@
   position: relative;
 }
 
-.hg[data-count="1"] { grid-template-columns: 1fr; }
-
 /* ── Hero button ──────────────────────────────────────────────────────────── */
 .hg__hero {
   grid-column: 1;
@@ -54,7 +52,9 @@
   -webkit-tap-highlight-color: transparent;
 }
 .hg[data-count="1"] {
+  grid-template-columns: 1fr;
   grid-template-rows: 480px;
+  padding: 0;           /* no gutters — image fills the full container width */
 }
 .hg[data-count="1"] .hg__hero {
   grid-column: 1 / -1;
@@ -129,6 +129,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
   transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
 }
