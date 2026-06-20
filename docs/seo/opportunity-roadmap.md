@@ -99,8 +99,11 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~Hotel pages → comparison pages: 0 internal links~~ | ~~Internal linking~~ | ~~High~~ | ✅ Done 2026-06-16 (Run 51) — comparison_links injected into hotel editorial section for all 6 top hotels (5 comparison links each) |
 | ~~robots meta missing from all generated pages~~ | ~~Technical~~ | ~~Medium~~ | ✅ Done 2026-06-17 (Run 52) — added index, follow to generateHead() |
 | Persona page intro content (200 words/page) | Content depth | Medium | Pillar + 6 persona pages average 1,100 words; a short keyword-rich intro per page lifts depth without pipeline changes |
-| Add scuba guide links to Flic en Flac, Cap Malheureux, Island Day Trips pages | Internal linking | Medium | 3 contextual links to new scuba guide for topical authority |
-| Add review_count + avg_rating for 8 new ADM hotels | Data quality | High | Unlocks AggregateRating rich snippet on 8 hotel pages |
+| ~~Add scuba guide links to Flic en Flac, Cap Malheureux, Island Day Trips pages~~ | ~~Internal linking~~ | ~~Medium~~ | ✅ Done 2026-06-20 (Run 53) |
+| ~~og:image missing from all 52 static pages + homepage~~ | ~~Social/Technical~~ | ~~High~~ | ✅ Done 2026-06-20 (Run 53) — injected via site_builder.js; homepage patched directly |
+| ~~10 static page meta descriptions >160 chars~~ | ~~On-page~~ | ~~Medium~~ | ✅ Done 2026-06-20 (Run 53) — all ≤160 chars |
+| ~~Duplicate H1 on luxury travel guide + wellness retreat guide~~ | ~~On-page~~ | ~~Medium~~ | ✅ Done 2026-06-20 (Run 53) — guide-hero H1 → H2 on both pages |
+| Add review_count + avg_rating for 8 new ADM hotels | Data quality | High | Unlocks AggregateRating rich snippet on 8 hotel pages (ADM059–ADM065 + MQ011) |
 | Begin backlink outreach — Week 1 batch | Backlinks | High | `node seo_outreach_queue.js` — 1 broken link target (Rough Guides DA 83) |
 | Mauritius photography spots guide | Informational | Low | "best photography spots mauritius" |
 | Mauritius nightlife guide | Informational | Low | "nightlife mauritius" |
