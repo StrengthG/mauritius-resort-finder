@@ -1341,7 +1341,8 @@ function extractPageMeta(pageObject, options = {}) {
   } else {
     description = `${title}. ${personaTagline(persona)} Independently scored and ranked.`;
   }
-  if (description.length > 160) description = description.slice(0, 157) + '...';
+  // Truncate at 150 (not 160) to leave room for HTML entity expansion (&amp; etc.)
+  if (description.length > 150) description = description.slice(0, 147) + '...';
 
   // hotel_id for social card URL (hotel detail pages only)
   const hotelCard = blocks.find(b => b.block_type === 'hotel_card');
