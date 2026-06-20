@@ -1773,17 +1773,15 @@ function renderPage(pageObject, options = {}) {
   const siteHeader    = generateSiteHeader(siteName, baseUrl);
   const siteFooter    = generateSiteFooter(siteName, baseUrl);
 
-  // For hotel detail pages: resolve hero image and gallery strip using first hotel_card
-  let _heroImageHtml   = '';
-  let _galleryHtml     = '';
+  // For hotel detail pages: resolve the photo mosaic using the first hotel_card block
+  let _mosaicHtml = '';
   if (meta.pageType === 'hotel_detail' || meta.pageType === 'hotel') {
     const cardBlock = pageObject.blocks.find(b => b.block_type === 'hotel_card');
     if (cardBlock && cardBlock.payload) {
       const { hotel_id, hotel_data } = cardBlock.payload;
       const _hName   = (hotel_data && hotel_data.hotel_name) || hotel_id;
       const _hRegion = (hotel_data && hotel_data.region) || '';
-      _heroImageHtml = imageEngine.renderHeroImage(hotel_id, _hName, _hRegion, options.outDir);
-      _galleryHtml   = imageEngine.renderGalleryStrip(hotel_id, _hName, _hRegion, options.outDir);
+      _mosaicHtml = imageEngine.renderPhotoMosaic(hotel_id, _hName, _hRegion, options.outDir);
     }
   }
 
@@ -1821,9 +1819,9 @@ function renderPage(pageObject, options = {}) {
 
       let html = `<!-- block:${block.block_type} position:${block.position || index + 1} -->\n` +
                  renderBlock(block);
-      if (!_heroInjected && block.block_type === 'hotel_card' && (_heroImageHtml || _galleryHtml)) {
+      if (!_heroInjected && block.block_type === 'hotel_card' && _mosaicHtml) {
         _heroInjected = true;
-        html = _heroImageHtml + (_galleryHtml ? '\n' + _galleryHtml : '') + '\n\n' + html;
+        html = _mosaicHtml + '\n\n' + html;
       }
       renderedParts.push(html);
     } catch (err) {

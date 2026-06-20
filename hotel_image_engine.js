@@ -318,6 +318,102 @@ function renderGalleryStrip(hotelId, hotelName, region, outDir) {
 }
 
 /**
+ * Render the combined photo mosaic for a hotel detail page.
+ * Layout: hero spans left column × full height; 2×2 grid of thumbnails fills the right.
+ * Last thumbnail cell carries a "View all photos" overlay.
+ * On tablet/mobile the hero becomes full-width and thumbnails drop into a 2×2 grid below.
+ *
+ * @param  {string} hotelId
+ * @param  {string} hotelName
+ * @param  {string} region
+ * @param  {string} [outDir]
+ * @returns {string} HTML
+ */
+function renderPhotoMosaic(hotelId, hotelName, region, outDir) {
+  const imageData = getHotelImages(hotelId);
+
+  // ── Hero cell (index 0) ──────────────────────────────────────────────────
+  const heroAlt     = (imageData && imageData.hero && imageData.hero.alt) ||
+                      `${hotelName} resort and pool, ${region}, Mauritius`;
+  const heroCaption = imageData && imageData.hero && imageData.hero.caption;
+  const heroFsP     = outDir ? heroFsPath(hotelId, outDir) : null;
+  const hasRealHero = heroFsP && fileExists(heroFsP);
+  const hasPngHero  = fileExists(heroPngFsPath(hotelId));
+
+  let heroFig;
+  if (hasRealHero) {
+    heroFig = renderPicture(heroWebPath(hotelId), heroAlt, HERO_W, HERO_H, 'eager', 'hotel-img--hero');
+  } else if (hasPngHero) {
+    heroFig = renderPngImage(heroPngWebPath(hotelId), heroAlt, HERO_W, HERO_H, 'eager', 'hotel-img--hero');
+  } else {
+    heroFig = renderPlaceholder(hotelId, hotelName, region, 'hero', heroAlt);
+  }
+
+  const heroCell = [
+    `<button class="hotel-mosaic__cell hotel-mosaic__cell--hero"`,
+    `        data-gallery-index="0"`,
+    `        data-hotel-id="${esc(hotelId)}"`,
+    `        aria-label="${esc('View photos of ' + hotelName)}"`,
+    `        type="button">`,
+    heroFig.split('\n').map(l => '  ' + l).join('\n'),
+    heroCaption ? `  <p class="hotel-mosaic__caption">${esc(heroCaption)}</p>` : '',
+    `</button>`,
+  ].filter(l => l.trim() !== '').join('\n');
+
+  // ── Gallery cells (indices 1–4) ──────────────────────────────────────────
+  const gallery = imageData ? (imageData.gallery || []) : [];
+  const viewAllSvg =
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">` +
+    `<rect x="1" y="1" width="10" height="10" rx="2"/>` +
+    `<rect x="13" y="1" width="10" height="10" rx="2"/>` +
+    `<rect x="1" y="13" width="10" height="10" rx="2"/>` +
+    `<rect x="13" y="13" width="10" height="10" rx="2"/>` +
+    `</svg>`;
+
+  const galleryCells = [];
+  for (let i = 1; i <= GALLERY_COUNT; i++) {
+    const meta    = gallery[i - 1] || {};
+    const altText = meta.alt || `${hotelName} gallery photo ${i}, ${region}, Mauritius`;
+    const fsP     = outDir ? galleryFsPath(hotelId, i, outDir) : null;
+    const hasReal = fsP && fileExists(fsP);
+    const hasPng  = fileExists(galleryPngFsPath(hotelId, i));
+
+    let figHtml;
+    if (hasReal) {
+      figHtml = renderPicture(galleryWebPath(hotelId, i), altText, GALLERY_W, GALLERY_H, 'lazy', 'hotel-img--gallery');
+    } else if (hasPng) {
+      figHtml = renderPngImage(galleryPngWebPath(hotelId, i), altText, GALLERY_W, GALLERY_H, 'lazy', 'hotel-img--gallery');
+    } else {
+      figHtml = renderPlaceholder(hotelId, hotelName, region, 'gallery', altText);
+    }
+
+    const isLast   = (i === GALLERY_COUNT);
+    const btnClass = `hotel-mosaic__cell${isLast ? ' hotel-mosaic__cell--last' : ''}`;
+    const overlay  = isLast
+      ? `  <span class="hotel-mosaic__all-cta" aria-hidden="true">${viewAllSvg} View all photos</span>`
+      : '';
+
+    galleryCells.push([
+      `<button class="${esc(btnClass)}"`,
+      `        data-gallery-index="${i}"`,
+      `        data-hotel-id="${esc(hotelId)}"`,
+      `        aria-label="${esc('View photo: ' + altText)}"`,
+      `        type="button">`,
+      figHtml.split('\n').map(l => '  ' + l).join('\n'),
+      overlay,
+      `</button>`,
+    ].filter(l => l.trim() !== '').join('\n'));
+  }
+
+  return [
+    `<div class="hotel-mosaic" data-hotel-id="${esc(hotelId)}" aria-label="Photo gallery for ${esc(hotelName)}">`,
+    heroCell.split('\n').map(l => '  ' + l).join('\n'),
+    galleryCells.map(c => c.split('\n').map(l => '  ' + l).join('\n')).join('\n'),
+    `</div>`,
+  ].join('\n');
+}
+
+/**
  * Render a thumbnail for a hotel card (ranking / persona pages).
  *
  * @param  {string} hotelId
@@ -524,6 +620,7 @@ module.exports = {
   getHotelImages,
   renderHeroImage,
   renderGalleryStrip,
+  renderPhotoMosaic,
   renderCardThumbnail,
   heroPreloadTag,
   buildImageObjectSchema,

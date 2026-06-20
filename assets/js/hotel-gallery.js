@@ -1,4 +1,4 @@
-/* hotel-gallery.js — Lightbox, gallery carousel, keyboard nav, touch swipe
+/* hotel-gallery.js — Photo Mosaic, Lightbox, keyboard nav, touch swipe
    CSP safe: no inline scripts, loaded as external file with defer.           */
 (function () {
   'use strict';
@@ -42,17 +42,32 @@
     return lb;
   }
 
-  // ── Slide extraction from gallery strip ────────────────────────────────────
-  function extractSlides(strip) {
+  // ── Slide extraction ───────────────────────────────────────────────────────
+
+  function extractSlidesFromMosaic(mosaic) {
+    return Array.from(mosaic.querySelectorAll('.hotel-mosaic__cell')).map(function (cell) {
+      var img = cell.querySelector('.hotel-img__real');
+      var fig = cell.querySelector('.hotel-img');
+      var cap = cell.querySelector('.hotel-mosaic__caption');
+      return {
+        figNode: fig ? fig.cloneNode(true) : null,
+        src:     img ? (img.currentSrc || img.src) : null,
+        alt:     img ? img.alt : '',
+        caption: cap ? cap.textContent.trim() : '',
+      };
+    });
+  }
+
+  function extractSlidesFromStrip(strip) {
     return Array.from(strip.querySelectorAll('.gallery-strip__btn')).map(function (btn) {
       var img = btn.querySelector('.hotel-img__real');
       var fig = btn.querySelector('.hotel-img');
       var cap = btn.querySelector('.gallery-strip__caption');
       return {
-        figNode: fig  ? fig.cloneNode(true) : null,
-        src:     img  ? img.currentSrc || img.src : null,
-        alt:     img  ? img.alt : (fig ? (fig.getAttribute('aria-label') || '') : ''),
-        caption: cap  ? cap.textContent.trim() : '',
+        figNode: fig ? fig.cloneNode(true) : null,
+        src:     img ? (img.currentSrc || img.src) : null,
+        alt:     img ? img.alt : '',
+        caption: cap ? cap.textContent.trim() : '',
       };
     });
   }
@@ -69,7 +84,6 @@
     var slide = slides[current];
 
     if (slide.src) {
-      // Real image — build a fresh element (avoids cloning lazy-load state)
       var fig = document.createElement('figure');
       fig.className = 'hotel-img hotel-img--gallery';
       var img = document.createElement('img');
@@ -81,21 +95,19 @@
       fig.appendChild(img);
       frame.appendChild(fig);
     } else if (slide.figNode) {
-      // Placeholder — clone the gradient figure
       frame.appendChild(slide.figNode.cloneNode(true));
     }
 
     caption.textContent = slide.caption;
-    counter.textContent = (current + 1) + ' \u2F ' + slides.length;
+    counter.textContent = (current + 1) + ' / ' + slides.length;
 
-    // Update active thumb highlight
     var thumbBtns = dialog.querySelectorAll('.hotel-lightbox__thumb-btn');
     for (var i = 0; i < thumbBtns.length; i++) {
       thumbBtns[i].classList.toggle('is-active', i === current);
     }
   }
 
-  // ── Build thumbnail strip ──────────────────────────────────────────────────
+  // ── Build lightbox thumbnail strip ─────────────────────────────────────────
   function buildThumbs() {
     var dialog = getLightbox();
     var thumbs = dialog.querySelector('.hotel-lightbox__thumbs');
@@ -104,14 +116,14 @@
       var btn = document.createElement('button');
       btn.type      = 'button';
       btn.className = 'hotel-lightbox__thumb-btn' + (i === current ? ' is-active' : '');
-      btn.setAttribute('aria-label', 'View image ' + (i + 1));
+      btn.setAttribute('aria-label', 'View photo ' + (i + 1));
 
       if (slide.src) {
         var img = document.createElement('img');
         img.src    = slide.src;
         img.alt    = '';
-        img.width  = 56;
-        img.height = 42;
+        img.width  = 58;
+        img.height = 44;
         img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block';
         btn.appendChild(img);
       } else if (slide.figNode) {
@@ -129,8 +141,11 @@
   }
 
   // ── Open / close ───────────────────────────────────────────────────────────
-  function openLightbox(strip, index) {
-    slides = extractSlides(strip);
+  function openLightbox(container, index) {
+    slides = container.classList.contains('hotel-mosaic')
+      ? extractSlidesFromMosaic(container)
+      : extractSlidesFromStrip(container);
+
     if (!slides.length) return;
 
     var dialog = getLightbox();
@@ -157,9 +172,9 @@
   document.addEventListener('keydown', function (e) {
     var dialog = document.getElementById('hotel-lightbox');
     if (!dialog || !dialog.classList.contains('is-open')) return;
-    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); showSlide(current - 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    { e.preventDefault(); showSlide(current - 1); }
     else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); showSlide(current + 1); }
-    else if (e.key === 'Escape')   closeLightbox();
+    else if (e.key === 'Escape') closeLightbox();
   });
 
   // ── Touch swipe ────────────────────────────────────────────────────────────
@@ -175,7 +190,17 @@
     showSlide(dx < 0 ? current + 1 : current - 1);
   }, { passive: true });
 
-  // ── Wire gallery strips ────────────────────────────────────────────────────
+  // ── Wire mosaic ────────────────────────────────────────────────────────────
+  function wireMosaic(mosaic) {
+    mosaic.querySelectorAll('.hotel-mosaic__cell').forEach(function (cell) {
+      cell.addEventListener('click', function () {
+        var idx = parseInt(this.dataset.galleryIndex || '0', 10);
+        openLightbox(mosaic, idx);
+      });
+    });
+  }
+
+  // ── Wire legacy gallery strip ──────────────────────────────────────────────
   function wireStrip(strip) {
     strip.querySelectorAll('.gallery-strip__btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -185,7 +210,7 @@
     });
   }
 
-  // ── IntersectionObserver: activate gradient shimmer when in view ───────────
+  // ── IntersectionObserver: gradient shimmer when in view ───────────────────
   function observePlaceholders() {
     if (!('IntersectionObserver' in window)) return;
     var obs = new IntersectionObserver(function (entries) {
@@ -200,7 +225,8 @@
 
   // ── Init ───────────────────────────────────────────────────────────────────
   function init() {
-    getLightbox(); // prime the singleton and wire controls
+    getLightbox();
+    document.querySelectorAll('.hotel-mosaic').forEach(wireMosaic);
     document.querySelectorAll('.gallery-strip').forEach(wireStrip);
     observePlaceholders();
   }
