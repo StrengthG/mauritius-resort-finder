@@ -1,6 +1,6 @@
 # SEO Opportunity Roadmap — Project Lighthouse
 
-Last updated: 2026-06-08 (Run 50)
+Last updated: 2026-06-21 (Run 54)
 
 ## Scoring Formula
 Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) / Implementation Effort
@@ -103,8 +103,13 @@ Priority = (Estimated Traffic Gain × Commercial Intent × Ranking Feasibility) 
 | ~~og:image missing from all 52 static pages + homepage~~ | ~~Social/Technical~~ | ~~High~~ | ✅ Done 2026-06-20 (Run 53) — injected via site_builder.js; homepage patched directly |
 | ~~10 static page meta descriptions >160 chars~~ | ~~On-page~~ | ~~Medium~~ | ✅ Done 2026-06-20 (Run 53) — all ≤160 chars |
 | ~~Duplicate H1 on luxury travel guide + wellness retreat guide~~ | ~~On-page~~ | ~~Medium~~ | ✅ Done 2026-06-20 (Run 53) — guide-hero H1 → H2 on both pages |
+| ~~Render-blocking global.css on 33 static pages~~ | ~~Technical/CWV~~ | ~~Critical~~ | ✅ Done 2026-06-21 (Run 54) — all 33 static pages converted to async |
+| ~~Render-blocking big_dodo_widget.css on 8 static pages~~ | ~~Technical/CWV~~ | ~~High~~ | ✅ Done 2026-06-21 (Run 54) — async pattern applied |
+| ~~Hotel meta descriptions >160 chars after HTML entity expansion~~ | ~~On-page~~ | ~~Medium~~ | ✅ Done 2026-06-21 (Run 54) — truncation limit tightened to 147 chars (was 157) |
 | Add review_count + avg_rating for 8 new ADM hotels | Data quality | High | Unlocks AggregateRating rich snippet on 8 hotel pages (ADM059–ADM065 + MQ011) |
 | Begin backlink outreach — Week 1 batch | Backlinks | High | `node seo_outreach_queue.js` — 1 broken link target (Rough Guides DA 83) |
+| Best spa hotels in Mauritius page | Commercial content | High | "best spa hotels mauritius" — high commercial intent, medium effort |
+| Persona page intro content (200 words/page) | Content depth | Medium | 6 persona pages avg 1,100 words; short keyword-rich intro lifts depth |
 | Mauritius photography spots guide | Informational | Low | "best photography spots mauritius" |
 | Mauritius nightlife guide | Informational | Low | "nightlife mauritius" |
 | Monitor GSC for new keyword opportunities | Analytics | Ongoing | Weekly check on impressions with low CTR |

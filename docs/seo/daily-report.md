@@ -1,12 +1,12 @@
-# Daily SEO Report — Run 53
-**Date:** 2026-06-20
+# Daily SEO Report — Run 54
+**Date:** 2026-06-21
 **Agent:** Dodo SEO Agent (Project Lighthouse)
 
 ---
 
 ## 1. Executive Summary
 
-Full technical + on-page audit executed for Run 53. Five categories of issues were identified and resolved: missing `og:image` across all 52 static pages and the homepage, 10 overlong meta descriptions (>160 chars) on static pages, duplicate H1 tags on two guide pages, and zero internal links from 3 high-traffic region/guide pages to the new scuba diving guide. All fixes committed and deployed to Cloudflare Pages.
+Run 54 focused on Core Web Vitals: eliminated render-blocking `global.css` on all 33 static pages and `big_dodo_widget.css` on 8 static pages. Fixed 7 hotel pages whose meta descriptions exceeded 160 chars after HTML entity expansion. All 136 pages rebuilt, 2237 tests pass, deployed to Cloudflare Pages.
 
 ---
 
@@ -14,59 +14,78 @@ Full technical + on-page audit executed for Run 53. Five categories of issues we
 
 | Issue | Pages Affected | Fix |
 |---|---|---|
-| `og:image` absent on all static pages | 52 static pages + homepage | Injected default og:image + twitter:image via `site_builder.js` during copy; homepage patched directly in `index.html` |
-| Meta descriptions >160 chars | 10 static pages | Trimmed to ≤160 chars — all 10 now pass |
-| Duplicate `<h1>` | `mauritius-luxury-travel-guide`, `mauritius-wellness-retreat-guide` | Changed second H1 (in `.guide-hero` section) to `<h2>` on both pages |
-| No internal link to scuba guide | `flic-en-flac-mauritius`, `cap-malheureux-mauritius`, `mauritius-island-day-trips` | Added contextual anchor links to `/mauritius-scuba-diving-guide/` on all three pages |
-| Stale hotel pages in dist/ | 3 dirs: `shangri-la-le-touessrok-resort-and-spa`, `tamassa-resort`, `victoria-beachcomber-resort-and-spa` | These are leftovers from old slugs; they vanish automatically on next Cloudflare Pages build (dist/ not committed) |
+| Render-blocking `global.css` (synchronous `<link rel="stylesheet">`) | 33 static pages | Converted to `media="print" onload="this.media='all'"` + `<noscript>` fallback |
+| Render-blocking `big_dodo_widget.css` | 8 static pages | Same async pattern applied |
+| Meta descriptions >160 chars in rendered HTML | 7 hotel pages | Truncation limit in `static_page_renderer.js` tightened from 157 to 147 chars (leaves buffer for `&amp;` entity expansion) |
 
 ---
 
-## 3. Audit Results (full)
+## 3. Technical Issues Still Open
+
+| Issue | Impact | Next Step |
+|---|---|---|
+| 8 hotels missing `review_count` / `avg_rating` (ADM059–ADM065, MQ011) | No AggregateRating rich snippet on 8 hotel pages | Requires explicit data update to `hotels.json` |
+| Map page Leaflet + resort-map.css synchronous | Minor CWV cost on map page only | Acceptable — map JS requires CSS before init; leave as-is |
+| 67 pages with titles >70 chars | CTR risk for compare pages | Compare page titles structurally long; hotel+static pages are clean |
+
+---
+
+## 4. Audit Results (full)
 
 | Check | Result |
 |---|---|
 | Crawlability (robots.txt) | Clean |
-| Titles >70 chars | 67 (compare pages structurally long; hotel pages auto-truncate at 60 chars) |
-| Meta descriptions >160 chars | 0 (was 10 static, now fixed; generated pages auto-truncate) |
-| Duplicate H1 | 0 (was 2, now fixed) |
-| Render-blocking | None (fixed Run 51) |
-| robots meta | Clean (fixed Run 52) |
-| og:image | 0 missing (was 52 + homepage, now fixed) |
-| Hotel schema (aggregateRating) | 8 hotels correctly skip aggregateRating due to no review data — this is a **data gap**, not a code bug |
+| Canonical tags | 0 missing |
+| noindex on indexed pages | 0 issues |
+| robots meta | Clean |
+| Render-blocking stylesheets | 0 (was 33+8 on static pages — now fixed) |
+| Meta descriptions >160 chars | 0 (was 7 hotel pages — now fixed) |
+| Meta descriptions missing | 0 |
+| H1 count | Clean — 0 missing, 0 duplicates |
+| Hotel schema (description + url) | Clean (6 apparent issues are stale local-only slugs, not live) |
+| Affiliate CTAs | Clean — 0 hotel pages missing CTAs (2 apparent issues are stale local slugs) |
+| og:image | Clean (fixed Run 53) |
 
 ---
 
-## 4. Internal Linking Status
+## 5. Content Created
 
-- Scuba diving guide now linked from Flic en Flac (FAQ block), Cap Malheureux (what-to-do answer), and Island Day Trips (closing paragraph)
-- All three links are contextual (mid-text, not navigation) — optimal for link equity
+None this run — CWV fixes were the full session priority.
 
 ---
 
-## 5. Data Gaps (require explicit instruction to fix)
+## 6. Internal Linking Changes
 
-| Gap | Hotels | Impact |
+None this run.
+
+---
+
+## 7. Backlink Activity
+
+Not actioned this run.
+
+---
+
+## 8. Priority Action List (Next Run)
+
+| Priority | Action | Type |
 |---|---|---|
-| `review_count: 0` or `avg_rating: null` | ADM059–ADM065 + MQ011 (8 hotels) | No AggregateRating rich snippets on these hotel pages |
-
-To unlock rich snippets for these hotels, update `data/hotels.json` with real `review_count` and `avg_rating` values.
+| 🔴 High | Begin Week 1 backlink outreach — DA83 Rough Guides broken-link target | Backlinks |
+| 🔴 High | Write "Best Spa Hotels in Mauritius" page (commercial gap, medium effort) | Content |
+| 🟡 Medium | Add `review_count` + `avg_rating` for 8 ADM hotels (requires user approval to edit hotels.json) | Data quality |
+| 🟡 Medium | Persona page intro content (200 words/page × 6 pages) | Content depth |
+| 🟢 Low | Mauritius photography spots guide | Informational |
+| 🟢 Low | Mauritius nightlife guide | Informational |
 
 ---
 
-## 6. Open Roadmap (Top Priorities)
+## 9. Expected Impact
 
-| Task | Type | Priority |
+| Change | Mechanism | Timeline |
 |---|---|---|
-| Add review_count + avg_rating for 8 ADM hotels | Data quality | High |
-| Persona page intro content (200 words/page) | Content depth | Medium |
-| Begin Week 1 backlink outreach batch | Backlinks | High |
-| Monitor GSC for keyword opportunities | Analytics | Ongoing |
+| Render-blocking CSS removed from 33 pages | Faster FCP/LCP on all static pages → better CWV scores → potential ranking uplift | 2–4 weeks |
+| Meta descriptions corrected | Accurate SERP snippets → improved CTR | Immediate on recrawl |
 
 ---
 
-## 7. Commit
-
-`38334e8` — `fix: SEO audit fixes — og:image on all pages, trim meta descriptions, remove duplicate H1s, add scuba links`
-
-Deployed to Cloudflare Pages via push to `main`.
+*Report generated: 2026-06-21 · Build: 136 pages, 0 errors · Tests: 2237 passed, 0 failed*
