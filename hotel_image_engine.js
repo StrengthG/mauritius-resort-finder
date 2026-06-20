@@ -322,9 +322,9 @@ function renderGalleryStrip(hotelId, hotelName, region, outDir) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * Discover all available PNG photos for a hotel, in order.
- * Checks photo_01.png … photo_10.png; stops at first gap.
- * Also falls back to hero.webp / gallery-N.webp if no PNGs exist.
+ * Discover all available photos for a hotel, in order.
+ * Prefers photo_01.webp … photo_10.webp; falls back to .png at same path.
+ * Also falls back to hero.webp / gallery-N.webp if neither exists.
  *
  * @param  {string} hotelId
  * @param  {string} hotelName
@@ -336,12 +336,17 @@ function discoverPhotos(hotelId, hotelName, region, imageData) {
   const photos = [];
   const gallery = (imageData && imageData.gallery) || [];
 
-  // Primary: photo_01.png … photo_10.png
+  // Primary: photo_01.webp (preferred) → photo_01.png (fallback)
   for (let i = 1; i <= 10; i++) {
-    const num    = String(i).padStart(2, '0');
-    const fsPath = path.join(__dirname, 'assets', 'images', 'hotels', hotelId, `photo_${num}.png`);
-    if (!fileExists(fsPath)) break;
+    const num     = String(i).padStart(2, '0');
+    const base    = path.join(__dirname, 'assets', 'images', 'hotels', hotelId, `photo_${num}`);
+    const webpFs  = base + '.webp';
+    const pngFs   = base + '.png';
+    const useWebp = fileExists(webpFs);
+    const usePng  = !useWebp && fileExists(pngFs);
+    if (!useWebp && !usePng) break;
 
+    const ext     = useWebp ? 'webp' : 'png';
     const meta    = i === 1
       ? (imageData && imageData.hero) || {}
       : gallery[i - 2] || {};
@@ -351,12 +356,12 @@ function discoverPhotos(hotelId, hotelName, region, imageData) {
         : `${hotelName} gallery photo ${i}, ${region}, Mauritius`);
 
     photos.push({
-      webPath:  `/assets/images/hotels/${hotelId}/photo_${num}.png`,
+      webPath:  `/assets/images/hotels/${hotelId}/photo_${num}.${ext}`,
       altText,
       loading:  i === 1 ? 'eager' : 'lazy',
       width:    i === 1 ? HERO_W : GALLERY_W,
       height:   i === 1 ? HERO_H : GALLERY_H,
-      index:    i - 1, // 0-based index for lightbox
+      index:    i - 1,
     });
   }
 
@@ -557,11 +562,16 @@ function renderCardThumbnail(hotelId, hotelName, region, outDir) {
  * @returns {string} HTML or empty string
  */
 function heroPreloadTag(hotelId, outDir) {
-  // PNG-first (photo_01.png is the primary hero source)
+  // WebP preferred (photo_01.webp)
+  const webpFs = path.join(__dirname, 'assets', 'images', 'hotels', hotelId, 'photo_01.webp');
+  if (fileExists(webpFs)) {
+    return `  <link rel="preload" as="image" href="/assets/images/hotels/${hotelId}/photo_01.webp" type="image/webp">`;
+  }
+  // PNG fallback
   if (fileExists(heroPngFsPath(hotelId))) {
     return `  <link rel="preload" as="image" href="${esc(heroPngWebPath(hotelId))}" type="image/png">`;
   }
-  // WebP fallback
+  // Legacy hero.webp
   if (outDir && fileExists(heroFsPath(hotelId, outDir))) {
     return `  <link rel="preload" as="image" href="${esc(heroWebPath(hotelId))}" type="image/webp">`;
   }

@@ -291,12 +291,12 @@ suite('renderCardThumbnail — alt text from metadata', function () {
 // ─────────────────────────────────────────────────────────────────────────────
 
 suite('heroPreloadTag', function () {
-  // PNG exists in assets/ → preload tag generated even without outDir
+  // WebP or PNG exists in assets/ → preload tag generated even without outDir
   const tagNoOutDir = heroPreloadTag(KNOWN_HOTEL_ID);
-  assert(tagNoOutDir.includes('photo_01.png') || tagNoOutDir === '', 'PNG preload tag or empty');
-  // With non-existent outDir: same result (PNG path checked from assets/, not outDir)
+  assert(tagNoOutDir.includes('photo_01') || tagNoOutDir === '', 'preload tag or empty');
+  // With non-existent outDir: same result (path checked from assets/, not outDir)
   const tag = heroPreloadTag(KNOWN_HOTEL_ID, '/nonexistent');
-  assert(tag.includes('photo_01.png') || tag === '', 'PNG preload tag or empty when file not present');
+  assert(tag.includes('photo_01') || tag === '', 'preload tag or empty when file not present');
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
