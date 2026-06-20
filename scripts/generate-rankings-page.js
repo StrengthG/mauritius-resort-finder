@@ -36,8 +36,12 @@ function slugify(s) {
     .replace(/-+/g, '-').replace(/^-|-$/g, '');
 }
 
-function hasPhoto(hotelId) {
-  return fs.existsSync(path.join(ROOT, 'assets', 'images', 'hotels', hotelId, 'photo_01.png'));
+function photoPath(hotelId) {
+  const webp = path.join(ROOT, 'assets', 'images', 'hotels', hotelId, 'photo_01.webp');
+  const png  = path.join(ROOT, 'assets', 'images', 'hotels', hotelId, 'photo_01.png');
+  if (fs.existsSync(webp)) return `/assets/images/hotels/${hotelId}/photo_01.webp`;
+  if (fs.existsSync(png))  return `/assets/images/hotels/${hotelId}/photo_01.png`;
+  return null;
 }
 
 // Score displayed = overall_rating (editorial 0-10 scale)
@@ -67,10 +71,9 @@ function renderCard(hotel, rank) {
     return 170 + (h % 60);
   })();
 
-  const photoHtml = hasPhoto(hotel.hotel_id)
-    ? `<img src="/assets/images/hotels/${esc(hotel.hotel_id)}/photo_01.png"
-               alt="${esc(hotel.hotel_name)}"
-               loading="lazy" decoding="async">`
+  const cover     = photoPath(hotel.hotel_id);
+  const photoHtml = cover
+    ? `<img src="${esc(cover)}" alt="${esc(hotel.hotel_name)}" loading="lazy" decoding="async">`
     : `<div class="rk-card__nophoto" aria-hidden="true" style="--hi-hue:${hue}">
            <span>${esc(initial)}</span>
          </div>`;
@@ -329,4 +332,4 @@ ${cards}
 
 const dest = path.join(ROOT, 'pages', 'rankings.html');
 fs.writeFileSync(dest, html, 'utf8');
-console.log(`✓ Generated pages/rankings.html — ${totalHotels} hotels, ${ranked.filter(h=>hasPhoto(h.hotel_id)).length} with photos`);
+console.log(`✓ Generated pages/rankings.html — ${totalHotels} hotels, ${ranked.filter(h=>photoPath(h.hotel_id)).length} with photos`);
