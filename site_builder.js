@@ -1262,6 +1262,15 @@ async function buildSite(options = {}) {
     }
 
     // Copy static pages from pages/ → dist/{pagename}/index.html
+    // Inject default og:image + twitter:image if the page doesn't already have one.
+    const DEFAULT_OG_IMAGE = `${baseUrl}/assets/images/ambient/ambient-01.webp`;
+    const OG_IMAGE_INJECT  = [
+      `  <meta property="og:image"        content="${DEFAULT_OG_IMAGE}">`,
+      `  <meta property="og:image:width"  content="1280">`,
+      `  <meta property="og:image:height" content="853">`,
+      `  <meta property="og:image:alt"    content="Mauritius Resort Finder">`,
+      `  <meta name="twitter:image"       content="${DEFAULT_OG_IMAGE}">`,
+    ].join('\n');
     const pagesSrc = path.join(__dirname, 'pages');
     if (fs.existsSync(pagesSrc)) {
       const pageFiles = fs.readdirSync(pagesSrc).filter(f => f.endsWith('.html'));
@@ -1269,7 +1278,11 @@ async function buildSite(options = {}) {
         const pageName = file.replace(/\.html$/, '');
         const destDir  = path.join(absOut, pageName);
         fs.mkdirSync(destDir, { recursive: true });
-        fs.copyFileSync(path.join(pagesSrc, file), path.join(destDir, 'index.html'));
+        let html = fs.readFileSync(path.join(pagesSrc, file), 'utf8');
+        if (!html.includes('og:image')) {
+          html = html.replace('</head>', OG_IMAGE_INJECT + '\n</head>');
+        }
+        fs.writeFileSync(path.join(destDir, 'index.html'), html, 'utf8');
       }
       _log(`      ✓ pages/ (${pageFiles.length} static pages) copied to dist/`);
     }
